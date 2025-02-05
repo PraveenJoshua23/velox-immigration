@@ -10,11 +10,12 @@ import {
 import { RouterModule } from '@angular/router';
 import { animate, inView, stagger } from 'motion';
 import { ServicesComponent } from '../../components/services.component';
+import { TestimonialsComponent } from '../../components/testimonials.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, ServicesComponent],
+  imports: [CommonModule, RouterModule, ServicesComponent, TestimonialsComponent],
   template: `
     <header class="bg-white shadow-sm">
       <nav
@@ -92,29 +93,9 @@ import { ServicesComponent } from '../../components/services.component';
 
       <!-- Testimonial Section -->
       <section class="bg-gray-50 py-20">
-        <div class="container mx-auto px-4">
-          <h3 class="text-3xl font-bold text-center mb-12">
-            What Our Customers Say
-          </h3>
-          <div
-            class="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8"
-          >
-            <div
-              *ngFor="let testimonial of testimonials()"
-              class="bg-white p-8 rounded-lg shadow-md"
-              class="testimonial-card"
-            >
-              <p class="text-gray-600 mb-4">{{ testimonial.content }}</p>
-              <div class="flex items-center">
-                <div class="ml-4">
-                  <p class="font-semibold">{{ testimonial.name }}</p>
-                  <p class="text-gray-500">{{ testimonial.status }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <app-testimonials></app-testimonials>
       </section>
+
     </main>
 
     <footer class="bg-gray-900 text-white py-12">
@@ -150,33 +131,6 @@ export class HomeComponent implements AfterViewInit {
     { path: '/about', label: 'About Us' },
     { path: '/services', label: 'Our Services' },
     { path: '/contact', label: 'Contact' },
-  ]);
-
-  services = signal([
-    {
-      title: 'Express Entry',
-      description:
-        'Federal Skilled Worker Program for qualified professionals seeking Canadian permanent residence.',
-    },
-    {
-      title: 'Family Sponsorship',
-      description:
-        'Reunite with your family through spouse, parent, and child sponsorship programs.',
-    },
-    {
-      title: 'Study Permits',
-      description:
-        'Obtain student visas and permits for international education in Canada.',
-    },
-  ]);
-
-  testimonials = signal([
-    {
-      content:
-        'Worem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.',
-      name: 'Kate Johnson',
-      status: 'Moved to Canada',
-    },
   ]);
 
   footerLinks = signal([
