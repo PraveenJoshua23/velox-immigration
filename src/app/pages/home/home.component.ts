@@ -47,31 +47,28 @@ import { animate, inView, stagger } from 'motion';
       <!-- Hero Section -->
       <section class="h-[80dvh] bg-black pb-20 relative">
         <div
-          class="container ml-auto pl-4 flex flex-col md:flex-row items-center "
+          class="container ml-auto pl-4 flex flex-col md:flex-row items-center justify-between"
         >
-          <div class="md:w-1/2 mb-10 md:mb-0" class="hero-content">
-            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
-              Professional Immigration Services
+          <div class="md:w-4/12 mb-10 md:mb-0 flex flex-col gap-4" class="hero-content">
+          <p class="text-xl text-white mb-8 font-light">
+             Your Canadian journey starts here !
+            </p>
+            <h2 class="text-4xl md:text-7xl font-medium text-white mb-6">
+              Professional<br>Immigration<br>Services
             </h2>
-            <p class="text-xl text-white mb-8">
-              Transform your Canadian dreams into reality with expert guidance
+            <p class="text-base text-white mb-8 font-spartan font-light">
+              Transform your Canadian dreams into reality with expert<br>guidance
               and proven success.
             </p>
             <div class="flex space-x-4">
               <button
-                class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+                class="bg-fire-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors"
               >
                 Get Started Now
               </button>
-              <a
-                href="tel:+416-589-0123"
-                class="flex items-center text-blue-600 hover:text-blue-700"
-              >
-                <span class="mr-2">+416-589-0123</span>
-              </a>
             </div>
           </div>
-          <div class="md:w-1/2 h-full relative">
+          <div class="md:w-8/12 h-full relative">
             <div
               class="absolute inset-0 bg-gradient-to-r from-black to-transparent "
             ></div>
