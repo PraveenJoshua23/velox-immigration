@@ -45,9 +45,9 @@ import { animate, inView, stagger } from 'motion';
 
     <main>
       <!-- Hero Section -->
-      <section class="h-[80dvh] bg-black py-20">
+      <section class="h-[80dvh] bg-black pb-20 relative">
         <div
-          class="container mx-auto px-4 flex flex-col md:flex-row items-center"
+          class="container ml-auto pl-4 flex flex-col md:flex-row items-center "
         >
           <div class="md:w-1/2 mb-10 md:mb-0" class="hero-content">
             <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -71,15 +71,21 @@ import { animate, inView, stagger } from 'motion';
               </a>
             </div>
           </div>
-          <div class="md:w-1/2" class="hero-image">
+          <div class="md:w-1/2 h-full relative">
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-black to-transparent "
+            ></div>
             <img
-              src="/assets/immigration-hero.jpg"
+              src="/assets/images/immigration-hero.png"
               alt="Immigration Services"
-              class="rounded-lg shadow-xl"
+              class="rounded-lg shadow-2xl w-full h-[80dvh] object-cover"
             />
           </div>
         </div>
       </section>
+
+      <!-- About Section  -->
+      <section class="py-20"></section>
 
       <!-- Services Section -->
       <section class="py-20">
