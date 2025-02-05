@@ -11,11 +11,12 @@ import { RouterModule } from '@angular/router';
 import { animate, inView, stagger } from 'motion';
 import { ServicesComponent } from '../../components/services.component';
 import { TestimonialsComponent } from '../../components/testimonials.component';
+import { AboutComponent } from '../../components/about.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, ServicesComponent, TestimonialsComponent],
+  imports: [CommonModule, RouterModule, ServicesComponent, TestimonialsComponent, AboutComponent],
   template: `
     <header class="bg-white shadow-sm">
       <nav
@@ -84,7 +85,9 @@ import { TestimonialsComponent } from '../../components/testimonials.component';
       </section>
 
       <!-- About Section  -->
-      <section class="py-20"></section>
+      <section class="py-20">
+        <app-about></app-about>
+      </section>
 
       <!-- Services Section -->
       <section class="py-20">
