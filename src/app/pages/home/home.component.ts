@@ -12,11 +12,23 @@ import { animate, inView, stagger } from 'motion';
 import { ServicesComponent } from '../../components/services.component';
 import { TestimonialsComponent } from '../../components/testimonials.component';
 import { AboutComponent } from '../../components/about.component';
+import { ExpressEntrySectionComponent } from '../../components/express-entry.component';
+import { PartnerLogosComponent } from '../../components/partner-logo.component';
+import { FooterComponent } from '../../components/footer.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, ServicesComponent, TestimonialsComponent, AboutComponent],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ServicesComponent,
+    TestimonialsComponent,
+    AboutComponent,
+    ExpressEntrySectionComponent,
+    PartnerLogosComponent,
+    FooterComponent,
+  ],
   template: `
     <header class="bg-white shadow-sm">
       <nav
@@ -52,15 +64,18 @@ import { AboutComponent } from '../../components/about.component';
         <div
           class="container ml-auto pl-4 flex flex-col md:flex-row items-center justify-between"
         >
-          <div class="md:w-4/12 mb-10 md:mb-0 flex flex-col gap-4" class="hero-content">
-          <p class="text-xl text-white mb-8 font-light">
-             Your Canadian journey starts here !
+          <div
+            class="md:w-4/12 mb-10 md:mb-0 flex flex-col gap-4"
+            class="hero-content"
+          >
+            <p class="text-xl text-white mb-8 font-light">
+              Your Canadian journey starts here !
             </p>
             <h2 class="text-4xl md:text-7xl font-medium text-white mb-6">
-              Professional<br>Immigration<br>Services
+              Professional<br />Immigration<br />Services
             </h2>
             <p class="text-base text-white mb-8 font-spartan font-light">
-              Transform your Canadian dreams into reality with expert<br>guidance
+              Transform your Canadian dreams into reality with expert<br />guidance
               and proven success.
             </p>
             <div class="flex space-x-4">
@@ -76,6 +91,7 @@ import { AboutComponent } from '../../components/about.component';
               class="absolute inset-0 bg-gradient-to-r from-black to-transparent "
             ></div>
             <img
+              id="hero-image"
               src="/assets/images/immigration-hero.png"
               alt="Immigration Services"
               class="rounded-lg shadow-2xl w-full h-[80dvh] object-cover"
@@ -85,44 +101,23 @@ import { AboutComponent } from '../../components/about.component';
       </section>
 
       <!-- About Section  -->
-      <section class="py-20">
-        <app-about></app-about>
-      </section>
+      <app-about />
 
       <!-- Services Section -->
-      <section class="py-20">
-        <app-services></app-services>
-      </section>
+      <app-services />
+
+      <!-- Express Entry -->
+      <app-express-entry-section />
 
       <!-- Testimonial Section -->
-      <section class="bg-gray-50 py-20">
-        <app-testimonials></app-testimonials>
-      </section>
+      <app-testimonials />
 
+      <!-- Partner logos -->
+      <app-partner-logos />
     </main>
 
-    <footer class="bg-gray-900 text-white py-12">
-      <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h4 class="text-xl font-bold mb-4">Quick Links</h4>
-            <ul class="space-y-2">
-              <li *ngFor="let link of footerLinks()">
-                <a
-                  [routerLink]="link.path"
-                  class="text-gray-400 hover:text-white transition-colors"
-                >
-                  {{ link.label }}
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="border-t border-gray-800 mt-8 pt-8 text-center">
-          <p class="text-gray-400">Copyright © 2025. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
+    <!-- Footer -->
+    <app-footer />
   `,
   styles: ``,
 })
@@ -156,14 +151,14 @@ export class HomeComponent implements AfterViewInit {
         { duration: 0.5 }
       );
 
-      animate(
-        '.hero-image',
-        {
-          opacity: [0, 1],
-          x: [100, 0],
-        },
-        { duration: 0.5 }
-      );
+      // animate(
+      //   '#hero-image',
+      //   {
+      //     opacity: [0, 1],
+      //     x: [100, 0],
+      //   },
+      //   { duration: 0.5 }
+      // );
 
       // Services animations
       const serviceCards = document.querySelectorAll('.service-card');
