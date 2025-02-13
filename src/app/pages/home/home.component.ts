@@ -3,18 +3,18 @@ import {
   AfterViewInit,
   Component,
   Inject,
-  OnInit,
   PLATFORM_ID,
   signal,
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { animate, inView, stagger } from 'motion';
+import { animate, inView } from 'motion';
 import { ServicesComponent } from '../../components/services.component';
 import { TestimonialsComponent } from '../../components/testimonials.component';
 import { AboutComponent } from '../../components/about.component';
 import { ExpressEntrySectionComponent } from '../../components/express-entry.component';
 import { PartnerLogosComponent } from '../../components/partner-logo.component';
 import { FooterComponent } from '../../components/footer.component';
+import { HeaderComponent } from '../../components/header.component';
 
 @Component({
   selector: 'app-home',
@@ -28,9 +28,10 @@ import { FooterComponent } from '../../components/footer.component';
     ExpressEntrySectionComponent,
     PartnerLogosComponent,
     FooterComponent,
+    HeaderComponent,
   ],
   template: `
-    <header class="bg-white shadow-sm">
+    <!-- <header class="bg-white shadow-sm">
       <nav
         class="container mx-auto px-4 py-4 flex justify-between items-center"
       >
@@ -51,12 +52,13 @@ import { FooterComponent } from '../../components/footer.component';
           </a>
         </div>
         <button
-          class="bg-fire-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+          class="bg-fire-600 text-white px-6 py-2 rounded-lg  transition-colors"
         >
           Book Your Consultation
         </button>
       </nav>
-    </header>
+    </header> -->
+    <app-header />
 
     <main>
       <!-- Hero Section -->
@@ -80,7 +82,7 @@ import { FooterComponent } from '../../components/footer.component';
             </p>
             <div class="flex space-x-4">
               <button
-                class="bg-fire-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+                class="bg-fire-600 text-white px-8 py-3 rounded-lg  transition-colors"
               >
                 Get Started Now
               </button>
@@ -119,25 +121,12 @@ import { FooterComponent } from '../../components/footer.component';
     <!-- Footer -->
     <app-footer />
   `,
-  styles: ``,
+  styles: ` :host {
+    display: block;
+  }`,
 })
 export class HomeComponent implements AfterViewInit {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
-
-  navLinks = signal([
-    { path: '/', label: 'Home' },
-    { path: '/about', label: 'About Us' },
-    { path: '/services', label: 'Our Services' },
-    { path: '/contact', label: 'Contact' },
-  ]);
-
-  footerLinks = signal([
-    { path: '/about', label: 'About' },
-    { path: '/contact', label: 'Contact Us' },
-    { path: '/faq', label: 'FAQ' },
-    { path: '/services', label: 'Services' },
-    { path: '/disclaimers', label: 'Disclaimers' },
-  ]);
 
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
@@ -150,15 +139,6 @@ export class HomeComponent implements AfterViewInit {
         },
         { duration: 0.5 }
       );
-
-      // animate(
-      //   '#hero-image',
-      //   {
-      //     opacity: [0, 1],
-      //     x: [100, 0],
-      //   },
-      //   { duration: 0.5 }
-      // );
 
       // Services animations
       const serviceCards = document.querySelectorAll('.service-card');

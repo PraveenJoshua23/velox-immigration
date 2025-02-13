@@ -69,7 +69,7 @@ import { Component, signal } from '@angular/core';
               Why choose us?
             </h2>
 
-            <p class="text-gray-600 mb-6 py-5">
+            <p class="text-gray-600 font-light mb-6 py-5">
               {{ about()[0].content }}
             </p>
 

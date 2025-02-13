@@ -8,7 +8,6 @@ import {
   ElementRef,
   Inject,
   PLATFORM_ID,
-  OnInit,
   OnDestroy,
   NgZone,
   AfterViewInit,
