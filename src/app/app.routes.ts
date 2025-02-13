@@ -3,6 +3,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutPageComponent } from './pages/about-us/about-us.component';
 import { ServicesLayoutComponent } from './layout/service-layout.component';
 import { StudyComponent } from './pages/services/study.component';
+import { WorkComponent } from './pages/services/work.component';
+import { VisitorVisaComponent } from './pages/services/visitor-visa.component';
+import { SuperVisaComponent } from './pages/services/super-visa.component';
+import { LMIAComponent } from './pages/services/lmia.component';
 
 export const routes: Routes = [
   {
@@ -21,10 +25,10 @@ export const routes: Routes = [
         path: 'temporary-services',
         children: [
           { path: 'study', component: StudyComponent },
-          // { path: 'work', component: WorkComponent },
-          // { path: 'visitor-visa', component: VisitorVisaComponent },
-          // { path: 'super-visa', component: SuperVisaComponent },
-          // { path: 'lmia', component: LMIAComponent },
+          { path: 'work', component: WorkComponent },
+          { path: 'visitor-visa', component: VisitorVisaComponent },
+          { path: 'super-visa', component: SuperVisaComponent },
+          { path: 'lmia', component: LMIAComponent },
         ],
       },
       {

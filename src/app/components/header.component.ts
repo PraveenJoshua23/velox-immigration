@@ -68,22 +68,22 @@ import { RouterModule } from '@angular/router';
                       >Study in Canada</a
                     >
                     <a
-                      routerLink="/services/work"
+                      routerLink="/services/temporary-services/work"
                       class="text-sm text-gray-600 hover:text-fire-600"
                       >Work in Canada</a
                     >
                     <a
-                      routerLink="/services/visitor"
+                      routerLink="/services/temporary-services/visitor-visa"
                       class="text-sm text-gray-600 hover:text-fire-600"
                       >Visitor Visa</a
                     >
                     <a
-                      routerLink="/services/super-visa"
+                      routerLink="/services/temporary-services/super-visa"
                       class="text-sm text-gray-600 hover:text-fire-600"
                       >Parent/Grandparent Super Visa</a
                     >
                     <a
-                      routerLink="/services/lmia"
+                      routerLink="/services/temporary-services/lmia"
                       class="text-sm text-gray-600 hover:text-fire-600"
                       >Labour Market Impact Assessment</a
                     >
