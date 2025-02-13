@@ -63,7 +63,7 @@ import { HeaderComponent } from '../../components/header.component';
           >
             <div class="md:w-1/3">
               <img
-                src="/assets/images/founder.jpg"
+                src="/assets/images/founder-2.png"
                 alt="Anitha Gabriel"
                 class="rounded-lg shadow-lg w-full"
               />
