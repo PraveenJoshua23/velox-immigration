@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -7,8 +7,12 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterModule],
   template: `
-    <div class="relative mt-[100px]">
+    <div
+      class="relative"
+      [classList]="hideContactBanner ? 'mt-0' : ' mt-[100px]'"
+    >
       <!-- Floating Contact Banner -->
+      @if (!hideContactBanner) {
       <div class="absolute -top-20 left-0 right-0">
         <div class="container mx-auto px-4">
           <div
@@ -18,7 +22,7 @@ import { RouterModule } from '@angular/router';
               class="flex flex-col md:flex-row items-center gap-4 mb-4 md:mb-0"
             >
               <h3 class="text-xl md:text-2xl text-white font-light">
-                Are you looking for
+                Are you looking for a
                 <div class="font-medium">
                   Licensed Canadian Immigration Consultant?
                 </div>
@@ -47,6 +51,7 @@ import { RouterModule } from '@angular/router';
           </div>
         </div>
       </div>
+      }
 
       <!-- Footer -->
       <footer class="bg-[#1B2534] pt-32 pb-8">
@@ -55,11 +60,11 @@ import { RouterModule } from '@angular/router';
             <!-- Logo and Description -->
             <div class="col-span-1">
               <img
-                src="assets/images/logo.svg"
+                src="assets/images/logo-white.svg"
                 alt="Velox Immigration"
-                class="mb-4"
+                class="h-14 mb-4"
               />
-              <p class="text-gray-400 text-sm mb-4">
+              <p class="text-gray-400 font-light text-sm mb-4">
                 Velox Immigration is a regulated Canadian Immigration
                 Consultant.
               </p>
@@ -70,17 +75,25 @@ import { RouterModule } from '@angular/router';
               <h4 class="text-white font-medium mb-4">Quick Links</h4>
               <ul class="space-y-2">
                 <li>
-                  <a href="/about" class="text-gray-400 hover:text-white"
+                  <a
+                    href="/about"
+                    class="text-gray-400 font-light hover:text-white"
                     >About</a
                   >
                 </li>
                 <li>
-                  <a href="/contact" class="text-gray-400 hover:text-white"
+                  <a
+                    href="/contact"
+                    class="text-gray-400 font-light hover:text-white"
                     >Contact Us</a
                   >
                 </li>
                 <li>
-                  <a href="/faq" class="text-gray-400 hover:text-white">FAQ</a>
+                  <a
+                    href="/faq"
+                    class="text-gray-400 font-light hover:text-white"
+                    >FAQ</a
+                  >
                 </li>
               </ul>
             </div>
@@ -90,7 +103,9 @@ import { RouterModule } from '@angular/router';
               <h4 class="text-white font-medium mb-4">Services</h4>
               <ul class="space-y-2">
                 <li>
-                  <a href="/disclaimers" class="text-gray-400 hover:text-white"
+                  <a
+                    href="/disclaimers"
+                    class="text-gray-400 font-light hover:text-white"
                     >Disclaimers</a
                   >
                 </li>
@@ -101,7 +116,7 @@ import { RouterModule } from '@angular/router';
             <div>
               <h4 class="text-white font-medium mb-4">Canada</h4>
               <ul class="space-y-2">
-                <li class="text-gray-400">Toronto, Canada</li>
+                <li class="text-gray-400 font-light">Toronto, Canada</li>
               </ul>
             </div>
           </div>
@@ -110,7 +125,7 @@ import { RouterModule } from '@angular/router';
           <div
             class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center"
           >
-            <p class="text-gray-400 text-sm mb-4 md:mb-0">
+            <p class="text-gray-400 text-xs font-light mb-4 md:mb-0">
               Copyright © 2025. All rights reserved.
             </p>
             <div class="flex space-x-4">
@@ -156,4 +171,6 @@ import { RouterModule } from '@angular/router';
     `,
   ],
 })
-export class FooterComponent {}
+export class FooterComponent {
+  @Input() hideContactBanner = false;
+}

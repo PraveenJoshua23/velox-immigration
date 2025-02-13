@@ -1,13 +1,12 @@
 import { Component, ElementRef, signal, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { animate, inView } from 'motion';
 
 @Component({
   selector: 'app-partner-logos',
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="relative w-full overflow-hidden bg-gray-50 py-12">
+    <div class="relative w-full overflow-hidden  py-12">
       <div class="container mx-auto">
         <h3 class="text-center text-2xl font-semibold mb-8">Our Partners</h3>
 

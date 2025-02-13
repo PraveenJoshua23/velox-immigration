@@ -61,7 +61,13 @@ interface Program {
           </div>
 
           <!-- Image Placeholder Tile -->
-          <div *ngIf="item.type === 'image'" class="h-96 bg-gray-200"></div>
+          <div *ngIf="item.type === 'image'" class="h-96 relative">
+            <img
+              [src]="'/assets/images/' + item.title + '.jpg'"
+              alt="item.title"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
         </ng-container>
       </div>
     </section>
@@ -81,8 +87,8 @@ export class ExpressEntrySectionComponent {
       bgColor: 'bg-red-600',
     },
     {
-      id: 'image1',
-      title: '',
+      id: 'image2',
+      title: 'cec-program',
       description: '',
       overlayText: '',
       type: 'image',
@@ -97,16 +103,16 @@ export class ExpressEntrySectionComponent {
       bgColor: 'bg-red-600',
     },
     {
-      id: 'image2',
-      title: '',
+      id: 'image4',
+      title: 'pnp-program',
       description: '',
       overlayText: '',
       type: 'image',
     },
     // Row 2
     {
-      id: 'image3',
-      title: '',
+      id: 'image1',
+      title: 'skilled-worker',
       description: '',
       overlayText: '',
       type: 'image',
@@ -121,8 +127,8 @@ export class ExpressEntrySectionComponent {
       bgColor: 'bg-sea-900',
     },
     {
-      id: 'image4',
-      title: '',
+      id: 'image3',
+      title: 'fst-program',
       description: '',
       overlayText: '',
       type: 'image',
