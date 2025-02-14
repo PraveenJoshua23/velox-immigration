@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "dist/server/main.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "dist/browser",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/assets/(.*)",
+      "dest": "/dist/browser/assets/$1"
+    },
+    {
+      "src": "/(.*).(jpg|jpeg|png|gif|ico|svg|webp)",
+      "dest": "/dist/browser/$1.$2"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/dist/server/main.js"
+    }
+  ]
+}

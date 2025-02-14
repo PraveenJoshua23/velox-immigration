@@ -7,6 +7,11 @@ import { WorkComponent } from './pages/services/work.component';
 import { VisitorVisaComponent } from './pages/services/visitor-visa.component';
 import { SuperVisaComponent } from './pages/services/super-visa.component';
 import { LMIAComponent } from './pages/services/lmia.component';
+import { ProvincialNomineeComponent } from './pages/services/provincial-nominee.component';
+import { ExpressEntryComponent } from './pages/services/express-entry.component';
+import { AtlanticImmigrationComponent } from './pages/services/atlantic-immigration.component';
+import { FamilyImmigrationComponent } from './pages/services/family-immigration.component';
+import { BusinessImmigrationComponent } from './pages/services/business-immigration.component';
 
 export const routes: Routes = [
   {
@@ -34,17 +39,17 @@ export const routes: Routes = [
       {
         path: 'permanent-residency',
         children: [
-          // { path: 'express-entry', component: ExpressEntryComponent },
-          // { path: 'provincial-nominee', component: ProvincialNomineeComponent },
-          // {
-          //   path: 'atlantic-immigration',
-          //   component: AtlanticImmigrationComponent,
-          // },
-          // { path: 'family-immigration', component: FamilyImmigrationComponent },
-          // {
-          //   path: 'business-immigration',
-          //   component: BusinessImmigrationComponent,
-          // },
+          { path: 'express-entry', component: ExpressEntryComponent },
+          { path: 'provincial-nominee', component: ProvincialNomineeComponent },
+          {
+            path: 'atlantic-immigration',
+            component: AtlanticImmigrationComponent,
+          },
+          { path: 'family-immigration', component: FamilyImmigrationComponent },
+          {
+            path: 'business-immigration',
+            component: BusinessImmigrationComponent,
+          },
         ],
       },
       {

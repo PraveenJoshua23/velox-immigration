@@ -33,7 +33,7 @@ interface ServiceCategory {
             <li>
               <a
                 [routerLink]="['/services', category.path, service.path]"
-                routerLinkActive="text-fire-600 font-medium"
+                routerLinkActive="text-red-600"
                 class="text-gray-600 hover:text-fire-600 transition-colors text-sm"
               >
                 {{ service.name }}
