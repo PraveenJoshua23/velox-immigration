@@ -97,27 +97,27 @@ import { RouterModule } from '@angular/router';
                   </h3>
                   <div class="flex flex-col gap-2">
                     <a
-                      routerLink="/services/express-entry"
+                      routerLink="/services/permanent-residency/express-entry"
                       class="text-sm text-gray-600 hover:text-fire-600"
                       >Express Entry</a
                     >
                     <a
-                      routerLink="/services/pnp"
+                      routerLink="/services/permanent-residency/provincial-nominee"
                       class="text-sm text-gray-600 hover:text-fire-600"
                       >Provincial Nominee Program</a
                     >
                     <a
-                      routerLink="/services/atlantic"
+                      routerLink="/services/permanent-residency/atlantic-immigration"
                       class="text-sm text-gray-600 hover:text-fire-600"
                       >Atlantic Immigration Program</a
                     >
                     <a
-                      routerLink="/services/family"
+                      routerLink="/services/permanent-residency/family-immigration"
                       class="text-sm text-gray-600 hover:text-fire-600"
                       >Family Immigration</a
                     >
                     <a
-                      routerLink="/services/business"
+                      routerLink="/services/permanent-residency/business-immigration"
                       class="text-sm text-gray-600 hover:text-fire-600"
                       >Business Immigration</a
                     >

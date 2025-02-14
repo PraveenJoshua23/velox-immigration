@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && ng run velox:server",
+    "build:ssr": "ng build && ng run velox:server",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:velox": "node dist/velox/server/server.mjs"
