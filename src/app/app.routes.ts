@@ -12,6 +12,8 @@ import { ExpressEntryComponent } from './pages/services/express-entry.component'
 import { AtlanticImmigrationComponent } from './pages/services/atlantic-immigration.component';
 import { FamilyImmigrationComponent } from './pages/services/family-immigration.component';
 import { BusinessImmigrationComponent } from './pages/services/business-immigration.component';
+import { ContactFormComponent } from './pages/contact/contact.component';
+import { PRCardRenewalComponent } from './pages/services/pr-card-renewal.component';
 
 export const routes: Routes = [
   {
@@ -21,6 +23,10 @@ export const routes: Routes = [
   {
     path: 'about',
     component: AboutPageComponent,
+  },
+  {
+    path: 'contact',
+    component: ContactFormComponent,
   },
   {
     path: 'services',
@@ -55,7 +61,7 @@ export const routes: Routes = [
       {
         path: 'additional-services',
         children: [
-          // { path: 'pr-card-renewal', component: PRCardRenewalComponent },
+          { path: 'pr-card-renewal', component: PRCardRenewalComponent },
           // { path: 'citizenship', component: CitizenshipComponent },
           // { path: 'application-review', component: ApplicationReviewComponent },
           // { path: 'family-sponsorship', component: FamilySponsorshipComponent },

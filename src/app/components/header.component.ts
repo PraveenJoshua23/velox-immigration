@@ -131,7 +131,7 @@ import { RouterModule } from '@angular/router';
                   </h3>
                   <div class="flex flex-col gap-2">
                     <a
-                      routerLink="/services/pr-card"
+                      routerLink="/services/additional-services/pr-card-renewal"
                       class="text-sm text-gray-600 hover:text-fire-600"
                       >PR Card Renewal</a
                     >
