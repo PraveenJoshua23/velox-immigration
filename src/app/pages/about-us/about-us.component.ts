@@ -156,7 +156,8 @@ import { HeaderComponent } from '../../components/header.component';
             difference.
           </p>
           <button
-            class="bg-fire-600 text-white px-8 py-3 rounded-lg hover:bg-fire-700 transition-colors"
+            routerLink="/contact"
+            class="bg-fire-600 text-white px-8 py-3 rounded-lg cursor-pointer hover:bg-fire-700 transition-colors"
           >
             Book Your Consultation
           </button>

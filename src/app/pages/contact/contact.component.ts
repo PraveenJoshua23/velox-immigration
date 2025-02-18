@@ -274,7 +274,6 @@ interface ServiceCategory {
         </div>
       </div>
     </section>
-    <button class="py-3 px-4 bg-red-500" (click)="test()">TEST</button>
     <app-footer [hideContactBanner]="true" />
   `,
   styles: [
@@ -378,16 +377,5 @@ export class ContactFormComponent {
         },
       });
     }
-  }
-
-  test() {
-    this.sheetsService.testConnection().subscribe({
-      next: () => {
-        console.log('Connection successful');
-      },
-      error: (error: any) => {
-        console.error('Connection error:', error);
-      },
-    });
   }
 }

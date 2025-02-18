@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
       <nav
         class="container mx-auto px-4 py-4 flex justify-between items-center"
       >
-        <div class="flex items-center">
+        <div class="flex items-center cursor-pointer" routerLink="/">
           <img src="/assets/images/logo.svg" alt="Velox Immigration" />
         </div>
 
@@ -171,7 +171,8 @@ import { RouterModule } from '@angular/router';
         </div>
 
         <button
-          class="bg-fire-600 text-white px-6 py-2 rounded-lg transition-colors hover:bg-fire-700"
+          routerLink="/contact"
+          class="bg-fire-600 text-white px-6 py-2 rounded-lg transition-colors cursor-pointer hover:bg-fire-700"
         >
           Book Your Consultation
         </button>

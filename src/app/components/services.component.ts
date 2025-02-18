@@ -1,17 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 interface Service {
   icon: string;
   title: string;
+  category: string;
   description: string;
+  route?: string;
   gridClass?: string;
 }
 
 @Component({
   selector: 'app-services',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   template: `
     <section class="py-20 bg-white">
       <div class="container mx-auto px-4">
@@ -36,9 +39,15 @@ interface Service {
           @for (service of services(); track service.title) {
           <div
             [class]="
-              'bg-gray-50 p-6 rounded-lg flex flex-col gap-y-2 transition-all hover:shadow-lg ' +
+              'bg-gray-50 p-6 rounded-lg flex flex-col gap-y-2 transition-all hover:shadow-lg cursor-pointer ' +
               (service.gridClass || '')
             "
+            [routerLink]="[
+              '/services',
+              service.category,
+              service.route ||
+                service.title.toLowerCase().replace(' ', '-').replace('/', '')
+            ]"
           >
             <img
               [src]="'/assets/icons/' + service.icon + '.svg'"
@@ -62,40 +71,54 @@ export class ServicesComponent {
     {
       icon: 'service-family',
       title: 'Family Sponsorship',
+      category: 'permanent-residency',
+      route: 'family-immigration',
       description:
         'Spouse, Parent, and Child sponsorship programs to reunite families in Canada',
     },
     {
       icon: 'service-study',
       title: 'Study Permits',
+      category: 'temporary-services',
+      route: 'study',
       description:
         'Student visas and permits for international education in Canada',
     },
     {
       icon: 'service-work',
       title: 'Work Permits',
+      category: 'temporary-services',
+      route: 'work',
       description:
         'Student visas and permits for international education in Canada',
     },
     {
       icon: 'service-visa',
       title: 'Visitor Visas',
+      category: 'temporary-services',
+      route: 'visitor-visa',
       description: 'Tourist visas and super visas for temporary stays',
       gridClass: 'md:col-span-2',
     },
     {
       icon: 'service-business',
       title: 'Business Immigration',
+      category: 'permanent-residency',
+      route: 'business-immigration',
       description: 'Investment and business immigration pathways to Canada',
     },
     {
       icon: 'service-citizen',
       title: 'Citizenship',
+      category: 'additional-services',
+      route: 'citizenship',
       description: 'Investment and business immigration pathways to Canada',
     },
     {
       icon: 'service-refugee',
       title: 'Refugee Services',
+      category: 'additional-services',
+      route: 'appeals-humanitarian',
       description: 'Refugee and humanitarian applications assistance',
       gridClass: 'md:col-span-2',
     },

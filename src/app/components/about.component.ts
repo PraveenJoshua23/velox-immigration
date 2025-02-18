@@ -1,9 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterModule],
   template: `
     <!-- <section class="bg-[#F5F5F6]">
       <div class="flex container mx-auto py-20">
@@ -74,6 +76,7 @@ import { Component, signal } from '@angular/core';
             </p>
 
             <button
+              routerLink="/about"
               class="px-6 py-2 border-2 border-red-500 text-red-500 rounded-lg hover:bg-red-500 hover:text-white transition-colors"
             >
               Read More
