@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-atlantic-immigration',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   template: `
     <div class="space-y-8">
       <div class="bg-sea-900 text-white rounded-lg p-8">
@@ -269,6 +270,7 @@ import { CommonModule } from '@angular/common';
               Let us help you find opportunities in Atlantic provinces
             </p>
             <button
+              routerLink="/contact"
               class="bg-fire-600 text-white px-6 py-2 rounded-lg hover:bg-fire-700 transition-colors"
             >
               Book Consultation

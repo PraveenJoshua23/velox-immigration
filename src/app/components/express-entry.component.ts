@@ -19,14 +19,14 @@ interface Program {
     <section class="w-full bg-white">
       <!-- Header -->
       <div class="container mx-auto px-4 py-8">
-        <div class="flex items-center justify-center gap-x-4 mb-12">
+        <div class="flex items-center justify-center gap-x-4 ">
           <img src="assets/icons/express.svg" class="pb-1" />
           <h2 class="text-5xl text-sea-900">Express Entry</h2>
         </div>
       </div>
 
       <!-- Programs Grid -->
-      <div class="w-full grid grid-rows-2 grid-cols-4">
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         <ng-container *ngFor="let item of tiles()">
           <!-- Program Tile -->
           <div *ngIf="item.type === 'program'" class="relative h-96">
@@ -63,7 +63,10 @@ interface Program {
           </div>
 
           <!-- Image Placeholder Tile -->
-          <div *ngIf="item.type === 'image'" class="h-96 relative">
+          <div
+            *ngIf="item.type === 'image'"
+            class="hidden md:block h-96 relative"
+          >
             <img
               [src]="'/assets/images/' + item.title + '.jpg'"
               alt="item.title"

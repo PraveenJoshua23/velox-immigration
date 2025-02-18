@@ -1,11 +1,5 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import {
-  AfterViewInit,
-  Component,
-  Inject,
-  PLATFORM_ID,
-  signal,
-} from '@angular/core';
+import { AfterViewInit, Component, Inject, PLATFORM_ID } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { animate, inView } from 'motion';
 import { ServicesComponent } from '../../components/services.component';
@@ -62,43 +56,49 @@ import { HeaderComponent } from '../../components/header.component';
 
     <main>
       <!-- Hero Section -->
-      <section class="h-[80dvh] bg-black pb-20 relative">
-        <div
-          class="container ml-auto pl-4 flex flex-col md:flex-row items-center justify-between"
-        >
-          <div
-            class="md:w-4/12 mb-10 md:mb-0 flex flex-col gap-4"
-            class="hero-content"
-          >
-            <p class="text-xl text-white mb-8 font-light">
-              Your Canadian journey starts here !
-            </p>
-            <h2 class="text-4xl md:text-7xl font-medium text-white mb-6">
-              Professional<br />Immigration<br />Services
-            </h2>
-            <p class="text-base text-white mb-8 font-spartan font-light">
-              Transform your Canadian dreams into reality with expert<br />guidance
-              and proven success.
-            </p>
-            <div class="flex space-x-4">
-              <button
-                (click)="scrollToServices()"
-                class="bg-fire-600 text-white px-8 py-3 rounded-lg  transition-colors"
-              >
-                Get Started Now
-              </button>
-            </div>
-          </div>
-          <div class="md:w-8/12 h-full relative">
+      <section class="h-[80vh] bg-black relative overflow-hidden">
+        <div class=" h-full relative z-10">
+          <div class="flex flex-col md:flex-row items-center h-full">
             <div
-              class="absolute inset-0 bg-gradient-to-r from-black to-transparent "
-            ></div>
-            <img
-              id="hero-image"
-              src="/assets/images/immigration-hero.png"
-              alt="Immigration Services"
-              class="rounded-lg shadow-2xl w-full h-[80dvh] object-cover"
-            />
+              class="w-full md:w-5/12 lg:w-4/12 px-10 md:pl-[90px] pt-[100px] md:pt-0 hero-content z-20"
+            >
+              <p class="text-lg md:text-xl text-white mb-4 md:mb-8 font-light">
+                Your Canadian journey starts here!
+              </p>
+              <h2
+                class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-medium text-white mb-4 md:mb-6"
+              >
+                Professional Immigration Services
+              </h2>
+              <p
+                class="text-sm md:text-base text-white mb-6 md:mb-8 font-spartan font-light"
+              >
+                Transform your Canadian dreams into reality with expert guidance
+                and proven success.
+              </p>
+              <div class="flex">
+                <button
+                  (click)="scrollToServices()"
+                  class="bg-fire-600 text-white px-6 md:px-8 py-2 md:py-3 rounded-lg transition-colors hover:bg-fire-700 w-full sm:w-auto"
+                >
+                  Get Started Now
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="w-full md:w-7/12 lg:w-8/12 h-full absolute md:relative right-0 top-0"
+            >
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-black via-black md:via-transparent to-transparent z-10 md:block hidden"
+              ></div>
+              <img
+                id="hero-image"
+                src="/assets/images/immigration-hero.png"
+                alt="Immigration Services"
+                class="w-full h-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -138,9 +138,9 @@ export class HomeComponent implements AfterViewInit {
         '.hero-content',
         {
           opacity: [0, 1],
-          x: [-100, 0],
+          x: [-250, 0],
         },
-        { duration: 0.5 }
+        { duration: 1 }
       );
 
       // Services animations
