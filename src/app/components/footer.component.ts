@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
   template: `
     <div
       class="relative"
-      [classList]="hideContactBanner ? 'mt-0' : ' mt-[100px]'"
+      [classList]="hideContactBanner ? 'mt-0' : 'mt-[100px]'"
     >
       <!-- Floating Contact Banner -->
       @if (!hideContactBanner) {
@@ -56,67 +56,164 @@ import { RouterModule } from '@angular/router';
       <!-- Footer -->
       <footer class="bg-[#1B2534] pt-32 pb-8">
         <div class="container mx-auto px-4">
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-            <!-- Logo and Description -->
-            <div class="col-span-1">
+          <div
+            class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12 text-center md:text-left"
+          >
+            <!-- Company Info -->
+            <div class="col-span-1 md:col-span-2 ">
               <img
                 src="assets/images/logo-white.svg"
                 alt="Velox Immigration"
-                class="h-14 mb-4"
+                class="h-14 mb-4 mx-auto md:mx-0"
               />
               <p class="text-gray-400 font-light text-sm mb-4">
                 Velox Immigration is a regulated Canadian Immigration
                 Consultant.
               </p>
+              <div class="flex flex-col gap-2">
+                <p class="text-gray-400 font-light">Toronto, Canada</p>
+                <p class="text-gray-400 font-light">+ 416-589-0123</p>
+              </div>
             </div>
 
-            <!-- Quick Links -->
+            <!-- Temporary Resident Services -->
             <div>
-              <h4 class="text-white font-medium mb-4">Quick Links</h4>
+              <h4 class="text-white font-medium mb-4">Temporary Services</h4>
               <ul class="space-y-2">
                 <li>
                   <a
-                    href="/about"
+                    routerLink="/services/temporary-services/study"
                     class="text-gray-400 font-light hover:text-white"
-                    >About</a
                   >
+                    Study in Canada
+                  </a>
                 </li>
                 <li>
                   <a
-                    href="/contact"
+                    routerLink="/services/temporary-services/work"
                     class="text-gray-400 font-light hover:text-white"
-                    >Contact Us</a
                   >
+                    Work in Canada
+                  </a>
                 </li>
                 <li>
                   <a
-                    href="/faq"
+                    routerLink="/services/temporary-services/visitor-visa"
                     class="text-gray-400 font-light hover:text-white"
-                    >FAQ</a
                   >
+                    Visitor Visa
+                  </a>
+                </li>
+                <li>
+                  <a
+                    routerLink="/services/temporary-services/super-visa"
+                    class="text-gray-400 font-light hover:text-white"
+                  >
+                    Super Visa
+                  </a>
+                </li>
+                <li>
+                  <a
+                    routerLink="/services/temporary-services/lmia"
+                    class="text-gray-400 font-light hover:text-white"
+                  >
+                    LMIA
+                  </a>
                 </li>
               </ul>
             </div>
 
-            <!-- Services -->
+            <!-- Permanent Residency -->
             <div>
-              <h4 class="text-white font-medium mb-4">Services</h4>
+              <h4 class="text-white font-medium mb-4">Permanent Residency</h4>
               <ul class="space-y-2">
                 <li>
                   <a
-                    href="/disclaimers"
+                    routerLink="/services/permanent-residency/express-entry"
                     class="text-gray-400 font-light hover:text-white"
-                    >Disclaimers</a
                   >
+                    Express Entry
+                  </a>
+                </li>
+                <li>
+                  <a
+                    routerLink="/services/permanent-residency/provincial-nominee"
+                    class="text-gray-400 font-light hover:text-white"
+                  >
+                    Provincial Nominee
+                  </a>
+                </li>
+                <li>
+                  <a
+                    routerLink="/services/permanent-residency/atlantic-immigration"
+                    class="text-gray-400 font-light hover:text-white"
+                  >
+                    Atlantic Immigration
+                  </a>
+                </li>
+                <li>
+                  <a
+                    routerLink="/services/permanent-residency/family-immigration"
+                    class="text-gray-400 font-light hover:text-white"
+                  >
+                    Family Immigration
+                  </a>
+                </li>
+                <li>
+                  <a
+                    routerLink="/services/permanent-residency/business-immigration"
+                    class="text-gray-400 font-light hover:text-white"
+                  >
+                    Business Immigration
+                  </a>
                 </li>
               </ul>
             </div>
 
-            <!-- Canada -->
+            <!-- Additional Services -->
             <div>
-              <h4 class="text-white font-medium mb-4">Canada</h4>
+              <h4 class="text-white font-medium mb-4">Additional Services</h4>
               <ul class="space-y-2">
-                <li class="text-gray-400 font-light">Toronto, Canada</li>
+                <li>
+                  <a
+                    routerLink="/services/additional-services/pr-card-renewal"
+                    class="text-gray-400 font-light hover:text-white"
+                  >
+                    PR Card Renewal
+                  </a>
+                </li>
+                <li>
+                  <a
+                    routerLink="/services/additional-services/citizenship"
+                    class="text-gray-400 font-light hover:text-white"
+                  >
+                    Citizenship
+                  </a>
+                </li>
+                <li>
+                  <a
+                    routerLink="/services/additional-services/application-review"
+                    class="text-gray-400 font-light hover:text-white"
+                  >
+                    Application Review
+                  </a>
+                </li>
+                <li>
+                  <a
+                    routerLink="/services/additional-services/family-sponsorship"
+                    class="text-gray-400 font-light hover:text-white"
+                  >
+                    Family Sponsorship
+                  </a>
+                </li>
+                <li>
+                  <a
+                    routerLink="/services/additional-services/appeals-humanitarian"
+                    class="text-gray-400 font-light hover:text-white"
+                  >
+                    Appeals & Humanitarian
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -167,6 +264,7 @@ import { RouterModule } from '@angular/router';
     `
       :host {
         display: block;
+        position: relative;
       }
     `,
   ],

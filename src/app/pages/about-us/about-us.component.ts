@@ -61,11 +61,11 @@ import { HeaderComponent } from '../../components/header.component';
           <div
             class="max-w-4xl mx-auto flex flex-col md:flex-row gap-12 items-center"
           >
-            <div class="md:w-1/3">
+            <div class="w-full max-w-[280px] md:max-w-none md:w-1/3 mx-auto">
               <img
                 src="/assets/images/founder-2.png"
                 alt="Anitha Gabriel"
-                class="rounded-lg shadow-lg w-full"
+                class="rounded-lg shadow-lg w-full h-auto object-cover"
               />
             </div>
             <div class="md:w-2/3">

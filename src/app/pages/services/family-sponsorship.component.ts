@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-family-sponsorship',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   template: `
     <div class="space-y-8">
       <!-- Hero Section -->
@@ -244,6 +245,7 @@ import { CommonModule } from '@angular/common';
               Take the first step towards reuniting with your family in Canada
             </p>
             <button
+              routerLink="/contact"
               class="bg-fire-600 text-white px-6 py-2 rounded-lg hover:bg-fire-700 transition-colors"
             >
               Book Consultation
