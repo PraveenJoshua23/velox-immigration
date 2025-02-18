@@ -71,8 +71,8 @@ export class ServicesComponent {
     {
       icon: 'service-family',
       title: 'Family Sponsorship',
-      category: 'permanent-residency',
-      route: 'family-immigration',
+      category: 'additional-services',
+      route: 'family-sponsorship',
       description:
         'Spouse, Parent, and Child sponsorship programs to reunite families in Canada',
     },
