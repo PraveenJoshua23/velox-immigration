@@ -136,22 +136,22 @@ import { RouterModule } from '@angular/router';
                       >PR Card Renewal</a
                     >
                     <a
-                      routerLink="/services/citizenship"
+                      routerLink="/services/additional-services/citizenship"
                       class="text-sm text-gray-600 hover:text-fire-600"
                       >Citizenship Applications</a
                     >
                     <a
-                      routerLink="/services/review"
+                      routerLink="/services/additional-services/application-review"
                       class="text-sm text-gray-600 hover:text-fire-600"
                       >Application Review</a
                     >
                     <a
-                      routerLink="/services/sponsorship"
+                      routerLink="/services/additional-services/family-sponsorship"
                       class="text-sm text-gray-600 hover:text-fire-600"
                       >Family Sponsorship</a
                     >
                     <a
-                      routerLink="/services/appeals"
+                      routerLink="/services/additional-services/appeals"
                       class="text-sm text-gray-600 hover:text-fire-600"
                       >Appeals & Humanitarian</a
                     >

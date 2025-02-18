@@ -14,6 +14,10 @@ import { FamilyImmigrationComponent } from './pages/services/family-immigration.
 import { BusinessImmigrationComponent } from './pages/services/business-immigration.component';
 import { ContactFormComponent } from './pages/contact/contact.component';
 import { PRCardRenewalComponent } from './pages/services/pr-card-renewal.component';
+import { CitizenshipComponent } from './pages/services/citizenship.component';
+import { ApplicationReviewComponent } from './pages/services/application-review.component';
+import { FamilySponsorshipComponent } from './pages/services/family-sponsorship.component';
+import { AppealsHumanitarianComponent } from './pages/services/appeals.component';
 
 export const routes: Routes = [
   {
@@ -62,13 +66,13 @@ export const routes: Routes = [
         path: 'additional-services',
         children: [
           { path: 'pr-card-renewal', component: PRCardRenewalComponent },
-          // { path: 'citizenship', component: CitizenshipComponent },
-          // { path: 'application-review', component: ApplicationReviewComponent },
-          // { path: 'family-sponsorship', component: FamilySponsorshipComponent },
-          // {
-          //   path: 'appeals-humanitarian',
-          //   component: AppealsHumanitarianComponent,
-          // },
+          { path: 'citizenship', component: CitizenshipComponent },
+          { path: 'application-review', component: ApplicationReviewComponent },
+          { path: 'family-sponsorship', component: FamilySponsorshipComponent },
+          {
+            path: 'appeals-humanitarian',
+            component: AppealsHumanitarianComponent,
+          },
         ],
       },
     ],
