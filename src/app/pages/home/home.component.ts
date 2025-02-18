@@ -82,6 +82,7 @@ import { HeaderComponent } from '../../components/header.component';
             </p>
             <div class="flex space-x-4">
               <button
+                (click)="scrollToServices()"
                 class="bg-fire-600 text-white px-8 py-3 rounded-lg  transition-colors"
               >
                 Get Started Now
@@ -106,7 +107,9 @@ import { HeaderComponent } from '../../components/header.component';
       <app-about />
 
       <!-- Services Section -->
-      <app-services />
+      <div id="services">
+        <app-services />
+      </div>
 
       <!-- Express Entry -->
       <app-express-entry-section />
@@ -168,6 +171,18 @@ export class HomeComponent implements AfterViewInit {
           );
         });
       });
+    }
+  }
+
+  scrollToServices() {
+    if (isPlatformBrowser(this.platformId)) {
+      const servicesSection = document.getElementById('services');
+      if (servicesSection) {
+        servicesSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
     }
   }
 }

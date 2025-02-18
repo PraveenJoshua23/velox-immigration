@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 interface Program {
   id: string;
@@ -13,7 +14,7 @@ interface Program {
 @Component({
   selector: 'app-express-entry-section',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   template: `
     <section class="w-full bg-white">
       <!-- Header -->
@@ -45,6 +46,7 @@ interface Program {
                 <h3 class="text-2xl font-bold mb-4">{{ item.title }}</h3>
                 <p class="text-sm mb-6">{{ item.description }}</p>
                 <button
+                  routerLink="/services/permanent-residency/express-entry"
                   class="text-white border border-white rounded px-6 py-2 w-40 hover:bg-white hover:text-black transition-colors duration-300"
                 >
                   Read More
