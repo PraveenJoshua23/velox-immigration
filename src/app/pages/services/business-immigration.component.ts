@@ -83,7 +83,7 @@ import { RouterModule } from '@angular/router';
             <h2 class="text-2xl font-bold text-sea-900 mb-4">Our Services</h2>
             <div class="bg-gray-50 p-6 rounded-lg space-y-4">
               <div class="flex gap-4">
-                <div class="bg-fire-600 p-2 rounded-lg">
+                <div class="bg-fire-600 p-2 size-10 rounded-lg">
                   <svg
                     class="w-6 h-6 text-white"
                     fill="none"
@@ -106,7 +106,7 @@ import { RouterModule } from '@angular/router';
                 </div>
               </div>
               <div class="flex gap-4">
-                <div class="bg-fire-600 p-2 rounded-lg">
+                <div class="bg-fire-600 p-2 size-10 rounded-lg">
                   <svg
                     class="w-6 h-6 text-white"
                     fill="none"
@@ -129,7 +129,7 @@ import { RouterModule } from '@angular/router';
                 </div>
               </div>
               <div class="flex gap-4">
-                <div class="bg-fire-600 p-2 rounded-lg">
+                <div class="bg-fire-600 p-2 size-10 rounded-lg">
                   <svg
                     class="w-6 h-6 text-white"
                     fill="none"
@@ -158,7 +158,7 @@ import { RouterModule } from '@angular/router';
             <h2 class="text-2xl font-bold text-sea-900 mb-4">Key Benefits</h2>
             <div class="bg-gray-50 p-6 rounded-lg space-y-4">
               <div class="flex gap-4">
-                <div class="bg-fire-600 p-2 rounded-lg">
+                <div class="bg-fire-600 p-2 size-10 rounded-lg">
                   <svg
                     class="w-6 h-6 text-white"
                     fill="none"
@@ -181,7 +181,7 @@ import { RouterModule } from '@angular/router';
                 </div>
               </div>
               <div class="flex gap-4">
-                <div class="bg-fire-600 p-2 rounded-lg">
+                <div class="bg-fire-600 p-2 size-10 rounded-lg">
                   <svg
                     class="w-6 h-6 text-white"
                     fill="none"
@@ -204,7 +204,7 @@ import { RouterModule } from '@angular/router';
                 </div>
               </div>
               <div class="flex gap-4">
-                <div class="bg-fire-600 p-2 rounded-lg">
+                <div class="bg-fire-600 p-2 size-10 rounded-lg">
                   <svg
                     class="w-6 h-6 text-white"
                     fill="none"

@@ -69,58 +69,69 @@ import { RouterModule } from '@angular/router';
                     d="M5 13l4 4L19 7"
                   />
                 </svg>
-                <span>Be a Canadian citizen or permanent resident</span>
+                <span class="w-full"
+                  >Be a Canadian citizen or permanent resident</span
+                >
               </li>
               <li class="flex gap-2">
-                <svg
-                  class="w-6 h-6 text-fire-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-                <span>Be 18 years of age or older</span>
+                <div class="size-6 m-auto">
+                  <svg
+                    class="text-fire-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+                <span class="w-full">Be 18 years of age or older</span>
               </li>
               <li class="flex gap-2">
-                <svg
-                  class="w-6 h-6 text-fire-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-                <span
+                <div class="size-6 m-auto">
+                  <svg
+                    class=" text-fire-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+
+                <span class="w-full"
                   >Meet minimum income requirements (for certain
                   categories)</span
                 >
               </li>
               <li class="flex gap-2">
-                <svg
-                  class="w-6 h-6 text-fire-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+                <div class="size-6 m-auto">
+                  <svg
+                    class=" text-fire-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+                <span class="w-full"
+                  >Sign an undertaking to provide financial support</span
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-                <span>Sign an undertaking to provide financial support</span>
               </li>
             </ul>
           </section>
@@ -135,7 +146,7 @@ import { RouterModule } from '@angular/router';
             </h2>
             <div class="bg-gray-50 p-6 rounded-lg space-y-4">
               <div class="flex gap-4">
-                <div class="bg-fire-600 p-2 rounded-lg">
+                <div class="bg-fire-600 p-2 size-10 rounded-lg">
                   <svg
                     class="w-6 h-6 text-white"
                     fill="none"
@@ -158,7 +169,7 @@ import { RouterModule } from '@angular/router';
                 </div>
               </div>
               <div class="flex gap-4">
-                <div class="bg-fire-600 p-2 rounded-lg">
+                <div class="bg-fire-600 p-2 size-10 rounded-lg">
                   <svg
                     class="w-6 h-6 text-white"
                     fill="none"
@@ -181,7 +192,7 @@ import { RouterModule } from '@angular/router';
                 </div>
               </div>
               <div class="flex gap-4">
-                <div class="bg-fire-600 p-2 rounded-lg">
+                <div class="bg-fire-600 p-2 size-10 rounded-lg">
                   <svg
                     class="w-6 h-6 text-white"
                     fill="none"
