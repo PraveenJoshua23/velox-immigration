@@ -18,63 +18,72 @@ import { CitizenshipComponent } from './pages/services/citizenship.component';
 import { ApplicationReviewComponent } from './pages/services/application-review.component';
 import { FamilySponsorshipComponent } from './pages/services/family-sponsorship.component';
 import { AppealsHumanitarianComponent } from './pages/services/appeals.component';
+import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: ComingSoonComponent,
   },
   {
-    path: 'about',
-    component: AboutPageComponent,
+    path: '**', // Catch all other routes and redirect to coming soon
+    redirectTo: '',
   },
-  {
-    path: 'contact',
-    component: ContactFormComponent,
-  },
-  {
-    path: 'services',
-    component: ServicesLayoutComponent,
-    children: [
-      {
-        path: 'temporary-services',
-        children: [
-          { path: 'study', component: StudyComponent },
-          { path: 'work', component: WorkComponent },
-          { path: 'visitor-visa', component: VisitorVisaComponent },
-          { path: 'super-visa', component: SuperVisaComponent },
-          { path: 'lmia', component: LMIAComponent },
-        ],
-      },
-      {
-        path: 'permanent-residency',
-        children: [
-          { path: 'express-entry', component: ExpressEntryComponent },
-          { path: 'provincial-nominee', component: ProvincialNomineeComponent },
-          {
-            path: 'atlantic-immigration',
-            component: AtlanticImmigrationComponent,
-          },
-          { path: 'family-immigration', component: FamilyImmigrationComponent },
-          {
-            path: 'business-immigration',
-            component: BusinessImmigrationComponent,
-          },
-        ],
-      },
-      {
-        path: 'additional-services',
-        children: [
-          { path: 'pr-card-renewal', component: PRCardRenewalComponent },
-          { path: 'citizenship', component: CitizenshipComponent },
-          { path: 'application-review', component: ApplicationReviewComponent },
-          { path: 'family-sponsorship', component: FamilySponsorshipComponent },
-          {
-            path: 'appeals-humanitarian',
-            component: AppealsHumanitarianComponent,
-          },
-        ],
-      },
-    ],
-  },
+  // {
+  //   path: '',
+  //   component: HomeComponent,
+  // },
+  // {
+  //   path: 'about',
+  //   component: AboutPageComponent,
+  // },
+  // {
+  //   path: 'contact',
+  //   component: ContactFormComponent,
+  // },
+  // {
+  //   path: 'services',
+  //   component: ServicesLayoutComponent,
+  //   children: [
+  //     {
+  //       path: 'temporary-services',
+  //       children: [
+  //         { path: 'study', component: StudyComponent },
+  //         { path: 'work', component: WorkComponent },
+  //         { path: 'visitor-visa', component: VisitorVisaComponent },
+  //         { path: 'super-visa', component: SuperVisaComponent },
+  //         { path: 'lmia', component: LMIAComponent },
+  //       ],
+  //     },
+  //     {
+  //       path: 'permanent-residency',
+  //       children: [
+  //         { path: 'express-entry', component: ExpressEntryComponent },
+  //         { path: 'provincial-nominee', component: ProvincialNomineeComponent },
+  //         {
+  //           path: 'atlantic-immigration',
+  //           component: AtlanticImmigrationComponent,
+  //         },
+  //         { path: 'family-immigration', component: FamilyImmigrationComponent },
+  //         {
+  //           path: 'business-immigration',
+  //           component: BusinessImmigrationComponent,
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       path: 'additional-services',
+  //       children: [
+  //         { path: 'pr-card-renewal', component: PRCardRenewalComponent },
+  //         { path: 'citizenship', component: CitizenshipComponent },
+  //         { path: 'application-review', component: ApplicationReviewComponent },
+  //         { path: 'family-sponsorship', component: FamilySponsorshipComponent },
+  //         {
+  //           path: 'appeals-humanitarian',
+  //           component: AppealsHumanitarianComponent,
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
 ];
