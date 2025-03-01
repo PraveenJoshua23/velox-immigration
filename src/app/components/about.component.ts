@@ -20,12 +20,12 @@ import { RouterModule } from '@angular/router';
             <div class="flex items-center gap-2 mb-4">
               <img src="assets/images/plane.svg" class="pb-1" />
               <h2 class="text-3xl font-medium">
-                About <span class="font-bold">VELOX</span>
+                About <span class="font-bold">VELOX</span> Immigration
               </h2>
             </div>
 
             <h2 class="text-5xl pb-2 border-b border-fire-500 text-sea-900">
-              Why choose us?
+              Simplifying Immigration, One Step at a Time.
             </h2>
 
             <p class="text-gray-600 font-light mb-6 py-5">
@@ -36,7 +36,7 @@ import { RouterModule } from '@angular/router';
               routerLink="/about"
               class="px-6 py-2 border-2 border-red-500 text-red-500 rounded-lg hover:bg-red-500 hover:text-white transition-colors"
             >
-              Read More
+              Learn More About Us
             </button>
           </div>
         </div>
@@ -49,7 +49,7 @@ export class AboutComponent {
   about = signal([
     {
       content:
-        'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable.',
+        'At Velox Immigration Services Inc., we make Canadian immigration clear, efficient, and stress-free. Our expert team, led by licensed RCIC-IRB consultant Anitha Gabriel, is committed to providing tailored solutions that help individuals, families, and businesses achieve their immigration goals.',
     },
   ]);
 }

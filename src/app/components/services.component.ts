@@ -7,6 +7,7 @@ interface Service {
   title: string;
   category: string;
   description: string;
+  boldParts?: string[];
   route?: string;
   gridClass?: string;
 }
@@ -23,8 +24,8 @@ interface Service {
             class="text-black flex font-medium mb-3 items-center justify-center space-x-1.5"
           >
             <img src="assets/images/plane.svg" class="pb-1" />
-            <h2 class="text-3xl  font-medium">
-              Our <span class="font-bold">Services</span>
+            <h2 class="text-3xl font-medium">
+              Our <span class="font-bold">Immigration </span>Services
             </h2>
           </div>
 
@@ -55,9 +56,28 @@ interface Service {
               class="size-6 mb-1"
             />
             <h3 class="text-xl font-semibold mb-2">{{ service.title }}</h3>
-            <p class="text-gray-600 text-sm">{{ service.description }}</p>
+            <p
+              class="text-gray-600 text-sm"
+              [innerHTML]="formatDescription(service)"
+            ></p>
           </div>
           }
+        </div>
+
+        <!-- CTA Button -->
+        <!-- <div class="flex justify-center mt-10">
+          <a
+            routerLink="/services"
+            class="px-6 py-3 bg-fire-600 text-white font-medium rounded-lg hover:bg-fire-700 transition-colors"
+          >
+            Explore All Services
+          </a>
+        </div> -->
+
+        <!-- SEO Keywords - Hidden but available for SEO -->
+        <div class="sr-only">
+          work in Canada, study visa expert, Express Entry PR consultant, best
+          Canadian immigration firm, family sponsorship specialist
         </div>
       </div>
     </section>
@@ -69,43 +89,44 @@ interface Service {
 export class ServicesComponent {
   services = signal<Service[]>([
     {
-      icon: 'service-family',
-      title: 'Family Sponsorship',
-      category: 'additional-services',
-      route: 'family-sponsorship',
-      description:
-        'Spouse, Parent, and Child sponsorship programs to reunite families in Canada',
-    },
-    {
       icon: 'service-study',
-      title: 'Study Permits',
+      title: 'Study in Canada',
       category: 'temporary-services',
       route: 'study',
-      description:
-        'Student visas and permits for international education in Canada',
+      description: 'Secure your study permit & PGWP for long-term success.',
+      boldParts: ['study permit & PGWP'],
     },
     {
       icon: 'service-work',
-      title: 'Work Permits',
+      title: 'Work in Canada',
       category: 'temporary-services',
       route: 'work',
-      description:
-        'Student visas and permits for international education in Canada',
+      description: 'Obtain LMIA-backed or open work permits with ease.',
+      boldParts: ['LMIA-backed or open work permits'],
     },
     {
-      icon: 'service-visa',
-      title: 'Visitor Visas',
-      category: 'temporary-services',
-      route: 'visitor-visa',
-      description: 'Tourist visas and super visas for temporary stays',
-      gridClass: 'md:col-span-2',
+      icon: 'service-express',
+      title: 'Express Entry & PR',
+      category: 'permanent-residency',
+      route: 'express-entry',
+      description: "Navigate Canada's fastest PR pathway with expert help.",
+      boldParts: ["Canada's fastest PR pathway"],
     },
     {
       icon: 'service-business',
       title: 'Business Immigration',
       category: 'permanent-residency',
       route: 'business-immigration',
-      description: 'Investment and business immigration pathways to Canada',
+      description: 'Explore Start-Up Visa & Investor PR opportunities.',
+      boldParts: ['Start-Up Visa & Investor PR opportunities'],
+    },
+    {
+      icon: 'service-visa',
+      title: 'Visitor Visas & Family Reunification',
+      category: 'temporary-services',
+      route: 'visitor-visa',
+      description: 'Travel & bring loved ones to Canada.',
+      gridClass: 'md:col-span-2',
     },
     {
       icon: 'service-citizen',
@@ -113,14 +134,31 @@ export class ServicesComponent {
       category: 'additional-services',
       route: 'citizenship',
       description: 'Investment and business immigration pathways to Canada',
-    },
-    {
-      icon: 'service-refugee',
-      title: 'Refugee Services',
-      category: 'additional-services',
-      route: 'appeals-humanitarian',
-      description: 'Refugee and humanitarian applications assistance',
       gridClass: 'md:col-span-2',
     },
+    {
+      icon: 'service-more',
+      title: 'More Immigration Solutions',
+      category: 'additional-services',
+      route: 'citizenship',
+      description: 'Refugee claims, H&C, PR renewals & citizenship.',
+      boldParts: ['Refugee claims, H&C, PR renewals & citizenship'],
+      gridClass: 'md:col-span-1',
+    },
   ]);
+
+  formatDescription(service: Service): string {
+    if (!service.boldParts || service.boldParts.length === 0) {
+      return service.description;
+    }
+
+    let formattedDescription = service.description;
+    for (const part of service.boldParts) {
+      formattedDescription = formattedDescription.replace(
+        part,
+        `<strong>${part}</strong>`
+      );
+    }
+    return formattedDescription;
+  }
 }
