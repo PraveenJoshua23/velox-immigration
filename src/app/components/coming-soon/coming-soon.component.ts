@@ -30,7 +30,7 @@ import { Component } from '@angular/core';
         </p>
 
         <!-- Launch Notification -->
-        <div class="bg-white p-6 rounded-lg shadow-md">
+        <!-- <div class="bg-white p-6 rounded-lg shadow-md">
           <h3 class="text-xl font-medium text-gray-800 mb-3">
             Get notified when we launch
           </h3>
@@ -47,7 +47,7 @@ import { Component } from '@angular/core';
               Notify Me
             </button>
           </div>
-        </div>
+        </div> -->
 
         <!-- Footer -->
         <div class="mt-12 text-gray-500">
