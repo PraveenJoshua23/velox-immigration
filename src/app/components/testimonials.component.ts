@@ -23,7 +23,7 @@ import {
         <div class="flex items-center gap-2">
           <img src="assets/images/plane.svg" class="w-6 h-6" alt="plane icon" />
           <h2 class="text-2xl md:text-3xl font-medium">
-            What our <span class="font-bold">Customers</span> say
+            What our <span class="font-bold">Clients</span> say
           </h2>
         </div>
         <h3 class="text-2xl md:text-4xl lg:text-5xl text-sea-900 mt-4">
@@ -52,17 +52,17 @@ import {
                   />
                 </svg>
               </div>
-              <p class="text-gray-600 text-base md:text-lg mb-6">
+              <p class="text-gray-600 text-base md:text-md mb-6">
                 {{ testimonials()[currentTestimonial()].content }}
               </p>
               <div class="flex items-center">
                 <div>
                   <p class="font-bold text-red-500">
-                    {{ testimonials()[currentTestimonial()].name }}
+                    - {{ testimonials()[currentTestimonial()].name }}
                   </p>
-                  <p class="text-gray-500 text-sm">
+                  <!-- <p class="text-gray-500 text-sm">
                     {{ testimonials()[currentTestimonial()].status }}
-                  </p>
+                  </p> -->
                 </div>
               </div>
             </div>
@@ -156,16 +156,16 @@ export class TestimonialsComponent implements AfterViewInit, OnDestroy {
   testimonials = signal([
     {
       content:
-        'Borem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.',
-      name: 'KATE JOHNSON',
-      status: 'Moved to Canada',
+        'Velox Immigration guided me through my PR process smoothly. Anitha’s expertise was invaluable!',
+      name: 'Kate Johnson, Permanent Resident',
+
       image: '/assets/images/testimonials.jpg',
     },
     {
       content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      name: 'JOHN DOE',
-      status: 'Permanent Resident',
+        'From my study permit to PR, Velox was with me every step of the way. Highly recommend!',
+      name: 'David Lee, International Graduate',
+
       image: '/assets/images/testimonials.jpg',
     },
   ]);

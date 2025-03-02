@@ -9,6 +9,8 @@ import { ExpressEntrySectionComponent } from '../../components/express-entry.com
 import { PartnerLogosComponent } from '../../components/partner-logo.component';
 import { FooterComponent } from '../../components/footer.component';
 import { HeaderComponent } from '../../components/header.component';
+import { WhyChooseUsComponent } from '../../components/why-choose-us.component';
+import { ProcessStepsComponent } from '../../components/process-steps.component';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +25,8 @@ import { HeaderComponent } from '../../components/header.component';
     PartnerLogosComponent,
     FooterComponent,
     HeaderComponent,
+    WhyChooseUsComponent,
+    ProcessStepsComponent,
   ],
   template: `
     <!-- <header class="bg-white shadow-sm">
@@ -73,8 +77,13 @@ import { HeaderComponent } from '../../components/header.component';
               <p
                 class="text-sm md:text-base text-white mb-6 md:mb-8 font-spartan font-light"
               >
-                Transform your Canadian dreams into reality with expert guidance
-                and proven success.
+                Trusted guidance for your Canadian dreams with expert advice,
+                seamless processing, and personalized solutions.
+              </p>
+              <p
+                class="text-sm md:text-base text-white italic mb-6 md:mb-8 font-spartan font-light"
+              >
+                Move to Canada with Confidence!
               </p>
               <div class="flex">
                 <button
@@ -106,6 +115,9 @@ import { HeaderComponent } from '../../components/header.component';
       <!-- About Section  -->
       <app-about />
 
+      <!-- Why choose us Section -->
+      <app-why-choose-us />
+
       <!-- Services Section -->
       <div id="services">
         <app-services />
@@ -113,6 +125,9 @@ import { HeaderComponent } from '../../components/header.component';
 
       <!-- Express Entry -->
       <app-express-entry-section />
+
+      <!-- Process Section -->
+      <app-process-steps />
 
       <!-- Testimonial Section -->
       <app-testimonials />

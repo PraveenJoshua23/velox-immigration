@@ -72,6 +72,11 @@ export class PartnerLogosComponent {
     },
     {
       id: 2,
+      src: '/assets/images/RCIC-logo.png',
+      alt: 'RCIC Logo',
+    },
+    {
+      id: 3,
       src: '/assets/images/CAPIC-logo.png',
       alt: 'CAPIC Logo',
     },
