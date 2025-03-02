@@ -106,7 +106,7 @@ export const nav = {
   ctaButton: {
     id: 2,
     label: 'Book Your Appointment',
-    href: '/contact',
+    href: '/book-your-appointment',
     isExternal: false,
     type: 'Primary',
   },

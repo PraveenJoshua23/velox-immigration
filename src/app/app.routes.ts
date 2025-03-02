@@ -18,6 +18,7 @@ import { CitizenshipComponent } from './pages/services/citizenship.component';
 import { ApplicationReviewComponent } from './pages/services/application-review.component';
 import { FamilySponsorshipComponent } from './pages/services/family-sponsorship.component';
 import { AppealsHumanitarianComponent } from './pages/services/appeals.component';
+import { BookYourAppointmentComponent } from './pages/book-your-appointment/book-your-appointment.component';
 
 export const routes: Routes = [
   {
@@ -76,5 +77,9 @@ export const routes: Routes = [
         ],
       },
     ],
+  },
+  {
+    path: 'book-your-appointment',
+    component: BookYourAppointmentComponent,
   },
 ];
