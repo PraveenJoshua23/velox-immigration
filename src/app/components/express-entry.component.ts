@@ -4,11 +4,12 @@ import { RouterModule } from '@angular/router';
 
 interface Program {
   id: string;
+  icon: string;
   title: string;
   description: string;
   overlayText: string;
-  type: 'program' | 'image';
-  bgColor?: string;
+  routePath: string;
+  bgColor: string;
 }
 
 @Component({
@@ -18,35 +19,40 @@ interface Program {
   template: `
     <section class="w-full bg-white">
       <!-- Header -->
-      <div class="container mx-auto px-4 py-8">
-        <div class="flex items-center justify-center gap-x-4 ">
-          <img src="assets/icons/express.svg" class="pb-1" />
-          <h2 class="text-5xl text-sea-900">Express Entry</h2>
+      <div class="text-center mb-12">
+        <div
+          class="text-black flex font-medium mb-3 items-center justify-center space-x-1.5"
+        >
+          <img src="assets/images/plane.svg" class="pb-1" />
+          <h2 class="text-3xl font-medium">
+            Our <span class="font-bold">Immigration </span>Services
+          </h2>
         </div>
+
+        <h2 class="text-5xl pb-2 text-sea-900">
+          Outstanding Immigration Services
+        </h2>
       </div>
 
       <!-- Programs Grid -->
       <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-        <ng-container *ngFor="let item of tiles()">
-          <!-- Program Tile -->
-          <div *ngIf="item.type === 'program'" class="relative h-96">
+        <ng-container *ngFor="let item of programs()">
+          <div class="relative h-96">
             <!-- Background Color -->
             <div [class]="'absolute inset-0 ' + item.bgColor">
               <!-- Content -->
               <div
-                class="relative h-full flex flex-col justify-center px-12 text-white z-10"
+                class="relative h-full flex flex-col justify-center px-8 text-white z-10"
               >
-                <div class="mb-4">
-                  <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                      d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-                    />
-                  </svg>
-                </div>
+                <img
+                  [src]="'/assets/icons/' + item.icon + '.svg'"
+                  [alt]="item.icon"
+                  class="size-6 mb-1 invert"
+                />
                 <h3 class="text-2xl font-bold mb-4">{{ item.title }}</h3>
                 <p class="text-sm mb-6">{{ item.description }}</p>
                 <button
-                  routerLink="/services/permanent-residency/express-entry"
+                  [routerLink]="item.routePath"
                   class="text-white border border-white rounded px-6 py-2 w-40 hover:bg-white hover:text-black transition-colors duration-300"
                 >
                   Read More
@@ -61,18 +67,6 @@ interface Program {
               </div>
             </div>
           </div>
-
-          <!-- Image Placeholder Tile -->
-          <div
-            *ngIf="item.type === 'image'"
-            class="hidden md:block h-96 relative"
-          >
-            <img
-              [src]="'/assets/images/' + item.title + '.jpg'"
-              alt="item.title"
-              class="absolute inset-0 w-full h-full object-cover"
-            />
-          </div>
         </ng-container>
       </div>
     </section>
@@ -80,72 +74,86 @@ interface Program {
   styles: [],
 })
 export class ExpressEntrySectionComponent {
-  tiles = signal<Program[]>([
-    // Row 1
+  programs = signal<Program[]>([
     {
-      id: 'fsw',
-      title: 'Federal Skilled Worker',
+      id: 'study',
+      icon: 'service-study',
+      title: 'Study in Canada',
       description:
-        'The Federal Skilled Worker Program is one of the three programs under the Express Entry system.',
-      overlayText: 'FSW',
-      type: 'program',
+        'Explore options for international students to study at Canadian institutions with student permits and post-graduation work opportunities.',
+      overlayText: 'STUDY',
+      routePath: '/services/temporary-services/study',
       bgColor: 'bg-red-600',
     },
     {
-      id: 'image2',
-      title: 'cec-program',
-      description: '',
-      overlayText: '',
-      type: 'image',
-    },
-    {
-      id: 'fst',
-      title: 'Federal Skilled Trades',
+      id: 'work',
+      icon: 'service-work',
+      title: 'Work in Canada',
       description:
-        'The Federal Skilled Trades Program is the only program available under federal economic immigration for tradespersons.',
-      overlayText: 'FST',
-      type: 'program',
-      bgColor: 'bg-red-600',
-    },
-    {
-      id: 'image4',
-      title: 'pnp-program',
-      description: '',
-      overlayText: '',
-      type: 'image',
-    },
-    // Row 2
-    {
-      id: 'image1',
-      title: 'skilled-worker',
-      description: '',
-      overlayText: '',
-      type: 'image',
-    },
-    {
-      id: 'cec',
-      title: 'Canadian Experience Class',
-      description:
-        'The Canadian Experience Class Program is for permanent residency for temporary foreign workers and foreign graduates.',
-      overlayText: 'CEC',
-      type: 'program',
+        'Discover pathways to obtain Canadian work permits, including LMIA-based work permits and employer-specific opportunities.',
+      overlayText: 'WORK',
+      routePath: '/services/temporary-services/work',
       bgColor: 'bg-sea-900',
     },
     {
-      id: 'image3',
-      title: 'fst-program',
-      description: '',
-      overlayText: '',
-      type: 'image',
+      id: 'visitor',
+      icon: 'service-visa',
+      title: 'Visitor Visa and Family Reunification',
+      description:
+        'Learn about visitor visas, super visas, and family reunification programs to bring your loved ones to Canada.',
+      overlayText: 'VISA',
+      routePath: '/services/temporary-services/visitor-visa',
+      bgColor: 'bg-red-600',
+    },
+    {
+      id: 'express',
+      icon: 'service-express',
+      title: 'Express Entry (PR Pathway)',
+      description:
+        "Canada's primary immigration system for skilled workers looking for permanent residency through FSW, CEC, and FST programs.",
+      overlayText: 'EE',
+      routePath: '/services/permanent-residency/express-entry',
+      bgColor: 'bg-sea-900',
     },
     {
       id: 'pnp',
-      title: 'Provincial Nomination Program',
+      icon: 'service-pnp',
+      title: 'Provincial Nominee Program (PNP)',
       description:
-        'Provincial Nomination Programs, as the name suggests, are immigration programs by the provinces of Canada.',
+        'Explore province-specific immigration pathways designed to address regional economic and demographic needs.',
       overlayText: 'PNP',
-      type: 'program',
+      routePath: '/services/permanent-residency/provincial-nominee',
       bgColor: 'bg-sea-900',
+    },
+    {
+      id: 'business',
+      icon: 'service-business',
+      title: 'Business Immigration',
+      description:
+        'Immigration options for entrepreneurs, investors, and self-employed individuals looking to establish businesses in Canada.',
+      overlayText: 'BIZ',
+      routePath: '/services/permanent-residency/business-immigration',
+      bgColor: 'bg-red-600',
+    },
+    {
+      id: 'pr-citizenship',
+      icon: 'service-citizen',
+      title: 'PR Card & Citizenship Services',
+      description:
+        'Services for permanent resident card renewal and applications for Canadian citizenship.',
+      overlayText: 'PR&C',
+      routePath: '/services/additional-services/citizenship',
+      bgColor: 'bg-sea-900',
+    },
+    {
+      id: 'more',
+      icon: 'service-more',
+      title: 'Click here to know more...',
+      description:
+        'Discover additional immigration services and specialized programs to meet your specific needs and situation.',
+      overlayText: 'MORE',
+      routePath: '/services',
+      bgColor: 'bg-red-600',
     },
   ]);
 }

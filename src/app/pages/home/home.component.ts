@@ -119,9 +119,9 @@ import { ProcessStepsComponent } from '../../components/process-steps.component'
       <app-why-choose-us />
 
       <!-- Services Section -->
-      <div id="services">
+      <!-- <div id="services">
         <app-services />
-      </div>
+      </div> -->
 
       <!-- Express Entry -->
       <app-express-entry-section />

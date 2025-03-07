@@ -40,7 +40,7 @@ interface Service {
           @for (service of services(); track service.title) {
           <div
             [class]="
-              'bg-gray-50 p-6 rounded-lg flex flex-col gap-y-2 transition-all hover:shadow-lg cursor-pointer ' +
+              'bg-gray-50 py-10 px-6 rounded-lg flex flex-col gap-y-2 transition-all hover:shadow-lg cursor-pointer ' +
               (service.gridClass || '')
             "
             [routerLink]="[
@@ -64,20 +64,12 @@ interface Service {
           }
         </div>
 
-        <!-- CTA Button -->
-        <!-- <div class="flex justify-center mt-10">
-          <a
-            routerLink="/services"
-            class="px-6 py-3 bg-fire-600 text-white font-medium rounded-lg hover:bg-fire-700 transition-colors"
-          >
-            Explore All Services
-          </a>
-        </div> -->
-
         <!-- SEO Keywords - Hidden but available for SEO -->
         <div class="sr-only">
           work in Canada, study visa expert, Express Entry PR consultant, best
-          Canadian immigration firm, family sponsorship specialist
+          Canadian immigration firm, family sponsorship specialist, Provincial
+          Nominee Program, PR Card renewal, citizenship application, visitor
+          visa, super visa
         </div>
       </div>
     </section>
@@ -105,12 +97,29 @@ export class ServicesComponent {
       boldParts: ['LMIA-backed or open work permits'],
     },
     {
+      icon: 'service-visa',
+      title: 'Visitor Visa & Family Reunification',
+      category: 'temporary-services',
+      route: 'visitor-visa',
+      description: 'Travel to Canada & bring your loved ones for visits.',
+      boldParts: ['Travel to Canada & bring your loved ones'],
+    },
+    {
       icon: 'service-express',
-      title: 'Express Entry & PR',
+      title: 'Express Entry (PR Pathway)',
       category: 'permanent-residency',
       route: 'express-entry',
       description: "Navigate Canada's fastest PR pathway with expert help.",
       boldParts: ["Canada's fastest PR pathway"],
+    },
+    {
+      icon: 'service-pnp',
+      title: 'Provincial Nominee Program (PNP)',
+      category: 'permanent-residency',
+      route: 'provincial-nominee',
+      description:
+        'Explore province-specific immigration pathways to PR status.',
+      boldParts: ['province-specific immigration pathways'],
     },
     {
       icon: 'service-business',
@@ -121,29 +130,22 @@ export class ServicesComponent {
       boldParts: ['Start-Up Visa & Investor PR opportunities'],
     },
     {
-      icon: 'service-visa',
-      title: 'Visitor Visas & Family Reunification',
-      category: 'temporary-services',
-      route: 'visitor-visa',
-      description: 'Travel & bring loved ones to Canada.',
-      gridClass: 'md:col-span-2',
-    },
-    {
       icon: 'service-citizen',
-      title: 'Citizenship',
+      title: 'PR Card & Citizenship Services',
       category: 'additional-services',
       route: 'citizenship',
-      description: 'Investment and business immigration pathways to Canada',
-      gridClass: 'md:col-span-2',
+      description:
+        'Renewal of PR cards & guidance through citizenship applications.',
+      boldParts: ['PR cards & citizenship applications'],
     },
     {
       icon: 'service-more',
-      title: 'More Immigration Solutions',
+      title: 'Click here to know more...',
       category: 'additional-services',
-      route: 'citizenship',
-      description: 'Refugee claims, H&C, PR renewals & citizenship.',
-      boldParts: ['Refugee claims, H&C, PR renewals & citizenship'],
-      gridClass: 'md:col-span-1',
+      route: 'application-review',
+      description:
+        'Discover our full range of immigration & settlement services.',
+      boldParts: ['immigration & settlement services'],
     },
   ]);
 
