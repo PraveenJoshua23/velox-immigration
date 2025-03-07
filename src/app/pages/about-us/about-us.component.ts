@@ -1,15 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from '../../components/footer.component';
 import { HeaderComponent } from '../../components/header.component';
+
+interface CoreValue {
+  letter: string;
+  name: string;
+  description: string;
+  icon: string;
+}
+
+interface Faq {
+  id: number;
+  question: string;
+  answer: string;
+}
 
 @Component({
   selector: 'app-about-page',
   standalone: true,
   imports: [CommonModule, RouterModule, HeaderComponent, FooterComponent],
   template: `
-    <!-- Header (Same as Home) -->
+    <!-- Header -->
     <app-header />
 
     <main>
@@ -21,8 +34,8 @@ import { HeaderComponent } from '../../components/header.component';
         </div>
       </section>
 
-      <!-- Our Story Section -->
-      <section class="py-16">
+      <!-- The Story Behind Velox -->
+      <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
           <div class="max-w-4xl mx-auto">
             <h2 class="text-3xl font-bold mb-8 text-sea-900">
@@ -30,26 +43,66 @@ import { HeaderComponent } from '../../components/header.component';
             </h2>
             <div class="prose lg:prose-lg font-light">
               <p class="mb-6">
-                Velox Immigration was created with a clear vision: to
-                revolutionize the way people experience the immigration process.
-                The name "Velox," derived from the Latin word for "swift,"
-                represents more than just speed—it's about efficiency, clarity,
-                and purposeful movement.
+                Velox Immigration was born from a simple yet powerful
+                realization—<strong
+                  >immigration should not be a struggle; it should be a
+                  well-guided journey.</strong
+                >
               </p>
               <p class="mb-6">
-                For many, immigration can feel like a daunting maze—complex
-                forms, waiting times, and constant uncertainty. This is
-                precisely why Velox was founded: to offer a service that not
-                only handles paperwork but also provides a clear,
-                straightforward path to success.
+                The name <strong>"Velox"</strong>, meaning
+                <strong>swift</strong> in Latin, represents more than just
+                speed. It stands for
+                <strong>efficiency, precision, and clarity</strong>—the very
+                principles that shape our approach.
+                <strong
+                  >Every client has a unique story, and every case deserves
+                  careful attention.</strong
+                >
+                At Velox, we ensure that each step of the process is handled
+                with <strong>expertise, integrity, and care.</strong>
               </p>
-              <p>
-                At Velox, we believe that immigration should be a journey marked
-                by confidence and trust. We know that each case is unique, and
-                while we can't control the length of processing times, we focus
-                on minimizing obstacles and ensuring that every step is taken
-                with precision.
+              <p class="mb-6">
+                Too often, individuals and families encounter
+                <strong>unnecessary obstacles, confusion, and delays</strong>,
+                turning what should be an exciting new chapter into an
+                overwhelming experience. Velox was founded to
+                <strong
+                  >eliminate uncertainty, remove guesswork, and provide
+                  strategic solutions</strong
+                >
+                that make the immigration journey smoother and more accessible.
               </p>
+              <p class="mb-6">
+                Our mission is simple:
+                <strong>to simplify, support, and empower.</strong> At Velox, we
+                don't just guide clients through immigration—we help them build
+                their future with confidence.
+              </p>
+              <p class="mb-6 flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-600 mr-2 flex-shrink-0"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                To ensure a
+                <strong>straightforward, stress-free path to Canada</strong>.
+              </p>
+            </div>
+            <div class="mt-8 text-center">
+              <button
+                routerLink="/services"
+                class="bg-fire-600 text-white px-8 py-3 rounded-lg hover:bg-fire-700 transition-colors"
+              >
+                Discover Our Services →
+              </button>
             </div>
           </div>
         </div>
@@ -74,73 +127,201 @@ import { HeaderComponent } from '../../components/header.component';
               </h2>
               <div class="prose lg:prose-lg font-light">
                 <p class="mb-4">
-                  Anitha Gabriel is the visionary founder of Velox Immigration,
-                  a practice born from her own immigrant journey and passion for
-                  simplifying the Canadian immigration process.
+                  <strong>Anitha Gabriel</strong> is the
+                  <strong>visionary founder</strong> of Velox Immigration, a
+                  practice born from her own immigrant journey and passion for
+                  simplifying the Canadian immigration process. With extensive
+                  experience and a deep understanding of immigration pathways,
+                  she has successfully helped countless clients, providing
+                  expert, trustworthy guidance throughout every stage of their
+                  immigration journey.
                 </p>
                 <p class="mb-4">
-                  As a Regulated Canadian Immigration Consultant (RCIC), Anitha
-                  is officially licensed by the College of Immigration and
-                  Citizenship Consultants (CICC), ensuring that her clients
-                  receive expert, trustworthy guidance throughout every stage of
-                  their immigration journey.
+                  Her dedication is reinforced by
+                  <strong>recognized accreditations</strong>:
                 </p>
+                <ul class="mb-4 space-y-2">
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 text-green-600 mr-2 flex-shrink-0"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    <span
+                      ><strong
+                        >Licensed by the College of Immigration and Citizenship
+                        Consultants (CICC)</strong
+                      ></span
+                    >
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 text-green-600 mr-2 flex-shrink-0"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    <span
+                      ><strong
+                        >Authorized Representative before the Immigration &
+                        Refugee Board (IRB)</strong
+                      ></span
+                    >
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 text-green-600 mr-2 flex-shrink-0"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    <span
+                      ><strong
+                        >Member of CAPIC (Canadian Association of Professional
+                        Immigration Consultants)</strong
+                      ></span
+                    >
+                  </li>
+                </ul>
                 <p>
-                  From being an international student to becoming a Canadian
-                  citizen, she personally navigated the complexities of the
-                  immigration process.
+                  Anitha's commitment, passion, and transparency shape her
+                  approach, making her a trusted guide in the immigration
+                  process. More than just an expert, she is known for her
+                  genuine dedication—exactly what her clients seek.
                 </p>
+              </div>
+              <div class="mt-8">
+                <button
+                  routerLink="/contact"
+                  class="bg-fire-600 text-white px-8 py-3 rounded-lg hover:bg-fire-700 transition-colors"
+                >
+                  Schedule a Consultation →
+                </button>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Why Choose Us Section -->
+      <!-- Our Core Values Section -->
       <section class="py-16">
         <div class="container mx-auto px-4">
           <div class="max-w-4xl mx-auto">
             <h2 class="text-3xl font-bold mb-8 text-center text-sea-900">
-              Why Choose Velox Immigration?
+              Our Core Values (V.E.L.O.X)
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div class="bg-white p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-semibold mb-4">
-                  Expertise & Experience
+            <div class="grid grid-cols-1 gap-6">
+              @for (value of coreValues(); track value.letter) {
+              <div
+                class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-fire-600"
+              >
+                <h3 class="text-xl font-semibold mb-2 flex items-center">
+                  <svg
+                    class="w-6 h-6 text-fire-600 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <span>{{ value.letter }} - {{ value.name }}</span>
                 </h3>
-                <p class="font-light">
-                  With firsthand experience of the Canadian immigration journey,
-                  Anitha and our team are fully equipped to guide you through
-                  every step.
-                </p>
+                <p class="font-light">{{ value.description }}</p>
               </div>
-              <div class="bg-white p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-semibold mb-4">Personalized Service</h3>
-                <p class="font-light">
-                  We don't treat you like just another case. We take the time to
-                  understand your unique circumstances and tailor our services
-                  to meet your specific needs.
-                </p>
-              </div>
-              <div class="bg-white p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-semibold mb-4">
-                  Honesty & Transparency
-                </h3>
-                <p class="font-light">
-                  From the outset, we provide clear communication about your
-                  options, the costs involved, and what to expect.
-                </p>
-              </div>
-              <div class="bg-white p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl  mb-4 font-semibold">
-                  Multilingual Support
-                </h3>
-                <p class="font-light">
-                  We provide services in both English and Tamil to ensure that
-                  language is never a barrier to your success.
-                </p>
-              </div>
+              }
             </div>
+            <!-- <div class="mt-10 text-center">
+              <button
+                routerLink="/contact"
+                class="bg-fire-600 text-white px-8 py-3 rounded-lg hover:bg-fire-700 transition-colors"
+              >
+                Book a Consultation
+              </button>
+            </div> -->
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQs Section -->
+      <section class="bg-gray-50 py-16">
+        <div class="container mx-auto px-4">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-2 text-center text-sea-900">
+              Frequently Asked Questions
+            </h2>
+            <p class="text-center mb-8 text-gray-600">
+              Have questions? Find answers to common immigration concerns.
+            </p>
+
+            <div class="space-y-4">
+              @for (faq of faqsList(); track faq.id) {
+              <div class="bg-white rounded-lg shadow overflow-hidden">
+                <button
+                  class="w-full px-6 py-4 text-left flex justify-between items-center"
+                  (click)="toggleFaq(faq.id)"
+                >
+                  <span class="font-medium">{{ faq.question }}</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 transition-transform duration-300"
+                    [class.rotate-180]="isOpen(faq.id)"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                <div
+                  class="px-6 pb-4 transition-all duration-300"
+                  [class.hidden]="!isOpen(faq.id)"
+                  [class.max-h-0]="!isOpen(faq.id)"
+                  [class.max-h-96]="isOpen(faq.id)"
+                  [class.opacity-0]="!isOpen(faq.id)"
+                  [class.opacity-100]="isOpen(faq.id)"
+                >
+                  <p class="text-gray-600">{{ faq.answer }}</p>
+                </div>
+              </div>
+              }
+            </div>
+
+            <!-- <div class="mt-8 text-center">
+              <button
+                routerLink="/faqs"
+                class="bg-sea-900 text-white px-8 py-3 rounded-lg hover:bg-sea-800 transition-colors"
+              >
+                See All FAQs
+              </button>
+            </div> -->
           </div>
         </div>
       </section>
@@ -177,10 +358,84 @@ import { HeaderComponent } from '../../components/header.component';
   ],
 })
 export class AboutPageComponent {
-  navLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/about', label: 'About Us' },
-    { path: '/services', label: 'Our Services' },
-    { path: '/contact', label: 'Contact' },
+  // Using signals for core values
+  coreValues = () => [
+    {
+      letter: 'V',
+      name: 'Velocity',
+      description:
+        'We act with speed and precision, ensuring an efficient immigration process without unnecessary delays.',
+      icon: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>',
+    },
+    {
+      letter: 'E',
+      name: 'Empowerment',
+      description:
+        'We equip our clients with knowledge, confidence, and guidance, helping them navigate their immigration journey with clarity and certainty.',
+      icon: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>',
+    },
+    {
+      letter: 'L',
+      name: 'Loyalty',
+      description:
+        "We are dedicated to our clients' success, treating each case with the same care and responsibility as if it were our own.",
+      icon: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>',
+    },
+    {
+      letter: 'O',
+      name: 'Openness',
+      description:
+        'Transparency is at the heart of our work. We provide honest advice, realistic expectations, and clear communication at every step.',
+      icon: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" /></svg>',
+    },
+    {
+      letter: 'X',
+      name: 'Experience-Driven Solutions',
+      description:
+        "Our expertise and deep industry knowledge allow us to craft strategic, personalized solutions that maximize our clients' success.",
+      icon: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>',
+    },
   ];
+
+  // Using signals for FAQs
+  private faqsData = [
+    {
+      id: 1,
+      question: 'What are the most common pathways to immigrate to Canada?',
+      answer:
+        'The most common pathways include Express Entry (for skilled workers), Provincial Nominee Programs, Family Sponsorship, Study Permits leading to permanent residency, and Business Immigration programs.',
+    },
+    {
+      id: 2,
+      question: 'How long does the immigration process typically take?',
+      answer:
+        'Processing times vary widely depending on the program, your country of origin, and the completeness of your application. Express Entry can take 6-8 months, while family sponsorship might take 12-24 months. Our team can provide more specific timelines based on your situation.',
+    },
+    {
+      id: 3,
+      question: 'Do I need a job offer to immigrate to Canada?',
+      answer:
+        "Not necessarily. While having a job offer can strengthen your application in programs like Express Entry, many pathways do not require one. Programs like Express Entry's Federal Skilled Worker Program assess candidates based on factors like education, work experience, language proficiency, and adaptability.",
+    },
+    {
+      id: 4,
+      question: 'Why should I hire an immigration consultant?',
+      answer:
+        'Immigration processes can be complex and time-consuming, with requirements changing frequently. A licensed consultant ensures your application is prepared correctly, avoiding costly delays or rejections. We provide strategic advice tailored to your specific situation, guide you through document preparation, and advocate on your behalf throughout the process.',
+    },
+  ];
+
+  // Using signal for FAQ list
+  faqsList = signal(this.faqsData);
+
+  // Signal to track open FAQ items
+  openFaqId = signal<number | null>(null);
+
+  // Computed value to check if a FAQ is open
+  isOpen = (id: number) => this.openFaqId() === id;
+
+  // Toggle FAQ open/close state
+  toggleFaq(id: number) {
+    this.openFaqId.update((currentId) => (currentId === id ? null : id));
+  }
 }

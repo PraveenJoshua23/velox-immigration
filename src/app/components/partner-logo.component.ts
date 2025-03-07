@@ -8,7 +8,9 @@ import { CommonModule } from '@angular/common';
   template: `
     <div class="relative w-full overflow-hidden  py-12">
       <div class="container mx-auto">
-        <h3 class="text-center text-2xl font-semibold mb-8">Our Partners</h3>
+        <h3 class="text-center text-2xl font-semibold mb-8">
+          Our Accreditation
+        </h3>
 
         <div #container class="relative flex overflow-hidden">
           <!-- First set of logos -->
