@@ -19,6 +19,7 @@ import { ApplicationReviewComponent } from './pages/services/application-review.
 import { FamilySponsorshipComponent } from './pages/services/family-sponsorship.component';
 import { AppealsHumanitarianComponent } from './pages/services/appeals.component';
 import { BookYourAppointmentComponent } from './pages/book-your-appointment/book-your-appointment.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export const routes: Routes = [
   {
@@ -82,4 +83,6 @@ export const routes: Routes = [
     path: 'book-your-appointment',
     component: BookYourAppointmentComponent,
   },
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '/404' },
 ];
