@@ -33,14 +33,14 @@ interface Reason {
         >
           @for (reason of reasons(); track reason.title) {
           <div
-            class="bg-gray-50 rounded-lg p-6 flex flex-col items-center text-center hover:shadow-lg transition-all"
+            class="bg-gray-50 space-y-3 border border-[#D7D7D7] rounded-lg px-6 py-12 flex flex-col items-center text-center hover:shadow-lg transition-all"
           >
-            <div class="text-4xl mb-4">{{ reason.icon }}</div>
+            <img src="assets/icons/tick-circle.svg" class="pb-1 size-10" />
             <h3 class="text-xl font-semibold text-sea-900 mb-3">
               {{ reason.title }}
             </h3>
             <p
-              class="text-gray-600 text-sm"
+              class="text-gray-600 font-light text-sm"
               [innerHTML]="reason.description"
             ></p>
           </div>

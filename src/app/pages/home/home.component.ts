@@ -11,6 +11,8 @@ import { FooterComponent } from '../../components/footer.component';
 import { HeaderComponent } from '../../components/header.component';
 import { WhyChooseUsComponent } from '../../components/why-choose-us.component';
 import { ProcessStepsComponent } from '../../components/process-steps.component';
+import { ContactFormComponent } from '../../components/contact-form/contact-form.component';
+import { ContactFormData } from '../../services/sheets.service';
 
 @Component({
   selector: 'app-home',
@@ -26,6 +28,7 @@ import { ProcessStepsComponent } from '../../components/process-steps.component'
     WhyChooseUsComponent,
     ProcessStepsComponent,
     ServiceSectionComponent,
+    ContactFormComponent,
   ],
   template: `
     <!-- <header class="bg-white shadow-sm">
@@ -123,6 +126,19 @@ import { ProcessStepsComponent } from '../../components/process-steps.component'
       <!-- Process Section -->
       <app-process-steps />
 
+      <!-- Contact Form -->
+      <!-- <div
+        class="flex flex-col justify-center md:w-1/2 gap-8 max-w-6xl mx-auto"
+      >
+        <div class=" bg-white rounded-lg shadow-lg p-6">
+          <app-contact-form
+            submitButtonText="Get Started"
+            (formSubmitted)="handleFormSubmission($event)"
+          >
+          </app-contact-form>
+        </div>
+      </div> -->
+
       <!-- Testimonial Section -->
       <app-testimonials />
 
@@ -193,5 +209,10 @@ export class HomeComponent implements AfterViewInit {
         });
       }
     }
+  }
+
+  handleFormSubmission(formData: ContactFormData) {
+    console.log('Form submitted in home page section:', formData);
+    // You can add additional section-specific handling here if needed
   }
 }
