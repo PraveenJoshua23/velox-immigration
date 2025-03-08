@@ -1,5 +1,12 @@
-import { Component, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {
+  Component,
+  signal,
+  AfterViewInit,
+  ElementRef,
+  Inject,
+  PLATFORM_ID,
+} from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 interface Reason {
@@ -29,11 +36,15 @@ interface Reason {
 
         <!-- Grid Layout -->
         <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto mb-12"
+          class="reason-cards-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto mb-12"
+          #cardsContainer
+          [class.animate-cards]="animateCards()"
         >
-          @for (reason of reasons(); track reason.title) {
+          <!-- Reasons -->
           <div
-            class="bg-gray-50 space-y-3 border border-[#D7D7D7] rounded-lg px-6 py-12 flex flex-col items-center text-center hover:shadow-lg transition-all"
+            *ngFor="let reason of reasons(); let i = index"
+            class="reason-card bg-gray-50 space-y-3 border border-[#D7D7D7] rounded-lg px-6 py-12 flex flex-col items-center text-center hover:shadow-lg transition-all"
+            [attr.data-index]="i"
           >
             <img src="assets/icons/tick-circle.svg" class="pb-1 size-10" />
             <h3 class="text-xl font-semibold text-sea-900 mb-3">
@@ -44,7 +55,6 @@ interface Reason {
               [innerHTML]="reason.description"
             ></p>
           </div>
-          }
         </div>
 
         <!-- CTA Button -->
@@ -63,9 +73,39 @@ interface Reason {
     :host {
       display: block;
     }
+    
+    .reason-card {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s cubic-bezier(0.35, 0, 0.25, 1), 
+                  transform 0.6s cubic-bezier(0.35, 0, 0.25, 1);
+    }
+    
+    .animate-cards .reason-card {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .animate-cards .reason-card[data-index="0"] {
+      transition-delay: 0ms;
+    }
+    
+    .animate-cards .reason-card[data-index="1"] {
+      transition-delay: 150ms;
+    }
+    
+    .animate-cards .reason-card[data-index="2"] {
+      transition-delay: 300ms;
+    }
+    
+    .animate-cards .reason-card[data-index="3"] {
+      transition-delay: 450ms;
+    }
   `,
 })
-export class WhyChooseUsComponent {
+export class WhyChooseUsComponent implements AfterViewInit {
+  animateCards = signal(false);
+
   reasons = signal<Reason[]>([
     {
       icon: '✔️',
@@ -92,4 +132,50 @@ export class WhyChooseUsComponent {
         'We assist clients in <strong>English & Tamil</strong> for seamless communication.',
     },
   ]);
+
+  constructor(
+    private el: ElementRef,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
+
+  ngAfterViewInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      // Use Intersection Observer for scroll-based triggering
+      this.setupIntersectionObserver();
+
+      // Fallback - if the cards are already visible on load
+      setTimeout(() => {
+        if (!this.animateCards()) {
+          const rect = this.el.nativeElement.getBoundingClientRect();
+          if (rect.top < window.innerHeight) {
+            this.animateCards.set(true);
+          }
+        }
+      }, 300);
+    }
+  }
+
+  private setupIntersectionObserver() {
+    if (typeof IntersectionObserver === 'undefined') {
+      // Fallback for browsers without IntersectionObserver
+      this.animateCards.set(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          this.animateCards.set(true);
+          observer.disconnect();
+        }
+      },
+      {
+        root: null,
+        rootMargin: '0px 0px -100px 0px',
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(this.el.nativeElement);
+  }
 }
