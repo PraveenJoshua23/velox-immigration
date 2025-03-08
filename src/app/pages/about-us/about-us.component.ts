@@ -92,8 +92,8 @@ interface Faq {
                     clip-rule="evenodd"
                   ></path>
                 </svg>
-                To ensure a
-                <strong>straightforward, stress-free path to Canada</strong>.
+                To ensure a&nbsp;
+                <strong> straightforward, stress-free path to Canada</strong>.
               </p>
             </div>
             <div class="mt-8 text-center">
