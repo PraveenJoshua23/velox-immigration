@@ -2,10 +2,10 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { AfterViewInit, Component, Inject, PLATFORM_ID } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { animate, inView } from 'motion';
-import { ServicesComponent } from '../../components/services.component';
+// import { ServicesComponent } from '../../components/services.component';
 import { TestimonialsComponent } from '../../components/testimonials.component';
 import { AboutComponent } from '../../components/about.component';
-import { ExpressEntrySectionComponent } from '../../components/express-entry.component';
+import { ServiceSectionComponent } from '../../components/service-section.component';
 import { PartnerLogosComponent } from '../../components/partner-logo.component';
 import { FooterComponent } from '../../components/footer.component';
 import { HeaderComponent } from '../../components/header.component';
@@ -18,15 +18,14 @@ import { ProcessStepsComponent } from '../../components/process-steps.component'
   imports: [
     CommonModule,
     RouterModule,
-    ServicesComponent,
     TestimonialsComponent,
     AboutComponent,
-    ExpressEntrySectionComponent,
     PartnerLogosComponent,
     FooterComponent,
     HeaderComponent,
     WhyChooseUsComponent,
     ProcessStepsComponent,
+    ServiceSectionComponent,
   ],
   template: `
     <!-- <header class="bg-white shadow-sm">
@@ -118,13 +117,8 @@ import { ProcessStepsComponent } from '../../components/process-steps.component'
       <!-- Why choose us Section -->
       <app-why-choose-us />
 
-      <!-- Services Section -->
-      <!-- <div id="services">
-        <app-services />
-      </div> -->
-
       <!-- Express Entry -->
-      <app-express-entry-section />
+      <app-service-section />
 
       <!-- Process Section -->
       <app-process-steps />

@@ -14,13 +14,13 @@ interface Program {
 }
 
 @Component({
-  selector: 'app-express-entry-section',
+  selector: 'app-service-section',
   standalone: true,
   imports: [CommonModule, RouterModule],
   template: `
     <section class="w-full bg-white py-12">
       <!-- Header -->
-      <div class="text-center mb-12">
+      <div class="text-center mb-6">
         <div
           class="text-black flex font-medium mb-3 items-center justify-center space-x-1.5"
         >
@@ -130,7 +130,7 @@ interface Program {
     `,
   ],
 })
-export class ExpressEntrySectionComponent {
+export class ServiceSectionComponent {
   programs = signal<Program[]>([
     {
       id: 'study',
