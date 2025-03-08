@@ -18,7 +18,7 @@ interface Program {
   standalone: true,
   imports: [CommonModule, RouterModule],
   template: `
-    <section class="w-full bg-white py-12">
+    <section class="w-full bg-white pt-12">
       <!-- Header -->
       <div class="text-center mb-6">
         <div
