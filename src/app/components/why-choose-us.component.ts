@@ -41,9 +41,9 @@ interface Reason {
           [class.animate-cards]="animateCards()"
         >
           <!-- Reasons -->
+          @for(reason of reasons(); track reason.title; let i = $index){
           <div
-            *ngFor="let reason of reasons(); let i = index"
-            class="reason-card bg-gray-50 space-y-3 border border-[#D7D7D7] rounded-lg px-6 py-12 flex flex-col items-center text-center hover:shadow-lg transition-all"
+            class="reason-card bg-fire-600 bg-opacity-20 space-y-3 border border-fire-600 rounded-lg px-6 py-12 flex flex-col items-center text-center transition-all"
             [attr.data-index]="i"
           >
             <img src="assets/icons/tick-circle.svg" class="pb-1 size-10" />
@@ -55,6 +55,7 @@ interface Reason {
               [innerHTML]="reason.description"
             ></p>
           </div>
+          }
         </div>
 
         <!-- CTA Button -->

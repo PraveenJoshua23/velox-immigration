@@ -11,7 +11,6 @@ import { FooterComponent } from '../../components/footer.component';
 import { HeaderComponent } from '../../components/header.component';
 import { WhyChooseUsComponent } from '../../components/why-choose-us.component';
 import { ProcessStepsComponent } from '../../components/process-steps.component';
-import { ContactFormComponent } from '../../components/contact-form/contact-form.component';
 import { ContactFormData } from '../../services/sheets.service';
 
 @Component({
@@ -28,7 +27,6 @@ import { ContactFormData } from '../../services/sheets.service';
     WhyChooseUsComponent,
     ProcessStepsComponent,
     ServiceSectionComponent,
-    ContactFormComponent,
   ],
   template: `
     <!-- <header class="bg-white shadow-sm">
@@ -89,10 +87,10 @@ import { ContactFormData } from '../../services/sheets.service';
               </p>
               <div class="flex">
                 <button
-                  (click)="scrollToServices()"
+                  routerLink="/contact"
                   class="bg-fire-600 text-white px-6 md:px-8 py-2 md:py-3 rounded-lg transition-colors hover:bg-fire-700 w-full sm:w-auto"
                 >
-                  Get Started Now
+                  Request a Callback
                 </button>
               </div>
             </div>
