@@ -179,7 +179,7 @@ export class ServiceSectionComponent {
     {
       id: 'pnp',
       icon: 'service-pnp',
-      title: 'Provincial Nominee',
+      title: 'Provincial Nominee Program',
       description:
         'Explore province-specific immigration pathways designed to address regional economic and demographic needs.',
       overlayText: 'PNP',

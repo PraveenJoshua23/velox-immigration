@@ -5,7 +5,6 @@ import { FooterComponent } from '../../components/footer.component';
 import { HeaderComponent } from '../../components/header.component';
 
 interface CoreValue {
-  letter: string;
   name: string;
   description: string;
   icon: string;
@@ -79,7 +78,7 @@ interface Faq {
                 don't just guide clients through immigration—we help them build
                 their future with confidence.
               </p>
-              <p class="mb-6 flex items-center">
+              <!-- <p class="mb-6 flex items-center">
                 <svg
                   class="w-5 h-5 text-green-600 mr-2 flex-shrink-0"
                   fill="currentColor"
@@ -94,7 +93,7 @@ interface Faq {
                 </svg>
                 To ensure a&nbsp;
                 <strong> straightforward, stress-free path to Canada</strong>.
-              </p>
+              </p> -->
             </div>
             <div class="mt-8 text-center">
               <button
@@ -230,12 +229,12 @@ interface Faq {
               Our Core Values (V.E.L.O.X)
             </h2>
             <div class="grid grid-cols-1 gap-6">
-              @for (value of coreValues(); track value.letter) {
-              <div
-                class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-fire-600"
-              >
-                <h3 class="text-xl font-semibold mb-2 flex items-center">
-                  <svg
+              @for (value of coreValues(); track value.name) {
+              <div class="bg-white p-6 rounded-lg shadow-lg ">
+                <h3
+                  class="text-xl font-semibold mb-2 flex justify-center items-center"
+                >
+                  <!-- <svg
                     class="w-6 h-6 text-fire-600 mr-2"
                     fill="currentColor"
                     viewBox="0 0 20 20"
@@ -246,8 +245,8 @@ interface Faq {
                       d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                       clip-rule="evenodd"
                     ></path>
-                  </svg>
-                  <span>{{ value.letter }} - {{ value.name }}</span>
+                  </svg> -->
+                  <span>{{ value.name }}</span>
                 </h3>
                 <p class="font-light">{{ value.description }}</p>
               </div>
@@ -361,35 +360,30 @@ export class AboutPageComponent {
   // Using signals for core values
   coreValues = () => [
     {
-      letter: 'V',
       name: 'Velocity',
       description:
         'We act with speed and precision, ensuring an efficient immigration process without unnecessary delays.',
       icon: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>',
     },
     {
-      letter: 'E',
       name: 'Empowerment',
       description:
         'We equip our clients with knowledge, confidence, and guidance, helping them navigate their immigration journey with clarity and certainty.',
       icon: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>',
     },
     {
-      letter: 'L',
       name: 'Loyalty',
       description:
         "We are dedicated to our clients' success, treating each case with the same care and responsibility as if it were our own.",
       icon: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>',
     },
     {
-      letter: 'O',
       name: 'Openness',
       description:
         'Transparency is at the heart of our work. We provide honest advice, realistic expectations, and clear communication at every step.',
       icon: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" /></svg>',
     },
     {
-      letter: 'X',
       name: 'Experience-Driven Solutions',
       description:
         "Our expertise and deep industry knowledge allow us to craft strategic, personalized solutions that maximize our clients' success.",
@@ -407,18 +401,6 @@ export class AboutPageComponent {
     },
     {
       id: 2,
-      question: 'How long does the immigration process typically take?',
-      answer:
-        'Processing times vary widely depending on the program, your country of origin, and the completeness of your application. Express Entry can take 6-8 months, while family sponsorship might take 12-24 months. Our team can provide more specific timelines based on your situation.',
-    },
-    {
-      id: 3,
-      question: 'Do I need a job offer to immigrate to Canada?',
-      answer:
-        "Not necessarily. While having a job offer can strengthen your application in programs like Express Entry, many pathways do not require one. Programs like Express Entry's Federal Skilled Worker Program assess candidates based on factors like education, work experience, language proficiency, and adaptability.",
-    },
-    {
-      id: 4,
       question: 'Why should I hire an immigration consultant?',
       answer:
         'Immigration processes can be complex and time-consuming, with requirements changing frequently. A licensed consultant ensures your application is prepared correctly, avoiding costly delays or rejections. We provide strategic advice tailored to your specific situation, guide you through document preparation, and advocate on your behalf throughout the process.',
