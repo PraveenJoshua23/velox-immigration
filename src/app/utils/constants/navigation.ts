@@ -16,17 +16,17 @@ export const localServices = [
     items: [
       {
         id: '2',
-        label: 'Open & PGWP Work Permits',
+        label: 'Open & PGWP Permits',
         path: '/services/work/open-pgwp-permits',
       },
       {
         id: '3',
-        label: 'LMIA & Employer-Based Permits',
+        label: 'LMIA & Employer Permits',
         path: '/services/work/lmia-employer-permits',
       },
       {
         id: '4',
-        label: 'Work Permit Extensions & Co-op',
+        label: 'Extensions & Co-op Permits',
         path: '/services/work/extensions-coop',
       },
     ],
@@ -37,7 +37,7 @@ export const localServices = [
     items: [
       {
         id: '5',
-        label: 'Visitor Visas to Canada',
+        label: 'Visitor Visas',
         path: '/services/visit/visitor-visas',
       },
     ],
@@ -53,12 +53,12 @@ export const localServices = [
       },
       {
         id: '7',
-        label: 'PNP',
+        label: 'Provincial Nominee Program',
         path: '/services/immigrate/provincial-nominee',
       },
       {
         id: '8',
-        label: 'AIP',
+        label: 'Atlantic Immigration',
         path: '/services/immigrate/atlantic-immigration',
       },
       {
@@ -84,17 +84,17 @@ export const localServices = [
       },
       {
         id: '12',
-        label: 'Appeals / Refugee / H&C',
+        label: 'Appeals, Refugee & H&C',
         path: '/services/other/appeals-refugee',
       },
       {
         id: '13',
-        label: 'Review Services (GCMS, NOC, PFL, Refusal)',
+        label: 'Application Reviews',
         path: '/services/other/review-services',
       },
       {
         id: '14',
-        label: 'SOP / DLI Change / Second Opinion',
+        label: 'SOP, DLI Change & Review',
         path: '/services/other/sop-dli-opinion',
       },
     ],

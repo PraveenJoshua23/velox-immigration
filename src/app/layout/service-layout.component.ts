@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../components/header.component';
 import { FooterComponent } from '../components/footer.component';
+import { localServices } from '../utils/constants/navigation';
 
 interface ServiceCategory {
   title: string;
@@ -29,21 +30,23 @@ interface ServiceCategory {
       </main>
 
       <!-- Sidebar - Hidden on mobile (< 768px), visible from md (tablet) breakpoint -->
-      <aside class="hidden md:block w-64 flex-shrink-0">
-        @for(category of serviceCategories(); track category.title) {
+      <aside
+        class="hidden md:block w-64 flex-shrink-0 sticky top-4 self-start "
+      >
+        @for(category of localServices(); track category.title) {
         <div class="mb-6">
           <h3 class="text-lg font-medium text-sea-900 mb-2">
             {{ category.title }}
           </h3>
           <ul class="space-y-2">
-            @for(service of category.services; track service.name) {
+            @for(service of category.items; track service.label) {
             <li>
               <a
-                [routerLink]="['/services', category.path, service.path]"
+                [routerLink]="service.path"
                 routerLinkActive="text-red-600"
                 class="text-gray-600 hover:text-fire-600 transition-colors text-sm"
               >
-                {{ service.name }}
+                {{ service.label }}
               </a>
             </li>
             }
@@ -91,4 +94,6 @@ export class ServicesLayoutComponent {
       ],
     },
   ]);
+
+  localServices = signal([...localServices]);
 }
