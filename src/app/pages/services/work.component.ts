@@ -64,7 +64,7 @@ import { RouterModule } from '@angular/router';
           Types of Work Permits
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div class="bg-fire-50 px-6 py-8 rounded-lg border border-fire-500">
+          <div class="bg-sea-50 px-6 py-8 rounded-lg border border-sea-500">
             <h3 class="font-semibold text-fire-600 text-xl mb-2">
               Open Work Permit
             </h3>
@@ -72,7 +72,7 @@ import { RouterModule } from '@angular/router';
               Work for any employer in Canada (with exceptions)
             </p>
           </div>
-          <div class="bg-fire-50 px-6 py-8 rounded-lg border border-fire-500">
+          <div class="bg-sea-50 px-6 py-8 rounded-lg border border-sea-500">
             <h3 class="font-semibold text-fire-600 text-xl mb-2">
               Employer-Specific (Closed) Work Permit
             </h3>
