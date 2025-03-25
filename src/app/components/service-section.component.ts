@@ -7,6 +7,7 @@ interface Program {
   icon: string;
   title: string;
   description: string;
+  services: string[];
   overlayText: string;
   routePath: string;
   bgColor: string;
@@ -87,11 +88,11 @@ interface Program {
                 </button> -->
                 <div class="flex items-center justify-end">
                   <span
-                    class="text-white px-6 py-2 opacity-0 transform translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0"
+                    class="text-white px-2 py-2 opacity-0 transform translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0"
                     >Read More</span
                   >
                   <svg
-                    class="px-1 py-2  opacity-0 transform translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0"
+                    class="px-1 py-2  opacity-0 transform translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0"
                     width="57"
                     height="57"
                     viewBox="0 0 57 57"
@@ -138,6 +139,11 @@ export class ServiceSectionComponent {
       title: 'Study in Canada',
       description:
         'Explore options for international students to study at Canadian institutions with student permits and post-graduation work opportunities.',
+      services: [
+        'Study Permit',
+        'Study Permit Extension',
+        'Study Permit for Minors',
+      ],
       overlayText: 'STUDY',
       routePath: '/services/temporary-services/study',
       bgColor: 'bg-red-600',
@@ -149,6 +155,15 @@ export class ServiceSectionComponent {
       title: 'Work in Canada',
       description:
         'Discover pathways to obtain Canadian work permits, including LMIA-based work permits and employer-specific opportunities.',
+      services: [
+        'Post-Graduation Work Permit (PGWP)',
+        'Co-op Work Permit',
+        'Open Work Permit (Includes Spousal Open Work Permit)',
+        'Bridging Open Work Permit (BOWP)',
+        'Closed Work Permit (Employer-Specific)',
+        'LMIA-Exempt Permits',
+        'Work Permit Extension',
+      ],
       overlayText: 'WORK',
       routePath: '/services/temporary-services/work',
       bgColor: 'bg-sea-900',
@@ -160,6 +175,11 @@ export class ServiceSectionComponent {
       title: 'Visitor Visa',
       description:
         'Learn about visitor visas, super visas, and family reunification programs to bring your loved ones to Canada.',
+      services: [
+        'Visitor Visa',
+        'Super Visa (Parents & Grandparents)',
+        'Business Visitor Visa',
+      ],
       overlayText: 'VISA',
       routePath: '/services/temporary-services/visitor-visa',
       bgColor: 'bg-red-600',
@@ -171,6 +191,11 @@ export class ServiceSectionComponent {
       title: 'Express Entry',
       description:
         "Canada's primary immigration system for skilled workers looking for permanent residency through FSW, CEC, and FST programs.",
+      services: [
+        'Canadian Experience Class (CEC)',
+        'Federal Skilled Worker (FSW)',
+        'Federal Skilled Trades (FST)',
+      ],
       overlayText: 'EE',
       routePath: '/services/permanent-residency/express-entry',
       bgColor: 'bg-sea-900',
@@ -182,6 +207,7 @@ export class ServiceSectionComponent {
       title: 'Provincial Nominee Program',
       description:
         'Explore province-specific immigration pathways designed to address regional economic and demographic needs.',
+      services: ['PNP Express Entry Streams', 'PNP Non-Express Entry Streams'],
       overlayText: 'PNP',
       routePath: '/services/permanent-residency/provincial-nominee',
       bgColor: 'bg-sea-900',
@@ -193,6 +219,7 @@ export class ServiceSectionComponent {
       title: 'Business Immigration',
       description:
         'Immigration options for entrepreneurs, investors, and self-employed individuals looking to establish businesses in Canada.',
+      services: ['Start-Up Visa (SUV)', 'Entrepreneur & Investor Pathways'],
       overlayText: 'BIZ',
       routePath: '/services/permanent-residency/business-immigration',
       bgColor: 'bg-red-600',
@@ -204,6 +231,7 @@ export class ServiceSectionComponent {
       title: 'PR Card & Citizenship',
       description:
         'Services for permanent resident card renewal and applications for Canadian citizenship.',
+      services: ['PR Card Renewal', 'Citizenship Applications'],
       overlayText: 'PR&C',
       routePath: '/services/additional-services/citizenship',
       bgColor: 'bg-sea-900',
@@ -215,6 +243,13 @@ export class ServiceSectionComponent {
       title: 'More Services',
       description:
         'Discover additional immigration services and specialized programs to meet your specific needs and situation.',
+      services: [
+        'Statement of Purpose (SOP) Writing Service',
+        'DLI Change (Designated Learning Institution Change)',
+        'IRCC Refusal Letter Review',
+        'General Immigration Consultation (Questions about Immigrating to Canada)',
+        'Second Opinion Service',
+      ],
       overlayText: 'MORE',
       routePath: '/services',
       bgColor: 'bg-red-600',

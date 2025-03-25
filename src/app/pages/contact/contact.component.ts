@@ -26,11 +26,11 @@ interface ServiceCategory {
   ],
   template: `
     <app-header />
-    <section class="min-h-screen bg-gray-50 py-12">
+    <section class="min-h-screen bg-gray-50 pb-12">
       <!-- Hero Section -->
-      <div class="bg-sea-900 text-white py-16 mb-12">
+      <div class="bg-sea-900 text-white py-20 mb-12">
         <div class="container mx-auto px-4">
-          <h1 class="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
+          <h1 class="text-4xl md:text-5xl mb-4">Contact Us</h1>
           <p class="text-xl opacity-90">
             Get in touch with our licensed immigration consultants to discuss
             your immigration goals and take your first step toward a new future
@@ -51,9 +51,7 @@ interface ServiceCategory {
             >
               <!-- Personal Information -->
               <div class="space-y-4">
-                <h3 class="text-xl font-semibold text-sea-900 mb-4">
-                  Personal Information
-                </h3>
+                <h3 class="text-xl  text-sea-900 mb-4">Personal Information</h3>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
@@ -103,9 +101,7 @@ interface ServiceCategory {
 
               <!-- Service Selection -->
               <div class="space-y-4">
-                <h3 class="text-xl font-semibold text-sea-900 mb-4">
-                  Service Information
-                </h3>
+                <h3 class="text-xl text-sea-900 mb-4">Service Information</h3>
 
                 <div>
                   <label class="block text-sm font-medium text-gray-700 mb-1"
@@ -166,9 +162,7 @@ interface ServiceCategory {
             <div
               class="bg-white rounded-lg shadow-sm border-l-4 border-fire-600 p-6"
             >
-              <h3 class="text-xl font-semibold text-sea-900 mb-4">
-                Why Choose Us?
-              </h3>
+              <h3 class="text-xl text-sea-900 mb-4">Why Choose Us?</h3>
               <ul class="space-y-4">
                 <li class="flex items-start">
                   <svg
@@ -223,7 +217,7 @@ interface ServiceCategory {
 
             <!-- CTA Card -->
             <div class="bg-fire-50 rounded-lg p-6">
-              <h3 class="text-xl font-semibold text-sea-900 mb-4">
+              <h3 class="text-2xl font-medium text-sea-900 mb-4">
                 Need Immediate Assistance?
               </h3>
               <p class="text-gray-700 mb-4">

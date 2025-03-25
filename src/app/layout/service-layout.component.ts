@@ -20,9 +20,16 @@ interface ServiceCategory {
   imports: [CommonModule, RouterModule, HeaderComponent, FooterComponent],
   template: `
     <app-header />
-    <div class="container mx-auto px-4 py-8 mt-10 flex gap-8">
-      <!-- Sidebar -->
-      <aside class="w-64 flex-shrink-0">
+    <div
+      class="container mx-auto px-4 py-8 mt-10 flex flex-col md:flex-row gap-8"
+    >
+      <!-- Content Area -->
+      <main class="flex-grow min-h-[calc(100vh-400px)]">
+        <router-outlet></router-outlet>
+      </main>
+
+      <!-- Sidebar - Hidden on mobile (< 768px), visible from md (tablet) breakpoint -->
+      <aside class="hidden md:block w-64 flex-shrink-0">
         @for(category of serviceCategories(); track category.title) {
         <div class="mb-6">
           <h3 class="text-lg font-bold text-sea-900 mb-2">
@@ -44,11 +51,6 @@ interface ServiceCategory {
         </div>
         }
       </aside>
-
-      <!-- Content Area -->
-      <main class="flex-grow min-h-[calc(100vh-400px)]">
-        <router-outlet></router-outlet>
-      </main>
     </div>
     <app-footer [hideContactBanner]="true" />
   `,

@@ -70,9 +70,16 @@ import { RouterModule } from '@angular/router';
                 Velox Immigration is a regulated Canadian Immigration
                 Consultant.
               </p>
-              <div class="flex flex-col gap-2">
-                <p class="text-gray-400 font-light">Toronto, Canada</p>
-                <p class="text-gray-400 font-light">+1 416-662-0652</p>
+
+              <div class="flex items-center  gap-10">
+                <div class="flex flex-col gap-2">
+                  <p class="text-gray-400 font-light">Toronto, Canada</p>
+                  <p class="text-gray-400 font-light">+1 416-662-0652</p>
+                </div>
+                <div class="flex flex-col gap-2">
+                  <p class="text-gray-400 font-light">Chennai, India</p>
+                  <p class="text-gray-400 font-light">+91 77088 53882</p>
+                </div>
               </div>
             </div>
 
