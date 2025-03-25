@@ -1,4 +1,4 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from '../../components/footer.component';
@@ -28,7 +28,7 @@ interface Faq {
       <!-- Hero Section -->
       <section class="bg-sea-900 text-white py-20">
         <div class="container mx-auto px-4">
-          <h1 class="text-5xl font-bold mb-6">About Velox Immigration</h1>
+          <h1 class="text-4xl md:text-5xl mb-6">About Velox Immigration</h1>
           <p class="text-xl">Your Trusted Partner in Canadian Immigration</p>
         </div>
       </section>
@@ -37,40 +37,28 @@ interface Faq {
       <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
           <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-8 text-sea-900">
-              The Story Behind Velox
-            </h2>
+            <h2 class="text-3xl mb-8 text-sea-900">The Story Behind Velox</h2>
             <div class="prose lg:prose-lg font-light">
               <p class="mb-6">
                 Velox Immigration was born from a simple yet powerful
-                realization—<strong
-                  >immigration should not be a struggle; it should be a
-                  well-guided journey.</strong
-                >
+                realization — immigration should not be a struggle; it should be
+                a well-guided journey.
               </p>
               <p class="mb-6">
-                The name <strong>"Velox"</strong>, meaning
-                <strong>swift</strong> in Latin, represents more than just
-                speed. It stands for
-                <strong>efficiency, precision, and clarity</strong>—the very
-                principles that shape our approach.
-                <strong
-                  >Every client has a unique story, and every case deserves
-                  careful attention.</strong
-                >
-                At Velox, we ensure that each step of the process is handled
-                with <strong>expertise, integrity, and care.</strong>
+                The name "Velox", meaning swift in Latin, represents more than
+                just speed. It stands for efficiency, precision, and clarity —
+                the very principles that shape our approach. Every client has a
+                unique story, and every case deserves careful attention. At
+                Velox, we ensure that each step of the process is handled with
+                expertise, integrity, and care.
               </p>
               <p class="mb-6">
-                Too often, individuals and families encounter
-                <strong>unnecessary obstacles, confusion, and delays</strong>,
-                turning what should be an exciting new chapter into an
-                overwhelming experience. Velox was founded to
-                <strong
-                  >eliminate uncertainty, remove guesswork, and provide
-                  strategic solutions</strong
-                >
-                that make the immigration journey smoother and more accessible.
+                Too often, individuals and families encounter unnecessary
+                obstacles, confusion, and delays, turning what should be an
+                exciting new chapter into an overwhelming experience. Velox was
+                founded to eliminate uncertainty, remove guesswork, and provide
+                strategic solutions that make the immigration journey smoother
+                and more accessible.
               </p>
               <p class="mb-6">
                 Our mission is simple:
@@ -121,38 +109,24 @@ interface Faq {
               />
             </div>
             <div class="md:w-2/3">
-              <h2 class="text-3xl font-bold mb-6 text-sea-900">
+              <h2 class="text-3xl mb-6 text-sea-900">
                 Meet the Founder: Anitha Gabriel
               </h2>
               <div class="prose lg:prose-lg font-light">
                 <p class="mb-4">
-                  <strong>Anitha Gabriel</strong> is the
-                  <strong>visionary founder</strong> of Velox Immigration, a
-                  practice born from her own immigrant journey and passion for
-                  simplifying the Canadian immigration process. With extensive
-                  experience and a deep understanding of immigration pathways,
-                  she has successfully helped countless clients, providing
-                  expert, trustworthy guidance throughout every stage of their
-                  immigration journey.
+                  <strong>Anitha Gabriel</strong> is the visionary founder of
+                  Velox Immigration, a practice born from her own immigrant
+                  journey and passion for simplifying the Canadian immigration
+                  process. With extensive experience and a deep understanding of
+                  immigration pathways, she has successfully helped countless
+                  clients, providing expert, trustworthy guidance throughout
+                  every stage of their immigration journey.
                 </p>
                 <p class="mb-4">
-                  Her dedication is reinforced by
-                  <strong>recognized accreditations</strong>:
+                  Her dedication is reinforced by recognized accreditations:
                 </p>
-                <ul class="mb-4 space-y-2">
-                  <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 text-green-600 mr-2 flex-shrink-0"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
+                <ul class="mb-4 space-y-2 list-disc pl-5">
+                  <li>
                     <span
                       ><strong
                         >Licensed by the College of Immigration and Citizenship
@@ -160,19 +134,7 @@ interface Faq {
                       ></span
                     >
                   </li>
-                  <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 text-green-600 mr-2 flex-shrink-0"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
+                  <li>
                     <span
                       ><strong
                         >Authorized Representative before the Immigration &
@@ -180,19 +142,7 @@ interface Faq {
                       ></span
                     >
                   </li>
-                  <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 text-green-600 mr-2 flex-shrink-0"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
+                  <li>
                     <span
                       ><strong
                         >Member of CAPIC (Canadian Association of Professional
@@ -225,14 +175,16 @@ interface Faq {
       <section class="py-16">
         <div class="container mx-auto px-4">
           <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-8 text-center text-sea-900">
+            <h2 class="text-3xl mb-8 text-center text-sea-900">
               Our Core Values (V.E.L.O.X)
             </h2>
             <div class="grid grid-cols-1 gap-6">
               @for (value of coreValues(); track value.name) {
-              <div class="bg-white p-6 rounded-lg shadow-lg ">
+              <div
+                class="bg-white p-6 rounded-lg shadow-lg bg-gradient-to-r from-fire-500/10 to-sea-500/30 "
+              >
                 <h3
-                  class="text-xl font-semibold mb-2 flex justify-center items-center"
+                  class="text-2xl font-semibold mb-2 flex justify-center items-center"
                 >
                   <!-- <svg
                     class="w-6 h-6 text-fire-600 mr-2"
@@ -268,7 +220,7 @@ interface Faq {
       <section class="bg-gray-50 py-16">
         <div class="container mx-auto px-4">
           <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-2 text-center text-sea-900">
+            <h2 class="text-3xl mb-2 text-center text-sea-900">
               Frequently Asked Questions
             </h2>
             <p class="text-center mb-8 text-gray-600">
@@ -282,7 +234,7 @@ interface Faq {
                   class="w-full px-6 py-4 text-left flex justify-between items-center"
                   (click)="toggleFaq(faq.id)"
                 >
-                  <span class="font-medium">{{ faq.question }}</span>
+                  <span class="font-normal">{{ faq.question }}</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-5 w-5 transition-transform duration-300"
@@ -307,7 +259,7 @@ interface Faq {
                   [class.opacity-0]="!isOpen(faq.id)"
                   [class.opacity-100]="isOpen(faq.id)"
                 >
-                  <p class="text-gray-600">{{ faq.answer }}</p>
+                  <p class="text-gray-600 font-light">{{ faq.answer }}</p>
                 </div>
               </div>
               }
@@ -328,10 +280,10 @@ interface Faq {
       <!-- CTA Section -->
       <section class="bg-sea-900 text-white py-16">
         <div class="container mx-auto px-4 text-center">
-          <h2 class="text-3xl font-bold mb-6">
+          <h2 class="text-3xl mb-6">
             Take the first step towards your Canadian future
           </h2>
-          <p class="mb-8 text-lg">
+          <p class="mb-8 text-md font-light">
             Book a consultation with us today and experience the Velox
             difference.
           </p>
