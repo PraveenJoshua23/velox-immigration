@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -10,223 +10,462 @@ import { RouterModule } from '@angular/router';
     <div class="space-y-8">
       <!-- Hero Section -->
       <div class="bg-sea-900 text-white rounded-lg p-8">
-        <h1 class="text-3xl font-bold mb-4">Study in Canada</h1>
+        <h1 class="text-3xl mb-4">Study in Canada</h1>
         <p class="text-lg">
-          Start your academic journey in one of the world's most welcoming
-          countries
+          Secure the right permit to begin or continue your studies in
+          Canada—with expert support every step of the way.
         </p>
       </div>
 
-      <!-- Main Content -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="space-y-6">
-          <section>
-            <h2 class="text-2xl font-bold text-sea-900 mb-4">
-              Why Study in Canada?
-            </h2>
-            <ul class="space-y-3">
-              <li class="flex gap-2 items-start">
-                <svg
-                  class="w-6 h-6 text-fire-600 flex-shrink-0"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-                <span>World-class education at competitive tuition rates</span>
-              </li>
-              <li class="flex gap-2 items-start">
-                <svg
-                  class="w-6 h-6 text-fire-600 flex-shrink-0"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-                <span>Post-graduation work opportunities</span>
-              </li>
-              <li class="flex gap-2 items-start">
-                <svg
-                  class="w-6 h-6 text-fire-600 flex-shrink-0"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-                <span>Pathway to permanent residency</span>
-              </li>
-            </ul>
-          </section>
+      <!-- Overview Section -->
+      <section class="bg-white p-6 ">
+        <h2 class="text-2xl text-sea-900 mb-4">
+          Start Your Canadian Education Journey with Confidence
+        </h2>
+        <p class="text-gray-700">
+          Canada offers various work permits that allow foreign nationals to
+          gain employment experience, contribute to the economy, and, in many
+          cases, transition to permanent residency. Whether you're an
+          international graduate, a skilled worker, or a spouse of a student or
+          worker, there are multiple pathways to legally work in Canada.
+        </p>
+      </section>
 
-          <section>
-            <h2 class="text-2xl font-bold text-sea-900 mb-4">Requirements</h2>
-            <ul class="space-y-3">
-              <li class="flex gap-2 items-start">
-                <svg
-                  class="w-6 h-6 text-fire-600 flex-shrink-0"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-                <span
-                  >Acceptance letter from a Designated Learning Institution
-                  (DLI)</span
-                >
-              </li>
-              <li class="flex gap-2 items-start">
-                <svg
-                  class="w-6 h-6 text-fire-600 flex-shrink-0"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-                <span>Proof of financial support</span>
-              </li>
-              <li class="flex gap-2 items-start">
-                <svg
-                  class="w-6 h-6 text-fire-600 flex-shrink-0"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-                <span>Language proficiency test results</span>
-              </li>
-            </ul>
-          </section>
+      <!-- Who We Help Section -->
+      <section class="bg-gray-50 rounded-md p-6 ">
+        <h2 class="text-2xl text-sea-900 mb-4">Who We Help</h2>
+        <p class="text-gray-700">This service is designed for:</p>
+        <ul class="py-3 space-y-2 list-disc pl-5 text-gray-700">
+          <li>
+            <span class="font-medium"
+              >Adults applying for a Canadian study permit for college or
+              university</span
+            >
+          </li>
+          <li>
+            <span class="font-medium"
+              >Parents of children under 18 enrolling in primary or secondary
+              school
+            </span>
+          </li>
+          <li>
+            <span class="font-medium"
+              >International students needing to extend their current study
+              permits to continue their program
+            </span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Our Services Section -->
+      <section class="bg-white rounded-md p-6">
+        <h2 class="text-2xl text-sea-900 mb-4">Our Services</h2>
+        <p class="text-gray-700 mb-4">
+          We offer tailored support across three key areas:
+        </p>
+
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-xl font-medium text-fire-600 mb-2">
+              Study Permits
+            </h3>
+            <p class="text-gray-700">
+              Whether you've just received an acceptance letter from a
+              Designated Learning Institution (DLI) or are preparing for your
+              academic future, we guide you through the full process—from
+              application to approval. We'll help you gather the required
+              documents, write a strong Statement of Purpose (SOP), and ensure
+              your application meets all IRCC criteria.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-medium text-fire-600 mb-2">
+              Minor Study Permits
+            </h3>
+            <p class="text-gray-700">
+              If your child is planning to attend school in Canada, we assist
+              with obtaining a study permit that complies with all custodianship
+              and documentation requirements. We also support parents in
+              securing visitor or work status to accompany their child, where
+              applicable.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-medium text-fire-600 mb-2">
+              Study Permit Extensions
+            </h3>
+            <p class="text-gray-700">
+              Need more time to complete your studies? We'll help you apply for
+              an extension before your current permit expires. We ensure your
+              continued legal status in Canada and guide you through new proof
+              of funds, updated enrollment letters, and any changes in your
+              academic program.
+            </p>
+          </div>
         </div>
+      </section>
 
-        <div class="space-y-6">
-          <section>
-            <h2 class="text-2xl font-bold text-sea-900 mb-4">
-              Our Services Include
-            </h2>
-            <div class="bg-gray-50 p-6 rounded-lg space-y-4">
-              <div class="flex gap-4 items-start">
-                <div class="bg-fire-600 p-2 rounded-lg">
-                  <svg
-                    class="w-6 h-6 text-white"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="font-semibold">School Selection Guidance</h3>
-                  <p class="text-sm text-gray-600">
-                    Help choosing the right institution and program
-                  </p>
-                </div>
-              </div>
-              <div class="flex gap-4 items-start">
-                <div class="bg-fire-600 p-2 rounded-lg">
-                  <svg
-                    class="w-6 h-6 text-white"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="font-semibold">Application Support</h3>
-                  <p class="text-sm text-gray-600">
-                    Complete assistance with study permit application
-                  </p>
-                </div>
-              </div>
-              <div class="flex gap-4 items-start">
-                <div class="bg-fire-600 p-2 rounded-lg">
-                  <svg
-                    class="w-6 h-6 text-white"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="font-semibold">Document Preparation</h3>
-                  <p class="text-sm text-gray-600">
-                    Expert review and preparation of all required documents
-                  </p>
-                </div>
+      <!-- What You Need to Apply Section -->
+      <section class="bg-gray-50 rounded-md p-6">
+        <h2 class="text-2xl text-sea-900 mb-4">📑 What You Need to Apply</h2>
+        <p class="text-gray-700 mb-4">
+          Each case is different, but generally, you'll need the following:
+        </p>
+
+        <ul class="space-y-2 list-disc pl-5 text-gray-700 mb-4">
+          <li>A valid letter of acceptance from a DLI</li>
+          <li>Proof of sufficient funds</li>
+          <li>Valid passport</li>
+          <li>Recent photographs</li>
+          <li>Biometrics</li>
+          <li>
+            An Immigration Medical Exam (IME) (only required in specific cases)
+          </li>
+          <li>
+            A well-written Statement of Purpose (SOP) explaining your study plan
+            and intentions
+          </li>
+          <li>
+            Evidence of ties to your home country (such as family, property, or
+            employment)
+          </li>
+        </ul>
+
+        <p class="text-gray-700">
+          If you're applying on behalf of a <strong>minor</strong>, additional
+          documents are needed, such as a
+          <strong>custodianship declaration</strong>,
+          <strong>birth certificate</strong>, and identification for the
+          parent(s) or guardian(s).
+        </p>
+        <p class="text-gray-700 mt-2">
+          We will guide you through each of these requirements and help you
+          gather a complete and accurate set of documents tailored to your
+          unique situation.
+        </p>
+      </section>
+
+      <!-- How We Work Section -->
+      <section class="bg-white rounded-md p-6">
+        <h2 class="text-2xl text-sea-900 mb-4">🛠️ How We Work</h2>
+        <p class="text-gray-700 mb-4">
+          When you work with Velox Immigration, you get a streamlined,
+          transparent process:
+        </p>
+
+        <div class="space-y-4">
+          <div class="flex gap-3">
+            <div
+              class="bg-fire-600 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0"
+            >
+              1
+            </div>
+            <div>
+              <p class="font-medium">Initial Consultation</p>
+              <p class="text-gray-600">
+                We assess your academic background, goals, and timeline.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-3">
+            <div
+              class="bg-fire-600 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0"
+            >
+              2
+            </div>
+            <div>
+              <p class="font-medium">Document Support</p>
+              <p class="text-gray-600">
+                You receive a complete checklist and help drafting your SOP.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-3">
+            <div
+              class="bg-fire-600 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0"
+            >
+              3
+            </div>
+            <div>
+              <p class="font-medium">Application Filing</p>
+              <p class="text-gray-600">
+                We prepare and submit your application through the IRCC portal.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-3">
+            <div
+              class="bg-fire-600 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0"
+            >
+              4
+            </div>
+            <div>
+              <p class="font-medium">Follow-up & Communication</p>
+              <p class="text-gray-600">
+                We monitor your file and handle any updates or requests from
+                IRCC.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Choose Velox Section -->
+      <section class="bg-gray-50 rounded-md p-6">
+        <h2 class="text-2xl text-sea-900 mb-4">Why Choose Velox?</h2>
+        <p class="text-gray-700">
+          We know how important your education is—and we treat your file with
+          that same level of care. With a licensed consultant guiding you,
+          you'll avoid unnecessary delays, errors, and refusals. Our experience
+          spans college, university, and minor applications across provinces,
+          ensuring your case is in capable hands.
+        </p>
+      </section>
+
+      <!-- FAQ Section with Accordion -->
+      <section class="bg-white rounded-md p-6">
+        <h2 class="text-2xl text-sea-900 mb-6">
+          ❓ Frequently Asked Questions
+        </h2>
+
+        <div class="space-y-4">
+          <!-- FAQ Item 1 -->
+          <div class="border rounded-lg overflow-hidden">
+            <button
+              (click)="toggleFaq(0)"
+              class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
+            >
+              <span class="font-medium"
+                >Can I work while studying in Canada?</span
+              >
+              <svg
+                [class]="
+                  'w-5 h-5 transition-transform ' +
+                  (activeFaq() === 0 ? 'transform rotate-180' : '')
+                "
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div
+              [class]="
+                'overflow-hidden transition-all duration-300 ' +
+                (activeFaq() === 0 ? 'max-h-40' : 'max-h-0')
+              "
+            >
+              <div class="p-4 border-t bg-gray-50">
+                <p>
+                  Yes, if you're enrolled full-time at a DLI, you may work up to
+                  20 hours per week during academic sessions.
+                </p>
               </div>
             </div>
-          </section>
+          </div>
 
-          <div class="bg-fire-50 p-6 rounded-lg">
-            <h3 class="font-bold text-fire-900 mb-2">Ready to Start?</h3>
-            <p class="text-fire-700 mb-4">
-              Book a consultation with our education experts today
-            </p>
+          <!-- FAQ Item 2 -->
+          <div class="border rounded-lg overflow-hidden">
             <button
-              routerLink="/contact"
-              class="bg-fire-600 text-white px-6 py-2 rounded-lg hover:bg-fire-700 transition-colors"
+              (click)="toggleFaq(1)"
+              class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
             >
-              Book Consultation
+              <span class="font-medium"
+                >Do I need a permit for a 3-month course?</span
+              >
+              <svg
+                [class]="
+                  'w-5 h-5 transition-transform ' +
+                  (activeFaq() === 1 ? 'transform rotate-180' : '')
+                "
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div
+              [class]="
+                'overflow-hidden transition-all duration-300 ' +
+                (activeFaq() === 1 ? 'max-h-40' : 'max-h-0')
+              "
+            >
+              <div class="p-4 border-t bg-gray-50">
+                <p>
+                  Not necessarily. If your course is under 6 months, you may not
+                  require a permit—but you'll be ineligible for a post-grad work
+                  permit.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="border rounded-lg overflow-hidden">
+            <button
+              (click)="toggleFaq(2)"
+              class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
+            >
+              <span class="font-medium">How early can I apply?</span>
+              <svg
+                [class]="
+                  'w-5 h-5 transition-transform ' +
+                  (activeFaq() === 2 ? 'transform rotate-180' : '')
+                "
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div
+              [class]="
+                'overflow-hidden transition-all duration-300 ' +
+                (activeFaq() === 2 ? 'max-h-40' : 'max-h-0')
+              "
+            >
+              <div class="p-4 border-t bg-gray-50">
+                <p>
+                  You can apply as soon as you have your acceptance letter. The
+                  earlier, the better—ideally 3–6 months before your program
+                  starts.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div class="border rounded-lg overflow-hidden">
+            <button
+              (click)="toggleFaq(3)"
+              class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
+            >
+              <span class="font-medium"
+                >What if my permit expires before I finish school?</span
+              >
+              <svg
+                [class]="
+                  'w-5 h-5 transition-transform ' +
+                  (activeFaq() === 3 ? 'transform rotate-180' : '')
+                "
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div
+              [class]="
+                'overflow-hidden transition-all duration-300 ' +
+                (activeFaq() === 3 ? 'max-h-40' : 'max-h-0')
+              "
+            >
+              <div class="p-4 border-t bg-gray-50">
+                <p>
+                  You can apply to extend your permit. It's important to apply
+                  before your current permit expires to maintain your status.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 5 -->
+          <div class="border rounded-lg overflow-hidden">
+            <button
+              (click)="toggleFaq(4)"
+              class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
+            >
+              <span class="font-medium">What are your fees?</span>
+              <svg
+                [class]="
+                  'w-5 h-5 transition-transform ' +
+                  (activeFaq() === 4 ? 'transform rotate-180' : '')
+                "
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div
+              [class]="
+                'overflow-hidden transition-all duration-300 ' +
+                (activeFaq() === 4 ? 'max-h-40' : 'max-h-0')
+              "
+            >
+              <div class="p-4 border-t bg-gray-50">
+                <p>
+                  Our service fees are competitive and based on the complexity
+                  of your case. Contact us for a personalized quote.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ready to Begin Banner -->
+      <section class="bg-fire-600 text-white rounded-lg p-8 my-8">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+          <div class="mb-6 md:mb-0">
+            <h2 class="text-2xl font-bold  mb-2">Ready to Begin?</h2>
+            <p class="text-lg font-light pr-4">
+              Whether you're a first-time applicant or need to extend your stay,
+              we're here to help you every step of the way.
+            </p>
+          </div>
+          <div>
+            <button
+              routerLink="/book-your-appointment"
+              class="bg-white text-fire-600 px-8 py-3 rounded-lg cursor-pointer font-medium hover:bg-gray-100 transition-colors shadow-lg"
+            >
+              Book a consultation today
             </button>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   `,
 })
-export class StudyComponent {}
+export class StudyComponent {
+  activeFaq = signal(-1);
+
+  toggleFaq(index: number) {
+    this.activeFaq.update((current) => (current === index ? -1 : index));
+  }
+}

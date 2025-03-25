@@ -21,7 +21,7 @@ interface ServiceCategory {
   template: `
     <app-header />
     <div
-      class="container mx-auto px-4 py-8 mt-10 flex flex-col md:flex-row gap-8"
+      class="container mx-auto px-4 py-8 mt-4 flex flex-col md:flex-row gap-8"
     >
       <!-- Content Area -->
       <main class="flex-grow min-h-[calc(100vh-400px)]">
@@ -32,7 +32,7 @@ interface ServiceCategory {
       <aside class="hidden md:block w-64 flex-shrink-0">
         @for(category of serviceCategories(); track category.title) {
         <div class="mb-6">
-          <h3 class="text-lg font-bold text-sea-900 mb-2">
+          <h3 class="text-lg font-medium text-sea-900 mb-2">
             {{ category.title }}
           </h3>
           <ul class="space-y-2">
