@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
   template: `
     <div class="space-y-8">
       <div class="bg-sea-900 text-white rounded-lg p-8">
-        <h1 class="text-3xl font-bold mb-4">Work in Canada</h1>
+        <h1 class="text-3xl mb-4">Work in Canada</h1>
         <p class="text-lg">
           Build your career in Canada's diverse and growing economy
         </p>
@@ -17,7 +17,7 @@ import { RouterModule } from '@angular/router';
 
       <!-- Overview Section -->
       <section class="bg-white p-6 ">
-        <h2 class="text-2xl font-bold text-sea-900 mb-4">Overview</h2>
+        <h2 class="text-2xl  text-sea-900 mb-4">Overview</h2>
         <p class="text-gray-700">
           Canada offers various work permits that allow foreign nationals to
           gain employment experience, contribute to the economy, and, in many
@@ -27,65 +27,61 @@ import { RouterModule } from '@angular/router';
         </p>
       </section>
 
-      <!-- Why Work in Canada -->
-      <section class="bg-fire-50 p-6 rounded-lg">
-        <h2 class="text-2xl font-bold text-sea-900 mb-4">
-          Why Work in Canada?
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="flex items-start gap-2">
-            <span class="text-fire-600">✔</span>
-            <p>Gain valuable Canadian work experience</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Types of Work Permits -->
+        <section>
+          <h2 class="text-2xl text-sea-900 mb-4 flex items-center gap-2 px-6">
+            Types of Work Permits
+          </h2>
+          <div class="flex flex-col gap-6 mb-6">
+            <div class="bg-fire-50 px-6 py-8 rounded-lg border border-fire-500">
+              <h3 class="font-semibold text-fire-600 text-xl mb-2">
+                Open Work Permit
+              </h3>
+              <p class="text-sm">
+                Work for any employer in Canada (with exceptions)
+              </p>
+            </div>
+            <div class="bg-fire-50 px-6 py-8 rounded-lg border border-fire-500">
+              <h3 class="font-semibold text-fire-600 text-xl mb-2">
+                Employer-Specific (Closed) Work Permit
+              </h3>
+              <p class="text-sm">Restricted to a specific employer and job</p>
+            </div>
           </div>
-          <div class="flex items-start gap-2">
-            <span class="text-fire-600">✔</span>
-            <p>Opportunity for permanent residency</p>
-          </div>
-          <div class="flex items-start gap-2">
-            <span class="text-fire-600">✔</span>
-            <p>Competitive wages and labor protections</p>
-          </div>
-          <div class="flex items-start gap-2">
-            <span class="text-fire-600">✔</span>
-            <p>Access to diverse job markets</p>
-          </div>
-          <div class="flex items-start gap-2 md:col-span-2">
-            <span class="text-fire-600">✔</span>
-            <p>Pathways for spouses and family members to join workers</p>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Types of Work Permits -->
-      <section>
-        <h2
-          class="text-2xl font-bold text-sea-900 mb-4 flex items-center gap-2 px-6"
-        >
-          Types of Work Permits
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div class="bg-sea-50 px-6 py-8 rounded-lg border border-sea-500">
-            <h3 class="font-semibold text-fire-600 text-xl mb-2">
-              Open Work Permit
-            </h3>
-            <p class="text-sm">
-              Work for any employer in Canada (with exceptions)
-            </p>
+        <!-- Why Work in Canada -->
+        <section class="bg-fire-50 p-6 rounded-lg">
+          <h2 class="text-2xl text-sea-900 mb-4">Why Work in Canada?</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex items-start gap-2">
+              <span class="text-fire-600">✔</span>
+              <p>Gain valuable Canadian work experience</p>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-fire-600">✔</span>
+              <p>Opportunity for permanent residency</p>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-fire-600">✔</span>
+              <p>Competitive wages and labor protections</p>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-fire-600">✔</span>
+              <p>Access to diverse job markets</p>
+            </div>
+            <div class="flex items-start gap-2 md:col-span-2">
+              <span class="text-fire-600">✔</span>
+              <p>Pathways for spouses and family members to join workers</p>
+            </div>
           </div>
-          <div class="bg-sea-50 px-6 py-8 rounded-lg border border-sea-500">
-            <h3 class="font-semibold text-fire-600 text-xl mb-2">
-              Employer-Specific (Closed) Work Permit
-            </h3>
-            <p class="text-sm">Restricted to a specific employer and job</p>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       <!-- Post-Graduation Work Permit -->
       <section class="bg-white p-6 ">
-        <h2
-          class="text-2xl font-bold text-sea-900 mb-4 flex items-center gap-2"
-        >
+        <h2 class="text-4xl  text-sea-900 mb-4 flex items-center gap-2">
           <img src="assets/images/plane.svg" class="pb-1" />Post-Graduation Work
           Permit (PGWP)
         </h2>
@@ -147,9 +143,7 @@ import { RouterModule } from '@angular/router';
 
       <!-- Co-op Work Permit -->
       <section class="bg-white p-6">
-        <h2
-          class="text-2xl font-bold text-sea-900 mb-4 flex items-center gap-2"
-        >
+        <h2 class="text-4xl text-sea-900 mb-4 flex items-center gap-2">
           <img src="assets/images/plane.svg" class="pb-1" />Co-op Work Permit
         </h2>
 
@@ -195,9 +189,7 @@ import { RouterModule } from '@angular/router';
 
       <!-- Open Work Permit -->
       <section class="bg-white p-6">
-        <h2
-          class="text-2xl font-bold text-sea-900 mb-4 flex items-center gap-2"
-        >
+        <h2 class="text-4xl text-sea-900 mb-4 flex items-center gap-2">
           <img src="assets/images/plane.svg" class="pb-1" /> Open Work Permit
           (Includes Spousal Open Work Permit)
         </h2>
@@ -247,9 +239,7 @@ import { RouterModule } from '@angular/router';
 
       <!-- Bridging Open Work Permit -->
       <section class="bg-white p-6 ">
-        <h2
-          class="text-2xl font-bold text-sea-900 mb-4 flex items-center gap-2"
-        >
+        <h2 class="text-4xl  text-sea-900 mb-4 flex items-center gap-2">
           <img src="assets/images/plane.svg" class="pb-1" /> Bridging Open Work
           Permit (BOWP)
         </h2>
@@ -301,9 +291,7 @@ import { RouterModule } from '@angular/router';
 
       <!-- Closed Work Permit -->
       <section class="bg-white p-6 ">
-        <h2
-          class="text-2xl font-bold text-sea-900 mb-4 flex items-center gap-2"
-        >
+        <h2 class="text-4xl text-sea-900 mb-4 flex items-center gap-2">
           <img src="assets/images/plane.svg" class="pb-1" /> Closed Work Permit
           (Employer-Specific) & LMIA-Exempt Permits
         </h2>
@@ -368,9 +356,7 @@ import { RouterModule } from '@angular/router';
 
       <!-- Work Permit Extensions -->
       <section class="bg-white p-6 ">
-        <h2
-          class="text-2xl font-bold text-sea-900 mb-4 flex items-center gap-2"
-        >
+        <h2 class="text-4xl  text-sea-900 mb-4 flex items-center gap-2">
           <img src="assets/images/plane.svg" class="pb-1" /> Work Permit
           Extensions
         </h2>
@@ -423,7 +409,7 @@ import { RouterModule } from '@angular/router';
 
       <!-- Why Choose Velox Immigration -->
       <section class="bg-fire-50 p-6 rounded-lg">
-        <h2 class="text-2xl font-bold text-sea-900 mb-4">
+        <h2 class="text-2xl font-medium text-sea-900 mb-4">
           Why Choose Velox Immigration for Your Work Permit?
         </h2>
         <p class="text-gray-700 mb-6">

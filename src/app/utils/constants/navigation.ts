@@ -1,94 +1,101 @@
 export const localServices = [
   {
     id: '1',
-    title: 'Temporary Services',
+    title: 'Study',
     items: [
       {
         id: '1',
         label: 'Study in Canada',
-        path: '/services/temporary-services/study',
-      },
-      {
-        id: '2',
-        label: 'Work in Canada',
-        path: '/services/temporary-services/work',
-      },
-      {
-        id: '3',
-        label: 'Visitor Visa',
-        path: '/services/temporary-services/visitor-visa',
-      },
-      {
-        id: '4',
-        label: 'Parent/Grandparent Super Visa',
-        path: '/services/temporary-services/super-visa',
-      },
-      {
-        id: '5',
-        label: 'Labour Market Impact Assessment',
-        path: '/services/temporary-services/lmia',
+        path: '/services/study/study-in-canada',
       },
     ],
   },
   {
     id: '2',
-    title: 'Permanent Residency',
+    title: 'Work',
     items: [
       {
-        id: '6',
-        label: 'Express Entry',
-        path: '/services/permanent-residency/express-entry',
+        id: '2',
+        label: 'Open & PGWP Work Permits',
+        path: '/services/work/open-pgwp-permits',
       },
       {
-        id: '7',
-        label: 'Provincial Nominee Program',
-        path: '/services/permanent-residency/provincial-nominee',
+        id: '3',
+        label: 'LMIA & Employer-Based Permits',
+        path: '/services/work/lmia-employer-permits',
       },
       {
-        id: '8',
-        label: 'Atlantic Immigration Program',
-        path: '/services/permanent-residency/atlantic-immigration',
-      },
-      {
-        id: '9',
-        label: 'Family Immigration',
-        path: '/services/permanent-residency/family-immigration',
-      },
-      {
-        id: '10',
-        label: 'Business Immigration',
-        path: '/services/permanent-residency/business-immigration',
+        id: '4',
+        label: 'Work Permit Extensions & Co-op',
+        path: '/services/work/extensions-coop',
       },
     ],
   },
   {
     id: '3',
-    title: 'Additional Services',
+    title: 'Visit',
+    items: [
+      {
+        id: '5',
+        label: 'Visitor Visas to Canada',
+        path: '/services/visit/visitor-visas',
+      },
+    ],
+  },
+  {
+    id: '4',
+    title: 'Immigrate',
+    items: [
+      {
+        id: '6',
+        label: 'Express Entry Programs',
+        path: '/services/immigrate/express-entry',
+      },
+      {
+        id: '7',
+        label: 'PNP',
+        path: '/services/immigrate/provincial-nominee',
+      },
+      {
+        id: '8',
+        label: 'AIP',
+        path: '/services/immigrate/atlantic-immigration',
+      },
+      {
+        id: '9',
+        label: 'Family Sponsorship',
+        path: '/services/immigrate/family-sponsorship',
+      },
+      {
+        id: '10',
+        label: 'Business Immigration',
+        path: '/services/immigrate/business-immigration',
+      },
+    ],
+  },
+  {
+    id: '5',
+    title: 'Other Services',
     items: [
       {
         id: '11',
-        label: 'PR Card Renewal',
-        path: '/services/additional-services/pr-card-renewal',
+        label: 'PR Card & Citizenship',
+        path: '/services/other/pr-citizenship',
       },
       {
         id: '12',
-        label: 'Citizenship Applications',
-        path: '/services/additional-services/citizenship',
+        label: 'Appeals / Refugee / H&C',
+        path: '/services/other/appeals-refugee',
       },
       {
         id: '13',
-        label: 'Application Review',
-        path: '/services/additional-services/application-review',
+        label: 'Review Services (GCMS, NOC, PFL, Refusal)',
+        path: '/services/other/review-services',
       },
       {
         id: '14',
-        label: 'Family Sponsorship',
-        path: '/services/additional-services/family-sponsorship',
-      },
-      {
-        id: '15',
-        label: 'Appeals & Humanitarian',
-        path: '/services/additional-services/appeals',
+        label: 'SOP / DLI Change / Second Opinion',
+        path: '/services/other/sop-dli-opinion',
       },
     ],
   },
@@ -105,7 +112,7 @@ export const nav = {
   },
   ctaButton: {
     id: 2,
-    label: 'Book Your Appointment',
+    label: 'Book Consultation',
     href: '/book-your-appointment',
     isExternal: false,
     type: 'Primary',

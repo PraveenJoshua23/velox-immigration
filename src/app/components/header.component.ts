@@ -2,8 +2,6 @@ import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { localServices, nav } from '../utils/constants/navigation';
-// import { NavigationService } from '../services/navigation.service';
-// import { TopNavigation } from '../utils/types/navigation.types';
 
 @Component({
   selector: 'app-header',
@@ -32,16 +30,17 @@ import { localServices, nav } from '../utils/constants/navigation';
             [href]="item.isExternal ? item.href : null"
             [target]="item.isExternal ? '_blank' : undefined"
             routerLinkActive="text-fire-600"
-            class="text-gray-600 font-spartan hover:text-fire-600 transition-colors"
+            class="text-gray-600 font-light hover:text-fire-600 transition-colors"
           >
             {{ item.label }}
           </a>
           } @else {
-          <div class="relative group">
+          <!-- Services Dropdown -->
+          <div class="services-dropdown relative">
             <a
-              class="text-gray-600 font-spartan hover:text-fire-600 transition-colors cursor-pointer flex items-center gap-1"
+              class="text-gray-600 font-light hover:text-fire-600 transition-colors cursor-pointer flex items-center gap-1"
             >
-              Our Services
+              Services
               <svg
                 class="w-4 h-4"
                 fill="none"
@@ -57,29 +56,50 @@ import { localServices, nav } from '../utils/constants/navigation';
               </svg>
             </a>
 
-            <div
-              class="absolute left-1/2 -translate-x-1/2 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 w-[800px] bg-white shadow-lg rounded-lg mt-2 p-6"
+            <!-- First level dropdown - Service Categories -->
+            <ul
+              class="primary-dropdown absolute left-1/2 -translate-x-1/2 bg-white border-t border-fire-500 shadow-lg rounded-lg mt-2 py-2 w-[250px] z-10"
             >
-              <div class="grid grid-cols-3 gap-6">
-                <!-- Service Categories -->
-                @for(category of localServices(); track category.id) {
-                <div>
-                  <h3 class="font-semibold text-fire-600 mb-3">
-                    {{ category.title }}
-                  </h3>
-                  <div class="flex flex-col font-light gap-2">
-                    @for(service of category.items; track service.id) {
+              @for(category of localServices(); track category.id) {
+              <li class="dropdown-item relative">
+                <a
+                  class="px-4 py-2 text-gray-700 font-light hover:bg-gray-50 w-full flex justify-between items-center"
+                >
+                  {{ category.title }}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4 text-gray-500 flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </a>
+
+                <!-- Second level dropdown - Services within Category -->
+                <ul
+                  class="secondary-dropdown absolute left-full top-0 bg-white shadow-lg rounded-lg py-2 w-[280px] z-20"
+                >
+                  @for(service of category.items; track service.id) {
+                  <li>
                     <a
                       [routerLink]="service.path"
-                      class="text-sm text-gray-600 hover:text-fire-600"
-                      >{{ service.label }}</a
+                      class="px-4 py-2 text-gray-600 font-light hover:bg-gray-50 hover:text-fire-600 block"
                     >
-                    }
-                  </div>
-                </div>
-                }
-              </div>
-            </div>
+                      {{ service.label }}
+                    </a>
+                  </li>
+                  }
+                </ul>
+              </li>
+              }
+            </ul>
           </div>
           } }
           <!-- Desktop CTA -->
@@ -131,40 +151,70 @@ import { localServices, nav } from '../utils/constants/navigation';
         <div class="container mx-auto px-4 py-6">
           <!-- Main Navigation Links -->
           <div class="flex flex-col gap-6">
-            @for(item of nav().navItem; track item.id) { @if(!item.hasDropdown)
-            {
+            @for(item of nav().navItem; track item.id) { @if(!item.hasDropdown
+            || item.label === 'Book Consultation' || item.label === 'Contact') {
             <a
               [routerLink]="item.href"
               [href]="item.isExternal ? item.href : null"
               [target]="item.isExternal ? '_blank' : undefined"
               (click)="closeMenu()"
-              class="text-xl font-medium text-gray-800 hover:text-fire-600"
+              class="text-xl font-light text-gray-800 hover:text-fire-600"
             >
               {{ item.label }}
             </a>
             } @else {
             <!-- Services Sections -->
-            <div class="space-y-6">
-              @for(category of localServices(); track category.id){
-              <div>
-                <h3 class="text-xl font-bold text-fire-600 mb-3">
-                  {{ category.title }}
-                </h3>
-                <div class="flex flex-col gap-3 pl-4">
-                  @for(service of category.items; track service.id){
-                  <a
-                    [routerLink]="service.path"
-                    (click)="closeMenu()"
-                    class="text-gray-600 hover:text-fire-600"
+            <div>
+              <h2 class="text-2xl font-light text-gray-800 mb-4">Services</h2>
+              <div class="space-y-4 pl-4">
+                @for(category of localServices(); track category.id) {
+                <div>
+                  <div
+                    class="flex items-center justify-between cursor-pointer mb-2"
+                    (click)="toggleCategory(category.id)"
                   >
-                    {{ service.label }}
-                  </a>
-                  }
+                    <h3 class="text-xl font-medium text-fire-600">
+                      {{ category.title }}
+                    </h3>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      [class]="
+                        expandedCategories.includes(category.id)
+                          ? 'transform rotate-90 h-5 w-5 text-gray-600'
+                          : 'h-5 w-5 text-gray-600'
+                      "
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </div>
+                  <div
+                    class="flex flex-col gap-3 pl-4 overflow-hidden transition-all duration-300"
+                    [class.max-h-0]="!expandedCategories.includes(category.id)"
+                    [class.max-h-96]="expandedCategories.includes(category.id)"
+                  >
+                    @for(service of category.items; track service.id) {
+                    <a
+                      [routerLink]="service.path"
+                      (click)="closeMenu()"
+                      class="text-gray-600 hover:text-fire-600 py-1"
+                    >
+                      {{ service.label }}
+                    </a>
+                    }
+                  </div>
                 </div>
+                }
               </div>
-              }
             </div>
-            }}
+            } }
 
             <!-- Mobile CTA -->
             <button
@@ -186,9 +236,51 @@ import { localServices, nav } from '../utils/constants/navigation';
         display: block;
       }
 
-      .group:hover .group-hover\\:visible {
+      /* === DROPDOWN STYLING === */
+      /* First-level dropdown (hidden by default) */
+      .primary-dropdown {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0.2s, opacity 0.2s;
+      }
+
+      /* Show first-level dropdown on hover */
+      .services-dropdown:hover .primary-dropdown {
         visibility: visible;
-        pointer-events: auto;
+        opacity: 1;
+      }
+
+      /* Second-level dropdown (hidden by default) */
+      .secondary-dropdown {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0.2s, opacity 0.2s;
+      }
+
+      /* Show second-level dropdown only when parent is hovered */
+      .dropdown-item:hover .secondary-dropdown {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      /* Add connecting space to prevent dropdown from closing */
+      .dropdown-item::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -10px;
+        height: 100%;
+        width: 10px;
+      }
+
+      /* Transition for expandable mobile menu items */
+      .max-h-0 {
+        max-height: 0;
+        overflow: hidden;
+      }
+
+      .max-h-96 {
+        max-height: 24rem;
       }
 
       /* Prevent body scroll when menu is open */
@@ -202,99 +294,34 @@ export class HeaderComponent implements OnInit {
   isMenuOpen = signal(false);
   nav = signal(nav);
   localServices = signal(localServices);
-  // navigationService = inject(NavigationService);
-  // navigation = signal<TopNavigation | null>(null);
-  // services = signal<any>(null);
-
-  // temporaryServices = [
-  //   { name: 'Study in Canada', route: '/services/temporary-services/study' },
-  //   { name: 'Work in Canada', route: '/services/temporary-services/work' },
-  //   {
-  //     name: 'Visitor Visa',
-  //     route: '/services/temporary-services/visitor-visa',
-  //   },
-  //   {
-  //     name: 'Parent/Grandparent Super Visa',
-  //     route: '/services/temporary-services/super-visa',
-  //   },
-  //   {
-  //     name: 'Labour Market Impact Assessment',
-  //     route: '/services/temporary-services/lmia',
-  //   },
-  // ];
-
-  // permanentServices = [
-  //   {
-  //     name: 'Express Entry',
-  //     route: '/services/permanent-residency/express-entry',
-  //   },
-  //   {
-  //     name: 'Provincial Nominee Program',
-  //     route: '/services/permanent-residency/provincial-nominee',
-  //   },
-  //   {
-  //     name: 'Atlantic Immigration Program',
-  //     route: '/services/permanent-residency/atlantic-immigration',
-  //   },
-  //   {
-  //     name: 'Family Immigration',
-  //     route: '/services/permanent-residency/family-immigration',
-  //   },
-  //   {
-  //     name: 'Business Immigration',
-  //     route: '/services/permanent-residency/business-immigration',
-  //   },
-  // ];
-
-  // additionalServices = [
-  //   {
-  //     name: 'PR Card Renewal',
-  //     route: '/services/additional-services/pr-card-renewal',
-  //   },
-  //   {
-  //     name: 'Citizenship Applications',
-  //     route: '/services/additional-services/citizenship',
-  //   },
-  //   {
-  //     name: 'Application Review',
-  //     route: '/services/additional-services/application-review',
-  //   },
-  //   {
-  //     name: 'Family Sponsorship',
-  //     route: '/services/additional-services/family-sponsorship',
-  //   },
-  //   {
-  //     name: 'Appeals & Humanitarian',
-  //     route: '/services/additional-services/appeals',
-  //   },
-  // ];
+  expandedCategories: string[] = [];
 
   ngOnInit() {
-    // this.navigationService.getNavigation().subscribe({
-    //   next: (data) => {
-    //     this.navigation.set(data);
-    //   },
-    //   error: (error) => {
-    //     console.error('Error fetching navigation:', error);
-    //   },
-    // });
-    // this.navigationService.getServiceCategories().subscribe({
-    //   next: (data) => {
-    //     this.services.set(data);
-    //   },
-    //   error: (error) => {
-    //     console.error('Error fetching services:', error);
-    //   },
-    // });
+    // Initialization code if needed
   }
 
   toggleMenu() {
     this.isMenuOpen.update((value) => !value);
     document.body.classList.toggle('menu-open');
+    // Clear expanded categories when closing menu
+    if (!this.isMenuOpen()) {
+      this.expandedCategories = [];
+    }
   }
 
   closeMenu() {
     this.isMenuOpen.set(false);
     document.body.classList.remove('menu-open');
+    this.expandedCategories = [];
+  }
+
+  toggleCategory(categoryId: string) {
+    if (this.expandedCategories.includes(categoryId)) {
+      this.expandedCategories = this.expandedCategories.filter(
+        (id) => id !== categoryId
+      );
+    } else {
+      this.expandedCategories.push(categoryId);
+    }
   }
 }
