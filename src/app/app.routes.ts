@@ -39,6 +39,48 @@ export const routes: Routes = [
     component: ServicesLayoutComponent,
     children: [
       {
+        path: 'study',
+        children: [{ path: 'study-in-canada', component: StudyComponent }],
+      },
+      {
+        path: 'work',
+        children: [
+          { path: 'open-pgwp-permits', component: WorkComponent },
+          { path: 'lmia-employer-permits', component: LMIAComponent },
+          { path: 'extensions-coop', component: WorkComponent },
+        ],
+      },
+      {
+        path: 'visit',
+        children: [{ path: 'visitor-visas', component: VisitorVisaComponent }],
+      },
+      {
+        path: 'immigrate',
+        children: [
+          { path: 'express-entry', component: ExpressEntryComponent },
+          { path: 'provincial-nominee', component: ProvincialNomineeComponent },
+          {
+            path: 'atlantic-immigration',
+            component: AtlanticImmigrationComponent,
+          },
+          { path: 'family-sponsorship', component: FamilyImmigrationComponent },
+          {
+            path: 'business-immigration',
+            component: BusinessImmigrationComponent,
+          },
+        ],
+      },
+      {
+        path: 'other',
+        children: [
+          { path: 'pr-citizenship', component: CitizenshipComponent },
+          { path: 'appeals-refugee', component: AppealsHumanitarianComponent },
+          { path: 'review-services', component: ApplicationReviewComponent },
+          { path: 'sop-dli-opinion', component: ApplicationReviewComponent },
+        ],
+      },
+      // Old Routes
+      {
         path: 'temporary-services',
         children: [
           { path: 'study', component: StudyComponent },
