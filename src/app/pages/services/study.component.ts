@@ -9,8 +9,12 @@ import { RouterModule } from '@angular/router';
   template: `
     <div class="space-y-8">
       <!-- Hero Section -->
-      <div class="bg-sea-900 text-white rounded-lg p-8">
-        <h1 class="text-3xl mb-4">Study in Canada</h1>
+      <div
+        class="bg-sea-900 text-white rounded-lg px-8 py-10 relative bg-cover bg-center"
+        [style.backgroundImage]="'url(/assets/images/study-hero.png)'"
+        style="min-height: 250px;"
+      >
+        <h1 class="text-3xl md:text-5xl mb-4">Study in Canada</h1>
         <p class="text-lg">
           Secure the right permit to begin or continue your studies in
           Canada—with expert support every step of the way.
@@ -109,7 +113,23 @@ import { RouterModule } from '@angular/router';
 
       <!-- What You Need to Apply Section -->
       <section class="bg-gray-50 rounded-md p-6">
-        <h2 class="text-2xl text-sea-900 mb-4">📑 What You Need to Apply</h2>
+        <h2 class="flex items-center text-2xl text-sea-900 mb-4">
+          <svg
+            class="w-6 h-6 inline-block mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            ></path>
+          </svg>
+          <span class="mt-1">What You Need to Apply</span>
+        </h2>
         <p class="text-gray-700 mb-4">
           Each case is different, but generally, you'll need the following:
         </p>
@@ -228,9 +248,23 @@ import { RouterModule } from '@angular/router';
       </section>
 
       <!-- FAQ Section with Accordion -->
-      <section class="bg-white rounded-md p-6">
+      <section class="bg-gray-50 rounded-md p-6">
         <h2 class="text-2xl text-sea-900 mb-6">
-          ❓ Frequently Asked Questions
+          <svg
+            class="w-6 h-6 inline-block mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+          Frequently Asked Questions
         </h2>
 
         <div class="space-y-4">

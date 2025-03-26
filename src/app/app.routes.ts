@@ -20,6 +20,7 @@ import { FamilySponsorshipComponent } from './pages/services/family-sponsorship.
 import { AppealsHumanitarianComponent } from './pages/services/appeals.component';
 import { BookYourAppointmentComponent } from './pages/book-your-appointment/book-your-appointment.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { OpenWorkPermitComponent } from './pages/services/open-work-permit.component';
 
 export const routes: Routes = [
   {
@@ -45,7 +46,7 @@ export const routes: Routes = [
       {
         path: 'work',
         children: [
-          { path: 'open-pgwp-permits', component: WorkComponent },
+          { path: 'open-pgwp-permits', component: OpenWorkPermitComponent },
           { path: 'lmia-employer-permits', component: LMIAComponent },
           { path: 'extensions-coop', component: WorkComponent },
         ],
