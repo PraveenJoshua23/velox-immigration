@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../components/header.component';
 import { FooterComponent } from '../components/footer.component';
 import { localServices } from '../utils/constants/navigation';
+import { ElementRef, ViewChild } from '@angular/core';
 
 interface ServiceCategory {
   title: string;
@@ -32,6 +33,8 @@ interface ServiceCategory {
       <!-- Sidebar - Hidden on mobile (< 768px), visible from md (tablet) breakpoint -->
       <aside
         class="hidden md:block w-64 flex-shrink-0 sticky top-4 self-start "
+        #sidebarRef
+        [class.mt-20]="isScrolled()"
       >
         @for(category of localServices(); track category.title) {
         <div class="mb-6">
@@ -96,4 +99,6 @@ export class ServicesLayoutComponent {
   ]);
 
   localServices = signal([...localServices]);
+  @ViewChild('sidebarRef') sidebarRef!: ElementRef;
+  isScrolled = signal<boolean>(false);
 }
