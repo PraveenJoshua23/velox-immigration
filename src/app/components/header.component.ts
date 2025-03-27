@@ -30,6 +30,7 @@ import { localServices, nav } from '../utils/constants/navigation';
             [href]="item.isExternal ? item.href : null"
             [target]="item.isExternal ? '_blank' : undefined"
             routerLinkActive="text-fire-600"
+            [routerLinkActiveOptions]="{ exact: true }"
             class="text-gray-600 font-light hover:text-fire-600 transition-colors"
           >
             {{ item.label }}

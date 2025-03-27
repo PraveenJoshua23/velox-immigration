@@ -17,10 +17,13 @@ import { PRCardRenewalComponent } from './pages/services/pr-card-renewal.compone
 import { CitizenshipComponent } from './pages/services/citizenship.component';
 import { ApplicationReviewComponent } from './pages/services/application-review.component';
 import { FamilySponsorshipComponent } from './pages/services/family-sponsorship.component';
-import { AppealsHumanitarianComponent } from './pages/services/appeals.component';
+import { AppealsRefugeeComponent } from './pages/services/appeals.component';
 import { BookYourAppointmentComponent } from './pages/book-your-appointment/book-your-appointment.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { OpenWorkPermitComponent } from './pages/services/open-work-permit.component';
+import { PRCitizenshipComponent } from './pages/services/pr-citizenship.component';
+import { ReviewServicesComponent } from './pages/services/review-services.component';
+import { SopDliOpinionComponent } from './pages/services/sop-dli-opinion.component';
 
 export const routes: Routes = [
   {
@@ -64,7 +67,7 @@ export const routes: Routes = [
             path: 'atlantic-immigration',
             component: AtlanticImmigrationComponent,
           },
-          { path: 'family-sponsorship', component: FamilyImmigrationComponent },
+          { path: 'family-sponsorship', component: FamilySponsorshipComponent },
           {
             path: 'business-immigration',
             component: BusinessImmigrationComponent,
@@ -74,10 +77,10 @@ export const routes: Routes = [
       {
         path: 'other',
         children: [
-          { path: 'pr-citizenship', component: CitizenshipComponent },
-          { path: 'appeals-refugee', component: AppealsHumanitarianComponent },
-          { path: 'review-services', component: ApplicationReviewComponent },
-          { path: 'sop-dli-opinion', component: ApplicationReviewComponent },
+          { path: 'pr-citizenship', component: PRCitizenshipComponent },
+          { path: 'appeals-refugee', component: AppealsRefugeeComponent },
+          { path: 'review-services', component: ReviewServicesComponent },
+          { path: 'sop-dli-opinion', component: SopDliOpinionComponent },
         ],
       },
       // Old Routes
@@ -116,7 +119,7 @@ export const routes: Routes = [
           { path: 'family-sponsorship', component: FamilySponsorshipComponent },
           {
             path: 'appeals-humanitarian',
-            component: AppealsHumanitarianComponent,
+            component: AppealsRefugeeComponent,
           },
         ],
       },
