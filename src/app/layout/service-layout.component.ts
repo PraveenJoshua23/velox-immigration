@@ -57,6 +57,21 @@ interface ServiceCategory {
           </ul>
         </div>
         }
+        <!-- Need help callout -->
+        <div class="mt-8 bg-sea-50 p-4 rounded-lg border border-sea-200">
+          <h3 class="text-lg font-medium text-sea-800 mb-2">
+            Not sure where to start?
+          </h3>
+          <p class="text-sm text-gray-600 mb-3">
+            We can help determine the best path for your situation.
+          </p>
+          <a
+            routerLink="/contact"
+            class="inline-block px-4 py-2 bg-fire-600 text-white rounded hover:bg-fire-700 transition-colors text-sm font-medium"
+          >
+            Get in touch
+          </a>
+        </div>
       </aside>
     </div>
     <app-footer [hideContactBanner]="true" />
