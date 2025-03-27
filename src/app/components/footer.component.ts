@@ -57,10 +57,10 @@ import { RouterModule } from '@angular/router';
       <footer class="bg-[#1B2534] pt-32 pb-8">
         <div class="container mx-auto px-4">
           <div
-            class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12 text-center md:text-left"
+            class="grid grid-cols-1 md:grid-cols-7 gap-8 mb-12 text-center md:text-left"
           >
             <!-- Company Info -->
-            <div class="col-span-1 md:col-span-2 ">
+            <div class="col-span-2">
               <img
                 src="assets/images/logo-white.svg"
                 alt="Velox Immigration"
@@ -71,7 +71,9 @@ import { RouterModule } from '@angular/router';
                 Consultant.
               </p>
 
-              <div class="flex items-center  gap-10">
+              <div
+                class="flex items-center justify-center md:justify-start gap-10"
+              >
                 <div class="flex flex-col gap-2">
                   <p class="text-gray-400 font-light">Toronto, Canada</p>
                   <p class="text-gray-400 font-light">+1 416-662-0652</p>
@@ -83,76 +85,90 @@ import { RouterModule } from '@angular/router';
               </div>
             </div>
 
-            <!-- Temporary Resident Services -->
+            <!-- Study Category -->
             <div>
-              <h4 class="text-white font-medium mb-4">Temporary Services</h4>
+              <h4 class="text-white font-medium mb-4">Study</h4>
               <ul class="space-y-2 text-sm">
                 <li>
                   <a
-                    routerLink="/services/temporary-services/study"
+                    routerLink="/services/study/study-in-canada"
                     class="text-gray-400 font-light hover:text-white"
                   >
                     Study in Canada
                   </a>
                 </li>
+              </ul>
+            </div>
+
+            <!-- Work Category -->
+            <div>
+              <h4 class="text-white font-medium mb-4">Work</h4>
+              <ul class="space-y-2 text-sm">
                 <li>
                   <a
-                    routerLink="/services/temporary-services/work"
+                    routerLink="/services/work/open-pgwp-permits"
                     class="text-gray-400 font-light hover:text-white"
                   >
-                    Work in Canada
+                    Open & PGWP Permits
                   </a>
                 </li>
                 <li>
                   <a
-                    routerLink="/services/temporary-services/visitor-visa"
+                    routerLink="/services/work/lmia-employer-permits"
                     class="text-gray-400 font-light hover:text-white"
                   >
-                    Visitor Visa
+                    LMIA & Employer Permits
                   </a>
                 </li>
                 <li>
                   <a
-                    routerLink="/services/temporary-services/super-visa"
+                    routerLink="/services/work/extensions-coop"
                     class="text-gray-400 font-light hover:text-white"
                   >
-                    Super Visa
-                  </a>
-                </li>
-                <li>
-                  <a
-                    routerLink="/services/temporary-services/lmia"
-                    class="text-gray-400 font-light hover:text-white"
-                  >
-                    LMIA
+                    Extensions & Co-op Permits
                   </a>
                 </li>
               </ul>
             </div>
 
-            <!-- Permanent Residency -->
+            <!-- Visit Category -->
             <div>
-              <h4 class="text-white font-medium mb-4">Permanent Residency</h4>
+              <h4 class="text-white font-medium mb-4">Visit</h4>
               <ul class="space-y-2 text-sm">
                 <li>
                   <a
-                    routerLink="/services/permanent-residency/express-entry"
+                    routerLink="/services/visit/visitor-visas"
                     class="text-gray-400 font-light hover:text-white"
                   >
-                    Express Entry
+                    Visitor Visas
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Immigrate Category -->
+            <div>
+              <h4 class="text-white font-medium mb-4">Immigrate</h4>
+              <ul class="space-y-2 text-sm">
+                <li>
+                  <a
+                    routerLink="/services/immigrate/express-entry"
+                    class="text-gray-400 font-light hover:text-white text-fire-600"
+                  >
+                    Express Entry Programs
                   </a>
                 </li>
                 <li>
                   <a
-                    routerLink="/services/permanent-residency/provincial-nominee"
+                    routerLink="/services/immigrate/provincial-nominee"
                     class="text-gray-400 font-light hover:text-white"
                   >
-                    Provincial Nominee
+                    Provincial Nominee Program
                   </a>
                 </li>
                 <li>
                   <a
-                    routerLink="/services/permanent-residency/atlantic-immigration"
+                    routerLink="/services/immigrate/atlantic-immigration"
                     class="text-gray-400 font-light hover:text-white"
                   >
                     Atlantic Immigration
@@ -160,15 +176,15 @@ import { RouterModule } from '@angular/router';
                 </li>
                 <li>
                   <a
-                    routerLink="/services/permanent-residency/family-immigration"
+                    routerLink="/services/immigrate/family-sponsorship"
                     class="text-gray-400 font-light hover:text-white"
                   >
-                    Family Immigration
+                    Family Sponsorship
                   </a>
                 </li>
                 <li>
                   <a
-                    routerLink="/services/permanent-residency/business-immigration"
+                    routerLink="/services/immigrate/business-immigration"
                     class="text-gray-400 font-light hover:text-white"
                   >
                     Business Immigration
@@ -177,48 +193,40 @@ import { RouterModule } from '@angular/router';
               </ul>
             </div>
 
-            <!-- Additional Services -->
+            <!-- Other Services Category -->
             <div>
-              <h4 class="text-white font-medium mb-4">Additional Services</h4>
+              <h4 class="text-white font-medium mb-4">Other Services</h4>
               <ul class="space-y-2 text-sm">
                 <li>
                   <a
-                    routerLink="/services/additional-services/pr-card-renewal"
+                    routerLink="/services/other/pr-citizenship"
                     class="text-gray-400 font-light hover:text-white"
                   >
-                    PR Card Renewal
+                    PR Card & Citizenship
                   </a>
                 </li>
                 <li>
                   <a
-                    routerLink="/services/additional-services/citizenship"
+                    routerLink="/services/other/appeals-refugee"
                     class="text-gray-400 font-light hover:text-white"
                   >
-                    Citizenship
+                    Appeals, Refugee & H&C
                   </a>
                 </li>
                 <li>
                   <a
-                    routerLink="/services/additional-services/application-review"
+                    routerLink="/services/other/review-services"
                     class="text-gray-400 font-light hover:text-white"
                   >
-                    Application Review
+                    Application Reviews
                   </a>
                 </li>
                 <li>
                   <a
-                    routerLink="/services/additional-services/family-sponsorship"
+                    routerLink="/services/other/sop-dli-opinion"
                     class="text-gray-400 font-light hover:text-white"
                   >
-                    Family Sponsorship
-                  </a>
-                </li>
-                <li>
-                  <a
-                    routerLink="/services/additional-services/appeals-humanitarian"
-                    class="text-gray-400 font-light hover:text-white"
-                  >
-                    Appeals & Humanitarian
+                    SOP, DLI Change & Review
                   </a>
                 </li>
               </ul>

@@ -36,6 +36,7 @@ interface ServiceCategory {
         #sidebarRef
         [class.mt-20]="isScrolled()"
       >
+        <h2 class="text-2xl pb-5 pt-4 text-sea-800">Our Services</h2>
         @for(category of localServices(); track category.title) {
         <div class="mb-6">
           <h3 class="text-lg font-medium text-sea-900 mb-2">
