@@ -286,32 +286,6 @@ import { RouterModule } from '@angular/router';
                   From $XXX
                 </td>
               </tr>
-              <tr>
-                <td class="px-6 py-4 whitespace-nowrap border text-sm">
-                  Second Opinion Review
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap border text-sm">
-                  2–3 business days
-                </td>
-                <td
-                  class="px-6 py-4 whitespace-nowrap border text-fire-600 font-medium text-sm"
-                >
-                  From $XXX
-                </td>
-              </tr>
-              <tr>
-                <td class="px-6 py-4 whitespace-nowrap border text-sm">
-                  DLI Change Support
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap border text-sm">
-                  1–2 business days
-                </td>
-                <td
-                  class="px-6 py-4 whitespace-nowrap border text-fire-600 font-medium text-sm"
-                >
-                  From $XXX
-                </td>
-              </tr>
             </tbody>
           </table>
         </div>
