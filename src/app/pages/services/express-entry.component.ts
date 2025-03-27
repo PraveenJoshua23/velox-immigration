@@ -710,7 +710,7 @@ import { RouterModule } from '@angular/router';
               class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
             >
               <span class="font-medium"
-                >Do I need a job offer to apply through Express Entry?</span
+                >What's a competitive CRS score for an invitation?</span
               >
               <svg
                 [class]="
@@ -737,12 +737,12 @@ import { RouterModule } from '@angular/router';
             >
               <div class="p-4 border-t bg-gray-50">
                 <p>
-                  No, a job offer is not required for Express Entry. However,
-                  having a valid job offer from a Canadian employer can
-                  significantly increase your CRS score by 50-200 points,
-                  depending on the skill level of the position. This boost can
-                  be the difference between receiving an invitation to apply and
-                  remaining in the pool.
+                  CRS score cutoffs vary with each draw. In recent general
+                  draws, scores between 470-490 have been competitive for
+                  Federal Skilled Worker (FSW) and Canadian Experience Class
+                  (CEC) candidates. Program-specific or PNP draws may have
+                  different thresholds. Our team monitors these trends and helps
+                  optimize your profile to meet or exceed current requirements.
                 </p>
               </div>
             </div>
@@ -755,7 +755,7 @@ import { RouterModule } from '@angular/router';
               class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
             >
               <span class="font-medium"
-                >What's a competitive CRS score for an invitation?</span
+                >Can I include my spouse and children in my application?</span
               >
               <svg
                 [class]="
@@ -782,12 +782,13 @@ import { RouterModule } from '@angular/router';
             >
               <div class="p-4 border-t bg-gray-50">
                 <p>
-                  CRS score cutoffs vary with each draw. In recent general
-                  draws, scores between 470-490 have been competitive for
-                  Federal Skilled Worker (FSW) and Canadian Experience Class
-                  (CEC) candidates. Program-specific or PNP draws may have
-                  different thresholds. Our team monitors these trends and helps
-                  optimize your profile to meet or exceed current requirements.
+                  Yes, your spouse or common-law partner and dependent children
+                  can be included as accompanying dependents on your Express
+                  Entry application. Your spouse's factors (like language skills
+                  and education) can provide additional points to your CRS
+                  score. Dependent children are typically those under 22 years
+                  of age who don't have a spouse and are financially dependent
+                  on you.
                 </p>
               </div>
             </div>
@@ -800,7 +801,7 @@ import { RouterModule } from '@angular/router';
               class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
             >
               <span class="font-medium"
-                >Can I include my spouse and children in my application?</span
+                >What if my CRS score isn't high enough for an ITA?</span
               >
               <svg
                 [class]="
@@ -822,53 +823,7 @@ import { RouterModule } from '@angular/router';
             <div
               [class]="
                 'overflow-hidden transition-all duration-300 ' +
-                (activeFaq() === 2 ? 'max-h-56' : 'max-h-0')
-              "
-            >
-              <div class="p-4 border-t bg-gray-50">
-                <p>
-                  Yes, your spouse or common-law partner and dependent children
-                  can be included as accompanying dependents on your Express
-                  Entry application. Your spouse's factors (like language skills
-                  and education) can provide additional points to your CRS
-                  score. Dependent children are typically those under 22 years
-                  of age who don't have a spouse and are financially dependent
-                  on you.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ Item 4 -->
-          <div class="border rounded-lg overflow-hidden">
-            <button
-              (click)="toggleFaq(3)"
-              class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
-            >
-              <span class="font-medium"
-                >What if my CRS score isn't high enough for an ITA?</span
-              >
-              <svg
-                [class]="
-                  'w-5 h-5 transition-transform ' +
-                  (activeFaq() === 3 ? 'transform rotate-180' : '')
-                "
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            <div
-              [class]="
-                'overflow-hidden transition-all duration-300 ' +
-                (activeFaq() === 3 ? 'max-h-64' : 'max-h-0')
+                (activeFaq() === 2 ? 'max-h-64' : 'max-h-0')
               "
             >
               <div class="p-4 border-t bg-gray-50">
@@ -892,6 +847,52 @@ import { RouterModule } from '@angular/router';
             </div>
           </div>
 
+          <!-- FAQ Item 4 -->
+          <div class="border rounded-lg overflow-hidden">
+            <button
+              (click)="toggleFaq(3)"
+              class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
+            >
+              <span class="font-medium"
+                >Does Express Entry guarantee permanent residency?</span
+              >
+              <svg
+                [class]="
+                  'w-5 h-5 transition-transform ' +
+                  (activeFaq() === 3 ? 'transform rotate-180' : '')
+                "
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div
+              [class]="
+                'overflow-hidden transition-all duration-300 ' +
+                (activeFaq() === 3 ? 'max-h-56' : 'max-h-0')
+              "
+            >
+              <div class="p-4 border-t bg-gray-50">
+                <p>
+                  No. Being in the Express Entry pool doesn't guarantee an
+                  invitation to apply, and receiving an ITA doesn't guarantee
+                  approval. Your application must be complete, accurate, and
+                  meet all eligibility requirements. Additionally, you must pass
+                  medical, security, and background checks. Our expertise
+                  ensures your application is properly prepared to maximize
+                  chances of approval once invited.
+                </p>
+              </div>
+            </div>
+          </div>
+
           <!-- FAQ Item 5 -->
           <div class="border rounded-lg overflow-hidden">
             <button
@@ -899,7 +900,7 @@ import { RouterModule } from '@angular/router';
               class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
             >
               <span class="font-medium"
-                >Does Express Entry guarantee permanent residency?</span
+                >What is the typical processing time for Express Entry?</span
               >
               <svg
                 [class]="
@@ -922,52 +923,6 @@ import { RouterModule } from '@angular/router';
               [class]="
                 'overflow-hidden transition-all duration-300 ' +
                 (activeFaq() === 4 ? 'max-h-56' : 'max-h-0')
-              "
-            >
-              <div class="p-4 border-t bg-gray-50">
-                <p>
-                  No. Being in the Express Entry pool doesn't guarantee an
-                  invitation to apply, and receiving an ITA doesn't guarantee
-                  approval. Your application must be complete, accurate, and
-                  meet all eligibility requirements. Additionally, you must pass
-                  medical, security, and background checks. Our expertise
-                  ensures your application is properly prepared to maximize
-                  chances of approval once invited.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ Item 6 -->
-          <div class="border rounded-lg overflow-hidden">
-            <button
-              (click)="toggleFaq(5)"
-              class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
-            >
-              <span class="font-medium"
-                >What is the typical processing time for Express Entry?</span
-              >
-              <svg
-                [class]="
-                  'w-5 h-5 transition-transform ' +
-                  (activeFaq() === 5 ? 'transform rotate-180' : '')
-                "
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            <div
-              [class]="
-                'overflow-hidden transition-all duration-300 ' +
-                (activeFaq() === 5 ? 'max-h-56' : 'max-h-0')
               "
             >
               <div class="p-4 border-t bg-gray-50">
