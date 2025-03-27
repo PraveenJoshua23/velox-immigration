@@ -332,7 +332,7 @@ import { RouterModule } from '@angular/router';
       </section>
 
       <!-- Processing Times Section -->
-      <section class="bg-white rounded-md p-6">
+      <!-- <section class="bg-white rounded-md p-6">
         <h2 class="text-2xl text-sea-900 mb-4">Processing Time & Fees</h2>
         <div class="overflow-x-auto">
           <table class="min-w-full bg-white border">
@@ -385,7 +385,7 @@ import { RouterModule } from '@angular/router';
           *Processing times are estimates and may change. Visit IRCC and ESDC
           websites for current processing times.
         </p>
-      </section>
+      </section> -->
 
       <!-- FAQ Section with Accordion -->
       <section class="bg-gray-50 rounded-md p-6">

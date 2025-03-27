@@ -602,7 +602,7 @@ import { RouterModule } from '@angular/router';
           </div>
 
           <!-- FAQ Item 5 -->
-          <div class="border rounded-lg overflow-hidden">
+          <div class="border rounded-lg overflow-hidden mb-3">
             <button
               (click)="toggleFaq(4)"
               class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
@@ -637,6 +637,51 @@ import { RouterModule } from '@angular/router';
                 <p>
                   You may apply for restoration within 90 days. We can help act
                   fast to restore your legal status.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 6 -->
+          <div class="border rounded-lg overflow-hidden">
+            <button
+              (click)="toggleFaq(5)"
+              class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
+            >
+              <span class="font-medium">What is the Processing Time?</span>
+              <svg
+                [class]="
+                  'w-5 h-5 transition-transform ' +
+                  (activeFaq() === 5 ? 'transform rotate-180' : '')
+                "
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div
+              [class]="
+                'overflow-hidden transition-all duration-300 ' +
+                (activeFaq() === 5 ? 'max-h-40' : 'max-h-0')
+              "
+            >
+              <div class="p-4 border-t bg-gray-50">
+                <p>
+                  Processing times vary. Check
+                  <a
+                    href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html"
+                    class="text-fire-600 hover:underline"
+                    target="_blank"
+                    >IRCC processing times</a
+                  >
+                  for current estimates.
                 </p>
               </div>
             </div>

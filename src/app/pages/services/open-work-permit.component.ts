@@ -123,8 +123,8 @@ import { RouterModule } from '@angular/router';
               through the process of modifying your permit terms.
             </p>
             <p class="text-gray-700 mt-2">
-              We also assist in <strong>status restoration</strong> if your
-              permit has expired within the past 90 days.
+              We also assist in status restoration if your permit has expired
+              within the past 90 days.
             </p>
           </div>
 
@@ -169,20 +169,13 @@ import { RouterModule } from '@angular/router';
               For Work Permit Extensions:
             </h3>
             <ul class="space-y-2 list-disc pl-5 text-gray-700">
-              <li>A valid <strong>passport</strong></li>
-              <li>Copy of your <strong>current work permit</strong></li>
-              <li><strong>Job offer letter</strong> (if employer-specific)</li>
+              <li>A valid passport</li>
+              <li>Copy of your current work permit</li>
+              <li>Job offer letter (if employer-specific)</li>
+              <li>Pay stubs or proof of employment (for PGWP holders)</li>
+              <li>Explanation letter (if changing employers or job duties)</li>
               <li>
-                <strong>Pay stubs or proof of employment</strong> (for PGWP
-                holders)
-              </li>
-              <li>
-                <strong>Explanation letter</strong> (if changing employers or
-                job duties)
-              </li>
-              <li>
-                Proof of <strong>ongoing eligibility</strong> (e.g., PR file
-                number for BOWP)
+                Proof of ongoing eligibility (e.g., PR file number for BOWP)
               </li>
             </ul>
           </div>
@@ -193,15 +186,12 @@ import { RouterModule } from '@angular/router';
             </h3>
             <ul class="space-y-2 list-disc pl-5 text-gray-700">
               <li>
-                <strong>Letter from your DLI</strong> confirming that the work
-                component is essential
+                Letter from your DLI confirming that the work component is
+                essential
               </li>
-              <li>Valid <strong>study permit</strong></li>
-              <li>A valid <strong>passport</strong></li>
-              <li>
-                School's <strong>co-op/internship agreement</strong> (if
-                applicable)
-              </li>
+              <li>Valid study permit</li>
+              <li>A valid passport</li>
+              <li>School's co-op/internship agreement (if applicable)</li>
             </ul>
           </div>
         </div>
@@ -343,9 +333,7 @@ import { RouterModule } from '@angular/router';
               (click)="toggleFaq(0)"
               class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
             >
-              <span class="font-medium"
-                >Can I keep working while waiting for my extension?</span
-              >
+              <span class="font-medium">How long is a PGWP valid for?</span>
               <svg
                 [class]="
                   'w-5 h-5 transition-transform ' +
@@ -371,9 +359,8 @@ import { RouterModule } from '@angular/router';
             >
               <div class="p-4 border-t bg-gray-50">
                 <p>
-                  Yes—if you applied before your permit expired, you're under
-                  "maintained status" and can continue working under the same
-                  conditions.
+                  It depends on the length of your study program. 8 months to 2
+                  years = same duration. 2+ years = up to 3 years.
                 </p>
               </div>
             </div>
@@ -386,8 +373,7 @@ import { RouterModule } from '@angular/router';
               class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
             >
               <span class="font-medium"
-                >Do I need a co-op permit if my program includes unpaid
-                work?</span
+                >Can I apply for a PGWP from outside Canada?</span
               >
               <svg
                 [class]="
@@ -414,8 +400,8 @@ import { RouterModule } from '@angular/router';
             >
               <div class="p-4 border-t bg-gray-50">
                 <p>
-                  Yes. Even unpaid work as part of your program requires a valid
-                  co-op work permit.
+                  Yes, if you meet all eligibility criteria and studied online
+                  during COVID-era policies (check expiry of those exemptions).
                 </p>
               </div>
             </div>
@@ -427,9 +413,7 @@ import { RouterModule } from '@angular/router';
               (click)="toggleFaq(2)"
               class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
             >
-              <span class="font-medium"
-                >Can I switch jobs with the same permit?</span
-              >
+              <span class="font-medium">Is my school eligible for a PGWP?</span>
               <svg
                 [class]="
                   'w-5 h-5 transition-transform ' +
@@ -455,8 +439,9 @@ import { RouterModule } from '@angular/router';
             >
               <div class="p-4 border-t bg-gray-50">
                 <p>
-                  Not on an employer-specific permit. You'll need to apply to
-                  change the conditions of your work permit.
+                  Only graduates from eligible Designated Learning Institutions
+                  (DLIs) qualify. We'll check your institution's status before
+                  applying.
                 </p>
               </div>
             </div>
@@ -469,7 +454,7 @@ import { RouterModule } from '@angular/router';
               class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
             >
               <span class="font-medium"
-                >How early should I apply for an extension?</span
+                >Can my spouse apply for a work permit if I'm on a PGWP?</span
               >
               <svg
                 [class]="
@@ -496,8 +481,8 @@ import { RouterModule } from '@angular/router';
             >
               <div class="p-4 border-t bg-gray-50">
                 <p>
-                  At least 30 days before your permit expires, but we recommend
-                  sooner to avoid delays.
+                  Yes, if you are working in a TEER 0, 1, 2, or 3 occupation and
+                  meet minimum income thresholds.
                 </p>
               </div>
             </div>
@@ -510,7 +495,7 @@ import { RouterModule } from '@angular/router';
               class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
             >
               <span class="font-medium"
-                >What if my permit already expired?</span
+                >Can I work full-time while waiting for my PGWP?</span
               >
               <svg
                 [class]="
@@ -537,53 +522,9 @@ import { RouterModule } from '@angular/router';
             >
               <div class="p-4 border-t bg-gray-50">
                 <p>
-                  You may apply for restoration within 90 days. We can help act
-                  fast to restore your legal status.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ Item 6 -->
-          <div class="border rounded-lg overflow-hidden">
-            <button
-              (click)="toggleFaq(5)"
-              class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
-            >
-              <span class="font-medium">What is the Processing Time?</span>
-              <svg
-                [class]="
-                  'w-5 h-5 transition-transform ' +
-                  (activeFaq() === 5 ? 'transform rotate-180' : '')
-                "
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            <div
-              [class]="
-                'overflow-hidden transition-all duration-300 ' +
-                (activeFaq() === 5 ? 'max-h-40' : 'max-h-0')
-              "
-            >
-              <div class="p-4 border-t bg-gray-50">
-                <p>
-                  Processing times vary. Check
-                  <a
-                    href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html"
-                    class="text-fire-600 hover:underline"
-                    target="_blank"
-                    >IRCC processing times</a
-                  >
-                  for current estimates.
+                  If you applied while your study permit was still valid,
+                  yes—you can work under maintained status until a decision is
+                  made.
                 </p>
               </div>
             </div>

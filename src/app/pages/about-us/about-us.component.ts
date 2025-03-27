@@ -4,18 +4,6 @@ import { RouterModule } from '@angular/router';
 import { FooterComponent } from '../../components/footer.component';
 import { HeaderComponent } from '../../components/header.component';
 
-interface CoreValue {
-  name: string;
-  description: string;
-  icon: string;
-}
-
-interface Faq {
-  id: number;
-  question: string;
-  answer: string;
-}
-
 @Component({
   selector: 'app-about-page',
   standalone: true,
@@ -61,10 +49,9 @@ interface Faq {
                 and more accessible.
               </p>
               <p class="mb-6">
-                Our mission is simple:
-                <strong>to simplify, support, and empower.</strong> At Velox, we
-                don't just guide clients through immigration—we help them build
-                their future with confidence.
+                Our mission is simple: to simplify, support, and empower. At
+                Velox, we don't just guide clients through immigration—we help
+                them build their future with confidence.
               </p>
               <!-- <p class="mb-6 flex items-center">
                 <svg
@@ -181,7 +168,9 @@ interface Faq {
             <div class="grid grid-cols-1 gap-6">
               @for (value of coreValues(); track value.name) {
               <div
-                class="bg-white p-6 rounded-lg shadow-lg bg-gradient-to-r from-fire-500/10 to-sea-500/30 "
+                class="p-6 rounded-lg shadow-lg text-white"
+                [class.bg-sea-800]="value.color === 'bg-sea-800'"
+                [class.bg-fire-600]="value.color === 'bg-fire-600'"
               >
                 <h3
                   class="text-2xl font-semibold mb-2 flex justify-center items-center"
@@ -200,7 +189,7 @@ interface Faq {
                   </svg> -->
                   <span>{{ value.name }}</span>
                 </h3>
-                <p class="font-light">{{ value.description }}</p>
+                <p class="font-ligh text-center">{{ value.description }}</p>
               </div>
               }
             </div>
@@ -316,30 +305,35 @@ export class AboutPageComponent {
       description:
         'We act with speed and precision, ensuring an efficient immigration process without unnecessary delays.',
       icon: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>',
+      color: 'bg-fire-600',
     },
     {
       name: 'Empowerment',
       description:
         'We equip our clients with knowledge, confidence, and guidance, helping them navigate their immigration journey with clarity and certainty.',
       icon: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>',
+      color: 'bg-sea-800',
     },
     {
       name: 'Loyalty',
       description:
         "We are dedicated to our clients' success, treating each case with the same care and responsibility as if it were our own.",
       icon: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>',
+      color: 'bg-fire-600',
     },
     {
       name: 'Openness',
       description:
         'Transparency is at the heart of our work. We provide honest advice, realistic expectations, and clear communication at every step.',
       icon: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" /></svg>',
+      color: 'bg-sea-800',
     },
     {
       name: 'Experience-Driven Solutions',
       description:
         "Our expertise and deep industry knowledge allow us to craft strategic, personalized solutions that maximize our clients' success.",
       icon: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>',
+      color: 'bg-fire-600',
     },
   ];
 

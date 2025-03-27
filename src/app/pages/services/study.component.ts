@@ -27,11 +27,13 @@ import { RouterModule } from '@angular/router';
           Start Your Canadian Education Journey with Confidence
         </h2>
         <p class="text-gray-700">
-          Canada offers various work permits that allow foreign nationals to
-          gain employment experience, contribute to the economy, and, in many
-          cases, transition to permanent residency. Whether you're an
-          international graduate, a skilled worker, or a spouse of a student or
-          worker, there are multiple pathways to legally work in Canada.
+          Canada is a top destination for international students—and for good
+          reason. With world-class institutions, welcoming communities, and
+          post-study work opportunities, it's the perfect place to grow
+          academically and professionally. At Velox Immigration, we help you
+          navigate every step of the study permit process—whether you're
+          applying for the first time, renewing your permit, or helping a minor
+          begin their education here.
         </p>
       </section>
 
@@ -154,11 +156,9 @@ import { RouterModule } from '@angular/router';
         </ul>
 
         <p class="text-gray-700">
-          If you're applying on behalf of a <strong>minor</strong>, additional
-          documents are needed, such as a
-          <strong>custodianship declaration</strong>,
-          <strong>birth certificate</strong>, and identification for the
-          parent(s) or guardian(s).
+          If you're applying on behalf of a minor, additional documents are
+          needed, such as a custodianship declaration, birth certificate, and
+          identification for the parent(s) or guardian(s).
         </p>
         <p class="text-gray-700 mt-2">
           We will guide you through each of these requirements and help you
