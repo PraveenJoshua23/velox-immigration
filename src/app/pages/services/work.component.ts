@@ -45,16 +45,15 @@ import { RouterModule } from '@angular/router';
           <p class="mb-2">This service is ideal for:</p>
           <ul class="list-disc pl-8 space-y-2 text-gray-700">
             <li>
-              Foreign nationals whose
-              <strong>employer-specific or open work permit is expiring</strong>
+              Foreign nationals whose employer-specific or open work permit is
+              expiring
             </li>
             <li>
-              International students enrolled in programs that require
-              <strong>co-op or internship placements</strong>
+              International students enrolled in programs that require co-op or
+              internship placements
             </li>
             <li>
-              Workers looking to <strong>restore status</strong> after a work
-              permit expires
+              Workers looking to restore status after a work permit expires
             </li>
             <li>
               Applicants transitioning between permits (e.g., PGWP to bridging
@@ -122,7 +121,7 @@ import { RouterModule } from '@angular/router';
                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <span>A valid <strong>passport</strong></span>
+                <span>A valid passport</span>
               </li>
               <li class="flex items-start gap-2">
                 <svg
@@ -138,7 +137,39 @@ import { RouterModule } from '@angular/router';
                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <span>Copy of your <strong>current work permit</strong></span>
+                <span>Copy of your current work permit</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg
+                  class="w-5 h-5 text-fire-600 flex-shrink-0 mt-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span>Job offer letter (if employer-specific)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg
+                  class="w-5 h-5 text-fire-600 flex-shrink-0 mt-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span>Pay stubs or proof of employment (for PGWP holders)</span>
               </li>
               <li class="flex items-start gap-2">
                 <svg
@@ -155,46 +186,8 @@ import { RouterModule } from '@angular/router';
                   />
                 </svg>
                 <span
-                  ><strong>Job offer letter</strong> (if
-                  employer-specific)</span
-                >
-              </li>
-              <li class="flex items-start gap-2">
-                <svg
-                  class="w-5 h-5 text-fire-600 flex-shrink-0 mt-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span
-                  ><strong>Pay stubs or proof of employment</strong> (for PGWP
-                  holders)</span
-                >
-              </li>
-              <li class="flex items-start gap-2">
-                <svg
-                  class="w-5 h-5 text-fire-600 flex-shrink-0 mt-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span
-                  ><strong>Explanation letter</strong> (if changing employers or
-                  job duties)</span
+                  >Explanation letter (if changing employers or job
+                  duties)</span
                 >
               </li>
             </ul>
@@ -221,8 +214,8 @@ import { RouterModule } from '@angular/router';
                   />
                 </svg>
                 <span
-                  ><strong>Letter from your DLI</strong> confirming that the
-                  work component is essential</span
+                  >Letter from your DLI confirming that the work component is
+                  essential</span
                 >
               </li>
               <li class="flex items-start gap-2">
@@ -239,7 +232,7 @@ import { RouterModule } from '@angular/router';
                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <span>Valid <strong>study permit</strong></span>
+                <span>Valid study permit</span>
               </li>
               <li class="flex items-start gap-2">
                 <svg
@@ -255,7 +248,7 @@ import { RouterModule } from '@angular/router';
                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <span>A valid <strong>passport</strong></span>
+                <span>A valid passport</span>
               </li>
               <li class="flex items-start gap-2">
                 <svg
@@ -271,10 +264,7 @@ import { RouterModule } from '@angular/router';
                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <span
-                  >School's <strong>co-op/internship agreement</strong> (if
-                  applicable)</span
-                >
+                <span>School's co-op/internship agreement (if applicable)</span>
               </li>
             </ul>
             <p class="mt-4 text-gray-700">

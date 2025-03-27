@@ -12,7 +12,10 @@ import { RouterModule } from '@angular/router';
         <div class="flex flex-col md:flex-row items-center gap-12">
           <!-- Left Side Images -->
           <div class="md:w-1/2 relative">
-            <img src="assets/images/about-us.svg" />
+            <img
+              src="assets/images/about-us.svg"
+              class="w-3/4 md:w-full mx-auto"
+            />
           </div>
 
           <!-- Right Side Content -->
