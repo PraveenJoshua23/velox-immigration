@@ -77,11 +77,11 @@ export class PartnerLogosComponent {
       src: '/assets/images/RCIC-logo.png',
       alt: 'RCIC Logo',
     },
-    {
-      id: 3,
-      src: '/assets/images/CAPIC-logo.png',
-      alt: 'CAPIC Logo',
-    },
+    // {
+    //   id: 3,
+    //   src: '/assets/images/CAPIC-logo.png',
+    //   alt: 'CAPIC Logo',
+    // },
   ]);
 
   ngAfterViewInit() {

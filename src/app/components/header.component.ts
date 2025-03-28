@@ -18,7 +18,7 @@ import { localServices, nav } from '../utils/constants/navigation';
             [routerLink]="nav().logoTitle.href"
             src="/assets/images/logo.svg"
             [alt]="nav().logoTitle.label"
-            class="h-8"
+            class="h-14"
           />
         </div>
 

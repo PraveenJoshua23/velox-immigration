@@ -24,6 +24,7 @@ import { OpenWorkPermitComponent } from './pages/services/open-work-permit.compo
 import { PRCitizenshipComponent } from './pages/services/pr-citizenship.component';
 import { ReviewServicesComponent } from './pages/services/review-services.component';
 import { SopDliOpinionComponent } from './pages/services/sop-dli-opinion.component';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 
 export const routes: Routes = [
   {
@@ -37,6 +38,10 @@ export const routes: Routes = [
   {
     path: 'contact',
     component: ContactFormComponent,
+  },
+  {
+    path: 'privacy-policy',
+    component: PrivacyPolicyComponent,
   },
   {
     path: 'services',
