@@ -9,11 +9,11 @@ import { RouterModule } from '@angular/router';
   template: `
     <div
       class="relative"
-      [classList]="hideContactBanner ? 'mt-0' : 'mt-[100px]'"
+      [classList]="hideContactBanner ? 'mt-0' : 'mt-[100px] md:mt-[100px]'"
     >
       <!-- Floating Contact Banner -->
       @if (!hideContactBanner) {
-      <div class="absolute -top-20 left-0 right-0">
+      <div class="absolute -top-24 md:-top-20 left-0 right-0">
         <div class="container mx-auto px-4">
           <div
             class="bg-red-600 rounded-lg p-8 flex flex-col md:flex-row justify-between items-center"
@@ -237,9 +237,15 @@ import { RouterModule } from '@angular/router';
           <div
             class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center"
           >
-            <p class="text-gray-400 text-xs font-light mb-4 md:mb-0">
-              Copyright © 2025. All rights reserved.
-            </p>
+            <div
+              class="text-gray-400 text-xs font-light mb-4 md:mb-0 flex flex-wrap items-center gap-2"
+            >
+              <p>Copyright © 2025. All rights reserved.</p>
+              <span class="hidden md:inline">|</span>
+              <a routerLink="/privacy-policy" class="hover:text-white"
+                >Privacy Policy</a
+              >
+            </div>
             <div class="flex space-x-4">
               <a
                 href="https://www.facebook.com/share/18ZQKWcRMx/?mibextid=wwXIfr"

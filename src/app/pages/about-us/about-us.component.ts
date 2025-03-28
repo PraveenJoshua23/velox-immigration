@@ -129,14 +129,14 @@ import { HeaderComponent } from '../../components/header.component';
                       ></span
                     >
                   </li>
-                  <li>
+                  <!-- <li>
                     <span
                       ><strong
                         >Member of CAPIC (Canadian Association of Professional
                         Immigration Consultants)</strong
                       ></span
                     >
-                  </li>
+                  </li> -->
                 </ul>
                 <p>
                   Anitha's commitment, passion, and transparency shape her
@@ -168,9 +168,9 @@ import { HeaderComponent } from '../../components/header.component';
             <div class="grid grid-cols-1 gap-6">
               @for (value of coreValues(); track value.name) {
               <div
-                class="p-6 rounded-lg shadow-lg text-white"
-                [class.bg-sea-800]="value.color === 'bg-sea-800'"
-                [class.bg-fire-600]="value.color === 'bg-fire-600'"
+                class="p-6 rounded-lg shadow-lg "
+                [class.bg-gray-50]="value.color === 'bg-sea-800'"
+                [class.bg-gray-200]="value.color === 'bg-fire-600'"
               >
                 <h3
                   class="text-2xl font-semibold mb-2 flex justify-center items-center"
