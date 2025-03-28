@@ -1,4 +1,9 @@
-import { Component, signal } from '@angular/core';
+import {
+  Component,
+  signal,
+  ChangeDetectionStrategy,
+  OnInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -17,6 +22,7 @@ interface Program {
   selector: 'app-service-section',
   standalone: true,
   imports: [CommonModule, RouterModule],
+  changeDetection: ChangeDetectionStrategy.OnPush, // Optimize change detection
   template: `
     <section class="w-full bg-white pt-12">
       <!-- Header -->
@@ -35,63 +41,48 @@ interface Program {
         </h2>
       </div>
 
-      <!-- Programs Grid -->
-      <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
-        @for(item of programs(); track item){
-        <a [routerLink]="item.routePath" class="block">
-          <div class="relative h-96 overflow-hidden group cursor-pointer">
-            <!-- Background Image -->
+      <!-- Programs Grid - Using CSS grid for more predictable layout -->
+      <div
+        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 will-change-transform"
+      >
+        @for(item of programs(); track item.id){
+        <a
+          [routerLink]="item.routePath"
+          class="block service-card"
+          [attr.data-bg-color]="item.bgColor"
+        >
+          <div class="relative h-96 overflow-hidden cursor-pointer">
+            <!-- Background Image with will-change-transform for GPU acceleration -->
             <img
               [src]="'/assets/images/' + item.bgImage"
               [alt]="item.title"
-              class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-in-out group-hover:scale-110"
+              loading="lazy"
+              class="absolute inset-0 w-full h-full object-cover object-center will-change-transform"
             />
 
-            <!-- Colored Overlay with 50% opacity -->
+            <!-- Simplified Overlay (combines colored overlay and gradient) -->
             <div
-              [class]="
-                'absolute inset-0 opacity-50 transition-opacity duration-300 ' +
-                item.bgColor
-              "
-            ></div>
-
-            <!-- Dark Gradient Overlay (Bottom to Top) -->
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"
+              class="absolute inset-0 opacity-80 transition-opacity duration-300"
+              [ngClass]="item.bgColor + ' service-overlay'"
             ></div>
 
             <!-- Content -->
             <div class="relative h-full flex flex-col z-10 pt-6 pb-2 px-6">
-              <!-- Title at bottom with transition to center on hover -->
-              <div
-                class="mt-auto transition-all duration-500 transform group-hover:translate-y-[-30%]"
-              >
-                <h3
-                  class="text-3xl font-bold text-white mb-3 transition-all duration-500"
-                >
+              <div class="mt-auto service-content">
+                <h3 class="text-3xl font-bold text-white mb-3">
                   {{ item.title }}
                 </h3>
 
-                <!-- Description (hidden by default, visible on hover) -->
-                <p
-                  class="text-white text-sm mb-4 opacity-0 h-0 overflow-hidden transition-all duration-500 group-hover:opacity-100 group-hover:h-32"
-                >
+                <!-- Description (pre-sized to prevent layout shifts) -->
+                <p class="text-white text-sm mb-4 service-description">
                   {{ item.description }}
                 </p>
 
-                <!-- Button (hidden by default, visible on hover) -->
-                <!-- <button
-                  class="text-white border border-white rounded px-6 py-2 w-40 hover:bg-white hover:text-black  opacity-0 transform translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0"
-                >
-                  Read More
-                </button> -->
-                <div class="flex items-center justify-end">
-                  <span
-                    class="text-white px-2 py-2 opacity-0 transform translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0"
-                    >Read More</span
-                  >
+                <!-- Read More Link -->
+                <div class="flex items-center justify-end service-link">
+                  <span class="text-white px-2 py-2">Read More</span>
                   <svg
-                    class="px-1 py-2  opacity-0 transform translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0"
+                    class="px-1 py-2"
                     width="57"
                     height="57"
                     viewBox="0 0 57 57"
@@ -126,99 +117,159 @@ interface Program {
         display: block;
       }
 
-      /* Additional styles if needed */
+      /* Use hardware acceleration and reduce paint operations */
+      .service-card {
+        transform: translateZ(0); /* Triggers GPU acceleration */
+      }
+
+      .service-card img {
+        transition: transform 0.8s ease-out;
+        backface-visibility: hidden; /* Reduce paint */
+      }
+
+      .service-card:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Simplify the overlay to reduce layer complexity */
+      .service-overlay {
+        background-image: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.8),
+          transparent
+        );
+        transform: translateZ(0);
+      }
+
+      /* Optimize animations with simple transitions */
+      .service-content {
+        transition: transform 0.7s ease-out;
+      }
+
+      .service-card:hover .service-content {
+        transform: translateY(-30px);
+      }
+
+      /* Pre-hide elements that will be shown on hover to avoid layout shifts */
+      .service-description {
+        opacity: 0;
+        max-height: 0;
+        transition: opacity 0.6s ease-out, max-height 0.7s ease-out;
+      }
+
+      .service-card:hover .service-description {
+        opacity: 1;
+        max-height: 100px;
+      }
+
+      .service-link {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        transition-delay: 0.1s; /* Slight delay for sequential animation effect */
+      }
+
+      .service-card:hover .service-link {
+        opacity: 1;
+        transform: translateY(0);
+      }
     `,
   ],
 })
-export class ServiceSectionComponent {
-  programs = signal<Program[]>([
-    {
-      id: 'study',
-      icon: 'service-study',
-      title: 'Study in Canada',
-      description:
-        'Explore options for international students to study at Canadian institutions with student permits and post-graduation work opportunities.',
-      overlayText: 'STUDY',
-      routePath: '/services/temporary-services/study',
-      bgColor: 'bg-red-600',
-      bgImage: 'service-study.jpg',
-    },
-    {
-      id: 'work',
-      icon: 'service-work',
-      title: 'Work in Canada',
-      description:
-        'Discover pathways to obtain Canadian work permits, including LMIA-based work permits and employer-specific opportunities.',
-      overlayText: 'WORK',
-      routePath: '/services/temporary-services/work',
-      bgColor: 'bg-sea-900',
-      bgImage: 'service-work.jpg',
-    },
-    {
-      id: 'visitor',
-      icon: 'service-visa',
-      title: 'Visitor Visa',
-      description:
-        'Learn about visitor visas, super visas, and family reunification programs to bring your loved ones to Canada.',
-      overlayText: 'VISA',
-      routePath: '/services/temporary-services/visitor-visa',
-      bgColor: 'bg-red-600',
-      bgImage: 'service-visitor.jpg',
-    },
-    {
-      id: 'express',
-      icon: 'service-express',
-      title: 'Express Entry',
-      description:
-        "Canada's primary immigration system for skilled workers looking for permanent residency through FSW, CEC, and FST programs.",
-      overlayText: 'EE',
-      routePath: '/services/permanent-residency/express-entry',
-      bgColor: 'bg-sea-900',
-      bgImage: 'service-express.jpg',
-    },
-    {
-      id: 'pnp',
-      icon: 'service-pnp',
-      title: 'Provincial Nominee Program',
-      description:
-        'Explore province-specific immigration pathways designed to address regional economic and demographic needs.',
-      overlayText: 'PNP',
-      routePath: '/services/permanent-residency/provincial-nominee',
-      bgColor: 'bg-sea-900',
-      bgImage: 'pnp-program.jpg',
-    },
-    {
-      id: 'lmia',
-      icon: 'service-more',
-      title: 'Labour Market Impact Assessment (LMIA)',
-      description:
-        'Hire foreign workers to meet labour shortages in Canada. LMIA is a key step for employers to demonstrate the need for a foreign worker when no Canadians or permanent residents are available.',
-      overlayText: 'LMIA',
-      routePath: '/services/work/lmia-employer-permits',
-      bgColor: 'bg-red-600',
-      bgImage: 'skilled-worker.jpg',
-    },
-    {
-      id: 'business',
-      icon: 'service-business',
-      title: 'Business Immigration',
-      description:
-        'Immigration options for entrepreneurs, investors, and self-employed individuals looking to establish businesses in Canada.',
-      overlayText: 'BIZ',
-      routePath: '/services/permanent-residency/business-immigration',
-      bgColor: 'bg-sea-900',
-      bgImage: 'service-business.jpg',
-    },
-    {
-      id: 'pr-citizenship',
-      icon: 'service-citizen',
-      title: 'PR Card & Citizenship',
-      description:
-        'Services for permanent resident card renewal and applications for Canadian citizenship.',
-      overlayText: 'PR&C',
-      routePath: '/services/additional-services/citizenship',
-      bgColor: 'bg-red-600',
-      bgImage: 'service-passport.jpg',
-    },
-  ]);
+export class ServiceSectionComponent implements OnInit {
+  programs = signal<Program[]>([]);
+
+  ngOnInit() {
+    // Initialize data outside the constructor for better performance
+    this.programs.set([
+      {
+        id: 'study',
+        icon: 'service-study',
+        title: 'Study in Canada',
+        description:
+          'Explore options for international students to study at Canadian institutions with student permits and post-graduation work opportunities.',
+        overlayText: 'STUDY',
+        routePath: '/services/temporary-services/study',
+        bgColor: 'bg-red-600',
+        bgImage: 'service-study.jpg',
+      },
+      {
+        id: 'work',
+        icon: 'service-work',
+        title: 'Work in Canada',
+        description:
+          'Discover pathways to obtain Canadian work permits, including LMIA-based work permits and employer-specific opportunities.',
+        overlayText: 'WORK',
+        routePath: '/services/temporary-services/work',
+        bgColor: 'bg-sea-900',
+        bgImage: 'service-work.jpg',
+      },
+      {
+        id: 'visitor',
+        icon: 'service-visa',
+        title: 'Visitor Visa',
+        description:
+          'Learn about visitor visas, super visas, and family reunification programs to bring your loved ones to Canada.',
+        overlayText: 'VISA',
+        routePath: '/services/temporary-services/visitor-visa',
+        bgColor: 'bg-red-600',
+        bgImage: 'service-visitor.jpg',
+      },
+      {
+        id: 'express',
+        icon: 'service-express',
+        title: 'Express Entry',
+        description:
+          "Canada's primary immigration system for skilled workers looking for permanent residency through FSW, CEC, and FST programs.",
+        overlayText: 'EE',
+        routePath: '/services/permanent-residency/express-entry',
+        bgColor: 'bg-sea-900',
+        bgImage: 'service-express.jpg',
+      },
+      {
+        id: 'pnp',
+        icon: 'service-pnp',
+        title: 'Provincial Nominee Program',
+        description:
+          'Explore province-specific immigration pathways designed to address regional economic and demographic needs.',
+        overlayText: 'PNP',
+        routePath: '/services/permanent-residency/provincial-nominee',
+        bgColor: 'bg-sea-900',
+        bgImage: 'pnp-program.jpg',
+      },
+      {
+        id: 'lmia',
+        icon: 'service-more',
+        title: 'Labour Market Impact Assessment (LMIA)',
+        description:
+          'Hire foreign workers to meet labour shortages in Canada. LMIA is a key step for employers to demonstrate the need for a foreign worker when no Canadians or permanent residents are available.',
+        overlayText: 'LMIA',
+        routePath: '/services/work/lmia-employer-permits',
+        bgColor: 'bg-red-600',
+        bgImage: 'skilled-worker.jpg',
+      },
+      {
+        id: 'business',
+        icon: 'service-business',
+        title: 'Business Immigration',
+        description:
+          'Immigration options for entrepreneurs, investors, and self-employed individuals looking to establish businesses in Canada.',
+        overlayText: 'BIZ',
+        routePath: '/services/permanent-residency/business-immigration',
+        bgColor: 'bg-sea-900',
+        bgImage: 'service-business.jpg',
+      },
+      {
+        id: 'pr-citizenship',
+        icon: 'service-citizen',
+        title: 'PR Card & Citizenship',
+        description:
+          'Services for permanent resident card renewal and applications for Canadian citizenship.',
+        overlayText: 'PR&C',
+        routePath: '/services/additional-services/citizenship',
+        bgColor: 'bg-red-600',
+        bgImage: 'service-passport.jpg',
+      },
+    ]);
+  }
 }
