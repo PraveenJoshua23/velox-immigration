@@ -1,28 +1,21 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ServiceHeaderComponent } from '../../components/service-header.component';
 
 @Component({
   selector: 'app-provincial-nominee',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ServiceHeaderComponent],
   template: `
     <div class="space-y-8">
-      <!-- Hero Section -->
-      <div
-        class="bg-sea-900 text-white rounded-lg px-8 py-10 relative bg-cover bg-center"
-        [style.backgroundImage]="'url(/assets/images/pnp-hero.png)'"
-        style="min-height: 250px;"
-      >
-        <h1 class="text-3xl md:text-5xl mb-4">
-          Provincial Nominee Program (PNP)
-        </h1>
-        <p class="text-lg">
-          Immigrate to Canada through the province that values your skills most.
+      <app-service-header
+        title="Provincial Nominee Program (PNP)"
+        description="Immigrate to Canada through the province that values your skills most.
           Whether you're applying directly or through Express Entry, we'll guide
-          you through the right PNP path.
-        </p>
-      </div>
+          you through the right PNP path."
+        backgroundImage="/assets/images/pnp-hero.png"
+      />
 
       <!-- Overview Section -->
       <section class="bg-white p-6 rounded-md">

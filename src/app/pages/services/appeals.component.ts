@@ -1,25 +1,20 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ServiceHeaderComponent } from '../../components/service-header.component';
 
 @Component({
   selector: 'app-appeals-refugee',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ServiceHeaderComponent],
   template: `
     <div class="space-y-8">
-      <!-- Hero Section -->
-      <div
-        class="bg-sea-900 text-white rounded-lg px-8 py-10 relative bg-cover bg-center"
-        [style.backgroundImage]="'url(/assets/images/refugee-hero.png)'"
-        style="min-height: 250px;"
-      >
-        <h1 class="text-3xl md:text-5xl mb-4">Appeals, Refugee & H&C Cases</h1>
-        <p class="text-lg">
-          When your case needs compassion, legal strategy, and strong
-          representation—Velox Immigration is here.
-        </p>
-      </div>
+      <app-service-header
+        title="Appeals, Refugee & H&C Cases"
+        description="When your case needs compassion, legal strategy, and strong
+          representation—Velox Immigration is here."
+        backgroundImage="/assets/images/refugee-hero.png"
+      />
 
       <!-- Overview Section -->
       <section class="bg-white p-6 rounded-lg">

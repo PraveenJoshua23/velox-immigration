@@ -1,27 +1,20 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ServiceHeaderComponent } from '../../components/service-header.component';
 
 @Component({
   selector: 'app-atlantic-immigration',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ServiceHeaderComponent],
   template: `
     <div class="space-y-8">
-      <!-- Hero Section -->
-      <div
-        class="bg-sea-900 text-white rounded-lg px-8 py-10 relative bg-cover bg-center"
-        [style.backgroundImage]="
-          'url(/assets/images/atlantic-immigration-hero.png)'
-        "
-        style="min-height: 250px;"
-      >
-        <h1 class="text-3xl md:text-5xl mb-4">Atlantic Immigration Program</h1>
-        <p class="text-lg">
-          Live and work in Eastern Canada—through a fast and employer-driven
-          permanent residence pathway.
-        </p>
-      </div>
+      <app-service-header
+        title="Atlantic Immigration Program"
+        description="Live and work in Eastern Canada—through a fast and employer-driven
+          permanent residence pathway."
+        backgroundImage="/assets/images/atlantic-immigration-hero.png"
+      />
 
       <!-- Overview Section -->
       <section class="bg-white p-6 rounded-md">

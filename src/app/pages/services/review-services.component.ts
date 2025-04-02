@@ -1,25 +1,20 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ServiceHeaderComponent } from '../../components/service-header.component';
 
 @Component({
   selector: 'app-review-services',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ServiceHeaderComponent],
   template: `
     <div class="space-y-8">
-      <!-- Hero Section -->
-      <div
-        class="bg-sea-900 text-white rounded-lg px-8 py-10 relative bg-cover bg-center"
-        [style.backgroundImage]="'url(/assets/images/review-hero.png)'"
-        style="min-height: 250px;"
-      >
-        <h1 class="text-3xl md:text-5xl mb-4">Review Services</h1>
-        <p class="text-lg">
-          Understand what went wrong. Fix what comes next. Get clarity, answers,
-          and a path forward for your immigration file.
-        </p>
-      </div>
+      <app-service-header
+        title="Review Services"
+        description="Understand what went wrong. Fix what comes next. Get clarity, answers,
+          and a path forward for your immigration file."
+        backgroundImage="/assets/images/review-hero.png"
+      />
 
       <!-- Overview Section -->
       <section class="bg-white p-6 rounded-md">

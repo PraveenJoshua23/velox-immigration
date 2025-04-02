@@ -1,25 +1,20 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ServiceHeaderComponent } from '../../components/service-header.component';
 
 @Component({
   selector: 'app-family-sponsorship',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ServiceHeaderComponent],
   template: `
     <div class="space-y-8">
-      <!-- Hero Section -->
-      <div
-        class="bg-sea-900 text-white rounded-lg px-8 py-10 relative bg-cover bg-center"
-        [style.backgroundImage]="'url(/assets/images/family-hero.png)'"
-        style="min-height: 250px;"
-      >
-        <h1 class="text-3xl md:text-5xl mb-4">Family Sponsorship</h1>
-        <p class="text-lg">
-          Reunite with your loved ones in Canada through the family sponsorship
-          program—with expert support every step of the way.
-        </p>
-      </div>
+      <app-service-header
+        title="Family Sponsorship"
+        description="Reunite with your loved ones in Canada through the family sponsorship
+          program—with expert support every step of the way."
+        backgroundImage="/assets/images/family-hero.png"
+      />
 
       <!-- Overview Section -->
       <section class="bg-white p-6 rounded-md">

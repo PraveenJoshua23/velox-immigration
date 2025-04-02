@@ -1,25 +1,20 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ServiceHeaderComponent } from '../../components/service-header.component';
 
 @Component({
   selector: 'app-express-entry',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ServiceHeaderComponent],
   template: `
     <div class="space-y-8">
-      <!-- Hero Section -->
-      <div
-        class="bg-sea-900 text-white rounded-lg px-8 py-10 relative bg-cover bg-center"
-        [style.backgroundImage]="'url(/assets/images/express-entry-hero.png)'"
-        style="min-height: 250px;"
-      >
-        <h1 class="text-3xl md:text-5xl mb-4">Express Entry Programs</h1>
-        <p class="text-lg">
-          Your fast-track pathway to permanent residency in Canada—built for
-          skilled professionals like you.
-        </p>
-      </div>
+      <app-service-header
+        title="Express Entry Programs"
+        description="Your fast-track pathway to permanent residency in Canada—built for
+          skilled professionals like you."
+        backgroundImage="/assets/images/express-entry-hero.png"
+      />
 
       <!-- Overview Section -->
       <section class="bg-white p-6 ">
