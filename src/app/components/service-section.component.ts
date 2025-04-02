@@ -4,7 +4,7 @@ import {
   ChangeDetectionStrategy,
   OnInit,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 interface Program {
@@ -21,7 +21,7 @@ interface Program {
 @Component({
   selector: 'app-service-section',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, NgOptimizedImage],
   changeDetection: ChangeDetectionStrategy.OnPush, // Optimize change detection
   template: `
     <section class="w-full bg-white pt-12">
@@ -54,9 +54,10 @@ interface Program {
           <div class="relative h-96 overflow-hidden cursor-pointer">
             <!-- Background Image with will-change-transform for GPU acceleration -->
             <img
-              [src]="'/assets/images/' + item.bgImage"
+              [ngSrc]="'/assets/images/' + item.bgImage"
               [alt]="item.title"
-              loading="lazy"
+              fill
+              loading="eager"
               class="absolute inset-0 w-full h-full object-cover object-center will-change-transform"
             />
 

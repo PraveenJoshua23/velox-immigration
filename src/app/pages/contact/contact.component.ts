@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -9,10 +9,18 @@ import {
 import { HeaderComponent } from '../../components/header.component';
 import { FooterComponent } from '../../components/footer.component';
 import { SheetsService } from '../../services/sheets.service';
+import { localServices } from '../../utils/constants/navigation';
+
+interface ServiceItem {
+  id: string;
+  label: string;
+  path: string;
+}
 
 interface ServiceCategory {
-  name: string;
-  services: string[];
+  id: string;
+  title: string;
+  items: ServiceItem[];
 }
 
 @Component({
@@ -239,8 +247,10 @@ interface ServiceCategory {
                     class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-fire-600 focus:border-transparent"
                   >
                     <option value="">Select a category</option>
-                    @for(category of serviceCategories(); track category.name) {
-                    <option [value]="category.name">{{ category.name }}</option>
+                    @for(category of serviceCategories(); track category.id) {
+                    <option [value]="category.title">
+                      {{ category.title }}
+                    </option>
                     }
                   </select>
                 </div>
@@ -254,8 +264,8 @@ interface ServiceCategory {
                     class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-fire-600 focus:border-transparent"
                   >
                     <option value="">Select a service</option>
-                    @for(service of availableServices(); track service) {
-                    <option [value]="service">{{ service }}</option>
+                    @for(service of availableServices(); track service.id) {
+                    <option [value]="service.label">{{ service.label }}</option>
                     }
                   </select>
                 </div>
@@ -295,55 +305,16 @@ interface ServiceCategory {
     `,
   ],
 })
-export class ContactFormComponent {
+export class ContactFormComponent implements OnInit {
   contactForm: FormGroup;
 
-  serviceCategories = signal<ServiceCategory[]>([
-    {
-      name: 'Temporary Resident Services',
-      services: [
-        'Study in Canada',
-        'Work in Canada',
-        'Visitor Visa',
-        'Parent/Grandparent Super Visa',
-        'Labour Market Impact Assessment (LMIA)',
-      ],
-    },
-    {
-      name: 'Permanent Residency & Immigration Pathways',
-      services: [
-        'Express Entry',
-        'Provincial Nominee Program (PNP)',
-        'Atlantic Immigration Program',
-        'Family Immigration',
-        'Business Immigration',
-        'Humanitarian & Compassionate Applications',
-        'Refugee Claims Services',
-      ],
-    },
-    {
-      name: 'Family Sponsorship & Appeals',
-      services: [
-        'Spouse Sponsorship',
-        'Children Sponsorship',
-        'Parent Sponsorship',
-        'Sponsorship Appeals',
-      ],
-    },
-    {
-      name: 'Canadian Citizenship & PR Services',
-      services: ['Permanent Resident Card Renewal', 'Citizenship Applications'],
-    },
-    {
-      name: 'Additional Services',
-      services: ['Application Review'],
-    },
-  ]);
-
-  availableServices = signal<string[]>([]);
+  // Using the new services structure
+  serviceCategories = signal<ServiceCategory[]>([]);
+  availableServices = signal<ServiceItem[]>([]);
   isSubmitting = signal(false);
   submitError = signal<string | null>(null);
   submitSuccess = signal(false);
+  localServices = signal([...localServices]);
 
   constructor(private fb: FormBuilder, private sheetsService: SheetsService) {
     this.contactForm = this.fb.group({
@@ -357,12 +328,17 @@ export class ContactFormComponent {
     });
   }
 
+  ngOnInit() {
+    // Initialize with the new structure
+    this.serviceCategories.set(localServices);
+  }
+
   updateServices() {
     const selectedCategory = this.contactForm.get('serviceCategory')?.value;
     const category = this.serviceCategories().find(
-      (cat) => cat.name === selectedCategory
+      (cat) => cat.title === selectedCategory
     );
-    this.availableServices.set(category?.services || []);
+    this.availableServices.set(category?.items || []);
     this.contactForm.patchValue({ specificService: '' });
   }
 
@@ -372,7 +348,13 @@ export class ContactFormComponent {
       this.submitError.set(null);
       this.submitSuccess.set(false);
 
-      this.sheetsService.submitFormData(this.contactForm.value).subscribe({
+      // Add timestamp to the form data for the sheet
+      const formData = {
+        ...this.contactForm.value,
+        submissionDate: new Date().toISOString(),
+      };
+
+      this.sheetsService.submitFormData(formData).subscribe({
         next: () => {
           this.submitSuccess.set(true);
           this.contactForm.reset();

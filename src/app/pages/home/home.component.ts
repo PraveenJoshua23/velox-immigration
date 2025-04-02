@@ -1,4 +1,8 @@
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import {
+  CommonModule,
+  isPlatformBrowser,
+  NgOptimizedImage,
+} from '@angular/common';
 import { AfterViewInit, Component, Inject, PLATFORM_ID } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { animate, inView } from 'motion';
@@ -27,6 +31,7 @@ import { ContactFormData } from '../../services/sheets.service';
     WhyChooseUsComponent,
     ProcessStepsComponent,
     ServiceSectionComponent,
+    NgOptimizedImage,
   ],
   template: `
     <!-- <header class="bg-white shadow-sm">
@@ -103,9 +108,11 @@ import { ContactFormData } from '../../services/sheets.service';
               ></div>
               <img
                 id="hero-image"
-                src="/assets/images/immigration-hero.png"
+                ngSrc="/assets/images/immigration-hero.png"
                 alt="Immigration Services"
                 class="w-full h-full object-cover"
+                priority
+                fill
               />
             </div>
           </div>

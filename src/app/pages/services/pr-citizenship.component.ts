@@ -1,27 +1,20 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ServiceHeaderComponent } from '../../components/service-header.component';
 
 @Component({
   selector: 'app-pr-citizenship',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ServiceHeaderComponent],
   template: `
     <div class="space-y-8">
-      <!-- Hero Section -->
-      <div
-        class="bg-sea-900 text-white rounded-lg px-8 py-10 relative bg-cover bg-center"
-        [style.backgroundImage]="'url(/assets/images/pr-citizenship-hero.png)'"
-        style="min-height: 250px;"
-      >
-        <h1 class="text-3xl md:text-5xl mb-4">
-          PR Card & Citizenship Applications
-        </h1>
-        <p class="text-lg">
-          Maintain your permanent resident status—or take the final step toward
-          becoming a Canadian citizen.
-        </p>
-      </div>
+      <app-service-header
+        title="PR Card & Citizenship Applications"
+        description="Maintain your permanent resident status—or take the final step toward
+          becoming a Canadian citizen."
+        backgroundImage="/assets/images/pr-citizenship-hero.png"
+      />
 
       <!-- Overview Section -->
       <section class="bg-white p-6 rounded-md">

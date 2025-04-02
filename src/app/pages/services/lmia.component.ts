@@ -1,30 +1,20 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ServiceHeaderComponent } from '../../components/service-header.component';
 
 @Component({
   selector: 'app-lmia',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ServiceHeaderComponent],
   template: `
     <div class="space-y-8">
-      <!-- Hero Section -->
-      <div
-        class="bg-sea-900 text-white rounded-lg px-8 py-10 relative bg-cover bg-center"
-        [style.backgroundImage]="'url(/assets/images/lmia-hero.png)'"
-        style="min-height: 250px;"
-      >
-        <!-- <div class="absolute inset-0 bg-sea-900 bg-opacity-70 rounded-lg"></div> -->
-        <div class="relative z-10">
-          <h1 class="text-3xl md:text-5xl mb-4">
-            LMIA & Employer-Based Work Permits
-          </h1>
-          <p class="text-lg">
-            Bring your skills to the Canadian workforce with a job-specific work
-            permit backed by a legitimate job offer.
-          </p>
-        </div>
-      </div>
+      <app-service-header
+        title="LMIA & Employer-Based Work Permits"
+        description="Bring your skills to the Canadian workforce with a job-specific work
+            permit backed by a legitimate job offer."
+        backgroundImage="/assets/images/lmia-hero.png"
+      />
 
       <!-- Overview Section -->
       <section class="bg-white p-6">

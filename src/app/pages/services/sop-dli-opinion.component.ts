@@ -1,26 +1,19 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ServiceHeaderComponent } from '../../components/service-header.component';
 
 @Component({
   selector: 'app-sop-dli-opinion',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ServiceHeaderComponent],
   template: `
     <div class="space-y-8">
-      <!-- Hero Section -->
-      <div
-        class="bg-sea-900 text-white rounded-lg px-8 py-10 relative"
-        [style.backgroundImage]="'url(/assets/images/writing-hero.png)'"
-        style="min-height: 250px;"
-      >
-        <h1 class="text-3xl md:text-5xl mb-4">
-          SOP Writing, DLI Change & Second Opinion
-        </h1>
-        <p class="text-lg">
-          Clarity. Compliance. Confidence—when you need it most.
-        </p>
-      </div>
+      <app-service-header
+        title="SOP Writing, DLI Change & Second Opinion"
+        description=" Clarity. Compliance. Confidence—when you need it most."
+        backgroundImage="/assets/images/writing-hero.png"
+      />
 
       <!-- Overview Section -->
       <section class="bg-white p-6 rounded-lg">

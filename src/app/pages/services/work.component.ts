@@ -1,27 +1,20 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ServiceHeaderComponent } from '../../components/service-header.component';
 
 @Component({
   selector: 'app-work',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ServiceHeaderComponent],
   template: `
     <div class="space-y-8">
-      <!-- Hero Section -->
-      <div
-        class="bg-sea-900 text-white rounded-lg px-8 py-10 relative bg-cover bg-center"
-        [style.backgroundImage]="'url(/assets/images/work-extension-hero.png)'"
-        style="min-height: 250px;"
-      >
-        <h1 class="text-3xl md:text-5xl mb-4">
-          Work Permit Extensions & Co-op Work Permits
-        </h1>
-        <p class="text-lg">
-          Secure the right permit to begin or continue your studies in
-          Canada—with expert support every step of the way.
-        </p>
-      </div>
+      <app-service-header
+        title="Work Permit Extensions & Co-op Work Permits"
+        description="Secure the right permit to begin or continue your studies in
+          Canada—with expert support every step of the way."
+        backgroundImage="/assets/images/work-extension-hero.png"
+      />
 
       <!-- Overview Section -->
       <section class="bg-white p-6 ">
