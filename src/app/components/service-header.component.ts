@@ -44,7 +44,7 @@ import {
       ),
       transition(':enter', [
         animate(
-          '600ms ease-out',
+          '800ms ease-out',
           style({
             opacity: 1,
             transform: 'translateY(0)',
