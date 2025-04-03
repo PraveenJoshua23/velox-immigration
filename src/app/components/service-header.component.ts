@@ -21,8 +21,9 @@ import {
       "
       style="min-height: 250px;"
       [@fadeIn]
+      loading="lazy"
+      [attr.fetchpriority]="'high'"
     >
-      <!-- <div class="absolute inset-0 bg-sea-900 bg-opacity-70 rounded-lg"></div> -->
       <div class="relative z-10">
         <h1 class="text-3xl md:text-5xl mb-4">
           {{ title }}
@@ -62,7 +63,19 @@ import {
   ],
 })
 export class ServiceHeaderComponent {
+  private _backgroundImage: string | null = null;
+
   @Input() title: string = '';
   @Input() description: string = '';
-  @Input() backgroundImage: string | null = null;
+  @Input()
+  set backgroundImage(value: string | null) {
+    if (value) {
+      const img = new Image();
+      img.src = value;
+    }
+    this._backgroundImage = value;
+  }
+  get backgroundImage(): string | null {
+    return this._backgroundImage;
+  }
 }
