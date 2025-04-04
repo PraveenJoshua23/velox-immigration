@@ -26,7 +26,7 @@ import {
             What our <span class="font-bold">Clients</span> say
           </h2>
         </div>
-        <h3 class="text-2xl md:text-4xl lg:text-5xl text-sea-900 mt-4">
+        <h3 class="text-4xl md:text-5xl text-sea-900 mt-4">
           Testimonial of our Immigration
           <span class="block mt-1">Guidance & Support</span>
         </h3>
