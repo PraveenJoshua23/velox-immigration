@@ -24,7 +24,7 @@ interface Reason {
       <div class="container mx-auto px-4">
         <div class="text-center mb-12">
           <div class="flex items-center justify-center gap-2 mb-4">
-            <img src="assets/images/plane.svg" class="pb-1" />
+            <img src="assets/images/plane.svg" class="pb-1 hidden md:block" />
             <h2 class="text-3xl font-medium">
               Why Choose <span class="font-bold">Velox Immigration?</span>
             </h2>
