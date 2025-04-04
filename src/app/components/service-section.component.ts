@@ -36,7 +36,7 @@ interface Program {
           </h2>
         </div>
 
-        <h2 class="text-5xl pb-2 text-sea-900">
+        <h2 class="text-4xl md:text-5xl pb-2 text-sea-900">
           Outstanding Immigration Services
         </h2>
       </div>
