@@ -60,7 +60,7 @@ interface CalendarDay {
           </div>
 
           <div class="p-6">
-            <div class="grid grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div
                 *ngFor="let consultation of consultations()"
                 class="p-6 border rounded-lg cursor-pointer transition hover:shadow-md"
