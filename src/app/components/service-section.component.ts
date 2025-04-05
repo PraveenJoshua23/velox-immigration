@@ -190,7 +190,7 @@ export class ServiceSectionComponent implements OnInit {
         description:
           'Explore options for international students to study at Canadian institutions with student permits and post-graduation work opportunities.',
         overlayText: 'STUDY',
-        routePath: '/services/temporary-services/study',
+        routePath: '/services/study/study-in-canada',
         bgColor: 'bg-red-600',
         bgImage: 'service-study.jpg',
       },
@@ -201,7 +201,7 @@ export class ServiceSectionComponent implements OnInit {
         description:
           'Discover pathways to obtain Canadian work permits, including LMIA-based work permits and employer-specific opportunities.',
         overlayText: 'WORK',
-        routePath: '/services/temporary-services/work',
+        routePath: '/services/work/open-pgwp-permits',
         bgColor: 'bg-sea-900',
         bgImage: 'service-work.jpg',
       },
@@ -212,7 +212,7 @@ export class ServiceSectionComponent implements OnInit {
         description:
           'Learn about visitor visas, super visas, and family reunification programs to bring your loved ones to Canada.',
         overlayText: 'VISA',
-        routePath: '/services/temporary-services/visitor-visa',
+        routePath: '/services/visit/visitor-visas',
         bgColor: 'bg-red-600',
         bgImage: 'service-visitor.jpg',
       },
@@ -223,7 +223,7 @@ export class ServiceSectionComponent implements OnInit {
         description:
           "Canada's primary immigration system for skilled workers looking for permanent residency through FSW, CEC, and FST programs.",
         overlayText: 'EE',
-        routePath: '/services/permanent-residency/express-entry',
+        routePath: '/services/immigrate/express-entry',
         bgColor: 'bg-sea-900',
         bgImage: 'service-express.jpg',
       },
@@ -234,7 +234,7 @@ export class ServiceSectionComponent implements OnInit {
         description:
           'Explore province-specific immigration pathways designed to address regional economic and demographic needs.',
         overlayText: 'PNP',
-        routePath: '/services/permanent-residency/provincial-nominee',
+        routePath: '/services/immigrate/provincial-nominee',
         bgColor: 'bg-sea-900',
         bgImage: 'pnp-program.jpg',
       },
@@ -256,7 +256,7 @@ export class ServiceSectionComponent implements OnInit {
         description:
           'Immigration options for entrepreneurs, investors, and self-employed individuals looking to establish businesses in Canada.',
         overlayText: 'BIZ',
-        routePath: '/services/permanent-residency/business-immigration',
+        routePath: '/services/immigrate/business-immigration',
         bgColor: 'bg-sea-900',
         bgImage: 'service-business.jpg',
       },
@@ -267,7 +267,7 @@ export class ServiceSectionComponent implements OnInit {
         description:
           'Services for permanent resident card renewal and applications for Canadian citizenship.',
         overlayText: 'PR&C',
-        routePath: '/services/additional-services/citizenship',
+        routePath: '/services/other/pr-citizenship',
         bgColor: 'bg-red-600',
         bgImage: 'service-passport.jpg',
       },
