@@ -60,8 +60,8 @@ import { RouterModule } from '@angular/router';
                 class="h-14 mb-4 mx-auto md:mx-0"
               />
               <p class="text-gray-400 font-light text-sm mb-4">
-                Velox Immigration is a regulated Canadian Immigration
-                Consultant.
+                Regulated Canadian Immigration Consulting Firm - Serving Clients
+                Globally.
               </p>
 
               <div
