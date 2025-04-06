@@ -36,7 +36,7 @@ interface ServiceCategory {
     <app-header />
     <section class="min-h-screen bg-gray-50 pb-12">
       <!-- Hero Section -->
-      <div class="bg-sea-900 text-white py-16">
+      <div class="bg-sea-950 text-white py-16">
         <div class="container mx-auto px-4 max-w-5xl">
           <h1 class="text-4xl md:text-5xl mb-4">Contact Us</h1>
           <p class="text-xl opacity-90 max-w-3xl">

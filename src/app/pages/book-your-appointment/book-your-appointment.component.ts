@@ -19,11 +19,9 @@ import { AppointmentBookingComponent } from '../../components/book-appointment.c
     <app-header />
     <section class="min-h-screen bg-gray-50 py-12">
       <!-- Hero Section -->
-      <div class="bg-sea-900 text-white py-16 mb-12">
+      <div class="bg-sea-950 text-white py-16 mb-12">
         <div class="container mx-auto px-4">
-          <h1 class="text-4xl md:text-5xl font-bold mb-4">
-            Book Your Consultation
-          </h1>
+          <h1 class="text-4xl md:text-5xl mb-4">Book Your Consultation</h1>
           <p class="text-xl opacity-90">
             Take the first step towards your Canadian journey
           </p>
