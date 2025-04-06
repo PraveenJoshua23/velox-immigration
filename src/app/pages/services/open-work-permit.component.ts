@@ -28,37 +28,12 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
           process of obtaining or extending your open or post-graduation work
           permit, helping you stay compliant and career-ready.
         </p>
-      </section>
-
-      <!-- Work Permit Extensions & Co-op Work Permits -->
-      <section class="bg-gray-50 rounded-md p-6">
-        <h2 class="text-2xl text-sea-900 mb-4">
-          Work Permit Extensions & Co-op Work Permits
-        </h2>
-        <p class="text-gray-700">
-          Continue working legally in Canada or gain experience through your
-          academic program—without interruption.
-        </p>
-      </section>
-
-      <!-- Hero Section from Document -->
-      <section class="bg-white rounded-md p-6">
-        <h2 class="text-2xl text-sea-900 mb-4">
-          Stay Compliant. Keep Working. Move Forward.
-        </h2>
-        <p class="text-gray-700 mb-4">
-          If your work permit is about to expire or you're a student needing a
-          co-op work permit for your program, you need the right application,
-          filed on time. At Velox Immigration, we help you maintain legal
-          status, avoid disruptions, and stay focused on your career or
-          education goals.
-        </p>
         <div class="mt-6">
           <button
             routerLink="/book-your-appointment"
             class="bg-fire-600 text-white px-6 py-3 rounded-lg hover:bg-fire-700 transition-colors"
           >
-            Apply for Your Extension or Co-op Permit Today
+            Start Your Work Permit Application Today
           </button>
         </div>
       </section>
@@ -66,31 +41,31 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
       <!-- Who This Is For Section -->
       <section class="bg-gray-50 rounded-md p-6">
         <h2 class="text-2xl text-sea-900 mb-4">Who This Is For</h2>
-        <p class="text-gray-700">This service is ideal for:</p>
+        <p class="text-gray-700">This service is designed for:</p>
         <ul class="py-3 space-y-2 list-disc pl-5 text-gray-700">
           <li>
-            <span class="font-medium"
-              >Foreign nationals whose employer-specific or open work permit is
-              expiring</span
-            >
+            <span class="font-medium">
+              International graduates eligible for a Post-Graduation Work Permit
+              (PGWP)
+            </span>
           </li>
           <li>
-            <span class="font-medium"
-              >International students enrolled in programs that require co-op or
-              internship placements</span
-            >
+            <span class="font-medium">
+              Spouses or common-law partners of international students or
+              workers
+            </span>
           </li>
           <li>
-            <span class="font-medium"
-              >Workers looking to restore status after a work permit
-              expires</span
-            >
+            <span class="font-medium">
+              Bridging Open Work Permit (BOWP) applicants awaiting permanent
+              residency
+            </span>
           </li>
           <li>
-            <span class="font-medium"
-              >Applicants transitioning between permits (e.g., PGWP to bridging
-              work permit)</span
-            >
+            <span class="font-medium">
+              Individuals applying for Open Work Permits under special public
+              policies
+            </span>
           </li>
         </ul>
       </section>
@@ -99,38 +74,44 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
       <section class="bg-white rounded-md p-6">
         <h2 class="text-2xl text-sea-900 mb-4">What We Offer</h2>
         <p class="text-gray-700 mb-4">
-          We provide personalized support for two key permit types:
+          At Velox Immigration, we support you with the following:
         </p>
 
         <div class="space-y-6">
           <div>
             <h3 class="text-xl font-medium text-fire-600 mb-2">
-              Work Permit Extensions
+              Post-Graduation Work Permits (PGWP)
             </h3>
             <p class="text-gray-700">
-              Whether you're on an open work permit, employer-specific permit,
-              or PGWP, we assist with timely extensions to ensure your continued
-              legal status. We review eligibility, handle all IRCC forms, and
-              file your extension application before your current permit
-              expires. If you're switching employers or roles, we guide you
-              through the process of modifying your permit terms.
-            </p>
-            <p class="text-gray-700 mt-2">
-              We also assist in status restoration if your permit has expired
-              within the past 90 days.
+              Graduated from a Canadian DLI? You may be eligible for an open
+              work permit valid up to three years. We help you determine
+              eligibility based on your institution and program, ensure timely
+              submission, and prepare supporting documents such as transcripts
+              and completion letters.
             </p>
           </div>
 
           <div>
             <h3 class="text-xl font-medium text-fire-600 mb-2">
-              Co-op Work Permits
+              Spousal Open Work Permits
             </h3>
             <p class="text-gray-700">
-              If your academic program includes a mandatory work component, such
-              as an internship or field placement, you must apply for a co-op
-              work permit. This permit is free and must be approved before you
-              begin your placement. We coordinate with your institution to
-              gather the necessary documentation and ensure timely submission.
+              If your spouse or partner is a full-time student or skilled worker
+              in Canada, you may be eligible for an open work permit. We assess
+              your relationship documentation, draft affidavits (if needed), and
+              handle all IRCC forms and communications.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-medium text-fire-600 mb-2">
+              Bridging Open Work Permits (BOWP)
+            </h3>
+            <p class="text-gray-700">
+              Already applied for permanent residence and your current work
+              permit is expiring? A BOWP lets you keep working while awaiting a
+              decision. We verify your PR file status and guide you through this
+              transitional process to ensure you don't fall out of status.
             </p>
           </div>
         </div>
@@ -156,40 +137,36 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
           <span class="mt-1">What You Need to Apply</span>
         </h2>
 
-        <div class="space-y-6">
-          <div>
-            <h3 class="text-xl font-medium text-fire-600 mb-2">
-              For Work Permit Extensions:
-            </h3>
-            <ul class="space-y-2 list-disc pl-5 text-gray-700">
-              <li>A valid passport</li>
-              <li>Copy of your current work permit</li>
-              <li>Job offer letter (if employer-specific)</li>
-              <li>Pay stubs or proof of employment (for PGWP holders)</li>
-              <li>Explanation letter (if changing employers or job duties)</li>
-              <li>
-                Proof of ongoing eligibility (e.g., PR file number for BOWP)
-              </li>
-            </ul>
-          </div>
+        <p class="text-gray-700 mb-4">
+          While document requirements vary by permit type, most applicants will
+          need:
+        </p>
 
-          <div>
-            <h3 class="text-xl font-medium text-fire-600 mb-2">
-              For Co-op Work Permits:
-            </h3>
-            <ul class="space-y-2 list-disc pl-5 text-gray-700">
-              <li>
-                Letter from your DLI confirming that the work component is
-                essential
-              </li>
-              <li>Valid study permit</li>
-              <li>A valid passport</li>
-              <li>School's co-op/internship agreement (if applicable)</li>
-            </ul>
-          </div>
-        </div>
+        <ul class="space-y-2 list-disc pl-5 text-gray-700">
+          <li>A valid <span class="font-medium">passport</span></li>
+          <li>
+            Proof of <span class="font-medium">eligibility</span> (e.g.,
+            graduation letter, relationship documents, or PR file number)
+          </li>
+          <li><span class="font-medium">Digital photo</span></li>
+          <li>
+            <span class="font-medium">Proof of status</span> in Canada (if
+            applying inland)
+          </li>
+          <li>
+            Supporting documents such as transcripts, pay stubs, or proof of
+            cohabitation
+          </li>
+          <li>
+            Payment of the
+            <span class="font-medium">open work permit fee</span> and
+            <span class="font-medium">processing fee</span>
+          </li>
+        </ul>
+
         <p class="text-gray-700 mt-4">
-          We'll provide a custom checklist based on your situation.
+          We'll provide a personalized document checklist and guide you
+          step-by-step based on your category.
         </p>
       </section>
 
@@ -205,10 +182,12 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
               1
             </div>
             <div>
-              <p class="font-medium">Consultation & Permit Review</p>
+              <p class="font-medium">
+                Initial Consultation & Category Assessment
+              </p>
               <p class="text-gray-600">
-                We assess your current permit and eligibility for extension or
-                co-op issuance.
+                We identify the best open work permit route based on your
+                current status and goals.
               </p>
             </div>
           </div>
@@ -220,10 +199,10 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
               2
             </div>
             <div>
-              <p class="font-medium">Document Collection & Strategy</p>
+              <p class="font-medium">Document Support & Review</p>
               <p class="text-gray-600">
-                We create a checklist, review all supporting documents, and
-                guide you on writing effective explanations (if needed).
+                From marriage certificates to graduation letters, we review all
+                documents for accuracy.
               </p>
             </div>
           </div>
@@ -235,10 +214,10 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
               3
             </div>
             <div>
-              <p class="font-medium">Application Preparation & Filing</p>
+              <p class="font-medium">Application Preparation & Submission</p>
               <p class="text-gray-600">
-                We prepare and submit your IRCC application, ensuring accuracy
-                and completeness.
+                We handle the online filing and monitor your IRCC account for
+                updates or requests.
               </p>
             </div>
           </div>
@@ -250,10 +229,10 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
               4
             </div>
             <div>
-              <p class="font-medium">Follow-Up & Status Monitoring</p>
+              <p class="font-medium">Post-Submission Support</p>
               <p class="text-gray-600">
-                We monitor your application status and assist with biometrics or
-                additional document requests.
+                We assist with biometrics, medical exams, or any additional
+                document requests until a final decision is issued.
               </p>
             </div>
           </div>
@@ -281,26 +260,26 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
         </h2>
         <ul class="py-3 space-y-2 list-disc pl-5 text-gray-700">
           <li>
-            A PGWP holder who is continuing employment but has a permit expiring
-            next month
+            A PGWP applicant who studied at a non-eligible private college and
+            needs help understanding options
           </li>
           <li>
-            An international student ready to begin an internship but has no
-            co-op work permit
+            A spouse of a PGWP holder wanting to work and contribute to
+            household income
           </li>
           <li>
-            A worker whose permit expired 3 weeks ago and needs to restore
-            status
+            A graduate who missed the PGWP deadline and is looking at
+            restoration or alternate permits
           </li>
           <li>
-            A professional changing jobs and needing a modified
-            employer-specific permit
+            A PR applicant in Express Entry needing a BOWP to stay employed
+            during processing
           </li>
         </ul>
       </section>
 
       <!-- FAQ Section with Accordion -->
-      <section class=" bg-gray-50 rounded-md p-6">
+      <section class="bg-gray-50 rounded-md p-6">
         <h2 class="flex items-center text-2xl text-sea-900 mb-6">
           <svg
             class="w-6 h-6 inline-block mr-2"
@@ -529,12 +508,11 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
       <section class="bg-fire-600 text-white rounded-lg p-8 my-8">
         <div class="flex flex-col md:flex-row items-center justify-between">
           <div class="mb-6 md:mb-0">
-            <h2 class="text-2xl font-bold mb-2">
-              Don't Let Your Status Expire
-            </h2>
+            <h2 class="text-2xl font-bold mb-2">Ready to Work in Canada?</h2>
             <p class="text-lg font-light pr-4">
-              Whether you need a renewal, a change, or a brand-new co-op permit,
-              we'll help you stay compliant and employed.
+              Whether you're graduating soon or applying as a spouse, let Velox
+              Immigration help you secure the right open work permit and start
+              your career in Canada.
             </p>
           </div>
           <div>
@@ -542,7 +520,7 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
               routerLink="/book-your-appointment"
               class="bg-white text-fire-600 px-8 py-3 rounded-lg cursor-pointer font-medium hover:bg-gray-100 transition-colors shadow-lg"
             >
-              Book a Consultation Today
+              Book Your Work Permit Consultation Today
             </button>
           </div>
         </div>

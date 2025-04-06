@@ -26,27 +26,29 @@ import { ElementRef, ViewChild } from '@angular/core';
         #sidebarRef
         [class.mt-20]="isScrolled()"
       >
-        <h2 class="text-2xl pb-5 pt-4 text-sea-800">Our Services</h2>
-        @for(category of localServices(); track category.title) {
-        <div class="mb-6">
-          <h3 class="text-lg font-medium text-sea-900 mb-2">
-            {{ category.title }}
-          </h3>
-          <ul class="space-y-2">
-            @for(service of category.items; track service.label) {
-            <li>
-              <a
-                [routerLink]="service.path"
-                routerLinkActive="text-red-600"
-                class="text-gray-600 hover:text-fire-600 transition-colors text-sm"
-              >
-                {{ service.label }}
-              </a>
-            </li>
-            }
-          </ul>
+        <div class="max-h-[70vh] overflow-auto">
+          <h2 class="text-2xl pb-5 pt-4 text-sea-800">Our Services</h2>
+          @for(category of localServices(); track category.title) {
+          <div class="mb-6 scrollbar-thin overflow-auto max-h-[50dvh]">
+            <h3 class="text-lg font-medium text-sea-900 mb-2">
+              {{ category.title }}
+            </h3>
+            <ul class="space-y-2">
+              @for(service of category.items; track service.label) {
+              <li>
+                <a
+                  [routerLink]="service.path"
+                  routerLinkActive="text-red-600"
+                  class="text-gray-600 hover:text-fire-600 transition-colors text-sm"
+                >
+                  {{ service.label }}
+                </a>
+              </li>
+              }
+            </ul>
+          </div>
+          }
         </div>
-        }
         <!-- Need help callout -->
         <div class="mt-8 bg-sea-50 p-4 rounded-lg border border-sea-200">
           <h3 class="text-lg font-medium text-sea-800 mb-2">

@@ -14,7 +14,7 @@ import { HeaderComponent } from '../../components/header.component';
 
     <main>
       <!-- Hero Section -->
-      <section class="bg-sea-900 text-white py-20">
+      <section class="bg-sea-950 text-white py-20">
         <div class="container mx-auto px-4">
           <h1 class="text-4xl md:text-5xl mb-6">About Velox Immigration</h1>
           <p class="text-xl">Your Trusted Partner in Canadian Immigration</p>
