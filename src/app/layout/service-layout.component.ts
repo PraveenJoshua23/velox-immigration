@@ -1,10 +1,17 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../components/header.component';
 import { FooterComponent } from '../components/footer.component';
 import { localServices } from '../utils/constants/navigation';
 import { ElementRef, ViewChild } from '@angular/core';
+import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-services-layout',
@@ -70,8 +77,23 @@ import { ElementRef, ViewChild } from '@angular/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ServicesLayoutComponent {
+export class ServicesLayoutComponent implements OnInit {
   localServices = signal([...localServices]);
   @ViewChild('sidebarRef') sidebarRef!: ElementRef;
   isScrolled = signal<boolean>(false);
+
+  ngOnInit(): void {
+    // this.seoService.setAllSeoData({
+    //   title:
+    //     'Velox Immigration | Trusted RCIC-Led Canadian Immigration Services',
+    //   description:
+    //     'Navigate your Canadian immigration journey with confidence. Velox Immigration offers expert, ethical, and client-focused solutions for study, work, PR, and family sponsorship. Results that move you forward.',
+    //   keywords:
+    //     'Canadian immigration, RCIC, study permit, work permit, permanent residency, express entry, family sponsorship, immigration consultant, Canada visa',
+    //   ogType: 'website',
+    //   ogImage: '/assets/images/logo.png',
+    //   twitterCard: 'summary_large_image',
+    //   canonicalUrl: 'https://veloximmigration.com',
+    // });
+  }
 }

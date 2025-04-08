@@ -5,17 +5,12 @@ import { ServicesLayoutComponent } from './layout/service-layout.component';
 import { StudyComponent } from './pages/services/study.component';
 import { WorkComponent } from './pages/services/work.component';
 import { VisitorVisaComponent } from './pages/services/visitor-visa.component';
-// import { SuperVisaComponent } from './pages/services/super-visa.component';
 import { LMIAComponent } from './pages/services/lmia.component';
 import { ProvincialNomineeComponent } from './pages/services/provincial-nominee.component';
 import { ExpressEntryComponent } from './pages/services/express-entry.component';
 import { AtlanticImmigrationComponent } from './pages/services/atlantic-immigration.component';
-// import { FamilyImmigrationComponent } from './pages/services/family-immigration.component';
 import { BusinessImmigrationComponent } from './pages/services/business-immigration.component';
 import { ContactFormComponent } from './pages/contact/contact.component';
-// import { PRCardRenewalComponent } from './pages/services/pr-card-renewal.component';
-// import { CitizenshipComponent } from './pages/services/citizenship.component';
-// import { ApplicationReviewComponent } from './pages/services/application-review.component';
 import { FamilySponsorshipComponent } from './pages/services/family-sponsorship.component';
 import { AppealsRefugeeComponent } from './pages/services/appeals.component';
 import { BookYourAppointmentComponent } from './pages/book-your-appointment/book-your-appointment.component';
@@ -30,14 +25,17 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    title: 'Velox Immigration | Trusted RCIC-Led Canadian Immigration Services',
   },
   {
     path: 'about',
     component: AboutPageComponent,
+    title: 'About Us | Velox Immigration',
   },
   {
     path: 'contact',
     component: ContactFormComponent,
+    title: 'Contact Us | Velox Immigration',
   },
   {
     path: 'privacy-policy',
@@ -50,18 +48,28 @@ export const routes: Routes = [
       {
         path: 'study',
         children: [{ path: 'study-in-canada', component: StudyComponent }],
+        title: 'Study in Canada | Velox Immigration',
       },
       {
         path: 'work',
         children: [
-          { path: 'open-pgwp-permits', component: OpenWorkPermitComponent },
-          { path: 'lmia-employer-permits', component: LMIAComponent },
+          {
+            path: 'open-pgwp-permits',
+            component: OpenWorkPermitComponent,
+            title: 'Open Work Permit | Velox Immigration',
+          },
+          {
+            path: 'lmia-employer-permits',
+            component: LMIAComponent,
+            title: 'LMIA Employer Permits | Velox Immigration',
+          },
           { path: 'extensions-coop', component: WorkComponent },
         ],
       },
       {
         path: 'visit',
         children: [{ path: 'visitor-visas', component: VisitorVisaComponent }],
+        title: 'Visitor Visas to Canada | Velox Immigration',
       },
       {
         path: 'immigrate',
@@ -93,6 +101,7 @@ export const routes: Routes = [
   {
     path: 'book-your-appointment',
     component: BookYourAppointmentComponent,
+    title: 'Book a Consultation | Velox Immigration',
   },
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '/404' },
