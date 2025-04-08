@@ -27,6 +27,14 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
           procedural fairness letter (PFL), or past refusal, Velox Immigration
           gives your case the attention it deserves.
         </p>
+        <div class="mt-6">
+          <button
+            routerLink="/book-your-appointment"
+            class="bg-fire-600 text-white px-6 py-3 rounded-lg hover:bg-fire-700 transition-colors"
+          >
+            Book a File Review Consultation
+          </button>
+        </div>
       </section>
 
       <!-- Who We Help Section -->
