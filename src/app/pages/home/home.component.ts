@@ -3,7 +3,14 @@ import {
   isPlatformBrowser,
   NgOptimizedImage,
 } from '@angular/common';
-import { AfterViewInit, Component, Inject, PLATFORM_ID } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  inject,
+  Inject,
+  OnInit,
+  PLATFORM_ID,
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { animate, inView } from 'motion';
 // import { ServicesComponent } from '../../components/services.component';
@@ -16,6 +23,7 @@ import { HeaderComponent } from '../../components/header.component';
 import { WhyChooseUsComponent } from '../../components/why-choose-us.component';
 import { ProcessStepsComponent } from '../../components/process-steps.component';
 import { ContactFormData } from '../../services/sheets.service';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-home',
@@ -158,8 +166,25 @@ import { ContactFormData } from '../../services/sheets.service';
     display: block;
   }`,
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent implements AfterViewInit, OnInit {
+  seoService = inject(SeoService);
+
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
+  ngOnInit(): void {
+    this.seoService.setAllSeoData({
+      title:
+        'Velox Immigration | Trusted RCIC-Led Canadian Immigration Services',
+      description:
+        'Navigate your Canadian immigration journey with confidence. Velox Immigration offers expert, ethical, and client-focused solutions for study, work, PR, and family sponsorship. Results that move you forward.',
+      keywords:
+        'Canadian immigration, RCIC, study permit, work permit, permanent residency, express entry, family sponsorship, immigration consultant, Canada visa, Toronto immigration, Indian students Canada',
+      ogTitle: 'Velox Immigration | Professional Canadian Immigration Services',
+      ogDescription:
+        'Navigate your Canadian immigration journey with confidence. Expert guidance for study, work, PR, and family sponsorship.',
+      canonicalUrl: 'https://veloximmigration.com/',
+    });
+  }
 
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {

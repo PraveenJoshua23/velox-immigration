@@ -3,10 +3,16 @@ import {
   ApplicationConfig,
   provideZoneChangeDetection,
 } from '@angular/core';
-import { provideRouter, withComponentInputBinding } from '@angular/router';
+import {
+  PreloadAllModules,
+  provideRouter,
+  withComponentInputBinding,
+  withInMemoryScrolling,
+  withPreloading,
+} from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideClientHydration } from '@angular/platform-browser';
+import { Meta, provideClientHydration, Title } from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { AnalyticsService } from './services/analytics.service';
@@ -14,7 +20,12 @@ import { AnalyticsService } from './services/analytics.service';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes, withComponentInputBinding()),
+    provideRouter(
+      routes,
+      withComponentInputBinding(),
+      withInMemoryScrolling({ scrollPositionRestoration: 'enabled' }),
+      withPreloading(PreloadAllModules)
+    ),
     provideClientHydration(),
     provideHttpClient(withFetch()),
     provideAnimations(),
@@ -26,5 +37,7 @@ export const appConfig: ApplicationConfig = {
       deps: [AnalyticsService],
       multi: true,
     },
+    Title,
+    Meta,
   ],
 };
