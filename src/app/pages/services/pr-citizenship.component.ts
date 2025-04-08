@@ -28,6 +28,14 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
           process. Our support ensures that your applications are complete,
           timely, and meet all eligibility criteria.
         </p>
+        <div class="mt-6">
+          <button
+            routerLink="/book-your-appointment"
+            class="bg-fire-600 text-white px-6 py-3 rounded-lg hover:bg-fire-700 transition-colors"
+          >
+            Start Your PR or Citizenship Application Today
+          </button>
+        </div>
       </section>
 
       <!-- Who This Is For Section -->
