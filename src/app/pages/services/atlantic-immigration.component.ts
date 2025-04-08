@@ -29,6 +29,14 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
           both applicants and employers through the AIP process—making it
           seamless, compliant, and successful.
         </p>
+        <div class="mt-6">
+          <button
+            routerLink="/book-your-appointment"
+            class="bg-fire-600 text-white px-6 py-3 rounded-lg hover:bg-fire-700 transition-colors"
+          >
+            Find Out If You Qualify for AIP
+          </button>
+        </div>
       </section>
 
       <!-- Who This Is For Section -->
