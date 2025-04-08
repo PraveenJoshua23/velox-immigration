@@ -88,46 +88,6 @@ export const routes: Routes = [
           { path: 'sop-dli-opinion', component: SopDliOpinionComponent },
         ],
       },
-      // Old Routes
-      // {
-      //   path: 'temporary-services',
-      //   children: [
-      //     { path: 'study', component: StudyComponent },
-      //     { path: 'work', component: WorkComponent },
-      //     { path: 'visitor-visa', component: VisitorVisaComponent },
-      //     { path: 'super-visa', component: SuperVisaComponent },
-      //     { path: 'lmia', component: LMIAComponent },
-      //   ],
-      // },
-      // {
-      //   path: 'permanent-residency',
-      //   children: [
-      //     { path: 'express-entry', component: ExpressEntryComponent },
-      //     { path: 'provincial-nominee', component: ProvincialNomineeComponent },
-      //     {
-      //       path: 'atlantic-immigration',
-      //       component: AtlanticImmigrationComponent,
-      //     },
-      //     { path: 'family-immigration', component: FamilyImmigrationComponent },
-      //     {
-      //       path: 'business-immigration',
-      //       component: BusinessImmigrationComponent,
-      //     },
-      //   ],
-      // },
-      // {
-      //   path: 'additional-services',
-      //   children: [
-      //     { path: 'pr-card-renewal', component: PRCardRenewalComponent },
-      //     { path: 'citizenship', component: CitizenshipComponent },
-      //     { path: 'application-review', component: ApplicationReviewComponent },
-      //     { path: 'family-sponsorship', component: FamilySponsorshipComponent },
-      //     {
-      //       path: 'appeals-humanitarian',
-      //       component: AppealsRefugeeComponent,
-      //     },
-      //   ],
-      // },
     ],
   },
   {

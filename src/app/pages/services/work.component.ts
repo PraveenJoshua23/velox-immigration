@@ -28,6 +28,14 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
           status, avoid disruptions, and stay focused on your career or
           education goals.
         </p>
+        <div class="mt-6">
+          <button
+            routerLink="/book-your-appointment"
+            class="bg-fire-600 text-white px-6 py-3 rounded-lg hover:bg-fire-700 transition-colors"
+          >
+            Apply for Your Extension or Co-op Permit Today
+          </button>
+        </div>
       </section>
 
       <!-- Work Permit Extensions & Co-op Work Permits Section (Based on the new document) -->
@@ -56,6 +64,7 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
         </div>
 
         <!-- What We Offer Section -->
+        <h2 class="text-2xl text-sea-900 mb-4 pt-8">What We Offer</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div
             class="bg-white p-6 rounded-lg shadow-md border-l-4 border-fire-600"

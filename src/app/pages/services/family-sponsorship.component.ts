@@ -29,6 +29,14 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
           you through every step of the sponsorship process, making sure it's
           complete, compliant, and compassionate.
         </p>
+        <div class="mt-6">
+          <button
+            routerLink="/book-your-appointment"
+            class="bg-fire-600 text-white px-6 py-3 rounded-lg hover:bg-fire-700 transition-colors"
+          >
+            Book a Sponsorship Consultation
+          </button>
+        </div>
       </section>
 
       <!-- Who We Help Section -->

@@ -28,6 +28,14 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
           provincial business immigration pathways, with personalized support
           tailored to your business goals and immigration objectives.
         </p>
+        <div class="mt-6">
+          <button
+            routerLink="/book-your-appointment"
+            class="bg-fire-600 text-white px-6 py-3 rounded-lg hover:bg-fire-700 transition-colors"
+          >
+            Start Your Business Immigration Assessment
+          </button>
+        </div>
       </section>
 
       <!-- Who We Help Section -->
