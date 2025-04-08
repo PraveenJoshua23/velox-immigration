@@ -12,8 +12,7 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
       <app-service-header
         title="Provincial Nominee Program (PNP)"
         description="Immigrate to Canada through the province that values your skills most.
-          Whether you're applying directly or through Express Entry, we'll guide
-          you through the right PNP path."
+          "
         backgroundImage="/assets/images/pnp-hero.png"
       />
 
@@ -26,9 +25,18 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
           The Provincial Nominee Program (PNP) offers a unique opportunity for
           individuals with the right skills, experience, and education to become
           permanent residents of Canada—through targeted streams chosen by each
-          province. Our expert team will help you navigate the specific
-          requirements of each province and maximize your chances of success.
+          province. Whether you're applying directly or through Express Entry,
+          Velox Immigration will guide you through the right PNP path, from
+          nomination to PR.
         </p>
+        <div class="mt-6">
+          <button
+            routerLink="/book-your-appointment"
+            class="bg-fire-600 text-white px-6 py-3 rounded-lg hover:bg-fire-700 transition-colors"
+          >
+            Explore Your PNP Eligibility with Us
+          </button>
+        </div>
       </section>
 
       <!-- Who We Help Section -->
