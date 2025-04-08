@@ -30,7 +30,7 @@ import { RouterModule } from '@angular/router';
                 </div>
               </h3>
             </div>
-            <div class="flex items-center gap-4 text-white">
+            <div class="flex flex-col items-center gap-4 text-white">
               <span class="text-sm">Feel free to call us</span>
               <div class="flex flex-col gap-2">
                 <div class="flex items-center gap-2">
@@ -64,16 +64,14 @@ import { RouterModule } from '@angular/router';
                 Globally.
               </p>
 
-              <div
-                class="flex items-center justify-center md:justify-start gap-10"
-              >
-                <div class="flex flex-col gap-2">
+              <div class="flex flex-col items-center md:items-start gap-4">
+                <div class="flex justify-between gap-2 w-full">
                   <p class="text-gray-400 font-light">Toronto, Canada</p>
                   <p class="text-gray-400 font-light">
                     <span class="mr-1">🇨🇦</span> +1 416-662-0652
                   </p>
                 </div>
-                <div class="flex flex-col gap-2">
+                <div class="flex justify-between gap-2 w-full">
                   <p class="text-gray-400 font-light">Chennai, India</p>
                   <p class="text-gray-400 font-light">
                     <span class="mr-1">🇮🇳</span> +91 77088 53882
