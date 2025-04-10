@@ -70,14 +70,7 @@ import { HeaderComponent } from '../../components/header.component';
                 <strong> straightforward, stress-free path to Canada</strong>.
               </p> -->
             </div>
-            <div class="mt-8 text-center">
-              <button
-                routerLink="/services"
-                class="bg-fire-600 text-white px-8 py-3 rounded-lg hover:bg-fire-700 transition-colors"
-              >
-                Discover Our Services →
-              </button>
-            </div>
+           
           </div>
         </div>
       </section>
