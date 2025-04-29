@@ -70,7 +70,6 @@ import { HeaderComponent } from '../../components/header.component';
                 <strong> straightforward, stress-free path to Canada</strong>.
               </p> -->
             </div>
-           
           </div>
         </div>
       </section>
