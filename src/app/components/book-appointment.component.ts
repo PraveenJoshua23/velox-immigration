@@ -135,16 +135,6 @@ export class AppointmentBookingComponent {
       color: 'bg-indigo-500 text-white',
       link: 'https://calendly.com/admin-veloximmigration/30-minute-meeting-w-rcic',
     },
-    {
-      id: '60min',
-      duration: '60 min',
-      title: '60minute - Virtual Consultation with Anitha',
-      description:
-        'Anitha Gabriel is a Regulated Canadian Immigration Consultant. Her license number is R706180 Her areas of expertise include Economic and Business Imm...',
-      price: '$140 CAD',
-      color: 'bg-green-500 text-white',
-      link: 'https://calendly.com/admin-veloximmigration/60-minute-consultation',
-    },
   ]);
 
   // Selection Handlers
