@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ServiceHeaderComponent } from '../../components/service-header.component';
+import { StudyResolverService } from '../../resolvers/study-resolver.service';
 
 @Component({
   selector: 'app-study',
@@ -10,51 +11,31 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
   template: `
     <div class="space-y-8">
       <app-service-header
-        title="Study in Canada"
-        description="Secure the right permit to begin or continue your studies in
-          Canada—with expert support every step of the way."
+        [title]="content.title"
+        [description]="content.subtitle"
         backgroundImage="/assets/images/study-hero.png"
       />
 
       <!-- Overview Section -->
       <section class="bg-white p-6 ">
         <h2 class="text-2xl text-sea-900 mb-4">
-          Start Your Canadian Education Journey with Confidence
+          {{ content.intro_title }}
         </h2>
         <p class="text-gray-700">
-          Canada is a top destination for international students—and for good
-          reason. With world-class institutions, welcoming communities, and
-          post-study work opportunities, it's the perfect place to grow
-          academically and professionally. At Velox Immigration, we help you
-          navigate every step of the study permit process—whether you're
-          applying for the first time, renewing your permit, or helping a minor
-          begin their education here.
+          {{ content.intro_description }}
         </p>
       </section>
 
       <!-- Who We Help Section -->
       <section class="bg-gray-50 rounded-md p-6 ">
         <h2 class="text-2xl text-sea-900 mb-4">Who We Help</h2>
-        <p class="text-gray-700">This service is designed for:</p>
+        <p class="text-gray-700">{{ content.who_we_help_intro }}</p>
         <ul class="py-3 space-y-2 list-disc pl-5 text-gray-700">
+          @for(item of content.who_we_help_items; track item) {
           <li>
-            <span class="font-medium"
-              >Adults applying for a Canadian study permit for college or
-              university</span
-            >
+            <span class="font-medium">{{ item.list }}</span>
           </li>
-          <li>
-            <span class="font-medium"
-              >Parents of children under 18 enrolling in primary or secondary
-              school
-            </span>
-          </li>
-          <li>
-            <span class="font-medium"
-              >International students needing to extend their current study
-              permits to continue their program
-            </span>
-          </li>
+          }
         </ul>
       </section>
 
@@ -62,49 +43,20 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
       <section class="bg-white rounded-md p-6">
         <h2 class="text-2xl text-sea-900 mb-4">Our Services</h2>
         <p class="text-gray-700 mb-4">
-          We offer tailored support across three key areas:
+          {{ content.what_we_offer_intro }}
         </p>
 
         <div class="space-y-6">
+          @for(item of content.what_we_offer_items; track item) {
           <div>
             <h3 class="text-xl font-medium text-fire-600 mb-2">
-              Study Permits
+              {{ item.title }}
             </h3>
             <p class="text-gray-700">
-              Whether you've just received an acceptance letter from a
-              Designated Learning Institution (DLI) or are preparing for your
-              academic future, we guide you through the full process—from
-              application to approval. We'll help you gather the required
-              documents, write a strong Statement of Purpose (SOP), and ensure
-              your application meets all IRCC criteria.
+              {{ item.description }}
             </p>
           </div>
-
-          <div>
-            <h3 class="text-xl font-medium text-fire-600 mb-2">
-              Minor Study Permits
-            </h3>
-            <p class="text-gray-700">
-              If your child is planning to attend school in Canada, we assist
-              with obtaining a study permit that complies with all custodianship
-              and documentation requirements. We also support parents in
-              securing visitor or work status to accompany their child, where
-              applicable.
-            </p>
-          </div>
-
-          <div>
-            <h3 class="text-xl font-medium text-fire-600 mb-2">
-              Study Permit Extensions
-            </h3>
-            <p class="text-gray-700">
-              Need more time to complete your studies? We'll help you apply for
-              an extension before your current permit expires. We ensure your
-              continued legal status in Canada and guide you through new proof
-              of funds, updated enrollment letters, and any changes in your
-              academic program.
-            </p>
-          </div>
+          }
         </div>
       </section>
 
@@ -127,7 +79,8 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
           </svg>
           <span class="mt-1">What You Need to Apply</span>
         </h2>
-        <p class="text-gray-700 mb-4">
+        <div [innerHTML]="content.what_you_need_to_apply"></div>
+        <!-- <p class="text-gray-700 mb-4">
           Each case is different, but generally, you'll need the following:
         </p>
 
@@ -159,74 +112,32 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
           We will guide you through each of these requirements and help you
           gather a complete and accurate set of documents tailored to your
           unique situation.
-        </p>
+        </p> -->
       </section>
 
       <!-- How We Work Section -->
       <section class="bg-white rounded-md p-6">
         <h2 class="text-2xl text-sea-900 mb-4">🛠️ How We Work</h2>
         <p class="text-gray-700 mb-4">
-          When you work with Velox Immigration, you get a streamlined,
-          transparent process:
+          {{ content.how_we_work_intro }}
         </p>
 
         <div class="space-y-4">
+          @for(item of content.how_we_work_items; track item; let i = $index) {
           <div class="flex gap-3">
             <div
               class="bg-fire-600 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0"
             >
-              1
+              {{ i + 1 }}
             </div>
             <div>
-              <p class="font-medium">Initial Consultation</p>
+              <p class="font-medium">{{ item.title }}</p>
               <p class="text-gray-600">
-                We assess your academic background, goals, and timeline.
+                {{ item.description }}
               </p>
             </div>
           </div>
-
-          <div class="flex gap-3">
-            <div
-              class="bg-fire-600 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0"
-            >
-              2
-            </div>
-            <div>
-              <p class="font-medium">Document Support</p>
-              <p class="text-gray-600">
-                You receive a complete checklist and help drafting your SOP.
-              </p>
-            </div>
-          </div>
-
-          <div class="flex gap-3">
-            <div
-              class="bg-fire-600 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0"
-            >
-              3
-            </div>
-            <div>
-              <p class="font-medium">Application Filing</p>
-              <p class="text-gray-600">
-                We prepare and submit your application through the IRCC portal.
-              </p>
-            </div>
-          </div>
-
-          <div class="flex gap-3">
-            <div
-              class="bg-fire-600 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0"
-            >
-              4
-            </div>
-            <div>
-              <p class="font-medium">Follow-up & Communication</p>
-              <p class="text-gray-600">
-                We monitor your file and handle any updates or requests from
-                IRCC.
-              </p>
-            </div>
-          </div>
+          }
         </div>
       </section>
 
@@ -234,11 +145,7 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
       <section class="bg-gray-50 rounded-md p-6">
         <h2 class="text-2xl text-sea-900 mb-4">Why Choose Velox?</h2>
         <p class="text-gray-700">
-          We know how important your education is—and we treat your file with
-          that same level of care. With a licensed consultant guiding you,
-          you'll avoid unnecessary delays, errors, and refusals. Our experience
-          spans college, university, and minor applications across provinces,
-          ensuring your case is in capable hands.
+          {{ content.why_choose_velox }}
         </p>
       </section>
 
@@ -263,19 +170,18 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
         </h2>
 
         <div class="space-y-4">
+          @for(item of content.faq_items; track item; let i = $index) {
           <!-- FAQ Item 1 -->
           <div class="border rounded-lg overflow-hidden">
             <button
-              (click)="toggleFaq(0)"
+              (click)="toggleFaq(i)"
               class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
             >
-              <span class="font-medium"
-                >Can I work while studying in Canada?</span
-              >
+              <span class="font-medium">{{ item.question }}</span>
               <svg
                 [class]="
                   'w-5 h-5 transition-transform ' +
-                  (activeFaq() === 0 ? 'transform rotate-180' : '')
+                  (activeFaq() === i ? 'transform rotate-180' : '')
                 "
                 fill="none"
                 viewBox="0 0 24 24"
@@ -292,179 +198,17 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
             <div
               [class]="
                 'overflow-hidden transition-all duration-300 ' +
-                (activeFaq() === 0 ? 'max-h-40' : 'max-h-0')
+                (activeFaq() === i ? 'max-h-40' : 'max-h-0')
               "
             >
               <div class="p-4 border-t bg-gray-50">
                 <p>
-                  Yes, if you're enrolled full-time at a DLI, you may work up to
-                  20 hours per week during academic sessions.
+                  {{ item.answers }}
                 </p>
               </div>
             </div>
           </div>
-
-          <!-- FAQ Item 2 -->
-          <div class="border rounded-lg overflow-hidden">
-            <button
-              (click)="toggleFaq(1)"
-              class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
-            >
-              <span class="font-medium"
-                >Do I need a permit for a 3-month course?</span
-              >
-              <svg
-                [class]="
-                  'w-5 h-5 transition-transform ' +
-                  (activeFaq() === 1 ? 'transform rotate-180' : '')
-                "
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            <div
-              [class]="
-                'overflow-hidden transition-all duration-300 ' +
-                (activeFaq() === 1 ? 'max-h-40' : 'max-h-0')
-              "
-            >
-              <div class="p-4 border-t bg-gray-50">
-                <p>
-                  Not necessarily. If your course is under 6 months, you may not
-                  require a permit—but you'll be ineligible for a post-grad work
-                  permit.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ Item 3 -->
-          <div class="border rounded-lg overflow-hidden">
-            <button
-              (click)="toggleFaq(2)"
-              class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
-            >
-              <span class="font-medium">How early can I apply?</span>
-              <svg
-                [class]="
-                  'w-5 h-5 transition-transform ' +
-                  (activeFaq() === 2 ? 'transform rotate-180' : '')
-                "
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            <div
-              [class]="
-                'overflow-hidden transition-all duration-300 ' +
-                (activeFaq() === 2 ? 'max-h-40' : 'max-h-0')
-              "
-            >
-              <div class="p-4 border-t bg-gray-50">
-                <p>
-                  You can apply as soon as you have your acceptance letter. The
-                  earlier, the better—ideally 3–6 months before your program
-                  starts.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ Item 4 -->
-          <div class="border rounded-lg overflow-hidden">
-            <button
-              (click)="toggleFaq(3)"
-              class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
-            >
-              <span class="font-medium"
-                >What if my permit expires before I finish school?</span
-              >
-              <svg
-                [class]="
-                  'w-5 h-5 transition-transform ' +
-                  (activeFaq() === 3 ? 'transform rotate-180' : '')
-                "
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            <div
-              [class]="
-                'overflow-hidden transition-all duration-300 ' +
-                (activeFaq() === 3 ? 'max-h-40' : 'max-h-0')
-              "
-            >
-              <div class="p-4 border-t bg-gray-50">
-                <p>
-                  You can apply to extend your permit. It's important to apply
-                  before your current permit expires to maintain your status.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ Item 5 -->
-          <div class="border rounded-lg overflow-hidden">
-            <button
-              (click)="toggleFaq(4)"
-              class="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors"
-            >
-              <span class="font-medium">What are your fees?</span>
-              <svg
-                [class]="
-                  'w-5 h-5 transition-transform ' +
-                  (activeFaq() === 4 ? 'transform rotate-180' : '')
-                "
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            <div
-              [class]="
-                'overflow-hidden transition-all duration-300 ' +
-                (activeFaq() === 4 ? 'max-h-40' : 'max-h-0')
-              "
-            >
-              <div class="p-4 border-t bg-gray-50">
-                <p>
-                  Our service fees are competitive and based on the complexity
-                  of your case. Contact us for a personalized quote.
-                </p>
-              </div>
-            </div>
-          </div>
+          }
         </div>
       </section>
 
@@ -472,18 +216,17 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
       <section class="bg-fire-600 text-white rounded-lg p-8 my-8">
         <div class="flex flex-col md:flex-row items-center justify-between">
           <div class="mb-6 md:mb-0">
-            <h2 class="text-2xl font-bold  mb-2">Ready to Begin?</h2>
+            <h2 class="text-2xl font-bold  mb-2">{{ content.banner_title }}</h2>
             <p class="text-lg font-light pr-4">
-              Whether you're a first-time applicant or need to extend your stay,
-              we're here to help you every step of the way.
+              {{ content.banner_description }}
             </p>
           </div>
           <div>
             <button
-              routerLink="/book-your-appointment"
+              [routerLink]="content.banner_cta_link"
               class="bg-white text-fire-600 px-8 py-3 rounded-lg cursor-pointer font-medium hover:bg-gray-100 transition-colors shadow-lg"
             >
-              Book a consultation today
+              {{ content.banner_cta_text }}
             </button>
           </div>
         </div>
@@ -491,8 +234,23 @@ import { ServiceHeaderComponent } from '../../components/service-header.componen
     </div>
   `,
 })
-export class StudyComponent {
+export class StudyComponent implements OnInit {
   activeFaq = signal(-1);
+  content: any;
+
+  constructor(private activatedRoute: ActivatedRoute, private route: Router) {
+    this.activatedRoute.data.subscribe((response: any) => {
+      this.content = response.data.data;
+      if (
+        this.content.status === 'draft' ||
+        this.content.status === 'archived'
+      ) {
+        this.route.navigate(['/']);
+      }
+    });
+  }
+
+  ngOnInit(): void {}
 
   toggleFaq(index: number) {
     this.activeFaq.update((current) => (current === index ? -1 : index));

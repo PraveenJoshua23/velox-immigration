@@ -3,9 +3,11 @@ import {
   signal,
   ChangeDetectionStrategy,
   OnInit,
+  Input,
 } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HomePageContent } from '../utils/types/directus';
 
 interface Program {
   id: string;
@@ -32,12 +34,12 @@ interface Program {
         >
           <img src="assets/images/plane.svg" class="pb-1" />
           <h2 class="text-3xl font-medium">
-            Our <span class="font-bold">Immigration </span>Services
+            {{ content.data?.services_subtitle }}
           </h2>
         </div>
 
         <h2 class="text-4xl md:text-5xl pb-2 text-sea-900">
-          Outstanding Immigration Services
+          {{ content.data?.services_title }}
         </h2>
       </div>
 
@@ -45,7 +47,7 @@ interface Program {
       <div
         class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 will-change-transform"
       >
-        @for(item of programs(); track item.id){
+        @for(item of content.data?.services_features || []; track item.title){
         <a
           [routerLink]="item.routePath"
           class="block service-card"
@@ -178,6 +180,7 @@ interface Program {
   ],
 })
 export class ServiceSectionComponent implements OnInit {
+  @Input() content: { data: HomePageContent | null } = { data: null };
   programs = signal<Program[]>([]);
 
   ngOnInit() {

@@ -1,12 +1,23 @@
-import { Component, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  inject,
+  OnInit,
+  signal,
+  PLATFORM_ID,
+  Inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { localServices, nav } from '../utils/constants/navigation';
+import { MenuContent } from '../utils/types/directus';
+import { DirectusService } from '../services/directus.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [CommonModule, RouterModule],
+  providers: [DirectusService],
   template: `
     <header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
       <nav
@@ -156,8 +167,6 @@ import { localServices, nav } from '../utils/constants/navigation';
             || item.label === 'Book Consultation' || item.label === 'Contact') {
             <a
               [routerLink]="item.href"
-              [href]="item.isExternal ? item.href : null"
-              [target]="item.isExternal ? '_blank' : undefined"
               (click)="closeMenu()"
               class="text-xl font-light text-gray-800 hover:text-fire-600"
             >
@@ -295,10 +304,19 @@ export class HeaderComponent implements OnInit {
   isMenuOpen = signal(false);
   nav = signal(nav);
   localServices = signal(localServices);
+  directusService = inject(DirectusService);
+  menu = signal<MenuContent[]>([]);
   expandedCategories: string[] = [];
+
+  // Constants for localStorage cache
+  private readonly MENU_CACHE_KEY = 'velox_navigation_menu';
+  private readonly CACHE_EXPIRATION_TIME = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit() {
     // Initialization code if needed
+    this.getMenuFromBackend();
   }
 
   toggleMenu() {
@@ -324,5 +342,51 @@ export class HeaderComponent implements OnInit {
     } else {
       this.expandedCategories.push(categoryId);
     }
+  }
+
+  getMenuFromBackend() {
+    // Check if we're in a browser environment
+    if (isPlatformBrowser(this.platformId)) {
+      // Check if menu data exists in localStorage
+      const cachedData = localStorage.getItem(this.MENU_CACHE_KEY);
+
+      if (cachedData) {
+        try {
+          const { data, timestamp } = JSON.parse(cachedData);
+          const now = new Date().getTime();
+
+          // Check if the cache is still valid (not expired)
+          if (
+            data &&
+            timestamp &&
+            now - timestamp < this.CACHE_EXPIRATION_TIME
+          ) {
+            // Use cached data
+            this.menu.set(data);
+            console.log('Menu loaded from cache:', this.menu());
+            return;
+          }
+        } catch (error) {
+          console.error('Error parsing cached menu data:', error);
+          // Continue with API call if there's an error parsing the cache
+        }
+      }
+    }
+
+    // If no valid cache exists or we're not in a browser, fetch from service
+    this.directusService.getMenu('navigation').subscribe((menu) => {
+      this.menu.set(menu.data);
+      console.log(this.menu());
+
+      // Cache the fresh data with current timestamp if in browser
+      if (isPlatformBrowser(this.platformId)) {
+        const cacheData = {
+          data: menu.data,
+          timestamp: new Date().getTime(),
+        };
+
+        localStorage.setItem(this.MENU_CACHE_KEY, JSON.stringify(cacheData));
+      }
+    });
   }
 }

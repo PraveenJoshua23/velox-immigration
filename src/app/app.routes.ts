@@ -20,6 +20,7 @@ import { PRCitizenshipComponent } from './pages/services/pr-citizenship.componen
 import { ReviewServicesComponent } from './pages/services/review-services.component';
 import { SopDliOpinionComponent } from './pages/services/sop-dli-opinion.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
+import { StudyResolverService } from './resolvers/study-resolver.service';
 
 export const routes: Routes = [
   {
@@ -49,6 +50,9 @@ export const routes: Routes = [
         path: 'study',
         children: [{ path: 'study-in-canada', component: StudyComponent }],
         title: 'Study in Canada | Velox Immigration',
+        resolve: {
+          data: StudyResolverService,
+        },
       },
       {
         path: 'work',
