@@ -363,7 +363,7 @@ export class HeaderComponent implements OnInit {
           ) {
             // Use cached data
             this.menu.set(data);
-            console.log('Menu loaded from cache:', this.menu());
+
             return;
           }
         } catch (error) {
@@ -376,7 +376,6 @@ export class HeaderComponent implements OnInit {
     // If no valid cache exists or we're not in a browser, fetch from service
     this.directusService.getMenu('navigation').subscribe((menu) => {
       this.menu.set(menu.data);
-      console.log(this.menu());
 
       // Cache the fresh data with current timestamp if in browser
       if (isPlatformBrowser(this.platformId)) {
