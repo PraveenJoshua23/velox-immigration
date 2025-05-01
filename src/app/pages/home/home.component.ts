@@ -14,6 +14,13 @@ import {
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { animate, inView } from 'motion';
+import {
+  trigger,
+  state,
+  style,
+  animate as ngAnimate,
+  transition,
+} from '@angular/animations';
 // import { ServicesComponent } from '../../components/services.component';
 import { TestimonialsComponent } from '../../components/testimonials.component';
 import { AboutComponent } from '../../components/about.component';
@@ -43,6 +50,14 @@ import { HomePageContent } from '../../utils/types/directus';
     ProcessStepsComponent,
     ServiceSectionComponent,
     NgOptimizedImage,
+  ],
+  animations: [
+    trigger('fadeIn', [
+      state('void', style({ opacity: 0 })),
+      transition(':enter', [
+        ngAnimate('1000ms ease-in', style({ opacity: 1 })),
+      ]),
+    ]),
   ],
   template: `
     <app-header />
@@ -110,6 +125,7 @@ import { HomePageContent } from '../../utils/types/directus';
                 class="w-full h-full object-cover"
                 priority
                 fill
+                @fadeIn
               />
             </div>
           </div>

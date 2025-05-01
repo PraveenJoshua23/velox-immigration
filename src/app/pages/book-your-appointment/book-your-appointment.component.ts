@@ -34,8 +34,8 @@ import { isPlatformBrowser } from '@angular/common';
       <!-- Main Content -->
       <div class="container mx-auto px-4">
         <!-- Disclaimer Dialog -->
+        @if(showDisclaimer()) {
         <div
-          *ngIf="showDisclaimer()"
           class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
         >
           <div
@@ -58,6 +58,7 @@ import { isPlatformBrowser } from '@angular/common';
             </div>
           </div>
         </div>
+        }
 
         <!-- Disclaimer content (visible after acceptance) -->
         <!-- <div
@@ -89,6 +90,14 @@ export class BookYourAppointmentComponent {
     private sanitizer: DomSanitizer,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
+    // Check if disclaimer was already accepted
+    if (isPlatformBrowser(this.platformId)) {
+      const disclaimerAccepted = localStorage.getItem('disclaimerAccepted');
+      if (disclaimerAccepted === 'true') {
+        this.showDisclaimer.set(false);
+      }
+    }
+
     this.activatedRoute.data.subscribe((response: any) => {
       this.content = response.data.data[0];
 
@@ -97,14 +106,6 @@ export class BookYourAppointmentComponent {
         this.safeDisclaimerContent = this.sanitizer.bypassSecurityTrustHtml(
           this.content.disclaimer_content
         );
-
-        // Check if disclaimer was already accepted
-        if (isPlatformBrowser(this.platformId)) {
-          const disclaimerAccepted = localStorage.getItem('disclaimerAccepted');
-          if (disclaimerAccepted === 'true') {
-            this.showDisclaimer.set(false);
-          }
-        }
       }
 
       // if (
