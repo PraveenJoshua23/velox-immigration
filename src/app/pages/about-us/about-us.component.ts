@@ -1,8 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { FooterComponent } from '../../components/footer.component';
 import { HeaderComponent } from '../../components/header.component';
+import { DirectusService } from '../../services/directus.service';
 
 @Component({
   selector: 'app-about-page',
@@ -16,8 +17,8 @@ import { HeaderComponent } from '../../components/header.component';
       <!-- Hero Section -->
       <section class="bg-sea-950 text-white py-20">
         <div class="container mx-auto px-4">
-          <h1 class="text-4xl md:text-5xl mb-6">About Velox Immigration</h1>
-          <p class="text-xl">Your Trusted Partner in Canadian Immigration</p>
+          <h1 class="text-4xl md:text-5xl mb-6">{{ content.page_title }}</h1>
+          <p class="text-xl">{{ content.page_subtitle }}</p>
         </div>
       </section>
 
@@ -25,51 +26,13 @@ import { HeaderComponent } from '../../components/header.component';
       <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
           <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl mb-8 text-sea-900">The Story Behind Velox</h2>
-            <div class="prose lg:prose-lg font-light">
-              <p class="mb-6">
-                Velox Immigration was born from a simple yet powerful
-                realization — immigration should not be a struggle; it should be
-                a well-guided journey.
-              </p>
-              <p class="mb-6">
-                The name "Velox", meaning swift in Latin, represents more than
-                just speed. It stands for efficiency, precision, and clarity —
-                the very principles that shape our approach. Every client has a
-                unique story, and every case deserves careful attention. At
-                Velox, we ensure that each step of the process is handled with
-                expertise, integrity, and care.
-              </p>
-              <p class="mb-6">
-                Too often, individuals and families encounter unnecessary
-                obstacles, confusion, and delays, turning what should be an
-                exciting new chapter into an overwhelming experience. Velox was
-                founded to eliminate uncertainty, remove guesswork, and provide
-                strategic solutions that make the immigration journey smoother
-                and more accessible.
-              </p>
-              <p class="mb-6">
-                Our mission is simple: to simplify, support, and empower. At
-                Velox, we don't just guide clients through immigration—we help
-                them build their future with confidence.
-              </p>
-              <!-- <p class="mb-6 flex items-center">
-                <svg
-                  class="w-5 h-5 text-green-600 mr-2 flex-shrink-0"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-                To ensure a&nbsp;
-                <strong> straightforward, stress-free path to Canada</strong>.
-              </p> -->
-            </div>
+            <h2 class="text-3xl mb-8 text-sea-900">
+              {{ content.story_header }}
+            </h2>
+            <div
+              class="prose lg:prose-lg font-light"
+              [innerHTML]="content.story_content"
+            ></div>
           </div>
         </div>
       </section>
@@ -89,60 +52,18 @@ import { HeaderComponent } from '../../components/header.component';
             </div>
             <div class="md:w-2/3">
               <h2 class="text-3xl mb-6 text-sea-900">
-                Meet the Founder: Anitha Gabriel
+                {{ content.founder_title }}
               </h2>
-              <div class="prose lg:prose-lg font-light">
-                <p class="mb-4">
-                  <strong>Anitha Gabriel</strong> is the visionary founder of
-                  Velox Immigration, a practice born from her own immigrant
-                  journey and passion for simplifying the Canadian immigration
-                  process. With extensive experience and a deep understanding of
-                  immigration pathways, she has successfully helped countless
-                  clients, providing expert, trustworthy guidance throughout
-                  every stage of their immigration journey.
-                </p>
-                <p class="mb-4">
-                  Her dedication is reinforced by recognized accreditations:
-                </p>
-                <ul class="mb-4 space-y-2 list-disc pl-5">
-                  <li>
-                    <span
-                      ><strong
-                        >Licensed by the College of Immigration and Citizenship
-                        Consultants (CICC)</strong
-                      ></span
-                    >
-                  </li>
-                  <li>
-                    <span
-                      ><strong
-                        >Authorized Representative before the Immigration &
-                        Refugee Board (IRB)</strong
-                      ></span
-                    >
-                  </li>
-                  <!-- <li>
-                    <span
-                      ><strong
-                        >Member of CAPIC (Canadian Association of Professional
-                        Immigration Consultants)</strong
-                      ></span
-                    >
-                  </li> -->
-                </ul>
-                <p>
-                  Anitha's commitment, passion, and transparency shape her
-                  approach, making her a trusted guide in the immigration
-                  process. More than just an expert, she is known for her
-                  genuine dedication—exactly what her clients seek.
-                </p>
-              </div>
+              <div
+                class="prose lg:prose-lg font-light"
+                [innerHTML]="content.founder_content"
+              ></div>
               <div class="mt-8">
                 <button
-                  routerLink="/contact"
+                  [routerLink]="content.founder_ctaLink"
                   class="bg-fire-600 text-white px-8 py-3 rounded-lg hover:bg-fire-700 transition-colors"
                 >
-                  Schedule a Consultation →
+                  {{ content.founder_ctaText }}
                 </button>
               </div>
             </div>
@@ -155,14 +76,15 @@ import { HeaderComponent } from '../../components/header.component';
         <div class="container mx-auto px-4">
           <div class="max-w-4xl mx-auto">
             <h2 class="text-3xl mb-8 text-center text-sea-900">
-              Our Core Values (V.E.L.O.X)
+              {{ content.corevalues_title }}
             </h2>
             <div class="grid grid-cols-1 gap-6">
-              @for (value of coreValues(); track value.name) {
+              @for (value of content.corevalue_content; track value.title; let i
+              = $index) {
               <div
                 class="p-6 rounded-lg shadow-lg "
-                [class.bg-gray-50]="value.color === 'bg-sea-800'"
-                [class.bg-gray-200]="value.color === 'bg-fire-600'"
+                [class.bg-gray-50]="i % 2 === 0"
+                [class.bg-gray-200]="i % 2 !== 0"
               >
                 <h3
                   class="text-2xl font-semibold mb-2 flex justify-center items-center"
@@ -179,7 +101,7 @@ import { HeaderComponent } from '../../components/header.component';
                       clip-rule="evenodd"
                     ></path>
                   </svg> -->
-                  <span>{{ value.name }}</span>
+                  <span>{{ value.title }}</span>
                 </h3>
                 <p class="font-ligh text-center">{{ value.description }}</p>
               </div>
@@ -209,17 +131,17 @@ import { HeaderComponent } from '../../components/header.component';
             </p>
 
             <div class="space-y-4">
-              @for (faq of faqsList(); track faq.id) {
+              @for (faq of content.faq_items; track i; let i = $index) {
               <div class="bg-white rounded-lg shadow overflow-hidden">
                 <button
                   class="w-full px-6 py-4 text-left flex justify-between items-center"
-                  (click)="toggleFaq(faq.id)"
+                  (click)="toggleFaq(i)"
                 >
                   <span class="font-normal">{{ faq.question }}</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-5 w-5 transition-transform duration-300"
-                    [class.rotate-180]="isOpen(faq.id)"
+                    [class.rotate-180]="isOpen(i)"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -234,11 +156,11 @@ import { HeaderComponent } from '../../components/header.component';
                 </button>
                 <div
                   class="px-6 pb-4 transition-all duration-300"
-                  [class.hidden]="!isOpen(faq.id)"
-                  [class.max-h-0]="!isOpen(faq.id)"
-                  [class.max-h-96]="isOpen(faq.id)"
-                  [class.opacity-0]="!isOpen(faq.id)"
-                  [class.opacity-100]="isOpen(faq.id)"
+                  [class.hidden]="!isOpen(i)"
+                  [class.max-h-0]="!isOpen(i)"
+                  [class.max-h-96]="isOpen(i)"
+                  [class.opacity-0]="!isOpen(i)"
+                  [class.opacity-100]="isOpen(i)"
                 >
                   <p class="text-gray-600 font-light">{{ faq.answer }}</p>
                 </div>
@@ -290,6 +212,20 @@ import { HeaderComponent } from '../../components/header.component';
   ],
 })
 export class AboutPageComponent {
+  content: any;
+
+  constructor(private activatedRoute: ActivatedRoute, private route: Router) {
+    this.activatedRoute.data.subscribe((response: any) => {
+      this.content = response.data.data[0];
+      // if (
+      //   this.content.status === 'draft' ||
+      //   this.content.status === 'archived'
+      // ) {
+      //   this.route.navigate(['/']);
+      // }
+    });
+  }
+
   // Using signals for core values
   coreValues = () => [
     {

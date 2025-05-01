@@ -21,6 +21,8 @@ import { ReviewServicesComponent } from './pages/services/review-services.compon
 import { SopDliOpinionComponent } from './pages/services/sop-dli-opinion.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { StudyResolverService } from './resolvers/study-resolver.service';
+import { AboutResolverService } from './resolvers/about-resolver.service';
+import { DynamicResolverService } from './resolvers/dynamic-resolver.service';
 
 export const routes: Routes = [
   {
@@ -32,11 +34,23 @@ export const routes: Routes = [
     path: 'about',
     component: AboutPageComponent,
     title: 'About Us | Velox Immigration',
+    resolve: {
+      data: DynamicResolverService,
+    },
+    data: {
+      collection: 'about_page',
+    },
   },
   {
     path: 'contact',
     component: ContactFormComponent,
     title: 'Contact Us | Velox Immigration',
+    resolve: {
+      data: DynamicResolverService,
+    },
+    data: {
+      collection: 'contact_page',
+    },
   },
   {
     path: 'privacy-policy',
@@ -51,7 +65,10 @@ export const routes: Routes = [
         children: [{ path: 'study-in-canada', component: StudyComponent }],
         title: 'Study in Canada | Velox Immigration',
         resolve: {
-          data: StudyResolverService,
+          data: DynamicResolverService,
+        },
+        data: {
+          collection: 'study_in_canada',
         },
       },
       {
@@ -106,6 +123,12 @@ export const routes: Routes = [
     path: 'book-your-appointment',
     component: BookYourAppointmentComponent,
     title: 'Book a Consultation | Velox Immigration',
+    resolve: {
+      data: DynamicResolverService,
+    },
+    data: {
+      collection: 'book_consultation',
+    },
   },
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '/404' },

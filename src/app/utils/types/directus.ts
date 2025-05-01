@@ -1,4 +1,45 @@
 // Define interfaces for Directus responses
+export type Global = {
+  slug: string;
+  title: string;
+  description: string;
+};
+
+export type Author = {
+  slug: string;
+  name: string;
+};
+
+export type Page = {
+  slug: string;
+  title: string;
+  content: string;
+};
+
+export type Post = {
+  slug: string;
+  image: string;
+  title: string;
+  content: string;
+  author: Author;
+  published_date: string;
+};
+
+export type HomePage = HomePageContent;
+
+export type Menu = MenuContent;
+
+export type AboutPage = AboutPageContent;
+
+export type Schema = {
+  global: Global;
+  posts: Post[];
+  pages: Page[];
+  home_page: HomePage;
+  menu: Menu;
+  about_page: AboutPage;
+};
+
 export interface HomePageContent {
   id?: string;
   hero_title?: string;
@@ -43,4 +84,21 @@ interface MenuItems {
   url: string;
   visible: boolean;
   sub_menu?: MenuItems[];
+}
+
+export interface AboutPageContent {
+  id: number;
+  page_title: string;
+  page_subtitle: string;
+  story_header: string;
+  story_content: string;
+  founder_title: string;
+  founder_content: string;
+  founder_image: any | null;
+  founder_ctaText: string;
+  founder_ctaLink: string;
+  corevalues_title: string;
+  corevalue_content: any[];
+  faq_items: any[];
+  date_updated: string | null;
 }

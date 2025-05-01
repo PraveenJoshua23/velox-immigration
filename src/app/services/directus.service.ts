@@ -1,15 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HomePageContent, MenuContent } from '../utils/types/directus';
+import {
+  AboutPageContent,
+  HomePageContent,
+  MenuContent,
+  Schema,
+} from '../utils/types/directus';
+import { environments } from '../environments/environments';
+import { createDirectus, readItems, readItem, rest } from '@directus/sdk';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DirectusService {
-  private baseUrl = 'http://localhost:8055'; // or your Directus Cloud URL
+  private baseUrl = environments.baseUrl; // or your Directus Cloud URL
+  directus: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.directus = createDirectus<Schema>(this.baseUrl).with(rest());
+  }
 
   getHomePageContent(
     collection: string
@@ -28,4 +38,19 @@ export class DirectusService {
       `${this.baseUrl}/items/${collection}`
     );
   }
+
+  //@ts-ignore
+  // getAboutPageContent(collection: string): Promise<AboutPageContent[]> {
+  //   try {
+  //     //@ts-ignore
+  //     return this.directus.request(() => ({
+  //       path: `/items/about_page`,
+  //       method: 'GET',
+  //     }));
+  //   } catch (error) {
+  //     if (isDirectusError(error)) {
+  //       console.log(error);
+  //     }
+  //   }
+  // }
 }

@@ -1,5 +1,5 @@
 // appointment-booking.component.ts
-import { Component, signal, OnInit } from '@angular/core';
+import { Component, signal, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormsModule,
@@ -39,7 +39,7 @@ interface CalendarDay {
   template: ` <div class=" bg-gray-50 py-8">
     <div class="max-w-4xl mx-auto">
       <h1 class="text-2xl font-semibold text-center mb-8">
-        To book an appointment with Anitha Gabriel – Please use the below links
+        {{ content.link_heading }}
       </h1>
 
       <div class="bg-white rounded-lg shadow-lg overflow-hidden">
@@ -60,25 +60,31 @@ interface CalendarDay {
           </div>
 
           <div class="p-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div
+              [ngClass]="[
+                'grid grid-cols-1 md:grid-cols-2 gap-6',
+                content?.booking_links?.length === 1
+                  ? 'md:grid-cols-1 max-w-md mx-auto'
+                  : ''
+              ]"
+            >
               <div
-                *ngFor="let consultation of consultations()"
+                *ngFor="let consultation of content?.booking_links"
                 class="p-6 border rounded-lg cursor-pointer transition hover:shadow-md"
-                (click)="selectConsultation(consultation.id)"
+                (click)="selectConsultation(consultation.booking_calendly_link)"
               >
                 <div class="flex items-start gap-4">
                   <div
                     [class]="
-                      'rounded-full w-10 h-10 flex items-center justify-center shrink-0 ' +
-                      consultation.color
+                      'rounded-full w-10 h-10 flex items-center justify-center shrink-0 bg-indigo-500 text-white'
                     "
                   ></div>
                   <div class="flex-1">
                     <h3 class="text-lg font-semibold text-gray-800">
-                      {{ consultation.title }}
+                      {{ consultation.booking_title }}
                     </h3>
                     <p class="text-gray-600 font-light text-sm my-3">
-                      {{ consultation.description }}
+                      {{ consultation.booking_description }}
                     </p>
                     <div class="flex items-center gap-3">
                       <svg
@@ -94,7 +100,7 @@ interface CalendarDay {
                         />
                       </svg>
                       <span class="text-gray-700">{{
-                        consultation.duration
+                        consultation.booking_duration
                       }}</span>
                     </div>
                   </div>
@@ -123,6 +129,7 @@ interface CalendarDay {
   styles: [],
 })
 export class AppointmentBookingComponent {
+  @Input() content: any;
   // Consultation Options
   consultations = signal<Consultation[]>([
     {
@@ -139,13 +146,6 @@ export class AppointmentBookingComponent {
 
   // Selection Handlers
   selectConsultation(link: string): void {
-    // Navigate to the consultation's external URL
-    const consultation = this.consultations().find((c) => c.id === link);
-    if (consultation && consultation.link) {
-      // Navigate to the external URL directly in the same window
-      window.location.href = consultation.link;
-    }
-    // this.selectedConsultation.set(id);
-    // this.nextStep();
+    window.location.href = link;
   }
 }
