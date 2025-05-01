@@ -78,18 +78,50 @@ export const routes: Routes = [
             path: 'open-pgwp-permits',
             component: OpenWorkPermitComponent,
             title: 'Open Work Permit | Velox Immigration',
+            resolve: {
+              data: DynamicResolverService,
+            },
+            data: {
+              collection: 'open_pgwp_permit',
+            },
           },
           {
             path: 'lmia-employer-permits',
             component: LMIAComponent,
             title: 'LMIA Employer Permits | Velox Immigration',
+            resolve: {
+              data: DynamicResolverService,
+            },
+            data: {
+              collection: 'lmia_and_employer_permits',
+            },
           },
-          { path: 'extensions-coop', component: WorkComponent },
+          {
+            path: 'extensions-coop',
+            component: WorkComponent,
+            resolve: {
+              data: DynamicResolverService,
+            },
+            data: {
+              collection: 'extensions_and_coop_permits',
+            },
+          },
         ],
       },
       {
         path: 'visit',
-        children: [{ path: 'visitor-visas', component: VisitorVisaComponent }],
+        children: [
+          {
+            path: 'visitor-visas',
+            component: VisitorVisaComponent,
+            resolve: {
+              data: DynamicResolverService,
+            },
+            data: {
+              collection: 'visitor_visa',
+            },
+          },
+        ],
         title: 'Visitor Visas to Canada | Velox Immigration',
       },
       {
