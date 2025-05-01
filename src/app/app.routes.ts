@@ -127,7 +127,16 @@ export const routes: Routes = [
       {
         path: 'immigrate',
         children: [
-          { path: 'express-entry', component: ExpressEntryComponent },
+          {
+            path: 'express-entry',
+            component: ExpressEntryComponent,
+            resolve: {
+              data: DynamicResolverService,
+            },
+            data: {
+              collection: 'express_entry',
+            },
+          },
           { path: 'provincial-nominee', component: ProvincialNomineeComponent },
           {
             path: 'atlantic-immigration',
