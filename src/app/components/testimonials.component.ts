@@ -10,7 +10,9 @@ import {
   OnDestroy,
   NgZone,
   AfterViewInit,
+  Input,
 } from '@angular/core';
+import { HomePageContent } from '../utils/types/directus';
 
 @Component({
   selector: 'app-testimonials',
@@ -53,12 +55,18 @@ import {
                 </svg>
               </div>
               <p class="text-gray-600 text-base md:text-md mb-6">
-                {{ testimonials()[currentTestimonial()].content }}
+                {{
+                  content.data?.testimonials[currentTestimonial()]?.testimony
+                }}
               </p>
               <div class="flex items-center">
                 <div>
                   <p class="font-bold text-red-500">
-                    - {{ testimonials()[currentTestimonial()].name }}
+                    -
+                    {{
+                      content.data?.testimonials[currentTestimonial()]
+                        .name_designation
+                    }}
                   </p>
                   <!-- <p class="text-gray-500 text-sm">
                     {{ testimonials()[currentTestimonial()].status }}
@@ -141,7 +149,8 @@ import {
   ],
 })
 export class TestimonialsComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('testimonialContent') content!: ElementRef;
+  @Input() content: { data: HomePageContent | null } = { data: null };
+  @ViewChild('testimonialContent') testimonialContent!: ElementRef;
 
   currentTestimonial = signal(0);
   isAnimating = signal(false);
@@ -153,22 +162,22 @@ export class TestimonialsComponent implements AfterViewInit, OnDestroy {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
-  testimonials = signal([
-    {
-      content:
-        'Velox Immigration guided me through my PR process smoothly. Anitha’s expertise was invaluable!',
-      name: 'Kate Johnson, Permanent Resident',
+  // testimonials = signal([
+  //   {
+  //     content:
+  //       'Velox Immigration guided me through my PR process smoothly. Anitha’s expertise was invaluable!',
+  //     name: 'Kate Johnson, Permanent Resident',
 
-      image: '/assets/images/testimonials.jpg',
-    },
-    {
-      content:
-        'From my study permit to PR, Velox was with me every step of the way. Highly recommend!',
-      name: 'David Lee, International Graduate',
+  //     image: '/assets/images/testimonials.jpg',
+  //   },
+  //   {
+  //     content:
+  //       'From my study permit to PR, Velox was with me every step of the way. Highly recommend!',
+  //     name: 'David Lee, International Graduate',
 
-      image: '/assets/images/testimonials.jpg',
-    },
-  ]);
+  //     image: '/assets/images/testimonials.jpg',
+  //   },
+  // ]);
 
   ngAfterViewInit() {
     if (this.isBrowser) {
@@ -223,7 +232,7 @@ export class TestimonialsComponent implements AfterViewInit, OnDestroy {
 
     this.ngZone.runOutsideAngular(() => {
       animate(
-        this.content.nativeElement,
+        this.testimonialContent.nativeElement,
         {
           opacity: [1, 0],
           transform: ['translateX(0)', 'translateX(-30px)'],
@@ -234,11 +243,11 @@ export class TestimonialsComponent implements AfterViewInit, OnDestroy {
       ).then(() => {
         this.ngZone.run(() => {
           this.currentTestimonial.update(
-            (current) => (current + 1) % this.testimonials().length
+            (current) => (current + 1) % this.content.data?.testimonials?.length
           );
 
           animate(
-            this.content.nativeElement,
+            this.testimonialContent.nativeElement,
             {
               opacity: [0, 1],
               transform: ['translateX(30px)', 'translateX(0)'],
@@ -260,7 +269,7 @@ export class TestimonialsComponent implements AfterViewInit, OnDestroy {
 
     this.ngZone.runOutsideAngular(() => {
       animate(
-        this.content.nativeElement,
+        this.testimonialContent.nativeElement,
         {
           opacity: [1, 0],
           transform: ['translateX(0)', 'translateX(30px)'],
@@ -271,11 +280,13 @@ export class TestimonialsComponent implements AfterViewInit, OnDestroy {
       ).then(() => {
         this.ngZone.run(() => {
           this.currentTestimonial.update((current) =>
-            current === 0 ? this.testimonials().length - 1 : current - 1
+            current === 0
+              ? this.content.data?.testimonials?.length - 1
+              : current - 1
           );
 
           animate(
-            this.content.nativeElement,
+            this.testimonialContent.nativeElement,
             {
               opacity: [0, 1],
               transform: ['translateX(-30px)', 'translateX(0)'],

@@ -10,9 +10,17 @@ import {
   Inject,
   OnInit,
   PLATFORM_ID,
+  signal,
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { animate, inView } from 'motion';
+import {
+  trigger,
+  state,
+  style,
+  animate as ngAnimate,
+  transition,
+} from '@angular/animations';
 // import { ServicesComponent } from '../../components/services.component';
 import { TestimonialsComponent } from '../../components/testimonials.component';
 import { AboutComponent } from '../../components/about.component';
@@ -24,6 +32,8 @@ import { WhyChooseUsComponent } from '../../components/why-choose-us.component';
 import { ProcessStepsComponent } from '../../components/process-steps.component';
 import { ContactFormData } from '../../services/sheets.service';
 import { SeoService } from '../../services/seo.service';
+import { DirectusService } from '../../services/directus.service';
+import { HomePageContent } from '../../utils/types/directus';
 
 @Component({
   selector: 'app-home',
@@ -41,34 +51,15 @@ import { SeoService } from '../../services/seo.service';
     ServiceSectionComponent,
     NgOptimizedImage,
   ],
+  animations: [
+    trigger('fadeIn', [
+      state('void', style({ opacity: 0 })),
+      transition(':enter', [
+        ngAnimate('1000ms ease-in', style({ opacity: 1 })),
+      ]),
+    ]),
+  ],
   template: `
-    <!-- <header class="bg-white shadow-sm">
-      <nav
-        class="container mx-auto px-4 py-4 flex justify-between items-center"
-      >
-        <div class="flex items-center">
-          <img
-            src="/assets/images/logo.svg"
-            alt="Velox Immigration"
-            srcset=""
-          />
-        </div>
-        <div class="hidden md:flex space-x-6">
-          <a
-            *ngFor="let link of navLinks()"
-            class="text-gray-600 font-spartan hover:text-fire-600 transition-colors"
-            [routerLink]="link.path"
-          >
-            {{ link.label }}
-          </a>
-        </div>
-        <button
-          class="bg-fire-600 text-white px-6 py-2 rounded-lg  transition-colors"
-        >
-          Book Your Consultation
-        </button>
-      </nav>
-    </header> -->
     <app-header />
 
     <main>
@@ -80,30 +71,43 @@ import { SeoService } from '../../services/seo.service';
               class="w-full md:w-5/12 lg:w-4/12 px-10 md:pl-[90px] pt-[100px] md:pt-0 hero-content z-20"
             >
               <p class="text-lg md:text-xl text-white mb-4 md:mb-8 font-light">
-                Your Canadian journey starts here!
+                {{
+                  homecontent().data?.hero_subtitle ||
+                    'Your Canadian journey starts here!'
+                }}
               </p>
               <h2
                 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-medium text-white mb-4 md:mb-6"
               >
-                Professional Immigration Services
+                {{
+                  homecontent().data?.hero_title ||
+                    'Professional Immigration Services'
+                }}
               </h2>
               <p
                 class="text-sm md:text-base text-white mb-6 md:mb-8 font-spartan font-light"
               >
-                Trusted guidance for your Canadian dreams with expert advice,
-                seamless processing, and personalized solutions.
+                {{
+                  homecontent().data?.hero_description ||
+                    'Trusted guidance for your Canadian dreams with expert advice, seamless processing, and personalized solutions.'
+                }}
               </p>
               <p
                 class="text-sm md:text-base text-white italic mb-6 md:mb-8 font-spartan font-light"
               >
-                Move to Canada with Confidence!
+                {{
+                  homecontent().data?.hero_caption ||
+                    'Move to Canada with Confidence!'
+                }}
               </p>
               <div class="flex">
                 <button
-                  routerLink="/contact"
+                  [routerLink]="homecontent().data?.hero_cta_link || '/contact'"
                   class="bg-fire-600 text-white px-6 md:px-8 py-2 md:py-3 rounded-lg transition-colors hover:bg-fire-700 w-full sm:w-auto"
                 >
-                  Request a Callback
+                  {{
+                    homecontent().data?.hero_cta_title || 'Request a Callback'
+                  }}
                 </button>
               </div>
             </div>
@@ -121,6 +125,7 @@ import { SeoService } from '../../services/seo.service';
                 class="w-full h-full object-cover"
                 priority
                 fill
+                @fadeIn
               />
             </div>
           </div>
@@ -128,16 +133,16 @@ import { SeoService } from '../../services/seo.service';
       </section>
 
       <!-- About Section  -->
-      <app-about />
+      <app-about [content]="homecontent()" />
 
       <!-- Why choose us Section -->
-      <app-why-choose-us />
+      <app-why-choose-us [content]="homecontent()" />
 
       <!-- Express Entry -->
-      <app-service-section />
+      <app-service-section [content]="homecontent()" />
 
       <!-- Process Section -->
-      <app-process-steps />
+      <app-process-steps [content]="homecontent()" />
 
       <!-- Contact Form -->
       <!-- <div
@@ -153,10 +158,10 @@ import { SeoService } from '../../services/seo.service';
       </div> -->
 
       <!-- Testimonial Section -->
-      <app-testimonials />
+      <app-testimonials [content]="homecontent()" />
 
       <!-- Partner logos -->
-      <app-partner-logos />
+      <app-partner-logos [content]="homecontent()" />
     </main>
 
     <!-- Footer -->
@@ -168,10 +173,16 @@ import { SeoService } from '../../services/seo.service';
 })
 export class HomeComponent implements AfterViewInit, OnInit {
   seoService = inject(SeoService);
+  directusService = inject(DirectusService);
+  homecontent = signal<{ data: HomePageContent | null }>({ data: null });
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit(): void {
+    this.directusService.getHomePageContent('home_page').subscribe((data) => {
+      // console.log(data);
+      this.homecontent.set(data);
+    });
     this.seoService.setAllSeoData({
       title:
         'Velox Immigration | Trusted RCIC-Led Canadian Immigration Services',

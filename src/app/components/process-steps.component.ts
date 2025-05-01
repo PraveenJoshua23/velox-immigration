@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HomePageContent } from '../utils/types/directus';
 
 interface ProcessStep {
   icon: string;
@@ -37,13 +38,14 @@ interface ProcessStep {
 
             <!-- Process Steps -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-              @for (step of processSteps(); track step.title) {
+              @for (step of content.data?.our_process_steps || []; track
+              step.title) {
               <div class="flex flex-col items-center">
                 <!-- Step Number Circle -->
                 <div
                   class="w-[3.3rem] h-16 rounded-full bg-red-600 flex items-center justify-center text-white text-2xl font-bold mb-6"
                 >
-                  {{ processSteps().indexOf(step) + 1 }}
+                  {{ content.data?.our_process_steps.indexOf(step) + 1 }}
                 </div>
 
                 <!-- Step Content Card -->
@@ -80,24 +82,25 @@ interface ProcessStep {
   `,
 })
 export class ProcessStepsComponent {
-  processSteps = signal<ProcessStep[]>([
-    {
-      icon: 'assessment',
-      title: 'Initial Assessment',
-      description:
-        'The first step in your immigration journey is a preliminary assessment where we take the time to understand your goals and review your initial eligibility. This ensures that you are on the right path before proceeding further.',
-    },
-    {
-      icon: 'consultation',
-      title: 'Personalized Consultation',
-      description:
-        'A consultation meeting with our licensed RCIC expert provides you with in-depth insights and tailored recommendations. We discuss your immigration options, answer your questions, and develop a strategic plan to achieve your goals.',
-    },
-    {
-      icon: 'application',
-      title: 'Application Preparation & Submission',
-      description:
-        'Once your pathway is determined, we move forward with completing and submitting your application. Our team ensures that all documentation is accurate, complete, and aligned with immigration requirements for a seamless process.',
-    },
-  ]);
+  @Input() content: { data: HomePageContent | null } = { data: null };
+  // processSteps = signal<ProcessStep[]>([
+  //   {
+  //     icon: 'assessment',
+  //     title: 'Initial Assessment',
+  //     description:
+  //       'The first step in your immigration journey is a preliminary assessment where we take the time to understand your goals and review your initial eligibility. This ensures that you are on the right path before proceeding further.',
+  //   },
+  //   {
+  //     icon: 'consultation',
+  //     title: 'Personalized Consultation',
+  //     description:
+  //       'A consultation meeting with our licensed RCIC expert provides you with in-depth insights and tailored recommendations. We discuss your immigration options, answer your questions, and develop a strategic plan to achieve your goals.',
+  //   },
+  //   {
+  //     icon: 'application',
+  //     title: 'Application Preparation & Submission',
+  //     description:
+  //       'Once your pathway is determined, we move forward with completing and submitting your application. Our team ensures that all documentation is accurate, complete, and aligned with immigration requirements for a seamless process.',
+  //   },
+  // ]);
 }

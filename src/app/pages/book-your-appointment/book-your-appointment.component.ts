@@ -1,9 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, PLATFORM_ID, Inject, signal } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from '../../components/header.component';
 import { FooterComponent } from '../../components/footer.component';
 import { AppointmentBookingComponent } from '../../components/book-appointment.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-book-appointment',
@@ -17,98 +20,53 @@ import { AppointmentBookingComponent } from '../../components/book-appointment.c
   ],
   template: `
     <app-header />
-    <section class="min-h-screen bg-gray-50 py-12">
+    <section class="min-h-screen bg-gray-50">
       <!-- Hero Section -->
       <div class="bg-sea-950 text-white py-16 mb-12">
         <div class="container mx-auto px-4">
           <h1 class="text-4xl md:text-5xl mb-4">Book Your Consultation</h1>
           <p class="text-xl opacity-90">
-            Take the first step towards your Canadian journey
+            {{ content.page_subtitle }}
           </p>
         </div>
       </div>
 
       <!-- Main Content -->
       <div class="container mx-auto px-4">
+        <!-- Disclaimer Dialog -->
+        @if(showDisclaimer()) {
         <div
-          class="text-gray-700 font-light leading-relaxed max-w-3xl mx-auto mb-12"
+          class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
         >
-          <p class="mb-4">
-            This Initial Consultation Agreement is made between the Regulated
-            Canadian Immigration Consultant – Anitha Gabriel (RCIC #R1034239)
-            and the client. The client agrees to pay the fees indicated in the
-            booking tool below for the selected online consultation services.
-          </p>
-
-          <p class="mb-4">
-            The purpose of the consultation is to provide the consultant with
-            sufficient information to allow for a full analysis and
-            comprehensive advice on immigration options, including estimated
-            time frames, consultation fees and costs.
-          </p>
-
-          <p class="mb-4">
-            <span class="font-semibold">Client responsibility:</span> Client
-            must provide the RCIC with such factual information and
-            documentation as are required to perform the consultation. Client
-            must be accurate and honest and must inform RCIC of all information,
-            even if negative or adverse, which might be relevant to the advice
-            provided by RCIC in this matter. Failure to fully disclose all
-            relevant information to RCIC will impact the advice given by RCIC
-            and may void this Agreement, or seriously affect the outcome of the
-            application of Client or the retention of any status that Client may
-            obtain.
-          </p>
-
-          <p class="mb-4">
-            <span class="font-semibold"
-              >Advice current on date of consultation:</span
-            >
-            The advice provided by the RCIC to Client is based on the Canadian
-            immigration law and policy current on the date of the consultation
-            where relevant. The RCIC is not responsible or accountable for any
-            change in government legislation or policy that may impact the
-            processing of any subsequent application by Client.
-          </p>
-
-          <p class="mb-4">
-            <span class="font-semibold">No guarantee on outcome:</span> RCIC
-            shall provide consulting services to Client to the standard of a
-            competent CICC member. RCIC does not guarantee that she will be able
-            to assist Client in meeting his or her business, education,
-            employment or immigration goals.
-          </p>
-
-          <p class="mb-4">
-            <span class="font-semibold">Confidentiality:</span> RCIC is required
-            to preserve the confidences and secrets of Client. This professional
-            obligation exists to encourage candid and complete communications
-            between Client and the RCIC. All information and documentation
-            provided by Client and reviewed by the RCIC will not be divulged to
-            any third party, other than RCIC's agents and employees, without
-            prior consent, except as demanded by law.
-          </p>
-
-          <p class="mb-4">
-            This agreement shall be governed by the laws in effect in the
-            Province of Ontario and the Federal Laws of Canada applicable
-            therein.
-          </p>
-
-          <p class="mb-4">
-            Please be advised that Anitha Gabriel, RCIC #R1034239 is a member in
-            good standing of the Immigration Consultants of Canada Regulatory
-            Council (ICCRC) and as such is bound by its By-Law, Code of
-            Professional Ethics, and Regulations.
-          </p>
-
-          <p>
-            By paying the fee in the booking tool above the client agrees that
-            he/she has read this initial consultation agreement and its clause
-            and agreed to the terms and conditions outlined in it.
-          </p>
+          <div
+            class="bg-white rounded-lg shadow-xl max-w-3xl w-full max-h-[80vh] flex flex-col"
+          >
+            <div class="p-6 overflow-y-auto">
+              <h2 class="text-2xl font-semibold mb-4">Important Disclaimer</h2>
+              <div
+                class="text-gray-700 font-light leading-relaxed"
+                [innerHTML]="safeDisclaimerContent"
+              ></div>
+            </div>
+            <div class="border-t p-4 flex justify-end">
+              <button
+                (click)="acceptDisclaimer()"
+                class="px-6 py-2 bg-sea-600 hover:bg-sea-700 text-white rounded-md transition-colors"
+              >
+                I Accept
+              </button>
+            </div>
+          </div>
         </div>
-        <app-appointment-booking />
+        }
+
+        <!-- Disclaimer content (visible after acceptance) -->
+        <!-- <div
+          *ngIf="!showDisclaimer"
+          class="text-gray-700 font-light leading-relaxed max-w-3xl mx-auto mb-12"
+          [innerHTML]="safeDisclaimerContent"
+        ></div> -->
+        <app-appointment-booking [content]="content" />
       </div>
     </section>
     <app-footer [hideContactBanner]="true" />
@@ -121,4 +79,50 @@ import { AppointmentBookingComponent } from '../../components/book-appointment.c
     `,
   ],
 })
-export class BookYourAppointmentComponent {}
+export class BookYourAppointmentComponent {
+  content: any;
+  safeDisclaimerContent!: SafeHtml;
+  showDisclaimer = signal(true);
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private route: Router,
+    private sanitizer: DomSanitizer,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+    // Check if disclaimer was already accepted
+    if (isPlatformBrowser(this.platformId)) {
+      const disclaimerAccepted = localStorage.getItem('disclaimerAccepted');
+      if (disclaimerAccepted === 'true') {
+        this.showDisclaimer.set(false);
+      }
+    }
+
+    this.activatedRoute.data.subscribe((response: any) => {
+      this.content = response.data.data[0];
+
+      // Sanitize the HTML content to avoid warnings
+      if (this.content && this.content.disclaimer_content) {
+        this.safeDisclaimerContent = this.sanitizer.bypassSecurityTrustHtml(
+          this.content.disclaimer_content
+        );
+      }
+
+      // if (
+      //   this.content.status === 'draft' ||
+      //   this.content.status === 'archived'
+      // ) {
+      //   this.route.navigate(['/']);
+      // }
+    });
+  }
+
+  acceptDisclaimer(): void {
+    this.showDisclaimer.set(false);
+
+    // Save acceptance in localStorage to prevent showing again on page refresh
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('disclaimerAccepted', 'true');
+    }
+  }
+}

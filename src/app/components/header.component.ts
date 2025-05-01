@@ -1,12 +1,39 @@
-import { Component, OnInit, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {
+  Component,
+  inject,
+  OnInit,
+  signal,
+  PLATFORM_ID,
+  Inject,
+} from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { localServices, nav } from '../utils/constants/navigation';
+import { DirectusService } from '../services/directus.service';
+
+export interface MenuItem {
+  label: string;
+  url: string;
+  visible?: boolean;
+  sub_menu?: MenuItem[];
+  isCta?: boolean;
+}
+
+export interface MenuData {
+  id: number;
+  date_updated: string | null;
+  title: string;
+  menu_items: MenuItem[];
+}
+
+export interface MenuResponse {
+  data: MenuData[];
+}
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [CommonModule, RouterModule],
+  providers: [DirectusService],
   template: `
     <header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
       <nav
@@ -15,33 +42,32 @@ import { localServices, nav } from '../utils/constants/navigation';
         <!-- Logo -->
         <div class="flex items-center cursor-pointer">
           <img
-            [routerLink]="nav().logoTitle.href"
+            routerLink="/"
             src="/assets/images/logo.svg"
-            [alt]="nav().logoTitle.label"
+            alt="Velox Immigration"
             class="h-14"
           />
         </div>
 
         <!-- Desktop Navigation -->
         <div class="hidden lg:flex justify-center items-center space-x-6">
-          @for(item of nav().navItem; track item.id) { @if(!item.hasDropdown) {
+          @for(item of menuItems(); track $index) { @if(!item.sub_menu &&
+          !item.isCta) {
           <a
-            [routerLink]="item.href"
-            [href]="item.isExternal ? item.href : null"
-            [target]="item.isExternal ? '_blank' : undefined"
+            [routerLink]="item.url"
             routerLinkActive="text-fire-600"
-            [routerLinkActiveOptions]="{ exact: true }"
+            [routerLinkActiveOptions]="{ exact: item.url === '/' }"
             class="text-gray-600 font-light hover:text-fire-600 transition-colors"
           >
             {{ item.label }}
           </a>
-          } @else {
+          } @else if(item.sub_menu && !item.isCta) {
           <!-- Services Dropdown -->
           <div class="services-dropdown relative">
             <a
               class="text-gray-600 font-light hover:text-fire-600 transition-colors cursor-pointer flex items-center gap-1"
             >
-              Services
+              {{ item.label }}
               <svg
                 class="w-4 h-4"
                 fill="none"
@@ -61,12 +87,13 @@ import { localServices, nav } from '../utils/constants/navigation';
             <ul
               class="primary-dropdown absolute left-1/2 -translate-x-1/2 bg-white border-t border-fire-500 shadow-lg rounded-lg mt-2 py-2 w-[250px] z-10"
             >
-              @for(category of localServices(); track category.id) {
+              @for(subItem of item.sub_menu; track $index) {
               <li class="dropdown-item relative">
+                @if(subItem.sub_menu) {
                 <a
                   class="px-4 py-2 text-gray-700 font-light hover:bg-gray-50 w-full flex justify-between items-center"
                 >
-                  {{ category.title }}
+                  {{ subItem.label }}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-4 w-4 text-gray-500 flex-shrink-0"
@@ -87,28 +114,38 @@ import { localServices, nav } from '../utils/constants/navigation';
                 <ul
                   class="secondary-dropdown absolute left-full top-0 bg-white shadow-lg rounded-lg py-2 w-[280px] z-20"
                 >
-                  @for(service of category.items; track service.id) {
+                  @for(subSubItem of subItem.sub_menu; track $index) {
                   <li>
                     <a
-                      [routerLink]="service.path"
+                      [routerLink]="subSubItem.url"
                       class="px-4 py-2 text-gray-600 font-light hover:bg-gray-50 hover:text-fire-600 block"
                     >
-                      {{ service.label }}
+                      {{ subSubItem.label }}
                     </a>
                   </li>
                   }
                 </ul>
+                } @else {
+                <a
+                  [routerLink]="subItem.url"
+                  class="px-4 py-2 text-gray-700 font-light hover:bg-gray-50 hover:text-fire-600 block w-full"
+                >
+                  {{ subItem.label }}
+                </a>
+                }
               </li>
               }
             </ul>
           </div>
           } }
+
           <!-- Desktop CTA -->
           <button
-            [routerLink]="nav().ctaButton.href"
+            *ngIf="ctaButton()"
+            [routerLink]="ctaButton()?.url"
             class="hidden lg:block bg-fire-600 text-white text-sm px-6 py-3 ml-2 rounded-lg transition-colors hover:bg-fire-700"
           >
-            {{ nav().ctaButton.label }}
+            {{ ctaButton()?.label }}
           </button>
         </div>
 
@@ -152,35 +189,38 @@ import { localServices, nav } from '../utils/constants/navigation';
         <div class="container mx-auto px-4 py-6">
           <!-- Main Navigation Links -->
           <div class="flex flex-col gap-6">
-            @for(item of nav().navItem; track item.id) { @if(!item.hasDropdown
-            || item.label === 'Book Consultation' || item.label === 'Contact') {
+            @for(item of menuItems(); track $index) { @if(!item.sub_menu &&
+            !item.isCta) {
             <a
-              [routerLink]="item.href"
-              [href]="item.isExternal ? item.href : null"
-              [target]="item.isExternal ? '_blank' : undefined"
+              [routerLink]="item.url"
               (click)="closeMenu()"
               class="text-xl font-light text-gray-800 hover:text-fire-600"
             >
               {{ item.label }}
             </a>
-            } @else {
+            } @else if(item.isCta) {
+            <!-- Mobile CTA rendered at the bottom -->
+            } @else if(item.sub_menu) {
             <!-- Services Sections -->
             <div>
-              <h2 class="text-2xl font-light text-gray-800 mb-4">Services</h2>
+              <h2 class="text-2xl font-light text-gray-800 mb-4">
+                {{ item.label }}
+              </h2>
               <div class="space-y-4 pl-4">
-                @for(category of localServices(); track category.id) {
+                @for(subItem of item.sub_menu; track $index) {
                 <div>
+                  @if(subItem.sub_menu) {
                   <div
                     class="flex items-center justify-between cursor-pointer mb-2"
-                    (click)="toggleCategory(category.id)"
+                    (click)="toggleCategory(subItem.label)"
                   >
                     <h3 class="text-xl font-medium text-fire-600">
-                      {{ category.title }}
+                      {{ subItem.label }}
                     </h3>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       [class]="
-                        expandedCategories.includes(category.id)
+                        expandedCategories.includes(subItem.label)
                           ? 'transform rotate-90 h-5 w-5 text-gray-600'
                           : 'h-5 w-5 text-gray-600'
                       "
@@ -198,19 +238,32 @@ import { localServices, nav } from '../utils/constants/navigation';
                   </div>
                   <div
                     class="flex flex-col gap-3 pl-4 overflow-hidden transition-all duration-300"
-                    [class.max-h-0]="!expandedCategories.includes(category.id)"
-                    [class.max-h-96]="expandedCategories.includes(category.id)"
+                    [class.max-h-0]="
+                      !expandedCategories.includes(subItem.label)
+                    "
+                    [class.max-h-96]="
+                      expandedCategories.includes(subItem.label)
+                    "
                   >
-                    @for(service of category.items; track service.id) {
+                    @for(subSubItem of subItem.sub_menu; track $index) {
                     <a
-                      [routerLink]="service.path"
+                      [routerLink]="subSubItem.url"
                       (click)="closeMenu()"
                       class="text-gray-600 hover:text-fire-600 py-1"
                     >
-                      {{ service.label }}
+                      {{ subSubItem.label }}
                     </a>
                     }
                   </div>
+                  } @else {
+                  <a
+                    [routerLink]="subItem.url"
+                    (click)="closeMenu()"
+                    class="text-xl font-medium text-fire-600 block mb-2"
+                  >
+                    {{ subItem.label }}
+                  </a>
+                  }
                 </div>
                 }
               </div>
@@ -219,11 +272,12 @@ import { localServices, nav } from '../utils/constants/navigation';
 
             <!-- Mobile CTA -->
             <button
-              [routerLink]="nav().ctaButton.href"
+              *ngIf="ctaButton()"
+              [routerLink]="ctaButton()?.url"
               (click)="closeMenu()"
               class="mt-6 w-full bg-fire-600 text-white px-6 py-3 rounded-lg transition-colors hover:bg-fire-700 text-center"
             >
-              {{ nav().ctaButton.label }}
+              {{ ctaButton()?.label }}
             </button>
           </div>
         </div>
@@ -293,12 +347,20 @@ import { localServices, nav } from '../utils/constants/navigation';
 })
 export class HeaderComponent implements OnInit {
   isMenuOpen = signal(false);
-  nav = signal(nav);
-  localServices = signal(localServices);
+  menuData = signal<MenuData | null>(null);
+  menuItems = signal<MenuItem[]>([]);
+  ctaButton = signal<MenuItem | null>(null);
+  directusService = inject(DirectusService);
   expandedCategories: string[] = [];
 
+  // Constants for localStorage cache
+  private readonly MENU_CACHE_KEY = 'velox_navigation_menu';
+  private readonly CACHE_EXPIRATION_TIME = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
   ngOnInit() {
-    // Initialization code if needed
+    this.getMenuFromBackend();
   }
 
   toggleMenu() {
@@ -323,6 +385,82 @@ export class HeaderComponent implements OnInit {
       );
     } else {
       this.expandedCategories.push(categoryId);
+    }
+  }
+
+  getMenuFromBackend() {
+    // Check if we're in a browser environment
+    if (isPlatformBrowser(this.platformId)) {
+      // Check if menu data exists in localStorage
+      const cachedData = localStorage.getItem(this.MENU_CACHE_KEY);
+
+      if (cachedData) {
+        try {
+          const { data, timestamp } = JSON.parse(cachedData);
+          const now = new Date().getTime();
+
+          // Check if the cache is still valid (not expired)
+          if (
+            data &&
+            timestamp &&
+            now - timestamp < this.CACHE_EXPIRATION_TIME
+          ) {
+            // Use cached data
+            this.processMenuData(data);
+            return;
+          }
+        } catch (error) {
+          console.error('Error parsing cached menu data:', error);
+          // Continue with API call if there's an error parsing the cache
+        }
+      }
+    }
+
+    // If no valid cache exists or we're not in a browser, fetch from service
+    this.directusService.getMenu('navigation').subscribe({
+      next: (response) => {
+        if (response && response.data && response.data.length > 0) {
+          this.processMenuData(response.data);
+
+          // Cache the fresh data with current timestamp if in browser
+          if (isPlatformBrowser(this.platformId)) {
+            const cacheData = {
+              data: response.data,
+              timestamp: new Date().getTime(),
+            };
+            localStorage.setItem(
+              this.MENU_CACHE_KEY,
+              JSON.stringify(cacheData)
+            );
+          }
+        } else {
+          console.error('Invalid menu data structure received', response);
+        }
+      },
+      error: (err) => {
+        console.error('Error fetching menu data:', err);
+      },
+    });
+  }
+
+  processMenuData(data: any) {
+    if (Array.isArray(data) && data.length > 0) {
+      const menuData = data[0] as MenuData;
+      this.menuData.set(menuData);
+
+      // Filter only visible menu items
+      const visibleItems = menuData.menu_items.filter(
+        (item) => item.visible !== false
+      );
+
+      // Extract CTA button
+      const ctaButton =
+        visibleItems.find((item) => item.isCta === true) || null;
+      this.ctaButton.set(ctaButton);
+
+      // Set regular menu items (excluding CTA)
+      const regularItems = visibleItems.filter((item) => item.isCta !== true);
+      this.menuItems.set(regularItems);
     }
   }
 }

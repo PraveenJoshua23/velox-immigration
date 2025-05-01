@@ -5,9 +5,11 @@ import {
   ElementRef,
   Inject,
   PLATFORM_ID,
+  Input,
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HomePageContent } from '../utils/types/directus';
 
 interface Reason {
   icon: string;
@@ -26,11 +28,11 @@ interface Reason {
           <div class="flex items-center justify-center gap-2 mb-4">
             <img src="assets/images/plane.svg" class="pb-1 hidden md:block" />
             <h2 class="text-3xl font-medium">
-              Why Choose <span class="font-bold">Velox Immigration?</span>
+              {{ content.data?.why_choose_subtitle }}
             </h2>
           </div>
           <p class="text-gray-600 mt-2">
-            Trusted expertise for your Canadian immigration journey
+            {{ content.data?.why_choose_title }}
           </p>
         </div>
 
@@ -41,7 +43,8 @@ interface Reason {
           [class.animate-cards]="animateCards()"
         >
           <!-- Reasons -->
-          @for(reason of reasons(); track reason.title; let i = $index){
+          @for(reason of content.data?.why_choose_features || []; track
+          reason.title; let i = $index){
           <div
             class="reason-card bg-fire-600 bg-opacity-20 space-y-3 border border-fire-600 rounded-lg px-6 py-12 flex flex-col items-center text-center transition-all"
             [attr.data-index]="i"
@@ -61,10 +64,10 @@ interface Reason {
         <!-- CTA Button -->
         <div class="text-center">
           <button
-            routerLink="/contact"
+            [routerLink]="content.data?.why_choose_cta_link || '/contact'"
             class="bg-fire-600 text-white px-8 py-3 rounded-lg hover:bg-fire-700 transition-colors inline-flex items-center gap-2"
           >
-            Schedule a Free Consultation
+            {{ content.data?.why_choose_cta_text }}
           </button>
         </div>
       </div>
@@ -106,6 +109,7 @@ interface Reason {
 })
 export class WhyChooseUsComponent implements AfterViewInit {
   animateCards = signal(false);
+  @Input() content: { data: HomePageContent | null } = { data: null };
 
   reasons = signal<Reason[]>([
     {

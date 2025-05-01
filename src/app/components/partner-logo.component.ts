@@ -1,5 +1,6 @@
-import { Component, ElementRef, signal, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, signal, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HomePageContent } from '../utils/types/directus';
 
 @Component({
   selector: 'app-partner-logos',
@@ -63,6 +64,7 @@ import { CommonModule } from '@angular/common';
   ],
 })
 export class PartnerLogosComponent {
+  @Input() content: { data: HomePageContent | null } = { data: null };
   @ViewChild('firstTrack') firstTrack!: ElementRef;
   @ViewChild('secondTrack') secondTrack!: ElementRef;
   @ViewChild('container') container!: ElementRef;

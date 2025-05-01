@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HomePageContent } from '../utils/types/directus';
 
 @Component({
   selector: 'app-about',
@@ -23,25 +24,25 @@ import { RouterModule } from '@angular/router';
             <div class="flex items-center gap-2 mb-4">
               <img src="assets/images/plane.svg" class="pb-1" />
               <h2 class="text-3xl font-medium">
-                About <span class="font-bold">VELOX</span> Immigration
+                {{ content.data?.about_subtitle }}
               </h2>
             </div>
 
             <h2
               class="text-4xl md:text-5xl pb-2 border-b border-fire-500 text-sea-900"
             >
-              Simplifying Immigration, One Step at a Time.
+              {{ content.data?.about_title }}
             </h2>
 
             <p class="text-gray-600 font-light mb-6 py-5">
-              {{ about()[0].content }}
+              {{ content.data?.about_description }}
             </p>
 
             <button
-              routerLink="/about"
+              [routerLink]="content.data?.about_ctaLink || '/about'"
               class="px-6 py-2 border-2 border-red-500 text-red-500 rounded-lg hover:bg-red-500 hover:text-white transition-colors"
             >
-              Learn More About Us
+              {{ content.data?.about_ctaTitle }}
             </button>
           </div>
         </div>
@@ -51,10 +52,5 @@ import { RouterModule } from '@angular/router';
   styles: ``,
 })
 export class AboutComponent {
-  about = signal([
-    {
-      content:
-        'At Velox Immigration Services Inc., we make Canadian immigration clear, efficient, and stress-free. Our expert team, led by licensed RCIC-IRB consultant Anitha Gabriel, is committed to providing tailored solutions that help individuals, families, and businesses achieve their immigration goals.',
-    },
-  ]);
+  @Input() content: { data: HomePageContent | null } = { data: null };
 }

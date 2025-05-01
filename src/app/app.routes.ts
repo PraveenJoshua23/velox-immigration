@@ -20,6 +20,9 @@ import { PRCitizenshipComponent } from './pages/services/pr-citizenship.componen
 import { ReviewServicesComponent } from './pages/services/review-services.component';
 import { SopDliOpinionComponent } from './pages/services/sop-dli-opinion.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
+import { StudyResolverService } from './resolvers/study-resolver.service';
+import { AboutResolverService } from './resolvers/about-resolver.service';
+import { DynamicResolverService } from './resolvers/dynamic-resolver.service';
 
 export const routes: Routes = [
   {
@@ -31,11 +34,23 @@ export const routes: Routes = [
     path: 'about',
     component: AboutPageComponent,
     title: 'About Us | Velox Immigration',
+    resolve: {
+      data: DynamicResolverService,
+    },
+    data: {
+      collection: 'about_page',
+    },
   },
   {
     path: 'contact',
     component: ContactFormComponent,
     title: 'Contact Us | Velox Immigration',
+    resolve: {
+      data: DynamicResolverService,
+    },
+    data: {
+      collection: 'contact_page',
+    },
   },
   {
     path: 'privacy-policy',
@@ -49,6 +64,12 @@ export const routes: Routes = [
         path: 'study',
         children: [{ path: 'study-in-canada', component: StudyComponent }],
         title: 'Study in Canada | Velox Immigration',
+        resolve: {
+          data: DynamicResolverService,
+        },
+        data: {
+          collection: 'study_in_canada',
+        },
       },
       {
         path: 'work',
@@ -57,24 +78,65 @@ export const routes: Routes = [
             path: 'open-pgwp-permits',
             component: OpenWorkPermitComponent,
             title: 'Open Work Permit | Velox Immigration',
+            resolve: {
+              data: DynamicResolverService,
+            },
+            data: {
+              collection: 'open_pgwp_permit',
+            },
           },
           {
             path: 'lmia-employer-permits',
             component: LMIAComponent,
             title: 'LMIA Employer Permits | Velox Immigration',
+            resolve: {
+              data: DynamicResolverService,
+            },
+            data: {
+              collection: 'lmia_and_employer_permits',
+            },
           },
-          { path: 'extensions-coop', component: WorkComponent },
+          {
+            path: 'extensions-coop',
+            component: WorkComponent,
+            resolve: {
+              data: DynamicResolverService,
+            },
+            data: {
+              collection: 'extensions_and_coop_permits',
+            },
+          },
         ],
       },
       {
         path: 'visit',
-        children: [{ path: 'visitor-visas', component: VisitorVisaComponent }],
+        children: [
+          {
+            path: 'visitor-visas',
+            component: VisitorVisaComponent,
+            resolve: {
+              data: DynamicResolverService,
+            },
+            data: {
+              collection: 'visitor_visa',
+            },
+          },
+        ],
         title: 'Visitor Visas to Canada | Velox Immigration',
       },
       {
         path: 'immigrate',
         children: [
-          { path: 'express-entry', component: ExpressEntryComponent },
+          {
+            path: 'express-entry',
+            component: ExpressEntryComponent,
+            resolve: {
+              data: DynamicResolverService,
+            },
+            data: {
+              collection: 'express_entry',
+            },
+          },
           { path: 'provincial-nominee', component: ProvincialNomineeComponent },
           {
             path: 'atlantic-immigration',
@@ -102,6 +164,12 @@ export const routes: Routes = [
     path: 'book-your-appointment',
     component: BookYourAppointmentComponent,
     title: 'Book a Consultation | Velox Immigration',
+    resolve: {
+      data: DynamicResolverService,
+    },
+    data: {
+      collection: 'book_consultation',
+    },
   },
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '/404' },
