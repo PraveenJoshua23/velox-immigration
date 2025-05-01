@@ -136,13 +136,41 @@ export const routes: Routes = [
             data: {
               collection: 'express_entry',
             },
+            title: 'Express Entry | Velox Immigration',
           },
-          { path: 'provincial-nominee', component: ProvincialNomineeComponent },
+          {
+            path: 'provincial-nominee',
+            component: ProvincialNomineeComponent,
+            resolve: {
+              data: DynamicResolverService,
+            },
+            data: {
+              collection: 'provincial_nominee_program',
+            },
+            title: 'Provincial Nominee Program | Velox Immigration',
+          },
           {
             path: 'atlantic-immigration',
             component: AtlanticImmigrationComponent,
+            resolve: {
+              data: DynamicResolverService,
+            },
+            data: {
+              collection: 'atlantic_immigration',
+            },
+            title: 'Atlantic Immigration | Velox Immigration',
           },
-          { path: 'family-sponsorship', component: FamilySponsorshipComponent },
+          {
+            path: 'family-sponsorship',
+            component: FamilySponsorshipComponent,
+            resolve: {
+              data: DynamicResolverService,
+            },
+            data: {
+              collection: 'family_sponsorship',
+            },
+            title: 'Family Sponsorship | Velox Immigration',
+          },
           {
             path: 'business-immigration',
             component: BusinessImmigrationComponent,
