@@ -62,10 +62,10 @@ interface CalendarDay {
           <div class="p-6">
             <div
               [ngClass]="[
-                'grid grid-cols-1 md:grid-cols-2 gap-6',
+                'grid grid-cols-1 gap-6',
                 content?.booking_links?.length === 1
                   ? 'md:grid-cols-1 max-w-md mx-auto'
-                  : ''
+                  : 'md:grid-cols-2'
               ]"
             >
               <div
