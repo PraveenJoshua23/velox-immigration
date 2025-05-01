@@ -174,6 +174,13 @@ export const routes: Routes = [
           {
             path: 'business-immigration',
             component: BusinessImmigrationComponent,
+            resolve: {
+              data: DynamicResolverService,
+            },
+            data: {
+              collection: 'business_immigration',
+            },
+            title: 'Business Immigration | Velox Immigration',
           },
         ],
       },
