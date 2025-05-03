@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Inject, Input, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -59,9 +59,16 @@ import { RouterModule } from '@angular/router';
                 alt="Velox Immigration"
                 class="h-14 mb-4 mx-auto md:mx-0"
               />
+
               <p class="text-gray-400 font-light text-sm mb-4">
                 Regulated Canadian Immigration Consulting Firm - Serving Clients
                 Globally.
+              </p>
+
+              <p class="text-gray-400 font-light text-sm mb-4">
+                Licensed RCIC: Anitha Gabriel | Membership ID: R1034239<br />
+                Authorized by the College of Immigration and Citizenship
+                Consultants (CICC)
               </p>
 
               <div class="flex flex-col items-center md:items-start gap-4">
@@ -80,151 +87,46 @@ import { RouterModule } from '@angular/router';
               </div>
             </div>
 
-            <!-- Study Category -->
-            <div>
-              <h4 class="text-white font-medium mb-4">Study</h4>
-              <ul class="space-y-2 text-sm">
-                <li>
-                  <a
-                    routerLink="/services/study/study-in-canada"
-                    class="text-gray-400 font-light hover:text-white"
-                  >
-                    Study in Canada
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Work Category -->
-            <div>
-              <h4 class="text-white font-medium mb-4">Work</h4>
-              <ul class="space-y-2 text-sm">
-                <li>
-                  <a
-                    routerLink="/services/work/open-pgwp-permits"
-                    class="text-gray-400 font-light hover:text-white"
-                  >
-                    Open & PGWP Permits
-                  </a>
-                </li>
-                <li>
-                  <a
-                    routerLink="/services/work/lmia-employer-permits"
-                    class="text-gray-400 font-light hover:text-white"
-                  >
-                    LMIA & Employer Permits
-                  </a>
-                </li>
-                <li>
-                  <a
-                    routerLink="/services/work/extensions-coop"
-                    class="text-gray-400 font-light hover:text-white"
-                  >
-                    Extensions & Co-op Permits
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Visit Category -->
-            <div>
-              <h4 class="text-white font-medium mb-4">Visit</h4>
-              <ul class="space-y-2 text-sm">
-                <li>
-                  <a
-                    routerLink="/services/visit/visitor-visas"
-                    class="text-gray-400 font-light hover:text-white"
-                  >
-                    Visitor Visas
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Immigrate Category -->
-            <div>
-              <h4 class="text-white font-medium mb-4">Immigrate</h4>
-              <ul class="space-y-2 text-sm">
-                <li>
-                  <a
-                    routerLink="/services/immigrate/express-entry"
-                    class="text-gray-400 font-light hover:text-white text-fire-600"
-                  >
-                    Express Entry Programs
-                  </a>
-                </li>
-                <li>
-                  <a
-                    routerLink="/services/immigrate/provincial-nominee"
-                    class="text-gray-400 font-light hover:text-white"
-                  >
-                    Provincial Nominee Program
-                  </a>
-                </li>
-                <li>
-                  <a
-                    routerLink="/services/immigrate/atlantic-immigration"
-                    class="text-gray-400 font-light hover:text-white"
-                  >
-                    Atlantic Immigration
-                  </a>
-                </li>
-                <li>
-                  <a
-                    routerLink="/services/immigrate/family-sponsorship"
-                    class="text-gray-400 font-light hover:text-white"
-                  >
-                    Family Sponsorship
-                  </a>
-                </li>
-                <li>
-                  <a
-                    routerLink="/services/immigrate/business-immigration"
-                    class="text-gray-400 font-light hover:text-white"
-                  >
-                    Business Immigration
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Other Services Category -->
-            <div>
-              <h4 class="text-white font-medium mb-4">Other Services</h4>
-              <ul class="space-y-2 text-sm">
-                <li>
-                  <a
-                    routerLink="/services/other/pr-citizenship"
-                    class="text-gray-400 font-light hover:text-white"
-                  >
-                    PR Card & Citizenship
-                  </a>
-                </li>
-                <li>
-                  <a
-                    routerLink="/services/other/appeals-refugee"
-                    class="text-gray-400 font-light hover:text-white"
-                  >
-                    Appeals, Refugee & H&C
-                  </a>
-                </li>
-                <li>
-                  <a
-                    routerLink="/services/other/review-services"
-                    class="text-gray-400 font-light hover:text-white"
-                  >
-                    Application Reviews
-                  </a>
-                </li>
-                <li>
-                  <a
-                    routerLink="/services/other/sop-dli-opinion"
-                    class="text-gray-400 font-light hover:text-white"
-                  >
-                    SOP, DLI Change & Review
-                  </a>
-                </li>
-              </ul>
+            <div *ngFor="let item of servicesMenu">
+              <div>
+                <h4 class="text-white font-medium mb-4">{{ item.label }}</h4>
+                <ul class="space-y-2 text-sm">
+                  <ng-container *ngIf="item.sub_menu; else singleFooterLink">
+                    <li *ngFor="let sub of item.sub_menu">
+                      <a
+                        [routerLink]="sub.url"
+                        class="text-gray-400 font-light hover:text-white"
+                        *ngIf="sub.visible"
+                      >
+                        {{ sub.label }}
+                      </a>
+                      <!-- Handle deeper nesting if needed -->
+                      <ul *ngIf="sub.sub_menu">
+                        <li *ngFor="let subsub of sub.sub_menu">
+                          <a
+                            [routerLink]="subsub.url"
+                            class="text-gray-400 font-light hover:text-white"
+                            *ngIf="subsub.visible"
+                          >
+                            {{ subsub.label }}
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ng-container>
+                  <ng-template #singleFooterLink>
+                    <li>
+                      <a
+                        [routerLink]="item.url"
+                        class="text-gray-400 font-light hover:text-white"
+                        *ngIf="item.visible"
+                      >
+                        {{ item.label }}
+                      </a>
+                    </li>
+                  </ng-template>
+                </ul>
+              </div>
             </div>
           </div>
 
@@ -290,4 +192,29 @@ import { RouterModule } from '@angular/router';
 })
 export class FooterComponent {
   @Input() hideContactBanner = false;
+  servicesMenu: any[] = [];
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const menuString = localStorage.getItem('velox_navigation_menu');
+      if (menuString) {
+        try {
+          const menuObj = JSON.parse(menuString);
+          const menuData = menuObj?.data?.[0]?.menu_items || [];
+          const services = menuData.find(
+            (item: any) => item.label === 'Services'
+          );
+          if (services && services.sub_menu) {
+            this.servicesMenu = services.sub_menu.filter(
+              (item: any) => item.visible
+            );
+          }
+        } catch (e) {
+          this.servicesMenu = [];
+        }
+      }
+    }
+  }
 }

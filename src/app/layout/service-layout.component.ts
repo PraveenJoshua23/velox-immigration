@@ -1,11 +1,13 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  Inject,
   inject,
   OnInit,
+  PLATFORM_ID,
   signal,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../components/header.component';
 import { FooterComponent } from '../components/footer.component';
@@ -35,26 +37,52 @@ import { SeoService } from '../services/seo.service';
       >
         <div class="max-h-[70vh] overflow-auto">
           <h2 class="text-2xl pb-5 pt-4 text-sea-800">Our Services</h2>
-          @for(category of localServices(); track category.title) {
-          <div class="mb-6 scrollbar-thin overflow-auto max-h-[50dvh]">
-            <h3 class="text-lg font-medium text-sea-900 mb-2">
-              {{ category.title }}
-            </h3>
-            <ul class="space-y-2">
-              @for(service of category.items; track service.label) {
-              <li>
-                <a
-                  [routerLink]="service.path"
-                  routerLinkActive="text-red-600"
-                  class="text-gray-600 hover:text-fire-600 transition-colors text-sm"
-                >
-                  {{ service.label }}
-                </a>
-              </li>
-              }
-            </ul>
+          <div *ngFor="let item of servicesMenu">
+            <div class="mb-6 scrollbar-thin overflow-auto max-h-[50dvh]">
+              <h3 class="text-lg font-medium text-sea-900 mb-2">
+                {{ item.label }}
+              </h3>
+              <ul class="space-y-2">
+                <ng-container *ngIf="item.sub_menu; else singleLink">
+                  <li *ngFor="let sub of item.sub_menu">
+                    <a
+                      [routerLink]="sub.url"
+                      routerLinkActive="text-red-600"
+                      class="text-gray-600 hover:text-fire-600 transition-colors text-sm"
+                      *ngIf="sub.visible"
+                    >
+                      {{ sub.label }}
+                    </a>
+                    <!-- Handle deeper nesting if needed -->
+                    <ul *ngIf="sub.sub_menu">
+                      <li *ngFor="let subsub of sub.sub_menu">
+                        <a
+                          [routerLink]="subsub.url"
+                          routerLinkActive="text-red-600"
+                          class="text-gray-600 hover:text-fire-600 transition-colors text-sm"
+                          *ngIf="subsub.visible"
+                        >
+                          {{ subsub.label }}
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ng-container>
+                <ng-template #singleLink>
+                  <li>
+                    <a
+                      [routerLink]="item.url"
+                      routerLinkActive="text-red-600"
+                      class="text-gray-600 hover:text-fire-600 transition-colors text-sm"
+                      *ngIf="item.visible"
+                    >
+                      {{ item.label }}
+                    </a>
+                  </li>
+                </ng-template>
+              </ul>
+            </div>
           </div>
-          }
         </div>
         <!-- Need help callout -->
         <div class="mt-8 bg-sea-50 p-4 rounded-lg border border-sea-200">
@@ -81,19 +109,29 @@ export class ServicesLayoutComponent implements OnInit {
   localServices = signal([...localServices]);
   @ViewChild('sidebarRef') sidebarRef!: ElementRef;
   isScrolled = signal<boolean>(false);
+  servicesMenu: any[] = [];
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit(): void {
-    // this.seoService.setAllSeoData({
-    //   title:
-    //     'Velox Immigration | Trusted RCIC-Led Canadian Immigration Services',
-    //   description:
-    //     'Navigate your Canadian immigration journey with confidence. Velox Immigration offers expert, ethical, and client-focused solutions for study, work, PR, and family sponsorship. Results that move you forward.',
-    //   keywords:
-    //     'Canadian immigration, RCIC, study permit, work permit, permanent residency, express entry, family sponsorship, immigration consultant, Canada visa',
-    //   ogType: 'website',
-    //   ogImage: '/assets/images/logo.png',
-    //   twitterCard: 'summary_large_image',
-    //   canonicalUrl: 'https://veloximmigration.com',
-    // });
+    if (isPlatformBrowser(this.platformId)) {
+      const menuString = localStorage.getItem('velox_navigation_menu');
+      if (menuString) {
+        try {
+          const menuObj = JSON.parse(menuString);
+          const menuData = menuObj?.data?.[0]?.menu_items || [];
+          const services = menuData.find(
+            (item: any) => item.label === 'Services'
+          );
+          if (services && services.sub_menu) {
+            this.servicesMenu = services.sub_menu.filter(
+              (item: any) => item.visible
+            );
+          }
+        } catch (e) {
+          this.servicesMenu = [];
+        }
+      }
+    }
   }
 }
