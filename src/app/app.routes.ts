@@ -120,9 +120,9 @@ export const routes: Routes = [
             data: {
               collection: 'visitor_visa',
             },
+            title: 'Visitor Visas to Canada | Velox Immigration',
           },
         ],
-        title: 'Visitor Visas to Canada | Velox Immigration',
       },
       {
         path: 'immigrate',
