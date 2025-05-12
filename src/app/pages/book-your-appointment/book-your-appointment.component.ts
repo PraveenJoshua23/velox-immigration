@@ -44,7 +44,7 @@ import { isPlatformBrowser } from '@angular/common';
             <div class="p-6 overflow-y-auto">
               <h2 class="text-2xl font-semibold mb-4">Important Disclaimer</h2>
               <div
-                class="text-gray-700 font-light leading-relaxed"
+                class="text-gray-700 font-light prose max-w-none leading-relaxed"
                 [innerHTML]="safeDisclaimerContent"
               ></div>
             </div>

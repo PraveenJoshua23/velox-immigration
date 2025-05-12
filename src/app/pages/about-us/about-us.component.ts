@@ -30,7 +30,7 @@ import { DirectusService } from '../../services/directus.service';
               {{ content.story_header }}
             </h2>
             <div
-              class="prose lg:prose-lg font-light"
+              class="prose lg:prose-lg max-w-none font-light"
               [innerHTML]="content.story_content"
             ></div>
           </div>
@@ -55,7 +55,7 @@ import { DirectusService } from '../../services/directus.service';
                 {{ content.founder_title }}
               </h2>
               <div
-                class="prose lg:prose-lg font-light"
+                class="prose lg:prose-lg max-w-none font-light"
                 [innerHTML]="content.founder_content"
               ></div>
               <div class="mt-8">

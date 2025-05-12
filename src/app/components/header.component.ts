@@ -57,7 +57,7 @@ export interface MenuResponse {
             [routerLink]="item.url"
             routerLinkActive="text-fire-600"
             [routerLinkActiveOptions]="{ exact: item.url === '/' }"
-            class="text-gray-600 font-light hover:text-fire-600 transition-colors"
+            class="text-gray-600 font-light text-sm hover:text-fire-600 transition-colors"
           >
             {{ item.label }}
           </a>
@@ -65,7 +65,7 @@ export interface MenuResponse {
           <!-- Services Dropdown -->
           <div class="services-dropdown relative">
             <a
-              class="text-gray-600 font-light hover:text-fire-600 transition-colors cursor-pointer flex items-center gap-1"
+              class="text-gray-600 font-light text-sm hover:text-fire-600 transition-colors cursor-pointer flex items-center gap-1"
             >
               {{ item.label }}
               <svg
