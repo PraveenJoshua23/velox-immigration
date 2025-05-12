@@ -4,11 +4,18 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { FooterComponent } from '../../components/footer.component';
 import { HeaderComponent } from '../../components/header.component';
 import { DirectusService } from '../../services/directus.service';
+import { SafeHtmlComponent } from '../../components/safe-html.component';
 
 @Component({
   selector: 'app-about-page',
   standalone: true,
-  imports: [CommonModule, RouterModule, HeaderComponent, FooterComponent],
+  imports: [
+    CommonModule,
+    RouterModule,
+    HeaderComponent,
+    FooterComponent,
+    SafeHtmlComponent,
+  ],
   template: `
     <!-- Header -->
     <app-header />
@@ -29,10 +36,10 @@ import { DirectusService } from '../../services/directus.service';
             <h2 class="text-3xl mb-8 text-sea-900">
               {{ content.story_header }}
             </h2>
-            <div
-              class="prose lg:prose-lg font-light"
-              [innerHTML]="content.story_content"
-            ></div>
+            <app-safe-html
+              [htmlContent]="content.story_content"
+              containerClass="prose lg:prose-lg max-w-none font-light"
+            ></app-safe-html>
           </div>
         </div>
       </section>
@@ -54,10 +61,10 @@ import { DirectusService } from '../../services/directus.service';
               <h2 class="text-3xl mb-6 text-sea-900">
                 {{ content.founder_title }}
               </h2>
-              <div
-                class="prose lg:prose-lg font-light"
-                [innerHTML]="content.founder_content"
-              ></div>
+              <app-safe-html
+                [htmlContent]="content.founder_content"
+                containerClass="prose lg:prose-lg max-w-none font-light"
+              ></app-safe-html>
               <div class="mt-8">
                 <button
                   [routerLink]="content.founder_ctaLink"
@@ -162,7 +169,10 @@ import { DirectusService } from '../../services/directus.service';
                   [class.opacity-0]="!isOpen(i)"
                   [class.opacity-100]="isOpen(i)"
                 >
-                  <p class="text-gray-600 font-light">{{ faq.answer }}</p>
+                  <app-safe-html
+                    [htmlContent]="faq.answer"
+                    containerClass="text-gray-600 font-light"
+                  ></app-safe-html>
                 </div>
               </div>
               }

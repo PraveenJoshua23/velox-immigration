@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutPageComponent } from './pages/about-us/about-us.component';
 import { ServicesLayoutComponent } from './layout/service-layout.component';
+import { PostPageComponent } from './pages/post/post-page.component';
 import { StudyComponent } from './pages/services/study.component';
 import { WorkComponent } from './pages/services/work.component';
 import { VisitorVisaComponent } from './pages/services/visitor-visa.component';
@@ -20,9 +21,10 @@ import { PRCitizenshipComponent } from './pages/services/pr-citizenship.componen
 import { ReviewServicesComponent } from './pages/services/review-services.component';
 import { SopDliOpinionComponent } from './pages/services/sop-dli-opinion.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
-import { StudyResolverService } from './resolvers/study-resolver.service';
-import { AboutResolverService } from './resolvers/about-resolver.service';
 import { DynamicResolverService } from './resolvers/dynamic-resolver.service';
+import { postResolver } from './resolvers/post-resolver.service';
+import { postsResolver } from './resolvers/posts-resolver.service';
+import { PostListComponent } from './pages/post/post-list.component';
 
 export const routes: Routes = [
   {
@@ -187,10 +189,48 @@ export const routes: Routes = [
       {
         path: 'other',
         children: [
-          { path: 'pr-citizenship', component: PRCitizenshipComponent },
-          { path: 'appeals-refugee', component: AppealsRefugeeComponent },
-          { path: 'review-services', component: ReviewServicesComponent },
-          { path: 'sop-dli-opinion', component: SopDliOpinionComponent },
+          {
+            path: 'pr-citizenship',
+            component: PRCitizenshipComponent,
+            resolve: {
+              data: DynamicResolverService,
+            },
+            data: {
+              collection: 'pr_card_citizenship',
+            },
+            title: 'Permanent Residency & Citizenship | Velox Immigration',
+          },
+          {
+            path: 'appeals-refugee',
+            component: AppealsRefugeeComponent,
+            resolve: {
+              data: DynamicResolverService,
+            },
+            data: {
+              collection: 'appeals_refugees_hc_cases',
+            },
+            title: 'Refugee Claims & Appeals | Velox Immigration',
+          },
+          {
+            path: 'review-services',
+            component: ReviewServicesComponent,
+            resolve: {
+              data: DynamicResolverService,
+            },
+            data: {
+              collection: 'application_review',
+            },
+          },
+          {
+            path: 'sop-dli-opinion',
+            component: SopDliOpinionComponent,
+            resolve: {
+              data: DynamicResolverService,
+            },
+            data: {
+              collection: 'sop_dli_opinion',
+            },
+          },
         ],
       },
     ],
@@ -205,6 +245,32 @@ export const routes: Routes = [
     data: {
       collection: 'book_consultation',
     },
+  },
+  {
+    path: 'blog',
+    children: [
+      {
+        path: 'posts',
+        component: PostListComponent,
+        resolve: {
+          data: postsResolver,
+        },
+        title: 'Blog Posts | Velox Immigration',
+      },
+      {
+        path: 'posts/:slug',
+        component: PostPageComponent,
+        resolve: {
+          data: postResolver,
+        },
+        title: 'Blog Post | Velox Immigration',
+      },
+      {
+        path: '',
+        redirectTo: 'posts',
+        pathMatch: 'full',
+      },
+    ],
   },
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '/404' },
