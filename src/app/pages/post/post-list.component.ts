@@ -14,93 +14,115 @@ import { HeaderComponent } from '../../components/header.component';
 import { FooterComponent } from '../../components/footer.component';
 import { CtaBannerComponent } from '../../components/cta-banner.component';
 import { Title, Meta, DomSanitizer } from '@angular/platform-browser';
+import { RecentPostsSidebarComponent } from '../../components/recent-posts-sidebar.component';
+import { AssetUrlPipe } from '../../pipes/asset-url.pipe';
 
 @Component({
   selector: 'app-post-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, HeaderComponent, FooterComponent],
+  imports: [
+    CommonModule,
+    RouterModule,
+    HeaderComponent,
+    FooterComponent,
+    RecentPostsSidebarComponent,
+    AssetUrlPipe,
+  ],
   template: `
     <app-header />
     <div class="container mx-auto px-4 py-8 mt-4">
-      <div class="max-w-6xl mx-auto">
-        <h1 class="text-3xl md:text-4xl font-bold text-sea-900 mb-8">
-          Blog Posts
-        </h1>
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <!-- Main Content - 3/4 width on large screens -->
+        <div class="lg:col-span-3">
+          <h1 class="text-3xl md:text-4xl font-bold text-sea-900 mb-8">
+            Blog Posts
+          </h1>
 
-        @if (loading()) {
-        <div class="flex justify-center items-center min-h-[30vh]">
+          @if (loading()) {
+          <div class="flex justify-center items-center min-h-[30vh]">
+            <div
+              class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-sea-600"
+            ></div>
+          </div>
+          } @else if (error()) {
           <div
-            class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-sea-600"
-          ></div>
-        </div>
-        } @else if (error()) {
-        <div
-          class="bg-red-50 border border-red-200 text-red-800 rounded-md p-6 my-8"
-        >
-          <h2 class="text-xl font-semibold mb-2">Error Loading Posts</h2>
-          <p>{{ errorMessage() }}</p>
-          <button
-            routerLink="/"
-            class="mt-4 bg-sea-600 text-white px-4 py-2 rounded hover:bg-sea-700 transition-colors"
+            class="bg-red-50 border border-red-200 text-red-800 rounded-md p-6 my-8"
           >
-            Return to Home
-          </button>
-        </div>
-        } @else if (posts().length === 0) {
-        <div class="text-center py-12">
-          <h2 class="text-xl text-gray-600">
-            No posts available at the moment.
-          </h2>
-          <p class="mt-2 text-gray-500">Please check back later for updates.</p>
-        </div>
-        } @else {
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          @for (post of posts(); track post.slug) {
-          <div
-            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
-          >
-            @if (post.image) {
-            <div class="h-48 overflow-hidden">
-              <img
-                [src]="post.image"
-                [alt]="post.title"
-                class="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
-              />
-            </div>
-            }
-            <div class="p-5">
-              <h2 class="text-xl font-semibold text-sea-900 mb-2 line-clamp-2">
-                {{ post.title }}
-              </h2>
-
-              @if (post.author || post.published_date) {
-              <div class="flex items-center text-gray-600 text-sm mb-3">
-                @if (post.author) {
-                <span class="mr-4">By {{ post.author }}</span>
-                } @if (post.published_date) {
-                <span>{{ formatDate(post.published_date) }}</span>
-                }
+            <h2 class="text-xl font-semibold mb-2">Error Loading Posts</h2>
+            <p>{{ errorMessage() }}</p>
+            <button
+              routerLink="/"
+              class="mt-4 bg-sea-600 text-white px-4 py-2 rounded hover:bg-sea-700 transition-colors"
+            >
+              Return to Home
+            </button>
+          </div>
+          } @else if (posts().length === 0) {
+          <div class="text-center py-12 min-h-[30vh]">
+            <h2 class="text-xl text-gray-600">
+              No posts available at the moment.
+            </h2>
+            <p class="mt-2 text-gray-500">
+              Please check back later for updates.
+            </p>
+          </div>
+          } @else {
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            @for (post of posts(); track post.slug) {
+            <div
+              class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+            >
+              @if (post.thumbnail_image) {
+              <div class="h-48 overflow-hidden">
+                <img
+                  [src]="
+                    post.thumbnail_image | assetUrl : '/assets/images/logo.svg'
+                  "
+                  [alt]="post.title"
+                  class="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
+                />
               </div>
               }
+              <div class="p-5">
+                <h2
+                  class="text-xl font-semibold text-sea-900 mb-2 line-clamp-2"
+                >
+                  {{ post.title }}
+                </h2>
 
-              <div class="text-gray-600 mb-4 line-clamp-3">
-                {{ stripHtml(post.content) }}
+                @if (post.author || post.date_created) {
+                <div class="flex items-center text-gray-600 text-sm mb-3">
+                  @if (post.author) {
+                  <span class="mr-4">By {{ post.author }}</span>
+                  } @if (post.date_created) {
+                  <span>{{ formatDate(post.date_created) }}</span>
+                  }
+                </div>
+                }
+
+                <div class="text-gray-600 mb-4 line-clamp-3">
+                  {{ stripHtml(post.content) }}
+                </div>
+
+                <a
+                  [routerLink]="['/blog/posts', post.slug]"
+                  class="inline-block px-4 py-2 bg-sea-600 text-white rounded hover:bg-sea-700 transition-colors"
+                >
+                  Read More
+                </a>
               </div>
-
-              <a
-                [routerLink]="['/blog/posts', post.slug]"
-                class="inline-block px-4 py-2 bg-sea-600 text-white rounded hover:bg-sea-700 transition-colors"
-              >
-                Read More
-              </a>
             </div>
+            }
           </div>
+
+          <!-- Pagination could be added here in the future -->
           }
         </div>
 
-        <!-- Pagination could be added here in the future -->
-
-        }
+        <!-- Sidebar - 1/4 width on large screens -->
+        <div class="lg:col-span-1">
+          <app-recent-posts-sidebar />
+        </div>
       </div>
     </div>
     <app-footer />
@@ -132,20 +154,21 @@ export class PostListComponent implements OnInit {
     });
 
     // Fetch all posts
-    this.directusService.getCollection<Post[]>('posts').subscribe({
-      next: (response) => {
-        if (response && response.data) {
-          this.posts.set(response.data);
-          console.log(this.posts());
-        } else {
-          this.posts.set([]);
-        }
-        this.loading.set(false);
-      },
-      error: (err) => {
-        this.handleError(err.message || 'Failed to load posts');
-      },
-    });
+    this.directusService
+      .getCollection<Post[]>('posts', 'filter[status][_eq]=published')
+      .subscribe({
+        next: (response) => {
+          if (response && response.data) {
+            this.posts.set(response.data);
+          } else {
+            this.posts.set([]);
+          }
+          this.loading.set(false);
+        },
+        error: (err) => {
+          this.handleError(err.message || 'Failed to load posts');
+        },
+      });
   }
 
   private handleError(message: string): void {

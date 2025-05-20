@@ -22,7 +22,12 @@ export type Post = {
   title: string;
   content: string;
   author: Author;
-  published_date: string;
+  date_created: string;
+  date_updated: string;
+  user_created: string;
+  user_updated: string;
+  header_image: any;
+  thumbnail_image: any;
 };
 
 export type HomePage = HomePageContent;
@@ -75,6 +80,7 @@ export interface MenuContent {
   id?: string;
   title: string;
   menu_item: MenuItems[];
+  date_updated: string | null;
   // Add other fields from your Directus collection as needed
 }
 

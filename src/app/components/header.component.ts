@@ -91,7 +91,7 @@ export interface MenuResponse {
               <li class="dropdown-item relative">
                 @if(subItem.sub_menu) {
                 <a
-                  class="px-4 py-2 text-gray-700 font-light hover:bg-gray-50 w-full flex justify-between items-center"
+                  class="px-4 py-2 text-gray-700 text-sm font-light hover:bg-gray-50 w-full flex justify-between items-center"
                 >
                   {{ subItem.label }}
                   <svg
@@ -118,7 +118,7 @@ export interface MenuResponse {
                   <li>
                     <a
                       [routerLink]="subSubItem.url"
-                      class="px-4 py-2 text-gray-600 font-light hover:bg-gray-50 hover:text-fire-600 block"
+                      class="px-4 py-2 text-gray-600 text-sm font-light hover:bg-gray-50 hover:text-fire-600 block"
                     >
                       {{ subSubItem.label }}
                     </a>
@@ -128,7 +128,7 @@ export interface MenuResponse {
                 } @else {
                 <a
                   [routerLink]="subItem.url"
-                  class="px-4 py-2 text-gray-700 font-light hover:bg-gray-50 hover:text-fire-600 block w-full"
+                  class="px-4 py-2 text-gray-700 text-sm font-light hover:bg-gray-50 hover:text-fire-600 block w-full"
                 >
                   {{ subItem.label }}
                 </a>
@@ -405,8 +405,44 @@ export class HeaderComponent implements OnInit {
             timestamp &&
             now - timestamp < this.CACHE_EXPIRATION_TIME
           ) {
-            // Use cached data
+            // Use cached data initially
             this.processMenuData(data);
+
+            // But still fetch from API to check for updates
+            this.directusService.getMenu('navigation').subscribe({
+              next: (response) => {
+                if (response && response.data && response.data.length > 0) {
+                  // Compare the date_updated field to check if data has changed
+                  const cachedDateUpdated = data[0]?.date_updated;
+                  const newDateUpdated = response.data[0]?.date_updated;
+
+                  // If date_updated is different or the structure has changed, update the cache
+                  if (
+                    !cachedDateUpdated ||
+                    !newDateUpdated ||
+                    cachedDateUpdated !== newDateUpdated ||
+                    JSON.stringify(data) !== JSON.stringify(response.data)
+                  ) {
+                    // Process and update the cache with new data
+                    this.processMenuData(response.data);
+
+                    // Update the cache
+                    const cacheData = {
+                      data: response.data,
+                      timestamp: new Date().getTime(),
+                    };
+                    localStorage.setItem(
+                      this.MENU_CACHE_KEY,
+                      JSON.stringify(cacheData)
+                    );
+                  }
+                }
+              },
+              error: (err) => {
+                console.error('Error checking for menu updates:', err);
+              },
+            });
+
             return;
           }
         } catch (error) {
