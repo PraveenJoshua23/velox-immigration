@@ -67,51 +67,91 @@ import { AssetUrlPipe } from '../../pipes/asset-url.pipe';
             </p>
           </div>
           } @else {
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             @for (post of posts(); track post.slug) {
-            <div
-              class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+            <a
+              [routerLink]="['/blog/posts', post.slug]"
+              class="group flex flex-col bg-white rounded-xl overflow-hidden transition-all duration-300 hover:translate-y-[-4px] hover:shadow-xl"
             >
               @if (post.thumbnail_image) {
-              <div class="h-48 overflow-hidden">
+              <div class="relative h-52 overflow-hidden">
                 <img
                   [src]="
                     post.thumbnail_image | assetUrl : '/assets/images/logo.svg'
                   "
                   [alt]="post.title"
-                  class="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
+                  class="w-full h-full object-cover"
                 />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                ></div>
               </div>
               }
-              <div class="p-5">
-                <h2
-                  class="text-xl font-semibold text-sea-900 mb-2 line-clamp-2"
-                >
-                  {{ post.title }}
-                </h2>
-
-                @if (post.author || post.date_created) {
-                <div class="flex items-center text-gray-600 text-sm mb-3">
-                  @if (post.author) {
-                  <span class="mr-4">By {{ post.author }}</span>
-                  } @if (post.date_created) {
-                  <span>{{ formatDate(post.date_created) }}</span>
+              <div class="flex flex-col flex-grow p-5">
+                <!-- Date and Author - Small subtle text -->
+                @if (post.date_created || post.author) {
+                <div class="text-xs text-gray-500 mb-2 flex items-center">
+                  @if (post.date_created) {
+                  <span class="inline-flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-3 w-3 mr-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
+                    </svg>
+                    {{ formatDate(post.date_created) }}
+                  </span>
+                  } @if (post.author) {
+                  <span class="mx-2">•</span>
+                  <span>{{ post.author }}</span>
                   }
                 </div>
                 }
 
-                <div class="text-gray-600 mb-4 line-clamp-3">
-                  {{ stripHtml(post.content) }}
-                </div>
-
-                <a
-                  [routerLink]="['/blog/posts', post.slug]"
-                  class="inline-block px-4 py-2 bg-sea-600 text-white rounded hover:bg-sea-700 transition-colors"
+                <!-- Title - Clean and prominent -->
+                <h2
+                  class="text-xl font-medium text-gray-900 mb-3 line-clamp-2 group-hover:text-sea-700 transition-colors"
                 >
-                  Read More
-                </a>
+                  {{ post.title }}
+                </h2>
+
+                <!-- Content preview - Light gray, smaller text -->
+                <p class="text-sm text-gray-600 mb-4 line-clamp-2 flex-grow">
+                  {{ stripHtml(post.content) }}
+                </p>
+
+                <!-- Read more - Subtle link style -->
+                <div class="mt-auto">
+                  <span
+                    class="inline-flex items-center text-sm font-medium text-sea-600 group-hover:text-sea-800 transition-colors"
+                  >
+                    Read article
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </span>
+                </div>
               </div>
-            </div>
+            </a>
             }
           </div>
 

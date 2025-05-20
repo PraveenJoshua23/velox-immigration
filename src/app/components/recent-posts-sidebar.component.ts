@@ -16,47 +16,56 @@ import { DirectusService } from '../services/directus.service';
   standalone: true,
   imports: [CommonModule, RouterModule],
   template: `
-    <aside class="bg-white rounded-lg shadow-md p-6">
-      <h3 class="text-xl font-semibold text-sea-900 mb-4">Recent Posts</h3>
+    <aside class="bg-white rounded-xl p-6">
+      <h3 class="text-lg font-medium text-gray-900 mb-5 flex items-center">
+        <span class="inline-block w-1 h-5 bg-sea-600 rounded mr-2"></span>
+        Recent Posts
+      </h3>
 
       @if (loading()) {
-      <div class="flex justify-center items-center py-8">
+      <div class="flex justify-center items-center py-6">
         <div
-          class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-sea-600"
+          class="animate-spin rounded-full h-6 w-6 border-2 border-sea-200 border-t-sea-600"
         ></div>
       </div>
       } @else if (error()) {
       <div class="text-red-500 text-sm py-2">Unable to load recent posts</div>
       } @else if (recentPosts().length === 0) {
-      <p class="text-gray-500">No recent posts available</p>
+      <p class="text-gray-500 text-sm">No recent posts available</p>
       } @else {
-      <div class="space-y-4">
+      <div class="space-y-5">
         @for (post of recentPosts(); track post.slug) {
-        <div class="group">
-          <a [routerLink]="['/blog/posts', post.slug]" class="block">
-            @if (post.image) {
-            <div class="mb-2 h-24 overflow-hidden rounded">
-              <img
-                [src]="post.image"
-                [alt]="post.title"
-                class="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300"
-              />
-            </div>
-            }
+        <a
+          [routerLink]="['/blog/posts', post.slug]"
+          class="group flex gap-3 items-start hover:bg-gray-50 p-2 -mx-2 rounded-lg transition-colors"
+        >
+          @if (post.image) {
+          <div
+            class="shrink-0 w-16 h-16 rounded-md overflow-hidden bg-gray-100"
+          >
+            <img
+              [src]="post.image"
+              [alt]="post.title"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          }
+          <div class="flex-1 min-w-0">
             <h4
-              class="font-medium text-sea-800 group-hover:text-sea-600 transition-colors line-clamp-2"
+              class="text-sm font-medium text-gray-900 group-hover:text-sea-700 transition-colors line-clamp-2 mb-1"
             >
               {{ post.title }}
             </h4>
             @if (post.date_created) {
-            <p class="text-xs text-gray-500 mt-1">
+            <p class="text-xs text-gray-500">
               {{ formatDate(post.date_created) }}
             </p>
             }
-          </a>
-        </div>
+          </div>
+        </a>
         }
       </div>
+
       }
     </aside>
   `,
