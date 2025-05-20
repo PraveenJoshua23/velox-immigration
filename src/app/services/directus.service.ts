@@ -29,7 +29,15 @@ export class DirectusService {
     );
   }
 
-  getCollection<T>(collection: string): Observable<{ data: T }> {
+  getCollection<T>(
+    collection: string,
+    query?: string
+  ): Observable<{ data: T }> {
+    if (query) {
+      return this.http.get<{ data: T }>(
+        `${this.baseUrl}/items/${collection}?${query}`
+      );
+    }
     return this.http.get<{ data: T }>(`${this.baseUrl}/items/${collection}`);
   }
 

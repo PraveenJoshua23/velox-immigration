@@ -24,15 +24,11 @@ export class SheetsService {
   constructor() {}
 
   submitFormData(formData: ContactFormData): Observable<any> {
-    console.log('Starting form submission with data:', formData);
-
     // Create URL encoded form data
     const formBody = new URLSearchParams();
     Object.entries(formData).forEach(([key, value]) => {
       formBody.append(key, value.toString());
     });
-
-    console.log('Encoded form data:', formBody.toString());
 
     const requestOptions = {
       method: 'POST',
