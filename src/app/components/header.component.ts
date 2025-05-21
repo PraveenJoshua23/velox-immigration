@@ -153,10 +153,10 @@ export interface MenuResponse {
         <div class="lg:hidden">
           <button
             (click)="toggleMenu()"
-            class="text-gray-600 hover:text-fire-600 focus:outline-none"
+            class="text-gray-600 hover:text-fire-600 focus:outline-none p-2"
           >
             <svg
-              class="w-6 h-6"
+              class="w-8 h-8"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -165,14 +165,14 @@ export interface MenuResponse {
                 *ngIf="!isMenuOpen()"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth="2"
+                strokeWidth="2.5"
                 d="M4 6h16M4 12h16m-16 6h16"
               />
               <path
                 *ngIf="isMenuOpen()"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth="2"
+                strokeWidth="2.5"
                 d="M6 18L18 6M6 6l12 12"
               />
             </svg>
@@ -188,22 +188,22 @@ export interface MenuResponse {
       >
         <div class="container mx-auto px-4 py-6">
           <!-- Main Navigation Links -->
-          <div class="flex flex-col gap-6">
+          <div class="flex flex-col gap-6 pl-4">
             @for(item of menuItems(); track $index) { @if(!item.sub_menu &&
             !item.isCta) {
-            <a
+            <h2
               [routerLink]="item.url"
               (click)="closeMenu()"
-              class="text-xl font-light text-gray-800 hover:text-fire-600"
+              class="text-2xl  text-gray-800 hover:text-fire-600"
             >
               {{ item.label }}
-            </a>
+            </h2>
             } @else if(item.isCta) {
             <!-- Mobile CTA rendered at the bottom -->
             } @else if(item.sub_menu) {
             <!-- Services Sections -->
             <div>
-              <h2 class="text-2xl font-light text-gray-800 mb-4">
+              <h2 class="text-2xl  text-gray-800 mb-4">
                 {{ item.label }}
               </h2>
               <div class="space-y-4 pl-4">
@@ -211,12 +211,12 @@ export interface MenuResponse {
                 <div>
                   @if(subItem.sub_menu) {
                   <div
-                    class="flex items-center justify-between cursor-pointer mb-2"
+                    class="flex items-center justify-between cursor-pointer"
                     (click)="toggleCategory(subItem.label)"
                   >
-                    <h3 class="text-xl font-medium text-fire-600">
+                    <h2 class="text-2xl  text-fire-600">
                       {{ subItem.label }}
-                    </h3>
+                    </h2>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       [class]="
@@ -246,23 +246,23 @@ export interface MenuResponse {
                     "
                   >
                     @for(subSubItem of subItem.sub_menu; track $index) {
-                    <a
+                    <h2
                       [routerLink]="subSubItem.url"
                       (click)="closeMenu()"
-                      class="text-gray-600 hover:text-fire-600 py-1"
+                      class="text-gray-600 hover:text-fire-600 text-2xl "
                     >
                       {{ subSubItem.label }}
-                    </a>
+                    </h2>
                     }
                   </div>
                   } @else {
-                  <a
+                  <h2
                     [routerLink]="subItem.url"
                     (click)="closeMenu()"
-                    class="text-xl font-medium text-fire-600 block mb-2"
+                    class="text-2xl text-fire-600 block mb-2"
                   >
                     {{ subItem.label }}
-                  </a>
+                  </h2>
                   }
                 </div>
                 }
