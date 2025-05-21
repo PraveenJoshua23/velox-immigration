@@ -153,10 +153,10 @@ export interface MenuResponse {
         <div class="lg:hidden">
           <button
             (click)="toggleMenu()"
-            class="text-gray-600 hover:text-fire-600 focus:outline-none"
+            class="text-gray-600 hover:text-fire-600 focus:outline-none p-2"
           >
             <svg
-              class="w-6 h-6"
+              class="w-8 h-8"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -165,14 +165,14 @@ export interface MenuResponse {
                 *ngIf="!isMenuOpen()"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth="2"
+                strokeWidth="2.5"
                 d="M4 6h16M4 12h16m-16 6h16"
               />
               <path
                 *ngIf="isMenuOpen()"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth="2"
+                strokeWidth="2.5"
                 d="M6 18L18 6M6 6l12 12"
               />
             </svg>
