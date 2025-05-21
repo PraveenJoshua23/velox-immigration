@@ -16,7 +16,7 @@ import { RouterModule } from '@angular/router';
       <div class="absolute top-[-8.5rem] md:-top-20 left-0 right-0">
         <div class="container mx-auto px-4">
           <div
-            class="bg-red-600 rounded-lg p-8 flex flex-col md:flex-row justify-between items-center"
+            class="bg-red-600 rounded-lg py-4 px-8 sm:p-8 flex flex-col md:flex-row justify-between items-center"
           >
             <div
               class="flex flex-col md:flex-row items-center gap-4 mb-4 md:mb-0"
@@ -86,48 +86,47 @@ import { RouterModule } from '@angular/router';
                 </div>
               </div>
             </div>
-
-            <div *ngFor="let item of servicesMenu">
-              <div>
-                <h4 class="text-white font-medium mb-4">{{ item.label }}</h4>
-                <ul class="space-y-2 text-sm">
-                  <ng-container *ngIf="item.sub_menu; else singleFooterLink">
-                    <li *ngFor="let sub of item.sub_menu">
-                      <a
-                        [routerLink]="sub.url"
-                        class="text-gray-400 font-light hover:text-white"
-                        *ngIf="sub.visible"
-                      >
-                        {{ sub.label }}
-                      </a>
-                      <!-- Handle deeper nesting if needed -->
-                      <ul *ngIf="sub.sub_menu">
-                        <li *ngFor="let subsub of sub.sub_menu">
-                          <a
-                            [routerLink]="subsub.url"
-                            class="text-gray-400 font-light hover:text-white"
-                            *ngIf="subsub.visible"
-                          >
-                            {{ subsub.label }}
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ng-container>
-                  <ng-template #singleFooterLink>
-                    <li>
-                      <a
-                        [routerLink]="item.url"
-                        class="text-gray-400 font-light hover:text-white"
-                        *ngIf="item.visible"
-                      >
-                        {{ item.label }}
-                      </a>
-                    </li>
-                  </ng-template>
-                </ul>
-              </div>
+            @for(item of servicesMenu; track $index) {
+            <div>
+              <h4 class="text-white font-medium mb-4">{{ item.label }}</h4>
+              <ul class="space-y-2 text-sm">
+                <ng-container *ngIf="item.sub_menu; else singleFooterLink">
+                  <li *ngFor="let sub of item.sub_menu">
+                    <a
+                      [routerLink]="sub.url"
+                      class="text-gray-400 font-light hover:text-white"
+                      *ngIf="sub.visible"
+                    >
+                      {{ sub.label }}
+                    </a>
+                    <!-- Handle deeper nesting if needed -->
+                    <ul *ngIf="sub.sub_menu">
+                      <li *ngFor="let subsub of sub.sub_menu">
+                        <a
+                          [routerLink]="subsub.url"
+                          class="text-gray-400 font-light hover:text-white"
+                          *ngIf="subsub.visible"
+                        >
+                          {{ subsub.label }}
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ng-container>
+                <ng-template #singleFooterLink>
+                  <li>
+                    <a
+                      [routerLink]="item.url"
+                      class="text-gray-400 font-light hover:text-white"
+                      *ngIf="item.visible"
+                    >
+                      {{ item.label }}
+                    </a>
+                  </li>
+                </ng-template>
+              </ul>
             </div>
+            }
           </div>
 
           <!-- Copyright and Social Links -->
@@ -137,7 +136,7 @@ import { RouterModule } from '@angular/router';
             <div
               class="text-gray-400 text-xs font-light mb-4 md:mb-0 flex flex-wrap items-center gap-2"
             >
-              <p>Copyright © 2025. All rights reserved.</p>
+              <p>Copyright 2025. All rights reserved.</p>
               <span class="hidden md:inline">|</span>
               <a routerLink="/privacy-policy" class="hover:text-white"
                 >Privacy Policy</a
