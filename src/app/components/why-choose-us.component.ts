@@ -67,7 +67,8 @@ interface Reason {
             [routerLink]="content.data?.why_choose_cta_link || '/contact'"
             class="bg-fire-600 text-white px-8 py-3 rounded-lg hover:bg-fire-700 transition-colors inline-flex items-center gap-2"
           >
-            {{ content.data?.why_choose_cta_text }}
+            <!-- {{ content.data?.why_choose_cta_text }}  -->Schedule a
+            Consultation
           </button>
         </div>
       </div>
