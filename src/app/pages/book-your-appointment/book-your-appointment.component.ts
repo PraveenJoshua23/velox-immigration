@@ -90,14 +90,6 @@ export class BookYourAppointmentComponent {
     private sanitizer: DomSanitizer,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
-    // Check if disclaimer was already accepted
-    if (isPlatformBrowser(this.platformId)) {
-      const disclaimerAccepted = localStorage.getItem('disclaimerAccepted');
-      if (disclaimerAccepted === 'true') {
-        this.showDisclaimer.set(false);
-      }
-    }
-
     this.activatedRoute.data.subscribe((response: any) => {
       this.content = response.data.data[0];
 
@@ -119,10 +111,5 @@ export class BookYourAppointmentComponent {
 
   acceptDisclaimer(): void {
     this.showDisclaimer.set(false);
-
-    // Save acceptance in localStorage to prevent showing again on page refresh
-    if (isPlatformBrowser(this.platformId)) {
-      localStorage.setItem('disclaimerAccepted', 'true');
-    }
   }
 }
