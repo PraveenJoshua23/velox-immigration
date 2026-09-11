@@ -1,19 +1,17 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Inject,
   inject,
-  OnInit,
-  PLATFORM_ID,
   signal,
 } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../components/header.component';
 import { FooterComponent } from '../components/footer.component';
 import { localServices } from '../utils/constants/navigation';
 import { ElementRef, ViewChild } from '@angular/core';
 import { SeoService } from '../services/seo.service';
+import { DirectusService } from '../services/directus.service';
 
 @Component({
   selector: 'app-services-layout',
@@ -105,33 +103,9 @@ import { SeoService } from '../services/seo.service';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ServicesLayoutComponent implements OnInit {
+export class ServicesLayoutComponent {
   localServices = signal([...localServices]);
   @ViewChild('sidebarRef') sidebarRef!: ElementRef;
   isScrolled = signal<boolean>(false);
-  servicesMenu: any[] = [];
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
-
-  ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const menuString = localStorage.getItem('velox_navigation_menu');
-      if (menuString) {
-        try {
-          const menuObj = JSON.parse(menuString);
-          const menuData = menuObj?.data?.[0]?.menu_items || [];
-          const services = menuData.find(
-            (item: any) => item.label === 'Services'
-          );
-          if (services && services.sub_menu) {
-            this.servicesMenu = services.sub_menu.filter(
-              (item: any) => item.visible
-            );
-          }
-        } catch (e) {
-          this.servicesMenu = [];
-        }
-      }
-    }
-  }
+  servicesMenu = inject(DirectusService).getServicesMenu();
 }

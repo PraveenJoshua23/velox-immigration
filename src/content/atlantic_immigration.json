@@ -1,0 +1,118 @@
+{
+  "data": {
+    "id": 1,
+    "status": "published",
+    "date_updated": "2025-05-01T18:36:42.935Z",
+    "title": "Atlantic Immigration Program",
+    "subtitle": "Live and work in Eastern Canada—through a fast and employer-driven permanent residence pathway.",
+    "intro_title": "Settle in Atlantic Canada with the Support of a Designated Employer",
+    "intro_description": "The Atlantic Immigration Program (AIP) offers a streamlined route to permanent residence for skilled workers and international graduates who want to live and work in Nova Scotia, New Brunswick, Prince Edward Island, or Newfoundland and Labrador. At Velox Immigration, we guide both applicants and employers through the AIP process—making it seamless, compliant, and successful.",
+    "intro_cta_text": " Find Out If You Qualify for AIP ",
+    "intro_cta_link": "/book-your-appointment",
+    "who_we_help_title": "Who This Is For",
+    "who_we_help_intro": "This program is ideal for:",
+    "who_we_help_items": [
+      {
+        "description": "Skilled foreign workers with a job offer from a designated Atlantic employer"
+      },
+      {
+        "description": "Recent international graduates of eligible Atlantic institutions"
+      },
+      {
+        "description": "Employers in Atlantic Canada looking to hire foreign talent for long-term positions"
+      },
+      {
+        "description": "Candidates seeking PR without needing a high CRS score in Express Entry"
+      }
+    ],
+    "what_we_offer_intro": "We support both employers and applicants at every stage of the AIP process:",
+    "what_we_offer_items": [
+      {
+        "title": "Applicant Support (Workers & Graduates)",
+        "description": "We assess your eligibility, review your job offer, and guide you through the full permanent residence application under AIP. Whether you're in Canada or abroad, we ensure your application is complete, strategic, and aligned with IRCC requirements."
+      },
+      {
+        "title": "Employer Support (Designation & Hiring)",
+        "description": "We help employers become designated under AIP and navigate their responsibilities in the process. This includes job matching, compliance letters, onboarding plans, and coordination with settlement service providers."
+      },
+      {
+        "title": "Settlement Planning & Coordination",
+        "description": "A core part of AIP is submitting a personalized settlement plan. We connect applicants with approved providers, ensure the plan meets IRCC requirements, and assist with long-term integration guidance."
+      }
+    ],
+    "how_we_work_intro": "When you work with Velox Immigration, you get a streamlined, transparent process:",
+    "how_we_work_items": [
+      {
+        "title": "Eligibility & Job Offer Review",
+        "description": "We assess whether you or your candidate qualifies for AIP based on job offer, experience, or graduate status."
+      },
+      {
+        "title": "Employer Designation & Coordination",
+        "description": "For employers, we help secure designation and ensure the job offer meets AIP requirements."
+      },
+      {
+        "title": "Settlement Plan Guidance",
+        "description": "We connect the applicant with an IRCC-approved provider and coordinate the plan's completion."
+      },
+      {
+        "title": "Endorsement Application",
+        "description": "We compile and submit the provincial endorsement application on your behalf."
+      },
+      {
+        "title": "Permanent Residence Filing",
+        "description": "Once endorsed, we prepare your full PR application for submission to IRCC."
+      },
+      {
+        "title": "Follow-Up & Landing Support",
+        "description": "We track the application status and guide you through landing and long-term settlement."
+      }
+    ],
+    "common_scenarios_title": null,
+    "common_scenarios_items": [
+      {
+        "title": null,
+        "description": "An international graduate in New Brunswick with a job offer needing full PR support under AIP"
+      },
+      {
+        "description": "A designated employer in Nova Scotia hiring skilled cooks and needing help with endorsements"
+      },
+      {
+        "description": "A PR candidate with low CRS looking for a non-Express Entry immigration pathway"
+      },
+      {
+        "description": "An applicant confused about whether they qualify as a skilled worker vs. graduate under AIP"
+      }
+    ],
+    "faq_items": [
+      {
+        "question": "Do I need an LMIA for AIP?",
+        "answer": "No, AIP is LMIA-exempt—but the employer must be designated under the program."
+      },
+      {
+        "question": "Can I apply from outside Canada?",
+        "answer": "Yes. AIP is open to both inland and overseas applicants."
+      },
+      {
+        "question": "Is language testing required?",
+        "answer": "Yes. You must demonstrate CLB 4 in English or French through an approved test."
+      },
+      {
+        "question": "Can I bring my family with me?",
+        "answer": "Absolutely. Spouses can apply for open work permits, and children can apply for study permits."
+      },
+      {
+        "question": "How is AIP different from PNP?",
+        "answer": "AIP is faster, LMIA-exempt, and includes a mandatory settlement plan component. It's also employer-driven and not based on a points system."
+      },
+      {
+        "question": "What is the processing time?",
+        "answer": "Timelines may vary. See IRCC and provincial websites for updated processing times."
+      }
+    ],
+    "banner_title": "Start Your Atlantic Canada Journey Today",
+    "banner_description": "Whether you're a worker, graduate, or employer, the Atlantic Immigration Program offers a supportive and fast-track route to permanent residency—with Velox Immigration as your trusted guide.",
+    "banner_cta_text": "Book a consultation today ",
+    "banner_cta_link": "/book-your-appointment",
+    "what_you_need_to_apply": "<p class=\"text-gray-700 mb-4\">To apply under the AIP, you must have:</p>\n<ul class=\"space-y-2 list-disc pl-5 text-gray-700 mb-4\">\n<li>non-seasonal job offer&nbsp;from a designated employer in Atlantic Canada</li>\n<li>A valid&nbsp;<strong>language test</strong>&nbsp;result (CLB 4 or higher)</li>\n<li>Proof of&nbsp;<strong>education</strong>&nbsp;(ECA required if completed outside Canada)</li>\n<li>Proof of&nbsp;<strong>funds</strong>&nbsp;(unless already working in Canada)</li>\n<li>An official&nbsp;<strong>settlement plan</strong>&nbsp;from an IRCC-approved provider</li>\n<li>An&nbsp;<strong>endorsement certificate</strong>&nbsp;from the province</li>\n</ul>\n<p class=\"text-gray-700 font-medium\">For international graduates:</p>\n<ul class=\"space-y-2 list-disc pl-5 text-gray-700 mb-4\">\n<li>You must have completed a&nbsp;<strong>2-year program</strong>&nbsp;at a publicly funded institution in one of the four Atlantic provinces, within the last 24 months.</li>\n</ul>\n<p class=\"text-gray-700\">We'll provide a step-by-step checklist tailored to your specific AIP stream.</p>"
+  }
+}

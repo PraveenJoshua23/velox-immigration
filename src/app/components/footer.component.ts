@@ -1,6 +1,7 @@
-import { Component, Inject, Input, PLATFORM_ID } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, inject, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { DirectusService } from '../services/directus.service';
 
 @Component({
   selector: 'app-footer',
@@ -191,29 +192,5 @@ import { RouterModule } from '@angular/router';
 })
 export class FooterComponent {
   @Input() hideContactBanner = false;
-  servicesMenu: any[] = [];
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
-
-  ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const menuString = localStorage.getItem('velox_navigation_menu');
-      if (menuString) {
-        try {
-          const menuObj = JSON.parse(menuString);
-          const menuData = menuObj?.data?.[0]?.menu_items || [];
-          const services = menuData.find(
-            (item: any) => item.label === 'Services'
-          );
-          if (services && services.sub_menu) {
-            this.servicesMenu = services.sub_menu.filter(
-              (item: any) => item.visible
-            );
-          }
-        } catch (e) {
-          this.servicesMenu = [];
-        }
-      }
-    }
-  }
+  servicesMenu = inject(DirectusService).getServicesMenu();
 }

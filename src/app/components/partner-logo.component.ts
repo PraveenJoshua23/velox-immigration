@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, signal, ViewChild } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomePageContent } from '../utils/types/directus';
 
@@ -13,14 +13,15 @@ import { HomePageContent } from '../utils/types/directus';
           Our Accreditation
         </h3>
 
-        <div #container class="relative flex overflow-hidden">
+        <div class="marquee relative flex overflow-hidden">
           <!-- First set of logos -->
-          <div #firstTrack class="flex animate-scroll gap-8 min-w-full">
+          <div class="flex animate-scroll gap-8 min-w-full">
             @for (logo of logos(); track logo.id) {
             <div class="flex items-center justify-center w-48">
               <img
                 [src]="logo.src"
                 [alt]="logo.alt"
+                loading="lazy"
                 class="h-16 object-contain grayscale hover:grayscale-0 transition-all"
               />
             </div>
@@ -29,14 +30,15 @@ import { HomePageContent } from '../utils/types/directus';
 
           <!-- Duplicated set for seamless loop -->
           <div
-            #secondTrack
             class="flex animate-scroll gap-8 min-w-full absolute left-full"
+            aria-hidden="true"
           >
             @for (logo of logos(); track logo.id) {
             <div class="flex items-center justify-center w-48">
               <img
                 [src]="logo.src"
-                [alt]="logo.alt"
+                alt=""
+                loading="lazy"
                 class="h-16 object-contain grayscale hover:grayscale-0 transition-all"
               />
             </div>
@@ -60,14 +62,21 @@ import { HomePageContent } from '../utils/types/directus';
       .animate-scroll {
         animation: scroll 20s linear infinite;
       }
+
+      .marquee:hover .animate-scroll {
+        animation-play-state: paused;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .animate-scroll {
+          animation: none;
+        }
+      }
     `,
   ],
 })
 export class PartnerLogosComponent {
   @Input() content: { data: HomePageContent | null } = { data: null };
-  @ViewChild('firstTrack') firstTrack!: ElementRef;
-  @ViewChild('secondTrack') secondTrack!: ElementRef;
-  @ViewChild('container') container!: ElementRef;
   logos = signal([
     {
       id: 1,
@@ -85,24 +94,4 @@ export class PartnerLogosComponent {
     //   alt: 'CAPIC Logo',
     // },
   ]);
-
-  ngAfterViewInit() {
-    // Pause animation on hover
-    const tracks = [
-      this.firstTrack.nativeElement,
-      this.secondTrack.nativeElement,
-    ];
-
-    this.container.nativeElement.addEventListener('mouseenter', () => {
-      tracks.forEach((track) => {
-        track.style.animationPlayState = 'paused';
-      });
-    });
-
-    this.container.nativeElement.addEventListener('mouseleave', () => {
-      tracks.forEach((track) => {
-        track.style.animationPlayState = 'running';
-      });
-    });
-  }
 }

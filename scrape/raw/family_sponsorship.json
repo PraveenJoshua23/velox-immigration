@@ -1,0 +1,113 @@
+{
+  "data": {
+    "id": 1,
+    "status": "published",
+    "date_updated": "2025-05-01T19:01:05.865Z",
+    "title": "Family Sponsorship",
+    "subtitle": "Reunite with your loved ones in Canada through the family sponsorship program—with expert support every step of the way.",
+    "intro_title": "Bring Your Family Home to Canada",
+    "intro_description": "Canada's immigration system prioritizes family reunification—and the family sponsorship program allows Canadian citizens and permanent residents to sponsor their spouse, partner, children, parents, or grandparents for permanent residence. At Velox Immigration, we support you through every step of the sponsorship process, making sure it's complete, compliant, and compassionate.",
+    "intro_cta_text": "Book a Sponsorship Consultation ",
+    "intro_cta_link": "/book-your-appointment",
+    "who_we_help_title": "Who This Is For",
+    "who_we_help_intro": "You may be eligible for family sponsorship if you are:",
+    "who_we_help_items": [
+      {
+        "description": "A Canadian citizen or permanent resident looking to sponsor your spouse or partner"
+      },
+      {
+        "description": "A parent or grandparent seeking to reunite with your children or grandchildren"
+      },
+      {
+        "description": "A dependent child of a Canadian or permanent resident"
+      },
+      {
+        "description": "A spouse or common-law partner applying for inland or overseas sponsorship"
+      }
+    ],
+    "what_we_offer_intro": "We assist with a wide range of sponsorship categories:",
+    "what_we_offer_items": [
+      {
+        "title": "Spouse/Common-Law/Conjugal Sponsorship",
+        "description": "We help Canadian citizens and PRs sponsor their spouse or partner, whether they're in Canada (inland sponsorship) or abroad (outland sponsorship). Our service includes application prep, relationship documentation guidance, and handling complex cases like previous marriages, lack of documentation, or cohabitation issues."
+      },
+      {
+        "title": "Dependent Child Sponsorship",
+        "description": "We help parents bring their biological or adopted children to Canada as permanent residents. We guide you through custody documents, proof of dependency, and medical/identity paperwork."
+      },
+      {
+        "title": "Parents & Grandparents Sponsorship (PGP)",
+        "description": "If you've been selected through the PGP lottery, we'll help you complete and submit a strong sponsorship and permanent residence application. We also assist with Super Visa applications for long-term visits when sponsorship isn't immediately available."
+      }
+    ],
+    "what_you_need_to_apply": "<p class=\"text-gray-700 mb-4\">Each sponsorship case is different, but typical requirements include:</p>\n<div class=\"grid grid-cols-1 md:grid-cols-2 gap-8\">\n<div>\n<h3 class=\"font-semibold text-sea-900 mb-3\">For the Sponsor:</h3>\n<ul class=\"space-y-2 list-disc pl-5 text-gray-700\">\n<li>Proof of&nbsp;<span class=\"font-medium\">Canadian citizenship or PR status</span></li>\n<li>A signed&nbsp;<span class=\"font-medium\">sponsorship undertaking</span>&nbsp;to support the family member</li>\n<li>Proof of&nbsp;<span class=\"font-medium\">income</span>&nbsp;(for PGP)</li>\n<li>Completed&nbsp;<span class=\"font-medium\">sponsorship agreement and forms</span></li>\n</ul>\n</div>\n<div>\n<h3 class=\"font-semibold text-sea-900 mb-3\">For the Sponsored Person:</h3>\n<ul class=\"space-y-2 list-disc pl-5 text-gray-700\">\n<li>Valid&nbsp;<span class=\"font-medium\">passport</span></li>\n<li><span class=\"font-medium\">Medical exam</span>&nbsp;and&nbsp;<span class=\"font-medium\">police certificates</span></li>\n<li>Civil documents (e.g., marriage certificate, birth certificate)</li>\n<li>Photos and documents proving the&nbsp;<span class=\"font-medium\">genuine nature of the relationship</span></li>\n</ul>\n</div>\n</div>\n<p class=\"text-gray-700 mt-4\">We help you build a strong and well-documented application package that meets IRCC expectations.</p>",
+    "how_we_work_intro": "When you work with Velox Immigration, you get a streamlined, transparent process:",
+    "how_we_work_items": [
+      {
+        "title": "Eligibility & Relationship Assessment",
+        "description": "We confirm that you meet all sponsorship and relationship requirements and advise on inland vs. outland processing."
+      },
+      {
+        "title": "Document Gathering & Review",
+        "description": "We guide you on collecting relationship proofs, income documentation, and all supporting materials."
+      },
+      {
+        "title": "Application Preparation & Submission",
+        "description": "We complete the required forms, draft a personalized relationship narrative (if needed), and submit your sponsorship package."
+      },
+      {
+        "title": "Ongoing File Monitoring",
+        "description": "We assist with biometric appointments, medical exams, and any additional IRCC document requests until a final decision is reached."
+      }
+    ],
+    "common_scenarios_title": null,
+    "common_scenarios_items": [
+      {
+        "title": "Overseas Spouse Sponsorship",
+        "description": "A Canadian citizen sponsoring a spouse living overseas"
+      },
+      {
+        "title": "Common-Law Relationship Proof",
+        "description": "A common-law couple unsure how to prove 12 months of cohabitation"
+      },
+      {
+        "title": "Child Custody Sponsorship",
+        "description": "A parent sponsoring a child from a previous relationship involving custody documents"
+      },
+      {
+        "title": "Parent Sponsorship Requirements",
+        "description": "A family looking to sponsor elderly parents but unsure about income requirements"
+      },
+      {
+        "title": "Inland Sponsorship with Work Permit",
+        "description": "A couple seeking inland sponsorship with an open work permit option"
+      }
+    ],
+    "faq_items": [
+      {
+        "question": "Can I sponsor my spouse if I'm living outside Canada?",
+        "answer": "Only if you are a Canadian citizen (not a permanent resident) and show intent to return once PR is granted."
+      },
+      {
+        "question": "Can my spouse work while the inland sponsorship is in process?",
+        "answer": "Yes. Inland spousal applicants may apply for an open work permit while their sponsorship is being processed."
+      },
+      {
+        "question": "What if I don't meet the income requirement for PGP?",
+        "answer": "You may be ineligible for PGP but can apply for a Super Visa, which allows long-term visits without the same income bar."
+      },
+      {
+        "question": "Can I sponsor my siblings?",
+        "answer": "Generally, no. There are limited exceptions, such as orphaned siblings under 18, or if you have no other family in Canada."
+      },
+      {
+        "question": "What will be the processing time?",
+        "answer": "Processing times vary by country of residence and case complexity. Check IRCC processing times for updates."
+      }
+    ],
+    "banner_title": "Reunite with Your Family—Start Today",
+    "banner_description": "Whether you're sponsoring your spouse, child, or parent, we'll guide you with compassion, clarity, and legal precision.",
+    "banner_cta_text": "Schedule Your Family Sponsorship Consultation ",
+    "banner_cta_link": "/book-your-appointment"
+  }
+}

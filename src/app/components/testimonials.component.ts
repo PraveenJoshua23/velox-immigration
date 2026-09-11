@@ -1,16 +1,12 @@
-import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { animate } from 'motion';
+import { CommonModule } from '@angular/common';
 import {
   Component,
-  signal,
-  ViewChild,
-  ElementRef,
-  Inject,
-  PLATFORM_ID,
-  OnDestroy,
-  NgZone,
-  AfterViewInit,
+  DestroyRef,
   Input,
+  NgZone,
+  afterNextRender,
+  inject,
+  signal,
 } from '@angular/core';
 import { HomePageContent } from '../utils/types/directus';
 
@@ -37,11 +33,16 @@ import { HomePageContent } from '../utils/types/directus';
       <!-- Testimonials Content -->
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          <!-- Left Column: Testimonial Text + Navigation -->
-          <div class="flex flex-col order-2 lg:order-1">
+          <!-- Left Column: Testimonial Text + Navigation (autoplay pauses while hovered or focused) -->
+          <div
+            class="flex flex-col order-2 lg:order-1"
+            (mouseenter)="pause()"
+            (mouseleave)="play()"
+            (focusin)="pause()"
+            (focusout)="play()"
+          >
             <div
-              #testimonialContent
-              class="bg-white p-6 md:p-8 rounded-lg shadow-lg min-h-[280px] mb-4"
+              class="bg-white p-6 md:p-8 rounded-lg shadow-lg min-h-[280px] mb-4 overflow-hidden"
             >
               <div class="mb-6">
                 <svg
@@ -54,37 +55,25 @@ import { HomePageContent } from '../utils/types/directus';
                   />
                 </svg>
               </div>
-              <p class="text-gray-600 text-base md:text-md mb-6">
-                {{
-                  content.data?.testimonials[currentTestimonial()]?.testimony
-                }}
-              </p>
-              <div class="flex items-center">
-                <div>
-                  <p class="font-bold text-red-500">
-                    -
-                    {{
-                      content.data?.testimonials[currentTestimonial()]
-                        .name_designation
-                    }}
-                  </p>
-                  <!-- <p class="text-gray-500 text-sm">
-                    {{ testimonials()[currentTestimonial()].status }}
-                  </p> -->
-                </div>
+              <!-- Tracking the testimonial object re-creates the slide when it changes, replaying its CSS entry animation -->
+              @for (testimonial of [testimonials[index()]]; track testimonial) {
+              @if (testimonial) {
+              <div class="testimonial-slide">
+                <p class="text-gray-600 text-base md:text-md mb-6">
+                  {{ testimonial.testimony }}
+                </p>
+                <p class="font-bold text-red-500">
+                  - {{ testimonial.name_designation }}
+                </p>
               </div>
+              } }
             </div>
 
             <!-- Navigation Buttons -->
-            <div
-              class="flex justify-end gap-4 mt-4"
-              (mouseenter)="pauseAutoPlay()"
-              (mouseleave)="resumeAutoPlay()"
-            >
+            <div class="flex justify-end gap-4 mt-4">
               <button
-                (click)="prevTestimonial()"
-                [disabled]="isAnimating()"
-                class="p-2 rounded-full bg-red-500 text-white hover:bg-red-600 transition-colors disabled:opacity-50"
+                (click)="prev()"
+                class="p-2 rounded-full bg-red-500 text-white hover:bg-red-600 transition-colors"
                 aria-label="Previous testimonial"
               >
                 <svg
@@ -103,9 +92,8 @@ import { HomePageContent } from '../utils/types/directus';
                 </svg>
               </button>
               <button
-                (click)="nextTestimonial()"
-                [disabled]="isAnimating()"
-                class="p-2 rounded-full bg-red-500 text-white hover:bg-red-600 transition-colors disabled:opacity-50"
+                (click)="next()"
+                class="p-2 rounded-full bg-red-500 text-white hover:bg-red-600 transition-colors"
                 aria-label="Next testimonial"
               >
                 <svg
@@ -132,6 +120,7 @@ import { HomePageContent } from '../utils/types/directus';
               <img
                 src="/assets/images/testimonials.jpg"
                 alt="Happy family"
+                loading="lazy"
                 class="w-full h-full object-cover rounded-lg"
               />
             </div>
@@ -145,160 +134,65 @@ import { HomePageContent } from '../utils/types/directus';
       :host {
         display: block;
       }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .testimonial-slide {
+          animation: testimonial-in 0.4s ease-out;
+        }
+      }
+
+      @keyframes testimonial-in {
+        from {
+          opacity: 0;
+          transform: translateX(16px);
+        }
+      }
     `,
   ],
 })
-export class TestimonialsComponent implements AfterViewInit, OnDestroy {
+export class TestimonialsComponent {
   @Input() content: { data: HomePageContent | null } = { data: null };
-  @ViewChild('testimonialContent') testimonialContent!: ElementRef;
 
-  currentTestimonial = signal(0);
-  isAnimating = signal(false);
-  private autoPlayInterval: any;
-  private readonly INTERVAL_DURATION = 5000;
-  private isBrowser: boolean;
+  index = signal(0);
+  private autoplay = false;
+  private timer?: ReturnType<typeof setInterval>;
+  private zone = inject(NgZone);
 
-  constructor(@Inject(PLATFORM_ID) platformId: Object, private ngZone: NgZone) {
-    this.isBrowser = isPlatformBrowser(platformId);
+  constructor() {
+    // Browser only; no autoplay for users who ask for reduced motion.
+    afterNextRender(() => {
+      this.autoplay = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+      this.play();
+    });
+    inject(DestroyRef).onDestroy(() => this.pause());
   }
 
-  // testimonials = signal([
-  //   {
-  //     content:
-  //       'Velox Immigration guided me through my PR process smoothly. Anitha’s expertise was invaluable!',
-  //     name: 'Kate Johnson, Permanent Resident',
-
-  //     image: '/assets/images/testimonials.jpg',
-  //   },
-  //   {
-  //     content:
-  //       'From my study permit to PR, Velox was with me every step of the way. Highly recommend!',
-  //     name: 'David Lee, International Graduate',
-
-  //     image: '/assets/images/testimonials.jpg',
-  //   },
-  // ]);
-
-  ngAfterViewInit() {
-    if (this.isBrowser) {
-      setTimeout(() => {
-        this.ngZone.runOutsideAngular(() => {
-          this.startAutoPlay();
-        });
-      }, 0);
-    }
+  get testimonials(): { testimony: string; name_designation: string }[] {
+    return this.content.data?.testimonials ?? [];
   }
 
-  ngOnDestroy() {
-    if (this.isBrowser) {
-      this.stopAutoPlay();
-    }
-  }
-
-  startAutoPlay() {
-    if (this.isBrowser && !this.autoPlayInterval) {
-      this.autoPlayInterval = setInterval(() => {
-        this.ngZone.run(() => {
-          if (!this.isAnimating()) {
-            this.nextTestimonial();
-          }
-        });
-      }, this.INTERVAL_DURATION);
-    }
-  }
-
-  stopAutoPlay() {
-    if (this.isBrowser && this.autoPlayInterval) {
-      clearInterval(this.autoPlayInterval);
-      this.autoPlayInterval = null;
-    }
-  }
-
-  pauseAutoPlay() {
-    if (this.isBrowser) {
-      this.stopAutoPlay();
-    }
-  }
-
-  resumeAutoPlay() {
-    if (this.isBrowser) {
-      this.startAutoPlay();
-    }
-  }
-
-  nextTestimonial() {
-    if (!this.isBrowser || this.isAnimating()) return;
-    this.isAnimating.set(true);
-
-    this.ngZone.runOutsideAngular(() => {
-      animate(
-        this.testimonialContent.nativeElement,
-        {
-          opacity: [1, 0],
-          transform: ['translateX(0)', 'translateX(-30px)'],
-        },
-        {
-          duration: 0.3,
-        }
-      ).then(() => {
-        this.ngZone.run(() => {
-          this.currentTestimonial.update(
-            (current) => (current + 1) % this.content.data?.testimonials?.length
-          );
-
-          animate(
-            this.testimonialContent.nativeElement,
-            {
-              opacity: [0, 1],
-              transform: ['translateX(30px)', 'translateX(0)'],
-            },
-            {
-              duration: 0.3,
-            }
-          ).then(() => {
-            this.isAnimating.set(false);
-          });
-        });
-      });
+  play() {
+    if (!this.autoplay || this.timer || this.testimonials.length < 2) return;
+    // Interval runs outside the zone so it never keeps the app from becoming stable.
+    this.zone.runOutsideAngular(() => {
+      this.timer = setInterval(() => {
+        if (!document.hidden) this.zone.run(() => this.next());
+      }, 5000);
     });
   }
 
-  prevTestimonial() {
-    if (!this.isBrowser || this.isAnimating()) return;
-    this.isAnimating.set(true);
+  pause() {
+    clearInterval(this.timer);
+    this.timer = undefined;
+  }
 
-    this.ngZone.runOutsideAngular(() => {
-      animate(
-        this.testimonialContent.nativeElement,
-        {
-          opacity: [1, 0],
-          transform: ['translateX(0)', 'translateX(30px)'],
-        },
-        {
-          duration: 0.3,
-        }
-      ).then(() => {
-        this.ngZone.run(() => {
-          this.currentTestimonial.update((current) =>
-            current === 0
-              ? this.content.data?.testimonials?.length - 1
-              : current - 1
-          );
+  next() {
+    const count = this.testimonials.length;
+    if (count) this.index.update((i) => (i + 1) % count);
+  }
 
-          animate(
-            this.testimonialContent.nativeElement,
-            {
-              opacity: [0, 1],
-              transform: ['translateX(-30px)', 'translateX(0)'],
-            },
-            {
-              duration: 0.3,
-            }
-          ).then(() => {
-            this.isAnimating.set(false);
-          });
-        });
-      });
-    });
+  prev() {
+    const count = this.testimonials.length;
+    if (count) this.index.update((i) => (i - 1 + count) % count);
   }
 }

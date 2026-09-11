@@ -1,0 +1,134 @@
+{
+  "data": {
+    "id": 1,
+    "status": "published",
+    "date_updated": "2025-05-03T19:17:39.856Z",
+    "title": "Work Permit Extension",
+    "subtitle": "Secure the right permit to begin or continue your studies in Canada—with expert support every step of the way.",
+    "intro_title": "Stay Compliant. Keep Working. Move Forward.",
+    "intro_subtitle": "If your work permit is about to expire or you're a student needing a co-op work permit for your program, you need the right application, filed on time. At Velox Immigration, we help you maintain legal status, avoid disruptions, and stay focused on your career or education goals.",
+    "intro_cta_text": " Apply for Your Extension or Co-op Permit Today",
+    "intro_cta_link": "/book-your-appointment",
+    "who_we_help_title": "Who This Is For",
+    "who_we_help_items": [
+      {
+        "description": "Foreign nationals whose employer-specific or open work permit is expiring."
+      },
+      {
+        "description": "International students enrolled in programs that require co-op or internship placements"
+      },
+      {
+        "description": "Workers looking to restore status after a work permit expires"
+      },
+      {
+        "description": "Applicants transitioning between permits (e.g., PGWP to bridging work permit)"
+      }
+    ],
+    "who_we_help_intro": "This service is ideal for:",
+    "what_we_offer_items": [
+      {
+        "title": "Work Permit Extensions",
+        "description": "Whether you're on an open work permit, employer-specific permit, or PGWP, we assist with timely extensions to ensure your continued legal status. We review eligibility, handle all IRCC forms, and file your extension application before your current permit expires.\n\nIf you're switching employers or roles, we guide you through the process of modifying your permit terms. We also assist in status restoration if your permit has expired within the past 90 days."
+      },
+      {
+        "title": "Co-op Work Permits",
+        "description": "If your academic program includes a mandatory work component, such as an internship or field placement, you must apply for a co-op work permit. This permit is free and must be approved before you begin your placement. We coordinate with your institution to gather the necessary documentation and ensure timely submission."
+      }
+    ],
+    "work_permit_extensions": [
+      {
+        "description": "A valid passport"
+      },
+      {
+        "description": "Copy of your current work permit"
+      },
+      {
+        "description": "Job offer letter (if employer-specific)"
+      },
+      {
+        "description": "Pay stubs or proof of employment (for PGWP holders)"
+      },
+      {
+        "description": "Explanation letter (if changing employers or job duties)"
+      }
+    ],
+    "co_op_work_permits": [
+      {
+        "description": "Letter from your DLI confirming that the work component is essential"
+      },
+      {
+        "description": "Valid study permit"
+      },
+      {
+        "description": "A valid passport"
+      },
+      {
+        "description": "School's co-op/internship agreement (if applicable)"
+      }
+    ],
+    "how_we_work_items": [
+      {
+        "title": "Consultation & Permit Review",
+        "description": "We assess your current permit and eligibility for extension or co-op issuance."
+      },
+      {
+        "title": "Document Collection & Strategy",
+        "description": "We create a checklist, review all supporting documents, and guide you on writing effective explanations."
+      },
+      {
+        "title": " Application Preparation & Filing",
+        "description": "We prepare and submit your IRCC application, ensuring accuracy and completeness."
+      },
+      {
+        "title": "Follow-Up & Status Monitoring",
+        "description": "We monitor your application status and assist with biometrics or additional document requests."
+      }
+    ],
+    "common_scenarios_items": [
+      {
+        "description": "A PGWP holder who is continuing employment but has a permit expiring next month"
+      },
+      {
+        "description": "An international student ready to begin an internship but has no co-op work permit"
+      },
+      {
+        "description": "A worker whose permit expired 3 weeks ago and needs to restore status"
+      },
+      {
+        "description": "A professional changing jobs and needing a modified employer-specific permit"
+      }
+    ],
+    "faq_items": [
+      {
+        "question": "Can I keep working while waiting for my extension?",
+        "answer": "Yes—if you applied before your permit expired, you're under \"maintained status\" and can continue working under the same conditions."
+      },
+      {
+        "question": "Do I need a co-op permit if my program includes unpaid work?",
+        "answer": "Yes. Even unpaid work as part of your program requires a valid co-op work permit."
+      },
+      {
+        "question": "Can I switch jobs with the same permit?",
+        "answer": "Not on an employer-specific permit. You'll need to apply to change the conditions of your work permit."
+      },
+      {
+        "question": "How early should I apply for an extension?",
+        "answer": "At least 30 days before your permit expires, but we recommend sooner to avoid delays."
+      },
+      {
+        "question": "What if my permit already expired?",
+        "answer": "You may apply for restoration within 90 days. We can help act fast to restore your legal status."
+      },
+      {
+        "question": "What is the Processing Time?",
+        "answer": "Processing times vary. Check IRCC processing times for current estimates."
+      }
+    ],
+    "banner_title": "Don't Let Your Status Expire",
+    "banner_subtitle": "Whether you need a renewal, a change, or a brand-new co-op permit, we'll help you stay compliant and employed.",
+    "banner_cta_text": " Book a Consultation ",
+    "banner_cta_link": "/contact",
+    "work_permit_extension_footnote": null,
+    "co_op_permit_footnote": "We'll provide a custom checklist based on your situation."
+  }
+}

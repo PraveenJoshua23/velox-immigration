@@ -17,3 +17,28 @@ h5,
 h6 {
   @apply font-spartan;
 }
+
+/* Motion utilities. CSS-only so server-rendered content is never hidden
+   before hydration; skipped entirely for reduced-motion users. */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Plays once on first paint */
+  .fade-up {
+    animation: fade-up 0.8s ease-out both;
+  }
+
+  /* Tied to scrolling into view; browsers without scroll-driven animations just show the content */
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: fade-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+  }
+}

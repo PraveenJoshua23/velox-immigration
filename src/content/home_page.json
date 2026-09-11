@@ -1,0 +1,134 @@
+{
+  "data": {
+    "id": 1,
+    "hero_title": "Professional Immigration Services",
+    "hero_description": "Trusted guidance for your Canadian dreams with expert advice, seamless processing, and personalized solutions.",
+    "hero_background": null,
+    "hero_cta_title": "Request a Callback",
+    "hero_cta_link": "/contact",
+    "hero_subtitle": "Your Canadian journey starts here!",
+    "hero_caption": "Move to Canada with Confidence!",
+    "why_choose_title": "Trusted expertise for your Canadian immigration journey",
+    "why_choose_subtitle": "Why Choose Velox Immigration?",
+    "why_choose_features": [
+      {
+        "title": "Expertise & Experience",
+        "description": "Years of immigration expertise and licensed RCIC-IRB guidance."
+      },
+      {
+        "title": "Personalized Service",
+        "description": "Every case is tailored to fit your specific needs."
+      },
+      {
+        "title": "Honesty & Transparency",
+        "description": "No false promises, just clear and realistic advice."
+      },
+      {
+        "title": "Bilingual Support",
+        "description": "We assist clients in English & Tamil for seamless communication."
+      }
+    ],
+    "why_choose_cta_text": "Schedule a Consultation",
+    "why_choose_cta_link": "/book-your-appointment",
+    "services_title": "Outstanding Immigration Services",
+    "services_subtitle": "Our Immigration Services",
+    "services_features": [
+      {
+        "title": "Study in Canada",
+        "description": "Explore options for international students to study at Canadian institutions with student permits and post-graduation work opportunities. ",
+        "icon": "service-study",
+        "routePath": "/services/study/study-in-canada",
+        "bgColor": "bg-red-600",
+        "bgImage": "service-study.jpg"
+      },
+      {
+        "title": " Work in Canada",
+        "description": " Discover pathways to obtain Canadian work permits, including LMIA-based work permits and employer-specific opportunities. ",
+        "icon": "service-work",
+        "routePath": "/services/work/open-pgwp-permits",
+        "bgColor": "bg-sea-900",
+        "bgImage": "service-work.jpg"
+      },
+      {
+        "title": " Visitor Visa ",
+        "description": " Learn about visitor visas, super visas, and family reunification programs to bring your loved ones to Canada. ",
+        "icon": "service-visa",
+        "routePath": "/services/visit/visitor-visas",
+        "bgColor": "bg-red-600",
+        "bgImage": "service-visitor.jpg"
+      },
+      {
+        "title": " Express Entry ",
+        "description": " Canada's primary immigration system for skilled workers looking for permanent residency through FSW, CEC, and FST programs. ",
+        "icon": "service-express",
+        "routePath": "/services/immigrate/express-entry",
+        "bgColor": "bg-sea-900",
+        "bgImage": "service-express.jpg"
+      },
+      {
+        "title": " Provincial Nominee Program ",
+        "description": " Explore province-specific immigration pathways designed to address regional economic and demographic needs. ",
+        "icon": "service-pnp",
+        "routePath": "/services/immigrate/provincial-nominee",
+        "bgColor": "bg-sea-900",
+        "bgImage": "pnp-program.jpg"
+      },
+      {
+        "title": " Labour Market Impact Assessment (LMIA) ",
+        "description": " Hire foreign workers to meet labour shortages in Canada. LMIA is a key step for employers to demonstrate the need for a foreign worker when no Canadians or permanent residents are available. ",
+        "icon": "service-more",
+        "routePath": "/services/work/lmia-employer-permits",
+        "bgColor": "bg-red-600",
+        "bgImage": "skilled-worker.jpg"
+      },
+      {
+        "title": " Business Immigration ",
+        "description": " Immigration options for entrepreneurs, investors, and self-employed individuals looking to establish businesses in Canada. ",
+        "icon": "service-business",
+        "routePath": "/services/immigrate/business-immigration",
+        "bgColor": "bg-sea-900",
+        "bgImage": "service-business.jpg"
+      },
+      {
+        "title": " PR Card & Citizenship ",
+        "description": " Services for permanent resident card renewal and applications for Canadian citizenship. ",
+        "icon": "service-citizen",
+        "routePath": "/services/other/pr-citizenship",
+        "bgColor": "bg-red-600",
+        "bgImage": "service-passport.jpg"
+      }
+    ],
+    "our_process_title": "Our Process in 3 Simple Steps",
+    "our_process_steps": [
+      {
+        "title": "Initial Assessment",
+        "description": "The first step in your immigration journey is a preliminary assessment where we take the time to understand your goals and review your initial eligibility. This ensures that you are on the right path before proceeding further."
+      },
+      {
+        "title": "Personalized Consultation",
+        "description": "A consultation meeting with our licensed RCIC expert provides you with in-depth insights and tailored recommendations. We discuss your immigration options, answer your questions, and develop a strategic plan to achieve your goals."
+      },
+      {
+        "title": "Application Preparation & Submission",
+        "description": "Once your pathway is determined, we move forward with completing and submitting your application. Our team ensures that all documentation is accurate, complete, and aligned with immigration requirements for a seamless process."
+      }
+    ],
+    "testimonial_title": "Testimonial of our Immigration Guidance & Support",
+    "testimonial_subtitle": "What our Clients say",
+    "testimonials": [
+      {
+        "testimony": "From my study permit to PR, Velox was with me every step of the way. Highly recommend!",
+        "name_designation": "David Lee, International Graduate"
+      },
+      {
+        "testimony": "Velox Immigration guided me through my PR process smoothly. Anitha’s expertise was invaluable!",
+        "name_designation": "Kate Johnson, Permanent Resident"
+      }
+    ],
+    "about_title": "Simplifying Immigration, One Step at a Time.",
+    "about_subtitle": "About VELOX Immigration",
+    "about_ctaLink": "/about",
+    "about_ctaTitle": "Learn More About Us",
+    "about_description": "At Velox Immigration Services Inc., we make Canadian immigration clear, efficient, and stress-free. Led by a licensed RCIC-IRB consultant, the practice offers personalized, reliable guidance to help individuals, families, and businesses achieve their immigration goals with confidence."
+  }
+}

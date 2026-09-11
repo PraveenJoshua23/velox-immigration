@@ -1,0 +1,23 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "date_updated": "2025-05-07T02:37:08.306Z",
+      "contact_email": "info@veloximmigration.com",
+      "contact_no": "+1 416-662-0652",
+      "service_description": "We offer comprehensive immigration services tailored to your needs.",
+      "why_choose_use_items": [
+        {
+          "description": "Licensed Canadian Immigration Consultant"
+        },
+        {
+          "description": "Personalized Immigration Strategy"
+        },
+        {
+          "description": "End-to-End Application Support"
+        }
+      ],
+      "page_subtitle": "Get in touch with our licensed immigration consultants to discuss your immigration goals and take your first step toward a new future in Canada."
+    }
+  ]
+}

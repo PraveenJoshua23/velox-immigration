@@ -1,0 +1,112 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "status": "published",
+      "date_updated": null,
+      "title": "Visitor Visas to Canada",
+      "subtitle": "Explore, connect, or conduct business in Canada—with the right visa in hand.",
+      "header_image": null,
+      "intro_title": "Visit Canada—The Right Way, the First Time",
+      "intro_description": "Whether you're planning a family visit, attending a business event, or reuniting with your children or grandchildren, a visitor visa ensures your entry to Canada is smooth and stress-free. At Velox Immigration, we simplify the process, ensure your documents are strong, and help you present a clear purpose for travel.",
+      "intro_cta_text": " Start Your Visitor Visa Application Today ",
+      "intro_cta_link": "/book-your-appointment",
+      "who_we_help_title": "Who This Is For",
+      "who_we_help_intro": "This service is designed for:",
+      "who_we_help_list": [
+        {
+          "item": "Tourists or family members applying for a Temporary Resident Visa (TRV)"
+        },
+        {
+          "item": "Parents and grandparents applying for a Super Visa"
+        },
+        {
+          "item": "Business professionals attending meetings, trade shows, or conferences as Business Visitors"
+        }
+      ],
+      "what_we_offer_intro": "Our visitor visa services are tailored for different purposes of travel:",
+      "what_we_offer_items": [
+        {
+          "title": "Visitor Visa (TRV)",
+          "description": "For most foreign nationals, a Temporary Resident Visa is required to enter Canada. We help you demonstrate strong ties to your home country, a clear purpose of visit, and sufficient financial support. Whether you're visiting family or exploring Canada for leisure, we structure your file for approval."
+        },
+        {
+          "title": "Super Visa",
+          "description": "The Super Visa is ideal for parents and grandparents of Canadian citizens or permanent residents. It allows extended stays in Canada—up to five years per visit. We assist with the required medical insurance, invitation letter, and financial documentation from your Canadian host."
+        },
+        {
+          "title": "Business Visitor Visa",
+          "description": "Coming to Canada for a short-term business activity without entering the labour market? We help eligible applicants with invitations, business documents, and strong justification letters that align with IRCC requirements."
+        }
+      ],
+      "what_you_need_to_apply": "<p class=\"text-gray-700 mb-4\">Depending on your purpose of travel, you may need:</p>\n<ul class=\"space-y-2 list-disc pl-5 text-gray-700 mb-4\">\n<li>A valid&nbsp;<strong>passport</strong></li>\n<li>Proof of&nbsp;<strong>financial support</strong>&nbsp;(bank statements, employment letter, assets)</li>\n<li><strong>Letter of invitation</strong>&nbsp;from a Canadian host (family or business)</li>\n<li><strong>Travel itinerary</strong>&nbsp;(if applicable)</li>\n<li>Evidence of&nbsp;<strong>ties to your home country</strong>&nbsp;(job, family, property)</li>\n<li>Medical exam and&nbsp;<strong>proof of private insurance</strong>&nbsp;(Super Visa only)</li>\n<li>Proof of relationship (for family-based visits)</li>\n</ul>\n<p class=\"text-gray-700\">We assess your purpose of travel and provide a personalized checklist to support a complete, convincing application.</p>",
+      "how_we_work_intro": "We take the guesswork out of visitor visa applications through our 4-step process:",
+      "how_we_work_items": [
+        {
+          "title": "Consultation & Purpose Review",
+          "description": "We assess your visit goals and identify the correct visa category."
+        },
+        {
+          "title": "Document Strategy & Invitation Letter Support",
+          "description": "We help draft a strong invitation letter and guide you on proof of ties, finances, and travel plans."
+        },
+        {
+          "title": "Application Preparation & Filing",
+          "description": "We complete your IRCC forms and submit your application with a compelling explanation of your visit."
+        },
+        {
+          "title": "Follow-Up & Support",
+          "description": "We assist with biometrics appointments, respond to IRCC requests, and guide you until a decision is issued."
+        }
+      ],
+      "common_scenarios_title": "Common Scenarios We Handle",
+      "common_scenarios_items": [
+        {
+          "description": "A student's family visiting for convocation"
+        },
+        {
+          "description": "A student's family visiting for convocation"
+        },
+        {
+          "description": "A business owner attending a conference or trade show"
+        },
+        {
+          "description": "A tourist wanting to visit family and explore Canada"
+        },
+        {
+          "description": "A first-time applicant with no travel history needing guidance on building a strong case"
+        }
+      ],
+      "faq_items": [
+        {
+          "question": "Do I need a visa to visit Canada?",
+          "answer": "If you are from a visa-required country, yes. We will confirm your eligibility and assist you accordingly."
+        },
+        {
+          "question": "How long can I stay in Canada on a visitor visa?",
+          "answer": "Normally up to 6 months. A Super Visa allows up to 5 years per visit."
+        },
+        {
+          "question": "Can I work or study with a visitor visa?",
+          "answer": "No. Visitor visas do not permit work or study in Canada unless you apply to change your status."
+        },
+        {
+          "question": "Can I extend my stay in Canada as a visitor?",
+          "answer": "Yes, but you must apply at least 30 days before your current status expires."
+        },
+        {
+          "question": "Will I need to undergo a medical exam?",
+          "answer": "Only in specific cases (e.g., Super Visa or long-term visits from certain countries). We'll guide you."
+        },
+        {
+          "question": "What is the processing time?",
+          "answer": "Processing times vary by country and application type. We'll provide the most current timeline based on IRCC's published processing times for your region."
+        }
+      ],
+      "banner_title": "Ready to Visit Canada?",
+      "banner_description": "A strong, well-prepared application is key to a smooth entry. Whether you're applying for a visitor visa, Super Visa, or coming on business, we ensure your application tells a clear and compelling story.",
+      "banner_cta_text": " Book a Visitor Visa Consultation ",
+      "banner_cta_link": "/book-your-appointment"
+    }
+  ]
+}

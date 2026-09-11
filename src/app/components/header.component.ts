@@ -1,12 +1,5 @@
-import {
-  Component,
-  inject,
-  OnInit,
-  signal,
-  PLATFORM_ID,
-  Inject,
-} from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { DirectusService } from '../services/directus.service';
 
@@ -353,12 +346,6 @@ export class HeaderComponent implements OnInit {
   directusService = inject(DirectusService);
   expandedCategories: string[] = [];
 
-  // Constants for localStorage cache
-  private readonly MENU_CACHE_KEY = 'velox_navigation_menu';
-  private readonly CACHE_EXPIRATION_TIME = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
-
   ngOnInit() {
     this.getMenuFromBackend();
   }
@@ -389,94 +376,9 @@ export class HeaderComponent implements OnInit {
   }
 
   getMenuFromBackend() {
-    // Check if we're in a browser environment
-    if (isPlatformBrowser(this.platformId)) {
-      // Check if menu data exists in localStorage
-      const cachedData = localStorage.getItem(this.MENU_CACHE_KEY);
-
-      if (cachedData) {
-        try {
-          const { data, timestamp } = JSON.parse(cachedData);
-          const now = new Date().getTime();
-
-          // Check if the cache is still valid (not expired)
-          if (
-            data &&
-            timestamp &&
-            now - timestamp < this.CACHE_EXPIRATION_TIME
-          ) {
-            // Use cached data initially
-            this.processMenuData(data);
-
-            // But still fetch from API to check for updates
-            this.directusService.getMenu('navigation').subscribe({
-              next: (response) => {
-                if (response && response.data && response.data.length > 0) {
-                  // Compare the date_updated field to check if data has changed
-                  const cachedDateUpdated = data[0]?.date_updated;
-                  const newDateUpdated = response.data[0]?.date_updated;
-
-                  // If date_updated is different or the structure has changed, update the cache
-                  if (
-                    !cachedDateUpdated ||
-                    !newDateUpdated ||
-                    cachedDateUpdated !== newDateUpdated ||
-                    JSON.stringify(data) !== JSON.stringify(response.data)
-                  ) {
-                    // Process and update the cache with new data
-                    this.processMenuData(response.data);
-
-                    // Update the cache
-                    const cacheData = {
-                      data: response.data,
-                      timestamp: new Date().getTime(),
-                    };
-                    localStorage.setItem(
-                      this.MENU_CACHE_KEY,
-                      JSON.stringify(cacheData)
-                    );
-                  }
-                }
-              },
-              error: (err) => {
-                console.error('Error checking for menu updates:', err);
-              },
-            });
-
-            return;
-          }
-        } catch (error) {
-          console.error('Error parsing cached menu data:', error);
-          // Continue with API call if there's an error parsing the cache
-        }
-      }
-    }
-
-    // If no valid cache exists or we're not in a browser, fetch from service
-    this.directusService.getMenu('navigation').subscribe({
-      next: (response) => {
-        if (response && response.data && response.data.length > 0) {
-          this.processMenuData(response.data);
-
-          // Cache the fresh data with current timestamp if in browser
-          if (isPlatformBrowser(this.platformId)) {
-            const cacheData = {
-              data: response.data,
-              timestamp: new Date().getTime(),
-            };
-            localStorage.setItem(
-              this.MENU_CACHE_KEY,
-              JSON.stringify(cacheData)
-            );
-          }
-        } else {
-          console.error('Invalid menu data structure received', response);
-        }
-      },
-      error: (err) => {
-        console.error('Error fetching menu data:', err);
-      },
-    });
+    this.directusService
+      .getMenu('navigation')
+      .subscribe((response) => this.processMenuData(response.data));
   }
 
   processMenuData(data: any) {

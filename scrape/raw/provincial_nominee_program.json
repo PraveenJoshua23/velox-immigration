@@ -1,0 +1,120 @@
+{
+  "data": {
+    "id": 1,
+    "status": "published",
+    "date_updated": "2025-05-01T18:12:11.705Z",
+    "title": "Provincial Nominee Program (PNP)",
+    "subtitle": "Immigrate to Canada through the province that values your skills most.",
+    "intro_title": "Build Your Future in a Province That Needs You",
+    "intro_description": "The Provincial Nominee Program (PNP) offers a unique opportunity for individuals with the right skills, experience, and education to become permanent residents of Canada—through targeted streams chosen by each province. Whether you're applying directly or through Express Entry, Velox Immigration will guide you through the right PNP path, from nomination to PR.",
+    "intro_cta_text": "Explore Your PNP Eligibility with Us ",
+    "intro_cta_link": "/book-your-appointment",
+    "who_we_help_title": "Who We Help",
+    "who_we_help_intro": "This service is ideal for:",
+    "who_we_help_items": [
+      {
+        "description": "Skilled workers or international graduates with a connection to a specific province"
+      },
+      {
+        "description": "Foreign workers with a Canadian job offer"
+      },
+      {
+        "description": "Temporary residents seeking pathways to permanent status"
+      },
+      {
+        "description": "Entrepreneurs or self-employed individuals interested in business immigration streams"
+      },
+      {
+        "description": "Candidates in the Express Entry pool hoping to boost their CRS with a provincial nomination"
+      }
+    ],
+    "what_we_offer_intro": "We help you choose and navigate the right PNP stream based on your education, occupation, work experience, and ties to a province:",
+    "what_we_offer_items": [
+      {
+        "title": "Skilled Worker Streams (Direct or Express Entry-linked)",
+        "description": "Each province and territory has unique criteria based on local labour needs. We assess which stream best suits your background and help you prepare your Expression of Interest (EOI) or provincial application—whether through British Columbia, Ontario, Alberta, Saskatchewan, or others."
+      },
+      {
+        "title": "Employer-Sponsored or Job Offer Streams",
+        "description": "Some PNPs require a job offer from a provincial employer. We work closely with both the applicant and the employer to prepare the employer forms, compliance letters, and offer documentation."
+      },
+      {
+        "title": "International Graduate Streams",
+        "description": "Graduates of eligible institutions in provinces like Ontario, Nova Scotia, and Manitoba may qualify for PR through tailored PNP streams. We support you in transitioning from study or work permit to PR status."
+      },
+      {
+        "title": "PNP-Aligned Express Entry Profiles",
+        "description": "We also help eligible candidates in the Express Entry pool receive 600 bonus CRS points through a provincial nomination, drastically increasing the chance of receiving an ITA."
+      }
+    ],
+    "what_you_need_to_apply": "<p class=\"text-gray-700 mb-4\">While requirements vary by province and stream, applicants generally need:</p>\n<ul class=\"space-y-2 list-disc pl-5 text-gray-700 mb-4\">\n<li>A valid passport</li>\n<li>A clear and detailed resume or CV</li>\n<li>Language test results (IELTS/CELPIP/TEF)</li>\n<li>Proof of education (transcripts, ECA if foreign credentials)</li>\n<li>Proof of work experience</li>\n<li>Job offer letter (if applicable)</li>\n<li>Connection to the province (education, work, relatives, or prior stay)</li>\n<li>Settlement funds (varies by stream)</li>\n</ul>\n<p class=\"text-gray-700\">Each province has its own documentation and submission portal&mdash;we manage all of this for you.</p>",
+    "how_we_work_items": [
+      {
+        "title": "Eligibility Review Across Provinces",
+        "description": "We screen your profile against all available PNP options to find your best fit."
+      },
+      {
+        "title": "Stream Selection & Strategy",
+        "description": "Based on your goals and qualifications, we recommend the most strategic route—direct, job-offer based, or Express Entry-linked."
+      },
+      {
+        "title": "Document Preparation & Submission",
+        "description": "We handle everything from EOI submissions to employer paperwork and nomination applications."
+      },
+      {
+        "title": "Post-Nomination PR Support",
+        "description": "Once nominated, we help you file your PR application through Express Entry or the paper-based route."
+      },
+      {
+        "title": "Follow-Up & Landing Guidance",
+        "description": "We track your application and provide guidance on settlement planning and next steps."
+      }
+    ],
+    "common_scenarios_title": "Common Scenarios We Handle",
+    "common_scenarios_items": [
+      {
+        "description": "A tech worker with 1 year of experience in Ontario aiming to apply through the OINP Human Capital Stream"
+      },
+      {
+        "description": "A restaurant worker in Alberta with a full-time job offer needing help with an employer-driven stream"
+      },
+      {
+        "description": "A Manitoba graduate transitioning from PGWP to PR via the International Graduate Stream"
+      },
+      {
+        "description": "A foreign nurse in the Express Entry pool looking to gain 600 points through a Saskatchewan nomination"
+      }
+    ],
+    "faq_items": [
+      {
+        "question": "Do I need a job offer to apply for PNP?",
+        "answer": "Not always. Some streams are open to individuals with work or study experience in the province, or strong credentials alone."
+      },
+      {
+        "question": "Can I apply to multiple provinces at once?",
+        "answer": "You can't apply to more than one province at the same time if you're in an active process. But we can assess which one offers the strongest chance."
+      },
+      {
+        "question": "What's the difference between PNP and Express Entry?",
+        "answer": "PNP is run by provinces; Express Entry is federal. Some PNP streams are aligned with Express Entry and offer bonus points."
+      },
+      {
+        "question": "Do I need to live in the province after nomination?",
+        "answer": "Yes—at least initially. Each nomination is based on the genuine intention to settle in that province."
+      },
+      {
+        "question": "Is there a fee to apply for PNP?",
+        "answer": "Yes, most provinces charge a processing fee. We'll advise you on costs depending on the province you apply to."
+      },
+      {
+        "question": "What is the processing time?",
+        "answer": "Times are estimates and vary by province and stream. See individual PNP portals for updates."
+      }
+    ],
+    "banner_title": "Want to Know Which Province Is Right for You?",
+    "banner_description": "Whether you're in Canada or abroad, we help you navigate the most suitable PNP stream for your profile—and turn your nomination into permanent residency.",
+    "banner_cta_text": "Book a PNP Consultation Today ",
+    "banner_cta_link": "/book-your-appointment",
+    "how_we_work_intro": "When you work with Velox Immigration, you get a streamlined, transparent process:"
+  }
+}
