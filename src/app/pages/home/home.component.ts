@@ -4,7 +4,6 @@ import {
   NgOptimizedImage,
 } from '@angular/common';
 import {
-  AfterViewInit,
   Component,
   inject,
   Inject,
@@ -13,14 +12,6 @@ import {
   signal,
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { animate, inView } from 'motion';
-import {
-  trigger,
-  state,
-  style,
-  animate as ngAnimate,
-  transition,
-} from '@angular/animations';
 // import { ServicesComponent } from '../../components/services.component';
 import { TestimonialsComponent } from '../../components/testimonials.component';
 import { AboutComponent } from '../../components/about.component';
@@ -50,14 +41,6 @@ import { HomePageContent } from '../../utils/types/directus';
     ProcessStepsComponent,
     ServiceSectionComponent,
     NgOptimizedImage,
-  ],
-  animations: [
-    trigger('fadeIn', [
-      state('void', style({ opacity: 0 })),
-      transition(':enter', [
-        ngAnimate('1000ms ease-in', style({ opacity: 1 })),
-      ]),
-    ]),
   ],
   template: `
     <app-header />
@@ -125,7 +108,6 @@ import { HomePageContent } from '../../utils/types/directus';
                 class="w-full h-full object-cover"
                 priority
                 fill
-                @fadeIn
               />
             </div>
           </div>
@@ -167,11 +149,27 @@ import { HomePageContent } from '../../utils/types/directus';
     <!-- Footer -->
     <app-footer />
   `,
-  styles: ` :host {
-    display: block;
-  }`,
+  styles: `
+    :host {
+      display: block;
+    }
+
+    /* Hero copy slides in on first paint. Pure CSS, so hydration can't restart or flash it. */
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-content {
+        animation: hero-in 0.8s ease-out both;
+      }
+    }
+
+    @keyframes hero-in {
+      from {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+    }
+  `,
 })
-export class HomeComponent implements AfterViewInit, OnInit {
+export class HomeComponent implements OnInit {
   seoService = inject(SeoService);
   directusService = inject(DirectusService);
   homecontent = signal<{ data: HomePageContent | null }>({ data: null });
@@ -195,49 +193,6 @@ export class HomeComponent implements AfterViewInit, OnInit {
         'Navigate your Canadian immigration journey with confidence. Expert guidance for study, work, PR, and family sponsorship.',
       canonicalUrl: 'https://veloximmigration.com/',
     });
-  }
-
-  ngAfterViewInit() {
-    if (isPlatformBrowser(this.platformId)) {
-      // Hero animations
-      animate(
-        '.hero-content',
-        {
-          opacity: [0, 1],
-          x: [-250, 0],
-        },
-        { duration: 1 }
-      );
-
-      // Services animations
-      const serviceCards = document.querySelectorAll('.service-card');
-      serviceCards.forEach((card) => {
-        inView(card, () => {
-          animate(
-            card,
-            {
-              opacity: [0, 1],
-              y: [50, 0],
-            },
-            { duration: 0.5 }
-          );
-        });
-      });
-
-      // Testimonials animations
-      const testimonialCards = document.querySelectorAll('.testimonial-card');
-      testimonialCards.forEach((card) => {
-        inView(card, () => {
-          animate(
-            card,
-            {
-              opacity: [0, 1],
-            },
-            { duration: 0.5 }
-          );
-        });
-      });
-    }
   }
 
   scrollToServices() {

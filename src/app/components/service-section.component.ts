@@ -45,22 +45,21 @@ interface Program {
 
       <!-- Programs Grid - Using CSS grid for more predictable layout -->
       <div
-        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 will-change-transform"
+        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0"
       >
         @for(item of content.data?.services_features || []; track item.title){
         <a
           [routerLink]="item.routePath"
-          class="block service-card"
+          class="block service-card reveal"
           [attr.data-bg-color]="item.bgColor"
         >
           <div class="relative h-96 overflow-hidden cursor-pointer">
-            <!-- Background Image with will-change-transform for GPU acceleration -->
+            <!-- Background Image (lazy: the grid is below the fold) -->
             <img
               [ngSrc]="'/assets/images/' + item.bgImage"
               [alt]="item.title"
               fill
-              loading="eager"
-              class="absolute inset-0 w-full h-full object-cover object-center will-change-transform"
+              class="absolute inset-0 w-full h-full object-cover object-center"
             />
 
             <!-- Simplified Overlay (combines colored overlay and gradient) -->
@@ -120,49 +119,26 @@ interface Program {
         display: block;
       }
 
-      /* Use hardware acceleration and reduce paint operations */
-      .service-card {
-        transform: translateZ(0); /* Triggers GPU acceleration */
-      }
-
-      .service-card img {
-        transition: transform 0.8s ease-out;
-        backface-visibility: hidden; /* Reduce paint */
-      }
-
-      .service-card:hover img {
-        transform: scale(1.05);
-      }
-
-      /* Simplify the overlay to reduce layer complexity */
       .service-overlay {
         background-image: linear-gradient(
           to top,
           rgba(0, 0, 0, 0.8),
           transparent
         );
-        transform: translateZ(0);
       }
 
-      /* Optimize animations with simple transitions */
+      .service-card img {
+        transition: transform 0.8s ease-out;
+      }
+
       .service-content {
         transition: transform 0.7s ease-out;
       }
 
-      .service-card:hover .service-content {
-        transform: translateY(-30px);
-      }
-
-      /* Pre-hide elements that will be shown on hover to avoid layout shifts */
       .service-description {
         opacity: 0;
         max-height: 0;
         transition: opacity 0.6s ease-out, max-height 0.7s ease-out;
-      }
-
-      .service-card:hover .service-description {
-        opacity: 1;
-        max-height: 100px;
       }
 
       .service-link {
@@ -172,9 +148,36 @@ interface Program {
         transition-delay: 0.1s; /* Slight delay for sequential animation effect */
       }
 
-      .service-card:hover .service-link {
+      /* Hover, or keyboard focus, reveals the details */
+      .service-card:is(:hover, :focus-visible) img {
+        transform: scale(1.05);
+      }
+
+      .service-card:is(:hover, :focus-visible) .service-content {
+        transform: translateY(-30px);
+      }
+
+      .service-card:is(:hover, :focus-visible) .service-description {
+        opacity: 1;
+        max-height: 100px;
+      }
+
+      .service-card:is(:hover, :focus-visible) .service-link {
         opacity: 1;
         transform: translateY(0);
+      }
+
+      /* Touch screens can't hover: always show the details */
+      @media (hover: none) {
+        .service-description {
+          opacity: 1;
+          max-height: none;
+        }
+
+        .service-link {
+          opacity: 1;
+          transform: none;
+        }
       }
     `,
   ],

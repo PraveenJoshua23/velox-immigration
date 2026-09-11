@@ -1,12 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
 
 @Component({
   selector: 'app-service-header',
@@ -15,12 +8,11 @@ import {
   template: `
     <!-- Hero Section -->
     <div
-      class="bg-transparent text-white rounded-lg px-8 py-10 relative bg-cover bg-center"
+      class="fade-up bg-transparent text-white rounded-lg px-8 py-10 relative bg-cover bg-center"
       [style.backgroundImage]="
         backgroundImage ? 'url(' + backgroundImage + ')' : 'none'
       "
       style="min-height: 250px;"
-      [@fadeIn]
     >
       <!-- <div class="absolute inset-0 bg-sea-900 bg-opacity-70 rounded-lg"></div> -->
       <div class="relative z-10">
@@ -33,26 +25,6 @@ import {
       </div>
     </div>
   `,
-  animations: [
-    trigger('fadeIn', [
-      state(
-        'void',
-        style({
-          opacity: 0,
-          transform: 'translateY(20px)',
-        })
-      ),
-      transition(':enter', [
-        animate(
-          '800ms ease-out',
-          style({
-            opacity: 1,
-            transform: 'translateY(0)',
-          })
-        ),
-      ]),
-    ]),
-  ],
   styles: [
     `
       :host {

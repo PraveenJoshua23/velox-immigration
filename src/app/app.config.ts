@@ -14,7 +14,6 @@ import {
 import { routes } from './app.routes';
 import { Meta, provideClientHydration, Title } from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { provideAnimations } from '@angular/platform-browser/animations';
 import { AnalyticsService } from './services/analytics.service';
 
 export const appConfig: ApplicationConfig = {
@@ -28,7 +27,6 @@ export const appConfig: ApplicationConfig = {
     ),
     provideClientHydration(),
     provideHttpClient(withFetch()),
-    provideAnimations(),
     {
       provide: APP_INITIALIZER,
       useFactory: (analyticsService: AnalyticsService) => () => {
