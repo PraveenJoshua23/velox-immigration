@@ -1,0 +1,86 @@
+{
+  "data": {
+    "id": 1,
+    "status": "published",
+    "date_updated": null,
+    "title": "Study in Canada",
+    "header_image": null,
+    "intro_title": "Start Your Canadian Education Journey with Confidence",
+    "what_you_need_to_apply": "<p class=\"text-gray-700 mb-4\">Each case is different, but generally, you'll need the following:</p>\n<ul class=\"space-y-2 list-disc pl-5 text-gray-700 mb-4\">\n<li>A valid letter of acceptance from a DLI</li>\n<li>Proof of sufficient funds</li>\n<li>Valid passport</li>\n<li>Recent photographs</li>\n<li>Biometrics</li>\n<li>An Immigration Medical Exam (IME) (only required in specific cases)</li>\n<li>A well-written Statement of Purpose (SOP) explaining your study plan and intentions</li>\n<li>Evidence of ties to your home country (such as family, property, or employment)</li>\n</ul>\n<p class=\"text-gray-700\">If you're applying on behalf of a minor, additional documents are needed, such as a custodianship declaration, birth certificate, and identification for the parent(s) or guardian(s).</p>\n<p class=\"text-gray-700 mt-2\">We will guide you through each of these requirements and help you gather a complete and accurate set of documents tailored to your unique situation.</p>",
+    "how_we_work_intro": "When you work with Velox Immigration, you get a streamlined, transparent process:",
+    "how_we_work_items": [
+      {
+        "title": "Initial Consultation",
+        "description": "We assess your academic background, goals, and timeline."
+      },
+      {
+        "title": "Document Support",
+        "description": "You receive a complete checklist and help drafting your SOP."
+      },
+      {
+        "title": "Application Filing",
+        "description": "We prepare and submit your application through the IRCC portal."
+      },
+      {
+        "title": "Follow-up & Communication",
+        "description": "We monitor your file and handle any updates or requests from IRCC."
+      }
+    ],
+    "why_choose_velox": "We know how important your education is—and we treat your file with that same level of care. With a licensed consultant guiding you, you'll avoid unnecessary delays, errors, and refusals. Our experience spans college, university, and minor applications across provinces, ensuring your case is in capable hands.",
+    "faq_items": [
+      {
+        "question": "Can I work while studying in Canada?",
+        "answers": "Yes, if you're enrolled full-time at a DLI, you may work up to 20 hours per week during academic sessions."
+      },
+      {
+        "question": "Do I need a permit for a 3-month course?",
+        "answers": "Not necessarily. If your course is under 6 months, you may not require a permit—but you'll be ineligible for a post-grad work permit."
+      },
+      {
+        "question": "How early can I apply?",
+        "answers": "You can apply as soon as you have your acceptance letter. The earlier, the better—ideally 3–6 months before your program starts."
+      },
+      {
+        "question": "What if my permit expires before I finish school?",
+        "answers": "\nYou can apply to extend your permit. It's important to apply before your current permit expires to maintain your status."
+      },
+      {
+        "question": "What are your fees?",
+        "answers": "Our service fees are competitive and based on the complexity of your case. Contact us for a personalized quote."
+      }
+    ],
+    "banner_title": "Ready to Begin?",
+    "banner_description": "Whether you're a first-time applicant or need to extend your stay, we're here to help you every step of the way.",
+    "banner_cta_text": " Book a consultation today ",
+    "banner_cta_link": "/book-your-consultation",
+    "subtitle": "Secure the right permit to begin or continue your studies in Canada—with expert support every step of the way.",
+    "intro_description": "Canada is a top destination for international students—and for good reason. With world-class institutions, welcoming communities, and post-study work opportunities, it's the perfect place to grow academically and professionally. At Velox Immigration, we help you navigate every step of the study permit process—whether you're applying for the first time, renewing your permit, or helping a minor begin their education here.",
+    "who_we_help_intro": "This service is designed for:",
+    "who_we_help_items": [
+      {
+        "list": "Adults applying for a Canadian study permit for college or university"
+      },
+      {
+        "list": "Parents of children under 18 enrolling in primary or secondary school"
+      },
+      {
+        "list": "International students needing to extend their current study permits to continue their program"
+      }
+    ],
+    "what_we_offer_intro": "We offer tailored support across three key areas:",
+    "what_we_offer_items": [
+      {
+        "title": "Study Permits",
+        "description": "Whether you've just received an acceptance letter from a Designated Learning Institution (DLI) or are preparing for your academic future, we guide you through the full process—from application to approval. We'll help you gather the required documents, write a strong Statement of Purpose (SOP), and ensure your application meets all IRCC criteria."
+      },
+      {
+        "title": "Minor Study Permits",
+        "description": "If your child is planning to attend school in Canada, we assist with obtaining a study permit that complies with all custodianship and documentation requirements. We also support parents in securing visitor or work status to accompany their child, where applicable."
+      },
+      {
+        "title": "Study Permit Extensions",
+        "description": "Need more time to complete your studies? We'll help you apply for an extension before your current permit expires. We ensure your continued legal status in Canada and guide you through new proof of funds, updated enrollment letters, and any changes in your academic program."
+      }
+    ]
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "date_updated": "2025-05-20T18:38:59.234Z",
+      "title": "Menu",
+      "menu_items": [
+        {
+          "label": "Home",
+          "url": "/",
+          "visible": true,
+          "sub_menu": null
+        },
+        {
+          "label": "About",
+          "url": "/about",
+          "visible": true
+        },
+        {
+          "label": "Blog",
+          "url": "/blog",
+          "visible": false
+        },
+        {
+          "label": "Services",
+          "url": "#",
+          "visible": true,
+          "sub_menu": [
+            {
+              "label": "Study in Canada",
+              "url": "/services/study/study-in-canada",
+              "visible": true
+            },
+            {
+              "label": "Work in Canada",
+              "url": "#",
+              "visible": true,
+              "sub_menu": [
+                {
+                  "label": "Open Work Permit",
+                  "url": "/services/work/open-pgwp-permits",
+                  "visible": true
+                },
+                {
+                  "label": "LMIA-Based Work Permit",
+                  "url": "/services/work/lmia-employer-permits",
+                  "visible": true
+                },
+                {
+                  "label": "Work Permit Extension",
+                  "url": "/services/work/extensions-coop",
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "label": "Visitor Visa",
+              "url": "/services/visit/visitor-visas",
+              "visible": true
+            },
+            {
+              "label": "Immigrate",
+              "url": "#",
+              "visible": true,
+              "sub_menu": [
+                {
+                  "label": "Express Entry Programs",
+                  "url": "/services/immigrate/express-entry",
+                  "visible": true
+                },
+                {
+                  "label": "Provincial Nominee Program",
+                  "url": "/services/immigrate/provincial-nominee",
+                  "visible": true
+                },
+                {
+                  "label": "Atlantic Immigration",
+                  "url": "/services/immigrate/atlantic-immigration",
+                  "visible": true
+                },
+                {
+                  "label": "Family Sponsorship",
+                  "url": "/services/immigrate/family-sponsorship",
+                  "visible": true
+                },
+                {
+                  "label": "Business Immigration",
+                  "url": "/services/immigrate/business-immigration",
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "label": "Other Services",
+              "url": "#",
+              "visible": true,
+              "sub_menu": [
+                {
+                  "label": "Permanent Residence & Citizenship",
+                  "url": "/services/other/pr-citizenship",
+                  "visible": true
+                },
+                {
+                  "label": "Refugee Claims & Appeals",
+                  "url": "/services/other/appeals-refugee",
+                  "visible": true
+                },
+                {
+                  "label": "Application & Document Reviews",
+                  "url": "/services/other/review-services",
+                  "visible": true
+                },
+                {
+                  "label": "Advisory Services",
+                  "url": "/services/other/sop-dli-opinion",
+                  "visible": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Contact",
+          "url": "/contact",
+          "visible": true
+        },
+        {
+          "label": "Book Consultation",
+          "url": "/book-your-appointment",
+          "visible": true,
+          "isCta": true
+        }
+      ]
+    }
+  ]
+}

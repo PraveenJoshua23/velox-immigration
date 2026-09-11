@@ -1,0 +1,184 @@
+{
+  "data": {
+    "id": 1,
+    "status": "published",
+    "date_updated": "2025-05-01T17:29:11.128Z",
+    "title": "Express Entry Programs",
+    "subtitle": "Your fast-track pathway to permanent residency in Canada—built for skilled professionals like you.",
+    "intro_title": "Move to Canada as a Skilled Worker",
+    "intro_description": "Canada's Express Entry system is one of the fastest and most competitive immigration pathways for skilled workers. Whether you're applying under the Canadian Experience Class (CEC), Federal Skilled Worker Program (FSW), or Federal Skilled Trades Program (FST), Velox Immigration helps you navigate every stage—from profile creation to receiving your permanent resident visa.",
+    "intro_cta_text": "Book Consultation to Check Your Eligibility ",
+    "intro_cta_link": "/book-your-appointment",
+    "who_we_help_title": "Who This Is For",
+    "who_we_help_intro": "You may qualify under Express Entry if you are:",
+    "who_we_help_items": [
+      {
+        "title": "Federal Skilled Worker (FSW)",
+        "description": "<p class=\"text-sm text-gray-600 mt-2\">For skilled workers with foreign work experience</p>\n<ul class=\"mt-2 ml-4 space-y-1 text-sm text-gray-600 list-disc list-inside\">\n<li>Minimum 1 year skilled work experience</li>\n<li>Language proficiency (CLB 7)</li>\n<li>Education assessment (ECA)</li>\n</ul>"
+      },
+      {
+        "title": "Canadian Experience Class (CEC)",
+        "description": "<p class=\"text-sm text-gray-600 mt-2\">For recent graduates with Canadian experience</p>\n<ul class=\"mt-2 space-y-1 text-sm text-gray-600 list-disc list-inside\">\n<li>1 year Canadian work experience</li>\n<li>Language proficiency (CLB 7 for NOC 0/A, CLB 5 for B)</li>\n</ul>"
+      },
+      {
+        "title": "Federal Skilled Trades (FST)",
+        "description": "<p class=\"text-sm text-gray-600 mt-2\">For qualified tradespersons</p>\n<ul class=\"mt-2 space-y-1 text-sm text-gray-600 list-disc list-inside\">\n<li>&nbsp;2 years work experience in a skilled trade</li>\n<li>Language proficiency (CLB 5)</li>\n<li>Valid job offer or certification</li>\n</ul>"
+      }
+    ],
+    "who_we_help_subitems": [
+      {
+        "item": "PR-ready candidates with strong language skills, education, and job experience"
+      },
+      {
+        "item": "Potential Provincial Nominee Program (PNP) applicants using an Express Entry-aligned stream"
+      }
+    ],
+    "what_we_offer_intro": "Velox Immigration provides end-to-end support through each step of the Express Entry journey:",
+    "what_we_offer_items": [
+      {
+        "title": "Express Entry Profile Creation",
+        "description": "We assess your eligibility and prepare your online profile, ensuring accurate entry of education, work history, language results (IELTS/CELPIP/TEF), and National Occupation Classification (NOC) codes."
+      },
+      {
+        "title": "Comprehensive Ranking System (CRS) Optimization",
+        "description": "We help you improve your CRS score by exploring job offers, provincial nominations, education equivalency (ECA), and language retesting strategies.",
+        "table": [
+          {
+            "table_item": "Core Factors",
+            "table_value": "up to 600 points"
+          },
+          {
+            "table_item": "Spouse Factors",
+            "table_value": "up to 40 points"
+          },
+          {
+            "table_item": "Skill Transferability",
+            "table_value": "up to 100 points"
+          },
+          {
+            "table_item": "Additional Points",
+            "table_value": "up to 600 points"
+          }
+        ]
+      },
+      {
+        "title": "Permanent Residence Application After ITA",
+        "description": "Once you receive an Invitation to Apply (ITA), we help you gather and submit all required documentation—proof of work experience, police clearances, medical exams, and more—within the 60-day window."
+      }
+    ],
+    "what_you_need_intro": "To enter the Express Entry pool, you typically need:",
+    "what_you_need_items": [
+      {
+        "title": "For Express Entry Pool:",
+        "description_items": [
+          {
+            "description": "Language test results (IELTS/CELPIP for English, TEF for French)"
+          },
+          {
+            "description": "Educational Credential Assessment (ECA) if your education is from outside Canada"
+          },
+          {
+            "description": "At least 1 year of skilled work experience (in Canada or abroad)"
+          },
+          {
+            "description": "A valid passport"
+          },
+          {
+            "description": "Job offer or PNP nomination (if applicable)"
+          }
+        ]
+      },
+      {
+        "title": "After Receiving an ITA:",
+        "description_items": [
+          {
+            "description": "Medical exam and police certificates"
+          },
+          {
+            "description": "Employment letters verifying work experience"
+          },
+          {
+            "description": "Proof of funds to support yourself and family in Canada"
+          },
+          {
+            "description": "Digital photographs meeting specifications"
+          },
+          {
+            "description": "Civil status documents (marriage certificates, birth certificates)"
+          }
+        ]
+      }
+    ],
+    "how_we_work_items": [
+      {
+        "title": "Eligibility Assessment & Strategy",
+        "description": "We assess your qualifications and recommend the strongest EE stream or alternative if needed."
+      },
+      {
+        "title": "Profile Creation & Document Prep",
+        "description": "We guide you through language testing, ECAs, NOC code alignment, and profile creation."
+      },
+      {
+        "title": "CRS Score Optimization",
+        "description": "We work with you to explore ways to increase your CRS score while waiting for a draw."
+      },
+      {
+        "title": "Post-ITA PR Submission",
+        "description": "We compile and submit"
+      },
+      {
+        "title": "Follow-Up & Final Steps",
+        "description": "We track your file, respond to IRCC requests, and support you through approval and landing."
+      }
+    ],
+    "common_scenarios_items": [
+      {
+        "title": "Foreign Work Experience",
+        "description": "Skilled workers abroad needing help with properly classifying their experience using NOC codes and selecting the right ECA provider for their credentials."
+      },
+      {
+        "title": "Canadian Experience Class",
+        "description": "Recent international graduates and skilled workers in Canada looking to transition from temporary to permanent status through CEC."
+      },
+      {
+        "title": "CRS Score Enhancement",
+        "description": "Candidates with job offers or provincial nominations looking to maximize their CRS scores to improve their chances in Express Entry draws."
+      },
+      {
+        "title": "PNP Alternatives",
+        "description": "Express Entry candidates with lower scores seeking alternative pathways through provincial nomination programs to secure additional points."
+      },
+      {
+        "title": "Post-ITA Documentation",
+        "description": "Clients who received an Invitation to Apply (ITA) and need help gathering, organizing, and properly submitting the required documentation within the 60-day window."
+      }
+    ],
+    "faq_items": [
+      {
+        "question": "What's a competitive CRS score for an invitation?",
+        "answer": "CRS score cutoffs vary with each draw. In recent general draws, scores between 470-490 have been competitive for Federal Skilled Worker (FSW) and Canadian Experience Class (CEC) candidates. Program-specific or PNP draws may have different thresholds. Our team monitors these trends and helps optimize your profile to meet or exceed current requirements."
+      },
+      {
+        "question": "Can I include my spouse and children in my application?",
+        "answer": "Yes, your spouse or common-law partner and dependent children can be included as accompanying dependents on your Express Entry application. Your spouse's factors (like language skills and education) can provide additional points to your CRS score. Dependent children are typically those under 22 years of age who don't have a spouse and are financially dependent on you."
+      },
+      {
+        "question": "What if my CRS score isn't high enough for an ITA?",
+        "answer": "If your CRS score isn't competitive, we'll work with you on multiple strategies to improve it:\n\nPursuing Provincial Nominee Programs (adds 600 points)\nImproving language test scores (up to 310 points)\nGaining additional Canadian work experience\nAdding education credentials or Canadian education\nExploring alternative immigration programs outside Express Entry"
+      },
+      {
+        "question": "Does Express Entry guarantee permanent residency?",
+        "answer": "No. Being in the Express Entry pool doesn't guarantee an invitation to apply, and receiving an ITA doesn't guarantee approval. Your application must be complete, accurate, and meet all eligibility requirements. Additionally, you must pass medical, security, and background checks. Our expertise ensures your application is properly prepared to maximize chances of approval once invited."
+      },
+      {
+        "question": "What is the typical processing time for Express Entry?",
+        "answer": "IRCC aims to process most Express Entry applications within 6 months from the date a complete application is submitted after receiving an ITA. However, processing times can vary based on application volume, completeness of your submission, verification requirements, and other factors. Our detailed approach to application preparation helps minimize delays that could extend this timeframe."
+      }
+    ],
+    "banner_title": "Your Path to Canadian Permanent Residency Starts Now",
+    "banner_subtitle": "Express Entry is competitive—but with our expertise and personalized strategies, we can help make your Canadian dream a reality. Take the first step today.",
+    "banner_cta_text": "Schedule Your Consultation ",
+    "banner_cta_link": "/book-your-appointment",
+    "what_you_need_footnote": "We will create a complete and personalized checklist for your profile."
+  }
+}

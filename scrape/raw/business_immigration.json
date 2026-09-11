@@ -1,0 +1,117 @@
+{
+  "data": {
+    "id": 1,
+    "status": "published",
+    "date_updated": null,
+    "title": "Business Immigration",
+    "subtitle": "Turn your business experience into permanent residency in Canada with expert support every step of the way.",
+    "intro_title": "Bring Your Ambition to Canada's Business Landscape",
+    "intro_description": "Canada welcomes experienced entrepreneurs, investors, and self-employed individuals who can contribute to its economy and innovation. Velox Immigration helps you navigate federal and provincial business immigration pathways, with personalized support tailored to your business goals and immigration objectives.",
+    "intro_cta_text": " Start Your Business Immigration Assessment ",
+    "intro_cta_link": "/book-your-appointment",
+    "who_we_help_title": "Who We Help",
+    "who_we_help_intro": "Our business immigration services are designed for:",
+    "who_we_help_items": [
+      {
+        "description": "Entrepreneurs looking to launch or invest in a Canadian business"
+      },
+      {
+        "description": "Innovative founders applying under the Start-Up Visa (SUV)"
+      },
+      {
+        "description": "Self-employed professionals in arts, culture, or athletics"
+      },
+      {
+        "description": "Business owners applying under provincial entrepreneur streams (PNPs)"
+      },
+      {
+        "description": "Clients seeking business pathways to permanent residence"
+      }
+    ],
+    "what_we_offer_intro": "We help you determine the right business immigration route and ensure your application meets legal, financial, and operational requirements.",
+    "what_we_offer_items": [
+      {
+        "title": "Start-Up Visa (SUV)",
+        "description": "This federal program allows innovative entrepreneurs to obtain PR by securing support from a designated organization (venture capital fund, angel investor group, or incubator). We guide you through preparing your business concept, securing a letter of support, and submitting a strong PR application."
+      },
+      {
+        "title": "Self-Employed Persons Program",
+        "description": "For individuals with significant experience in athletics, culture, or the arts, this program offers a route to PR based on your ability to contribute to Canada's cultural or athletic life. We help you demonstrate relevant experience and your intent to be self-employed in Canada."
+      },
+      {
+        "title": "Provincial Entrepreneur Streams (PNPs)",
+        "description": "Many provinces offer business immigration streams for applicants willing to invest in and actively manage a business. We assist with business proposals, Expressions of Interest (EOIs), interviews, performance agreements, and eventual PR applications after nomination."
+      }
+    ],
+    "what_you_need_to_apply": "<p class=\"text-gray-700 mb-4\">Requirements vary by program, but generally include:</p>\n<div class=\"space-y-8\">\n<div>\n<h3 class=\"font-semibold text-fire-600 mb-2\">For Start-Up Visa:</h3>\n<ul class=\"space-y-2 list-disc pl-5 text-gray-700\">\n<li>An innovative, scalable&nbsp;<strong>business idea</strong></li>\n<li>Letter of support from a&nbsp;<strong>designated organization</strong></li>\n<li>Language test results (CLB 5 or higher)</li>\n<li>Sufficient&nbsp;<strong>settlement funds</strong></li>\n<li>Active involvement in business management</li>\n</ul>\n</div>\n<div>\n<h3 class=\"font-semibold text-fire-600 mb-2\">For Self-Employed Program:</h3>\n<ul class=\"space-y-2 list-disc pl-5 text-gray-700\">\n<li>2+ years of relevant self-employed experience in cultural or athletic fields</li>\n<li>Proof of intent and ability to continue self-employment in Canada</li>\n<li>Portfolio of achievements or recognition in your field</li>\n</ul>\n</div>\n<div>\n<h3 class=\"font-semibold text-fire-600 mb-2\">For Provincial Entrepreneur Streams:</h3>\n<ul class=\"space-y-2 list-disc pl-5 text-gray-700\">\n<li>Minimum&nbsp;<strong>net worth</strong>&nbsp;and&nbsp;<strong>investment amount</strong>&nbsp;(varies by province)</li>\n<li>Detailed&nbsp;<strong>business plan</strong></li>\n<li>Relevant&nbsp;<strong>management experience</strong></li>\n<li>Willingness to&nbsp;<strong>reside in the nominating province</strong></li>\n</ul>\n</div>\n</div>\n<p class=\"text-gray-700 mt-4\">We'll help you build a strategic, accurate application tailored to your goals and provincial/federal requirements.</p>",
+    "how_we_work_intro": "When you work with Velox Immigration, you get a streamlined, transparent process:",
+    "how_we_work_items": [
+      {
+        "title": "Eligibility Assessment & Strategy",
+        "description": "We analyze your background and recommend the most suitable business immigration stream."
+      },
+      {
+        "title": "Business Concept & Documentation",
+        "description": "We assist with developing your business plan, collecting financial and legal documents, and preparing for interviews or presentations."
+      },
+      {
+        "title": "Program-Specific Guidance",
+        "description": "Whether it's securing a Start-Up Visa letter or meeting PNP requirements, we tailor our support to your selected pathway."
+      },
+      {
+        "title": "Application Filing & Monitoring",
+        "description": "We submit all required applications—federal or provincial—and handle correspondence with immigration authorities."
+      },
+      {
+        "title": "Post-Approval Support",
+        "description": "We provide guidance on arrival, business set-up, and fulfilling program obligations (such as PNP performance agreements)."
+      }
+    ],
+    "common_scenarios_title": null,
+    "common_scenarios_items": [
+      {
+        "title": null,
+        "description": "An international entrepreneur with a scalable tech idea seeking a Start-Up Visa"
+      },
+      {
+        "description": "A self-employed artist or athlete looking to gain PR through their professional background"
+      },
+      {
+        "description": "A business owner with $500,000 net worth seeking PR through the BC PNP Entrepreneur Program"
+      },
+      {
+        "description": "A client choosing between Start-Up Visa and PNP for faster processing and settlement support"
+      }
+    ],
+    "faq_items": [
+      {
+        "question": "Can I apply for a Start-Up Visa without a business already running?",
+        "answer": "Yes. You need a viable concept and support from a designated organization—not necessarily a functioning business."
+      },
+      {
+        "question": "Is business experience mandatory for PNP entrepreneur programs?",
+        "answer": "Yes. Most streams require 2-3 years of business ownership or senior management experience."
+      },
+      {
+        "question": "Do I get PR right away under business streams?",
+        "answer": "In most PNP streams, you start with a temporary work permit and get PR after fulfilling business commitments. Start-Up Visa leads directly to PR."
+      },
+      {
+        "question": "Can my family immigrate with me?",
+        "answer": "Yes. Your spouse and dependent children can be included in your PR application."
+      },
+      {
+        "question": "Do I need to invest my own funds?",
+        "answer": "Yes. Whether it's an SUV, self-employed, or PNP stream, personal financial commitment is required."
+      },
+      {
+        "question": "What will be the processing time?",
+        "answer": "Processing times may vary depending on stream and individual case complexity. Contact us for the latest updates."
+      }
+    ],
+    "banner_title": "Build Your Future in Canada—Through Business",
+    "banner_description": "Your business experience can be your bridge to permanent residency in Canada. Let Velox Immigration guide you through every step—strategically and professionally.",
+    "banner_cta_text": "Book your consultation today ",
+    "banner_cta_link": "/book-your-appointment"
+  }
+}

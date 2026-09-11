@@ -1,22 +1,12 @@
-import { Pipe, PipeTransform, inject } from '@angular/core';
-import { environments } from '../environments/environments';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'assetUrl',
   standalone: true,
 })
 export class AssetUrlPipe implements PipeTransform {
-  transform(assetId: string | null | undefined, fallbackUrl?: string): string {
-    if (!assetId) {
-      return fallbackUrl || '';
-    }
-
-    // Check if the assetId is already a full URL
-    if (assetId.startsWith('http://') || assetId.startsWith('https://')) {
-      return assetId;
-    }
-
-    // If it's just an ID, construct the full asset URL
-    return `${environments.baseUrl}/assets/${assetId}`;
+  // Content already holds usable URLs (local /assets/cms/* paths or absolute links).
+  transform(assetUrl: string | null | undefined, fallbackUrl?: string): string {
+    return assetUrl || fallbackUrl || '';
   }
 }

@@ -1,0 +1,105 @@
+{
+  "data": {
+    "id": 1,
+    "status": "published",
+    "date_updated": "2025-05-03T19:17:58.963Z",
+    "title": "Open Work Permit",
+    "subtitle": "Your path to Canadian work experience—flexible, accessible, and fully supported.",
+    "intro_title": "Work in Canada Without Job Restrictions",
+    "intro_description": "Whether you're a recent graduate or the spouse of an international student, open work permits offer the flexibility to work for any employer in Canada. At Velox Immigration, we guide you through the process of obtaining or extending your open or post-graduation work permit, helping you stay compliant and career-ready.",
+    "who_we_help_title": "Who This Is For",
+    "who_we_help_intro": "This service is designed for:",
+    "who_we_help_items": [
+      {
+        "description": "International graduates eligible for a Post-Graduation Work Permit (PGWP)"
+      },
+      {
+        "description": "Spouses or common-law partners of international students or workers"
+      },
+      {
+        "description": "Bridging Open Work Permit (BOWP) applicants awaiting permanent residency"
+      },
+      {
+        "description": "Individuals applying for Open Work Permits under special public policies"
+      }
+    ],
+    "what_we_offer_intro": "At Velox Immigration, we support you with the following:",
+    "what_we_offer_items": [
+      {
+        "title": "Post-Graduation Work Permits (PGWP)",
+        "description": "Graduated from a Canadian DLI? You may be eligible for an open work permit valid up to three years. We help you determine eligibility based on your institution and program, ensure timely submission, and prepare supporting documents such as transcripts and completion letters."
+      },
+      {
+        "title": "Spousal Open Work Permits",
+        "description": "If your spouse or partner is a full-time student or skilled worker in Canada, you may be eligible for an open work permit. We assess your relationship documentation, draft affidavits (if needed), and handle all IRCC forms and communications."
+      },
+      {
+        "title": "Bridging Open Work Permits (BOWP)",
+        "description": "Already applied for permanent residence and your current work permit is expiring? A BOWP lets you keep working while awaiting a decision. We verify your PR file status and guide you through this transitional process to ensure you don't fall out of status."
+      }
+    ],
+    "what_you_need_to_apply": "<p>While document requirements vary by permit type, most applicants will need:</p>\n<p>&nbsp;</p>\n<p>- A valid passport<br>- Proof of eligibility (e.g., graduation letter, relationship documents, or PR file number)<br>- Digital photo<br>- Proof of status in Canada (if applying inland)<br>- Supporting documents such as transcripts, pay stubs, or proof of cohabitation<br>- Payment of the open work permit fee and processing fee</p>\n<p>&nbsp;</p>\n<p>We'll provide a personalized document checklist and guide you step-by-step based on your category.</p>",
+    "how_we_work_items": [
+      {
+        "title": "Initial Consultation & Category Assessment",
+        "description": "We identify the best open work permit route based on your current status and goals."
+      },
+      {
+        "title": "Document Support & Review",
+        "description": "From marriage certificates to graduation letters, we review all documents for accuracy."
+      },
+      {
+        "title": "Application Preparation & Submission",
+        "description": "We handle the online filing and monitor your IRCC account for updates or requests."
+      },
+      {
+        "title": "Post-Submission Support",
+        "description": "We assist with biometrics, medical exams, or any additional document requests until a final decision is issued."
+      }
+    ],
+    "common_scenarios_items": [
+      {
+        "title": null,
+        "description": "A PGWP applicant who studied at a non-eligible private college and needs help understanding options"
+      },
+      {
+        "description": "A spouse of a PGWP holder wanting to work and contribute to household income"
+      },
+      {
+        "description": "A graduate who missed the PGWP deadline and is looking at restoration or alternate permits"
+      },
+      {
+        "description": "A PR applicant in Express Entry needing a BOWP to stay employed during processing"
+      }
+    ],
+    "common_scenarios_title": "Common Scenarios We Handle",
+    "faq_items": [
+      {
+        "question": "How long is a PGWP valid for?",
+        "answer": "It depends on the length of your study program. 8 months to 2 years = same duration. 2+ years = up to 3 years."
+      },
+      {
+        "question": "Can I apply for a PGWP from outside Canada?",
+        "answer": "Yes, if you meet all eligibility criteria and studied online during COVID-era policies (check expiry of those exemptions)."
+      },
+      {
+        "question": "Is my school eligible for a PGWP?",
+        "answer": "Only graduates from eligible Designated Learning Institutions (DLIs) qualify. We'll check your institution's status before applying."
+      },
+      {
+        "question": "Can my spouse apply for a work permit if I'm on a PGWP?",
+        "answer": "Yes, if you are working in a TEER 0, 1, 2, or 3 occupation and meet minimum income thresholds."
+      },
+      {
+        "question": "Can I work full-time while waiting for my PGWP?",
+        "answer": "If you applied while your study permit was still valid, yes—you can work under maintained status until a decision is made."
+      }
+    ],
+    "banner_title": "Ready to Work in Canada?",
+    "banner_description": "Whether you're graduating soon or applying as a spouse, let Velox Immigration help you secure the right open work permit and start your career in Canada.",
+    "banner_cta_text": "Book Your Work Permit Consultation Today ",
+    "banner_cta_link": "/book-your-appointment",
+    "intro_cta_text": "Start Your Work Permit Application Today ",
+    "intro_cta_link": "/book-your-appointment"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "data": {
+    "id": 1,
+    "status": "published",
+    "date_updated": "2025-05-03T19:16:49.896Z",
+    "title": "Advisory Services",
+    "subtitle": "Clarity. Compliance. Confidence—when you need it most.",
+    "intro_title": "Your Application Deserves a Strong Foundation",
+    "intro_description": "Whether you're crafting a Statement of Purpose (SOP), considering a change in your Designated Learning Institution (DLI), or seeking a professional second opinion before submitting, we provide clear, honest, and strategic guidance to give your application the best chance of success.",
+    "intro_cta_text": " Book a Personalized Review or SOP Session ",
+    "intro_cta_link": "/book-your-appointment",
+    "who_we_help_title": "Who This Is For",
+    "who_we_help_intro": "This service is ideal for:",
+    "what_we_offer_intro": "Our focus is on getting your story, strategy, and documents aligned with IRCC expectations—before it's too late.",
+    "what_we_offer_items": [
+      {
+        "title": "SOP Writing & Editing",
+        "description": "<p>A well-crafted Statement of Purpose is critical for study permit approval. We write compelling, personalized SOPs that explain your study goals, background, and intentions in Canada, while addressing past refusals, gaps in studies, or non-traditional profiles.</p>\n<p>Includes:</p>\n<ul>\n<li>1-on-1 interview to understand your story</li>\n<li>Professionally written or edited SOP</li>\n<li>Highlighting career goals, education, financials, and return plans</li>\n</ul>\n<p>Optional revision based on feedback or prior refusal</p>"
+      },
+      {
+        "title": "DLI Change Guidance",
+        "description": "<p>Switching institutions? We guide you through the legal steps for DLI change reporting, ensuring you remain in compliance with IRCC requirements and avoid putting your status at risk.</p>\n<p>Includes:</p>\n<ul>\n<li>Step-by-step guidance for IRCC portal update</li>\n<li>Advice on eligibility and study permit implications</li>\n<li>Help communicating with your current and new institution (if needed)</li>\n</ul>"
+      },
+      {
+        "title": "Second Opinion on Applications",
+        "description": "<p>Not sure if your file is strong enough? Let us take a final look. We review your full draft (including forms, letters, and supporting documents), identify red flags, and recommend corrections before submission.</p>\n<p>Includes:</p>\n<ul>\n<li>Detailed feedback on strengths and risks</li>\n<li>Practical recommendations to improve approval chances</li>\n<li>Optional checklist and edit suggestions</li>\n</ul>"
+      }
+    ],
+    "what_you_need_to_apply": "<p>Depending on your situation, we may need:</p>\n<ul>\n<li>Draft SOP (if already written) or basic background for SOP writing</li>\n<li>Your&nbsp;<strong style=\"--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; box-sizing: border-box; font-weight: bolder; border: 0px solid rgb(229, 231, 235);\">Letter of Acceptance (LOA)</strong>&nbsp;and academic transcripts</li>\n<li>Immigration history, prior refusals, or travel history</li>\n<li>Draft IRCC forms or document packages (for second opinion)</li>\n<li>Student portal access for DLI change (if applicable)</li>\n</ul>\n<p>We'll tailor a checklist and approach based on your needs.</p>",
+    "how_we_work_intro": null,
+    "how_we_work_items": [
+      {
+        "title": "Initial Consultation",
+        "description": "We discuss your goals, current situation, and identify the right service or combination."
+      },
+      {
+        "title": "Review & Strategy",
+        "description": "For SOPs, we draft or improve your content. For second opinions, we review your file thoroughly. For DLI changes, we guide your steps and ensure compliance."
+      },
+      {
+        "title": "Delivery & Feedback",
+        "description": "We provide your final SOP, review notes, or compliance instructions. Optional revisions or follow-up available as needed."
+      }
+    ],
+    "common_scenarios_title": null,
+    "common_scenarios_items": [
+      {
+        "title": "Refusal for Unclear Study Goals",
+        "description": "A student refused for unclear study goals, needing a fresh SOP"
+      },
+      {
+        "title": "Institution Transfer",
+        "description": "A client switching from a private to public DLI needing guidance"
+      },
+      {
+        "title": "Self-Prepared Applications",
+        "description": "A self-prepared PR application needing a last-minute professional check"
+      },
+      {
+        "title": "Academic Gaps",
+        "description": "A student with academic gaps needing an SOP that addresses red flags"
+      }
+    ],
+    "faq_items": [
+      {
+        "question": "What makes a good SOP?",
+        "answer": "It should clearly explain your study plans, career goals, choice of institution, financial readiness, and your intent to return or follow legal pathways after studies."
+      },
+      {
+        "question": "Can I change my DLI after arriving in Canada?",
+        "answer": "Yes, but you must notify IRCC through your online account. We can help you stay compliant during the transition."
+      },
+      {
+        "question": "Is a second opinion necessary if I already worked with an agent?",
+        "answer": "Absolutely. Many refusals happen due to incomplete documentation or weak narratives—even if filed by someone else."
+      },
+      {
+        "question": "Do you offer rush SOP services?",
+        "answer": "Yes. We can accommodate urgent requests depending on availability—fees may vary."
+      },
+      {
+        "question": "Will you write my SOP from scratch?",
+        "answer": "Yes, but we'll ask you questions about your background to ensure it's authentic and personalized."
+      }
+    ],
+    "banner_title": "Don't Leave Your File to Chance",
+    "banner_description": "Whether you're refining your SOP, switching schools, or submitting a critical application, we'll help you get it right.",
+    "banner_cta_text": " Book a Review, Edit, or Writing Session Now ",
+    "banner_cta_link": "/book-your-appointment",
+    "who_we_help_items": [
+      {
+        "description": "Study permit applicants needing a professionally written SOP"
+      },
+      {
+        "description": "International students considering a transfer to another DLI"
+      },
+      {
+        "description": "Clients who've prepared their own file but want a second opinion before submitting"
+      },
+      {
+        "description": "Individuals who've been refused before and want to avoid making the same mistake"
+      }
+    ]
+  }
+}

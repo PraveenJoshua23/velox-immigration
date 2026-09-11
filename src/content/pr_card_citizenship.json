@@ -1,0 +1,168 @@
+{
+  "data": {
+    "id": 1,
+    "status": "published",
+    "date_updated": "2025-05-03T19:17:23.840Z",
+    "title": "Permanent Residence & Citizenship",
+    "subtitle": "Maintain your permanent resident status—or take the final step toward becoming a Canadian citizen.",
+    "intro_title": "Protect Your Status. Claim Your Citizenship.",
+    "intro_description": "Whether you're renewing your PR card, applying for a permanent resident travel document, or ready to become a Canadian citizen, Velox Immigration helps you stay compliant and confident throughout the process. Our support ensures that your applications are complete, timely, and meet all eligibility criteria.",
+    "intro_cta_text": "Start Your PR or Citizenship Application Today ",
+    "intro_cta_link": "/book-your-appointment",
+    "who_we_help_title": "Who This Is For",
+    "who_we_help_intro": "This service is ideal for:",
+    "what_we_offer_items": [
+      {
+        "title": "PR Card Renewal or Replacement",
+        "description": "Your PR card is required for travel and proof of permanent residency. We assist with renewal applications, lost/stolen card replacements, and urgent processing requests. We also help you explain any shortfall in your residency days."
+      },
+      {
+        "title": "Permanent Resident Travel Document (PRTD)",
+        "description": "If you're a permanent resident outside Canada without a valid PR card, you'll need a PRTD to return. We help you gather the right documentation to prove residency compliance and submit your application to a Canadian visa office abroad."
+      },
+      {
+        "title": "Canadian Citizenship Applications",
+        "description": "Ready to take the final step? We evaluate your eligibility, calculate your physical presence days, and prepare your full citizenship application—including help with travel history, tax documents, language proof, and PR compliance."
+      }
+    ],
+    "how_we_work_intro": "When you work with Velox Immigration, you get a streamlined, transparent process:",
+    "how_we_work_items": [
+      {
+        "title": "Eligibility Review",
+        "description": "We assess your physical presence, residency obligations, and overall readiness to apply."
+      },
+      {
+        "title": "Application Strategy & Document Checklist",
+        "description": "We build a personalized list and support you in gathering supporting documents and writing explanations."
+      },
+      {
+        "title": "Application Preparation & Submission",
+        "description": "We complete the IRCC forms, submit your file, and ensure compliance with document requirements."
+      },
+      {
+        "title": "Follow-Up & Final Steps",
+        "description": "We assist with biometric requests, interview scheduling, and final approval steps, including citizenship oath guidance."
+      }
+    ],
+    "common_scenarios_title": null,
+    "common_scenarios_items": [
+      {
+        "description": "A PR with frequent international travel needing to justify time spent outside Canada"
+      },
+      {
+        "description": "A parent applying for citizenship for a minor child"
+      },
+      {
+        "description": "A client unsure if they've met the 1,095-day rule for citizenship"
+      },
+      {
+        "description": "A PR living abroad who needs a PRTD to return to Canada urgently"
+      },
+      {
+        "description": "Someone with a lost PR card needing fast support for reentry"
+      }
+    ],
+    "faq_items": [
+      {
+        "question": "Can I apply for citizenship if my PR card is expired?",
+        "answer": "Yes. Your PR card does not need to be valid to apply for citizenship—but your status must be intact."
+      },
+      {
+        "question": "How many days must I live in Canada to renew my PR card?",
+        "answer": "You must meet the 730-day residency obligation within the last 5 years."
+      },
+      {
+        "question": "How many days are needed for citizenship?",
+        "answer": "You must have been physically present in Canada for at least 1,095 days during the past 5 years."
+      },
+      {
+        "question": "Can I apply for a PR card from outside Canada?",
+        "answer": "No. PR cards can only be sent to Canadian addresses. You'll need a PRTD if you're abroad without a valid card."
+      },
+      {
+        "question": "Do I need to pass a test for citizenship?",
+        "answer": "Yes, if you're between 18 and 54. It covers Canadian history, government, geography, and rights/responsibilities."
+      },
+      {
+        "question": "What will be the processing time?",
+        "answer": "Processing times may vary depending on volume and complexity. Visit the IRCC website for current timelines."
+      }
+    ],
+    "banner_title": "Let's Take the Next Step—Together",
+    "banner_description": "Whether you're renewing your PR card, applying for a travel document, or becoming a Canadian citizen, Velox Immigration ensures your status is protected and your application is done right.",
+    "banner_cta_text": "Book Your Consultation Today ",
+    "banner_cta_link": "/book-your-appointment",
+    "who_we_help_items": [
+      {
+        "description": "Foreign nationals whose employer-specific or open work permit is expiring."
+      },
+      {
+        "description": "International students enrolled in programs that require co-op or internship placements"
+      },
+      {
+        "description": "Workers looking to restore status after a work permit expires"
+      },
+      {
+        "description": "Applicants transitioning between permits (e.g., PGWP to bridging work permit)"
+      }
+    ],
+    "what_we_offer_intro": "We assist with a full range of status-related services:",
+    "what_you_need_intro": "Each application type has specific requirements. Here's a simplified guide:",
+    "what_you_need_items": [
+      {
+        "title": "For PR Card Renewal",
+        "list": [
+          {
+            "item": "Valid passport and expired/expiring PR card"
+          },
+          {
+            "item": "Travel history for the last 5 years"
+          },
+          {
+            "item": "Proof of residency in Canada (tax records, leases, employment)"
+          },
+          {
+            "item": "Explanation for absences (if needed)"
+          }
+        ]
+      },
+      {
+        "title": "For PRTD",
+        "list": [
+          {
+            "item": "Proof of permanent resident status"
+          },
+          {
+            "item": "Explanation of why you're outside Canada without a PR card"
+          },
+          {
+            "item": "Proof of residency days in Canada"
+          },
+          {
+            "item": "Supporting documents for H&C considerations (if applicable)"
+          }
+        ]
+      },
+      {
+        "title": "For Citizenship",
+        "list": [
+          {
+            "item": "Proof of language proficiency (for 18-54 years)"
+          },
+          {
+            "item": "Valid PR card and ID documents"
+          },
+          {
+            "item": "Travel history (IMM 5444) + physical presence calculator"
+          },
+          {
+            "item": "Tax filings for 3 of last 5 years"
+          },
+          {
+            "item": "Police certificates (if applicable)"
+          }
+        ]
+      }
+    ]
+  }
+}
