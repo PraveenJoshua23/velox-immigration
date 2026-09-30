@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
 import { SeoService } from './services/seo.service';
@@ -15,6 +16,9 @@ export class AppComponent {
 
   constructor() {
     // Every page gets its own canonical + og:url, including in the server-rendered HTML
+    // Keep in-page anchors clear of the fixed 72px header
+    inject(ViewportScroller).setOffset([0, 96]);
+
     const seo = inject(SeoService);
     const router = inject(Router);
     router.events
