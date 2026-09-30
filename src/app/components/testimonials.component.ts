@@ -59,7 +59,7 @@ import { HomePageContent } from '../utils/types/directus';
               @for (testimonial of [testimonials[index()]]; track testimonial) {
               @if (testimonial) {
               <div class="testimonial-slide">
-                <p class="text-gray-600 text-base md:text-md mb-6">
+                <p class="text-gray-700 text-base md:text-md mb-6">
                   {{ testimonial.testimony }}
                 </p>
                 <p class="font-bold text-red-500">

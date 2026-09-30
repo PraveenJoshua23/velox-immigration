@@ -55,7 +55,7 @@ interface ProcessStep {
                   <h3 class="text-xl font-semibold text-red-600 mb-4">
                     {{ step.title }}
                   </h3>
-                  <p class="text-gray-600">{{ step.description }}</p>
+                  <p class="text-gray-700">{{ step.description }}</p>
                 </div>
               </div>
               }

@@ -34,7 +34,7 @@ import { HomePageContent } from '../utils/types/directus';
               {{ content.data?.about_title }}
             </h2>
 
-            <p class="text-gray-600 font-light mb-6 py-5">
+            <p class="text-gray-700 mb-6 py-5">
               {{ content.data?.about_description }}
             </p>
 

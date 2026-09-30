@@ -7,73 +7,30 @@ import { HomePageContent } from '../utils/types/directus';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="relative w-full overflow-hidden  py-12">
-      <div class="container mx-auto">
-        <h3 class="text-center text-2xl font-semibold mb-8">
-          Our Accreditation
+    <section class="py-16 border-t border-gray-100">
+      <div class="container mx-auto px-4 text-center">
+        <h3 class="text-2xl md:text-3xl font-medium text-sea-900 mb-2">
+          Licensed &amp; Accredited
         </h3>
-
-        <div class="marquee relative flex overflow-hidden">
-          <!-- First set of logos -->
-          <div class="flex animate-scroll gap-8 min-w-full">
-            @for (logo of logos(); track logo.id) {
-            <div class="flex items-center justify-center w-48">
-              <img
-                [src]="logo.src"
-                [alt]="logo.alt"
-                loading="lazy"
-                class="h-16 object-contain grayscale hover:grayscale-0 transition-all"
-              />
-            </div>
-            }
-          </div>
-
-          <!-- Duplicated set for seamless loop -->
-          <div
-            class="flex animate-scroll gap-8 min-w-full absolute left-full"
-            aria-hidden="true"
-          >
-            @for (logo of logos(); track logo.id) {
-            <div class="flex items-center justify-center w-48">
-              <img
-                [src]="logo.src"
-                alt=""
-                loading="lazy"
-                class="h-16 object-contain grayscale hover:grayscale-0 transition-all"
-              />
-            </div>
-            }
-          </div>
+        <p class="text-gray-700 mb-10">
+          Licensed RCIC: Anitha Gabriel · Membership ID R1034239 · Regulated by
+          the College of Immigration and Citizenship Consultants (CICC)
+        </p>
+        <div
+          class="flex flex-wrap items-center justify-center gap-x-16 gap-y-8"
+        >
+          @for (logo of logos(); track logo.id) {
+          <img
+            [src]="logo.src"
+            [alt]="logo.alt"
+            loading="lazy"
+            class="h-20 md:h-24 w-auto object-contain"
+          />
+          }
         </div>
       </div>
-    </div>
+    </section>
   `,
-  styles: [
-    `
-      @keyframes scroll {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-100%);
-        }
-      }
-
-      .animate-scroll {
-        animation: scroll 20s linear infinite;
-      }
-
-      .marquee:hover .animate-scroll {
-        animation-play-state: paused;
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .animate-scroll {
-          animation: none;
-        }
-      }
-    `,
-  ],
 })
 export class PartnerLogosComponent {
   @Input() content: { data: HomePageContent | null } = { data: null };

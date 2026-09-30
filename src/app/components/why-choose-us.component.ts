@@ -23,7 +23,7 @@ interface Reason {
               {{ content.data?.why_choose_subtitle }}
             </h2>
           </div>
-          <p class="text-gray-600 mt-2">
+          <p class="text-gray-700 mt-2">
             {{ content.data?.why_choose_title }}
           </p>
         </div>
@@ -43,7 +43,7 @@ interface Reason {
               {{ reason.title }}
             </h3>
             <p
-              class="text-gray-600 font-light text-sm"
+              class="text-gray-700 text-sm"
               [innerHTML]="reason.description"
             ></p>
           </div>
@@ -53,11 +53,10 @@ interface Reason {
         <!-- CTA Button -->
         <div class="text-center">
           <button
-            [routerLink]="content.data?.why_choose_cta_link || '/contact'"
+            [routerLink]="content.data?.why_choose_cta_link || '/book-your-appointment'"
             class="bg-fire-600 text-white px-8 py-3 rounded-lg hover:bg-fire-700 transition-colors inline-flex items-center gap-2"
           >
-            <!-- {{ content.data?.why_choose_cta_text }}  -->Schedule a
-            Consultation
+            {{ content.data?.why_choose_cta_text || 'Book a Consultation' }}
           </button>
         </div>
       </div>

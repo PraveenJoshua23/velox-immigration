@@ -50,7 +50,7 @@ export interface MenuResponse {
             [routerLink]="item.url"
             routerLinkActive="text-fire-600"
             [routerLinkActiveOptions]="{ exact: item.url === '/' }"
-            class="text-gray-600 font-light text-sm hover:text-fire-600 transition-colors"
+            class="text-gray-600 text-sm hover:text-fire-600 transition-colors"
           >
             {{ item.label }}
           </a>
@@ -58,7 +58,7 @@ export interface MenuResponse {
           <!-- Services Dropdown -->
           <div class="services-dropdown relative">
             <a
-              class="text-gray-600 font-light text-sm hover:text-fire-600 transition-colors cursor-pointer flex items-center gap-1"
+              class="text-gray-600 text-sm hover:text-fire-600 transition-colors cursor-pointer flex items-center gap-1"
             >
               {{ item.label }}
               <svg
@@ -84,7 +84,7 @@ export interface MenuResponse {
               <li class="dropdown-item relative">
                 @if(subItem.sub_menu) {
                 <a
-                  class="px-4 py-2 text-gray-700 text-sm font-light hover:bg-gray-50 w-full flex justify-between items-center"
+                  class="px-4 py-2 text-gray-700 text-sm hover:bg-gray-50 w-full flex justify-between items-center"
                 >
                   {{ subItem.label }}
                   <svg
@@ -111,7 +111,7 @@ export interface MenuResponse {
                   <li>
                     <a
                       [routerLink]="subSubItem.url"
-                      class="px-4 py-2 text-gray-600 text-sm font-light hover:bg-gray-50 hover:text-fire-600 block"
+                      class="px-4 py-2 text-gray-600 text-sm hover:bg-gray-50 hover:text-fire-600 block"
                     >
                       {{ subSubItem.label }}
                     </a>
@@ -121,7 +121,7 @@ export interface MenuResponse {
                 } @else {
                 <a
                   [routerLink]="subItem.url"
-                  class="px-4 py-2 text-gray-700 text-sm font-light hover:bg-gray-50 hover:text-fire-600 block w-full"
+                  class="px-4 py-2 text-gray-700 text-sm hover:bg-gray-50 hover:text-fire-600 block w-full"
                 >
                   {{ subItem.label }}
                 </a>

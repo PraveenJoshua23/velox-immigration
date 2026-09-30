@@ -4,8 +4,8 @@
     "hero_title": "Professional Immigration Services",
     "hero_description": "Trusted guidance for your Canadian dreams with expert advice, seamless processing, and personalized solutions.",
     "hero_background": null,
-    "hero_cta_title": "Request a Callback",
-    "hero_cta_link": "/contact",
+    "hero_cta_title": "Book a Consultation",
+    "hero_cta_link": "/book-your-appointment",
     "hero_subtitle": "Your Canadian journey starts here!",
     "hero_caption": "Move to Canada with Confidence!",
     "why_choose_title": "Trusted expertise for your Canadian immigration journey",
@@ -28,7 +28,7 @@
         "description": "We assist clients in English & Tamil for seamless communication."
       }
     ],
-    "why_choose_cta_text": "Schedule a Consultation",
+    "why_choose_cta_text": "Book a Consultation",
     "why_choose_cta_link": "/book-your-appointment",
     "services_title": "Outstanding Immigration Services",
     "services_subtitle": "Our Immigration Services",

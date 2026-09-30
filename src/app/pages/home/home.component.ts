@@ -53,7 +53,7 @@ import { HomePageContent } from '../../utils/types/directus';
             <div
               class="w-full md:w-5/12 lg:w-4/12 px-10 md:pl-[90px] pt-[100px] md:pt-0 hero-content z-20"
             >
-              <p class="text-lg md:text-xl text-white mb-4 md:mb-8 font-light">
+              <p class="text-lg md:text-xl text-white mb-4 md:mb-8">
                 {{
                   homecontent().data?.hero_subtitle ||
                     'Your Canadian journey starts here!'
@@ -85,11 +85,11 @@ import { HomePageContent } from '../../utils/types/directus';
               </p>
               <div class="flex">
                 <button
-                  [routerLink]="homecontent().data?.hero_cta_link || '/contact'"
+                  [routerLink]="homecontent().data?.hero_cta_link || '/book-your-appointment'"
                   class="bg-fire-600 text-white px-6 md:px-8 py-2 md:py-3 rounded-lg transition-colors hover:bg-fire-700 w-full sm:w-auto"
                 >
                   {{
-                    homecontent().data?.hero_cta_title || 'Request a Callback'
+                    homecontent().data?.hero_cta_title || 'Book a Consultation'
                   }}
                 </button>
               </div>

@@ -23,7 +23,7 @@ import { DirectusService } from '../services/directus.service';
               class="flex flex-col md:flex-row items-center gap-4 mb-4 md:mb-0"
             >
               <h3
-                class="text-xl md:text-2xl text-center md:text-left text-white font-light"
+                class="text-xl md:text-2xl text-center md:text-left text-white"
               >
                 Are you looking for a
                 <div class="font-medium">
@@ -61,12 +61,12 @@ import { DirectusService } from '../services/directus.service';
                 class="h-14 mb-4 mx-auto md:mx-0"
               />
 
-              <p class="text-gray-400 font-light text-sm mb-4">
+              <p class="text-gray-400 text-sm mb-4">
                 Regulated Canadian Immigration Consulting Firm - Serving Clients
                 Globally.
               </p>
 
-              <p class="text-gray-400 font-light text-sm mb-4">
+              <p class="text-gray-400 text-sm mb-4">
                 Licensed RCIC: Anitha Gabriel | Membership ID: R1034239<br />
                 Authorized by the College of Immigration and Citizenship
                 Consultants (CICC)
@@ -74,14 +74,14 @@ import { DirectusService } from '../services/directus.service';
 
               <div class="flex flex-col items-center md:items-start gap-4">
                 <div class="flex justify-between gap-2 w-full">
-                  <p class="text-gray-400 font-light">Toronto, Canada</p>
-                  <p class="text-gray-400 font-light">
+                  <p class="text-gray-400">Toronto, Canada</p>
+                  <p class="text-gray-400">
                     <span class="mr-1">🇨🇦</span> +1 416-662-0652
                   </p>
                 </div>
                 <div class="flex justify-between gap-2 w-full">
-                  <p class="text-gray-400 font-light">Chennai, India</p>
-                  <p class="text-gray-400 font-light">
+                  <p class="text-gray-400">Chennai, India</p>
+                  <p class="text-gray-400">
                     <span class="mr-1">🇮🇳</span> +91 77088 53882
                   </p>
                 </div>
@@ -95,7 +95,7 @@ import { DirectusService } from '../services/directus.service';
                   <li *ngFor="let sub of item.sub_menu">
                     <a
                       [routerLink]="sub.url"
-                      class="text-gray-400 font-light hover:text-white"
+                      class="text-gray-400 hover:text-white"
                       *ngIf="sub.visible"
                     >
                       {{ sub.label }}
@@ -105,7 +105,7 @@ import { DirectusService } from '../services/directus.service';
                       <li *ngFor="let subsub of sub.sub_menu">
                         <a
                           [routerLink]="subsub.url"
-                          class="text-gray-400 font-light hover:text-white"
+                          class="text-gray-400 hover:text-white"
                           *ngIf="subsub.visible"
                         >
                           {{ subsub.label }}
@@ -118,7 +118,7 @@ import { DirectusService } from '../services/directus.service';
                   <li>
                     <a
                       [routerLink]="item.url"
-                      class="text-gray-400 font-light hover:text-white"
+                      class="text-gray-400 hover:text-white"
                       *ngIf="item.visible"
                     >
                       {{ item.label }}
@@ -135,7 +135,7 @@ import { DirectusService } from '../services/directus.service';
             class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center"
           >
             <div
-              class="text-gray-400 text-xs font-light mb-4 md:mb-0 flex flex-wrap items-center gap-2"
+              class="text-gray-400 text-xs mb-4 md:mb-0 flex flex-wrap items-center gap-2"
             >
               <p>Copyright 2025. All rights reserved.</p>
               <span class="hidden md:inline">|</span>
