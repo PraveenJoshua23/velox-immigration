@@ -196,7 +196,6 @@ export class AboutPageComponent {
       title: 'About Us | Velox Immigration',
       description:
         'Meet Anitha Gabriel, the licensed RCIC behind Velox Immigration. Learn our story, our V.E.L.O.X values, and how we guide clients from Toronto and Chennai.',
-      canonicalUrl: 'https://veloximmigration.com/about',
     });
   }
 }

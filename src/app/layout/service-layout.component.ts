@@ -10,7 +10,6 @@ import { HeaderComponent } from '../components/header.component';
 import { FooterComponent } from '../components/footer.component';
 import { localServices } from '../utils/constants/navigation';
 import { ElementRef, ViewChild } from '@angular/core';
-import { SeoService } from '../services/seo.service';
 import { DirectusService } from '../services/directus.service';
 
 @Component({

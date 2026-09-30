@@ -40,7 +40,6 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    title: 'Velox Immigration | Trusted RCIC-Led Canadian Immigration Services',
   },
   {
     path: 'about',

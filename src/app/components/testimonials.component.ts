@@ -26,7 +26,9 @@ import { HomePageContent } from '../utils/types/directus';
         <!-- Photo tile + one card per testimonial; new testimonials flow into the grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <img
-            src="/assets/images/testimonials.jpg"
+            src="/assets/images/testimonials.webp"
+            width="1200"
+            height="875"
             alt="A family sitting together on the grass, smiling"
             loading="lazy"
             class="w-full h-64 md:h-full min-h-64 object-cover rounded-2xl md:col-span-2 lg:col-span-1"

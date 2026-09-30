@@ -1,20 +1,15 @@
-import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { isPlatformBrowser } from '@angular/common';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SeoService {
-  private isBrowser: boolean;
-
-  constructor(
-    private meta: Meta,
-    private titleService: Title,
-    @Inject(PLATFORM_ID) platformId: Object
-  ) {
-    this.isBrowser = isPlatformBrowser(platformId);
-  }
+  private meta = inject(Meta);
+  private titleService = inject(Title);
+  // DOCUMENT works during SSR too, so crawlers get the right canonical in the HTML
+  private document = inject(DOCUMENT);
 
   updateTitle(title: string) {
     this.titleService.setTitle(title);
@@ -78,27 +73,22 @@ export class SeoService {
     }
   }
 
-  updateCanonicalUrl(url: string) {
-    if (this.isBrowser) {
-      let link: HTMLLinkElement | null = this.getCanonicalLink();
-      link?.setAttribute('href', url);
-    }
+  /** Canonical link and og:url for the current page. */
+  setUrl(url: string) {
+    this.updateCanonicalUrl(url);
+    this.meta.updateTag({ property: 'og:url', content: url });
   }
 
-  private getCanonicalLink(): HTMLLinkElement | null {
-    if (!this.isBrowser) {
-      return null;
-    }
-
-    let link = document.querySelector(
+  updateCanonicalUrl(url: string) {
+    let link = this.document.head.querySelector<HTMLLinkElement>(
       'link[rel="canonical"]'
-    ) as HTMLLinkElement | null;
+    );
     if (!link) {
-      link = document.createElement('link');
+      link = this.document.createElement('link');
       link.setAttribute('rel', 'canonical');
-      document.head.appendChild(link);
+      this.document.head.appendChild(link);
     }
-    return link;
+    link.setAttribute('href', url);
   }
 
   setAllSeoData(config: {
@@ -126,7 +116,7 @@ export class SeoService {
     this.updateOgTags({
       title: config.ogTitle || config.title,
       description: config.ogDescription || config.description,
-      url: config.ogUrl,
+      url: config.ogUrl || config.canonicalUrl,
       image: config.ogImage,
       type: config.ogType || 'website',
     });
@@ -139,8 +129,7 @@ export class SeoService {
       card: config.twitterCard || 'summary_large_image',
     });
 
-    // Only attempt to update canonical URL on browser
-    if (config.canonicalUrl && this.isBrowser) {
+    if (config.canonicalUrl) {
       this.updateCanonicalUrl(config.canonicalUrl);
     }
   }

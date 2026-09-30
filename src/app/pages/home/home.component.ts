@@ -74,11 +74,11 @@ import { HomePageContent } from '../../utils/types/directus';
               }}
             </p>
             <h1
-              class="text-4xl sm:text-5xl lg:text-7xl font-medium leading-[1.05] mb-4 md:mb-6"
+              class="text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.05] mb-4 md:mb-6"
             >
               {{
                 homecontent().data?.hero_title ||
-                  'Professional Immigration Services'
+                  'Canadian Immigration Consultant in Toronto & Chennai'
               }}
             </h1>
             <p class="text-base md:text-lg text-white/85 mb-6 md:mb-8 max-w-md">
@@ -184,17 +184,11 @@ export class HomeComponent implements OnInit {
       // console.log(data);
       this.homecontent.set(data);
     });
+    // Canonical/og:url are set per route in AppComponent
     this.seoService.setAllSeoData({
-      title:
-        'Velox Immigration | Trusted RCIC-Led Canadian Immigration Services',
+      title: 'RCIC Immigration Consultant Toronto | Velox Immigration',
       description:
-        'Navigate your Canadian immigration journey with confidence. Velox Immigration offers expert, ethical, and client-focused solutions for study, work, PR, and family sponsorship. Results that move you forward.',
-      keywords:
-        'Canadian immigration, RCIC, study permit, work permit, permanent residency, express entry, family sponsorship, immigration consultant, Canada visa, Toronto immigration, Indian students Canada',
-      ogTitle: 'Velox Immigration | Professional Canadian Immigration Services',
-      ogDescription:
-        'Navigate your Canadian immigration journey with confidence. Expert guidance for study, work, PR, and family sponsorship.',
-      canonicalUrl: 'https://veloximmigration.com/',
+        'Licensed RCIC for Express Entry, study and work permits, PR and family sponsorship. Offices in Toronto and Chennai, with support in English and Tamil.',
     });
   }
 
