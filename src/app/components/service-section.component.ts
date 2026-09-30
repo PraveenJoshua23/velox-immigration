@@ -1,282 +1,200 @@
 import {
-  Component,
-  signal,
   ChangeDetectionStrategy,
-  OnInit,
+  Component,
+  ElementRef,
   Input,
+  signal,
+  viewChild,
 } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HomePageContent } from '../utils/types/directus';
-
-interface Program {
-  id: string;
-  icon: string;
-  title: string;
-  description: string;
-  overlayText: string;
-  routePath: string;
-  bgColor: string;
-  bgImage: string;
-}
 
 @Component({
   selector: 'app-service-section',
   standalone: true,
-  imports: [CommonModule, RouterModule, NgOptimizedImage],
-  changeDetection: ChangeDetectionStrategy.OnPush, // Optimize change detection
+  imports: [RouterModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <section class="w-full bg-white pt-12">
+    <section class="services w-full bg-gray-100 py-20 md:py-24">
       <!-- Header -->
-      <div class="text-center mb-6">
-        <div
-          class="text-black flex font-medium mb-3 items-center justify-center space-x-1.5"
-        >
-          <img src="assets/images/plane.svg" class="pb-1" />
-          <h2 class="text-3xl font-medium">
-            {{ content.data?.services_subtitle }}
+      <div
+        class="container mx-auto px-4 mb-10 md:mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6"
+      >
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <img src="assets/images/plane.svg" class="w-6 h-6" alt="" />
+            <p class="text-xl md:text-2xl font-medium font-spartan">
+              {{ content.data?.services_subtitle }}
+            </p>
+          </div>
+          <h2 class="text-4xl md:text-5xl text-sea-900">
+            {{ content.data?.services_title }}
           </h2>
         </div>
 
-        <h2 class="text-4xl md:text-5xl pb-2 text-sea-900">
-          {{ content.data?.services_title }}
-        </h2>
+        <div class="hidden md:flex gap-3">
+          <button
+            type="button"
+            (click)="scrollBy(-1)"
+            aria-label="Previous services"
+            class="size-12 rounded-full bg-white text-sea-900 shadow-sm flex items-center justify-center hover:bg-sea-900 hover:text-white transition-colors"
+          >
+            <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m15 18-6-6 6-6" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            (click)="scrollBy(1)"
+            aria-label="Next services"
+            class="size-12 rounded-full bg-white text-sea-900 shadow-sm flex items-center justify-center hover:bg-sea-900 hover:text-white transition-colors"
+          >
+            <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </button>
+        </div>
       </div>
 
-      <!-- Programs Grid - Using CSS grid for more predictable layout -->
-      <div
-        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0"
+      <!-- Native horizontal scroller: snap points, no JS on scroll -->
+      <ul
+        #track
+        class="services-track flex gap-5 md:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth motion-reduce:scroll-auto pb-2"
       >
-        @for(item of content.data?.services_features || []; track item.title){
-        <a
-          [routerLink]="item.routePath"
-          class="block service-card reveal"
-          [attr.data-bg-color]="item.bgColor"
+        @for (item of content.data?.services_features || []; track item.title;
+        let i = $index) {
+        <li
+          class="snap-start shrink-0 w-[78vw] sm:w-[340px] rounded-3xl transition-colors duration-300"
+          [class.bg-white]="open() === i"
         >
-          <div class="relative h-96 overflow-hidden cursor-pointer">
-            <!-- Background Image (lazy: the grid is below the fold) -->
+          <div class="relative aspect-square rounded-3xl overflow-hidden">
             <img
-              [ngSrc]="'/assets/images/' + item.bgImage"
-              [alt]="item.title"
-              fill
-              class="absolute inset-0 w-full h-full object-cover object-center"
+              [src]="'/assets/images/' + item.bgImage"
+              alt=""
+              width="800"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              class="absolute inset-0 size-full object-cover transition-opacity duration-300"
+              [class.opacity-0]="open() === i"
             />
-
-            <!-- Simplified Overlay (combines colored overlay and gradient) -->
+            <!-- Details panel; invisible (not just transparent) when closed so its link can't be tabbed to -->
             <div
-              class="absolute inset-0 opacity-80 transition-opacity duration-300"
-              [ngClass]="item.bgColor + ' service-overlay'"
-            ></div>
-
-            <!-- Content -->
-            <div class="relative h-full flex flex-col z-10 pt-6 pb-2 px-6">
-              <div class="mt-auto service-content">
-                <h3 class="text-3xl font-bold text-white mb-3">
-                  {{ item.title }}
-                </h3>
-
-                <!-- Description (pre-sized to prevent layout shifts) -->
-                <p class="text-white text-sm mb-4 service-description">
-                  {{ item.description }}
-                </p>
-
-                <!-- Read More Link -->
-                <div class="flex items-center justify-end service-link">
-                  <span class="text-white px-2 py-2">Read More</span>
-                  <svg
-                    class="px-1 py-2"
-                    width="57"
-                    height="57"
-                    viewBox="0 0 57 57"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.1189 28.5001C9.1189 17.7841 17.7829 9.12012 28.4989 9.12012C39.2149 9.12012 47.8789 17.7841 47.8789 28.5001C47.8789 39.2161 39.2149 47.8801 28.4989 47.8801C17.7829 47.8801 9.1189 39.2161 9.1189 28.5001ZM45.5989 28.5001C45.5989 19.0381 37.9609 11.4001 28.4989 11.4001C19.0369 11.4001 11.3989 19.0381 11.3989 28.5001C11.3989 37.9621 19.0369 45.6001 28.4989 45.6001C37.9609 45.6001 45.5989 37.9621 45.5989 28.5001Z"
-                      fill="white"
-                    />
-                    <path
-                      d="M26.5647 37.9619L36.0268 28.4999L26.5647 19.0379L28.1608 17.4419L39.2188 28.4999L28.1608 39.5579L26.5647 37.9619Z"
-                      fill="white"
-                    />
-                    <path
-                      d="M37.6211 27.3599V29.6399H18.2411V27.3599H37.6211Z"
-                      fill="white"
-                    />
-                  </svg>
-                </div>
-              </div>
+              [id]="'service-panel-' + i"
+              class="absolute inset-0 p-7 flex flex-col transition-opacity duration-300"
+              [class.opacity-0]="open() !== i"
+              [class.invisible]="open() !== i"
+            >
+              <p class="text-gray-700 text-lg leading-relaxed">
+                {{ item.description }}
+              </p>
+              <a
+                [routerLink]="item.routePath"
+                class="mt-auto self-start font-medium text-sea-900 underline underline-offset-4 hover:text-fire-600"
+              >
+                Learn more &rarr;
+              </a>
             </div>
           </div>
-        </a>
+
+          <div class="flex items-center justify-between gap-4 py-4 pl-3 pr-2">
+            <h3 class="text-lg md:text-xl font-medium text-sea-900">
+              <a [routerLink]="item.routePath" class="hover:text-fire-600">
+                {{ item.title }}
+              </a>
+            </h3>
+            <button
+              type="button"
+              (click)="toggle(i)"
+              [attr.aria-expanded]="open() === i"
+              [attr.aria-controls]="'service-panel-' + i"
+              [attr.aria-label]="
+                (open() === i ? 'Hide' : 'Show') + ' details for ' + item.title
+              "
+              class="size-12 shrink-0 rounded-2xl flex items-center justify-center text-sea-900 transition-colors hover:bg-fire-600 hover:text-white"
+              [class]="open() === i ? 'bg-gray-100' : 'bg-white shadow-sm'"
+            >
+              <svg
+                class="size-5 transition-transform duration-300"
+                [class.rotate-45]="open() === i"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                aria-hidden="true"
+              >
+                <path d="M12 5v14M5 12h14" />
+              </svg>
+            </button>
+          </div>
+        </li>
         }
+      </ul>
+
+      <!-- Scroll progress, driven by a CSS scroll timeline -->
+      <div class="services-progress-wrap container mx-auto px-4 mt-10">
+        <div class="h-1 rounded-full bg-gray-300 overflow-hidden">
+          <div class="services-progress h-full bg-sea-900 origin-left"></div>
+        </div>
       </div>
     </section>
   `,
-  styles: [
-    `
-      :host {
-        display: block;
-      }
+  styles: `
+    :host {
+      display: block;
+    }
 
-      .service-overlay {
-        background-image: linear-gradient(
-          to top,
-          rgba(0, 0, 0, 0.8),
-          transparent
-        );
-      }
+    /* Lets the progress bar (a sibling) see the track's scroll timeline */
+    .services {
+      timeline-scope: --services;
+    }
 
-      .service-card img {
-        transition: transform 0.8s ease-out;
-      }
+    /* Line the first card up with the page container; later cards bleed off the right edge */
+    .services-track {
+      --container: 100vw;
+      padding-inline: max(1rem, calc((100% - var(--container)) / 2 + 1rem));
+      scroll-padding-inline: max(1rem, calc((100% - var(--container)) / 2 + 1rem));
+      scroll-timeline: --services x;
+      scrollbar-width: none;
+    }
+    .services-track::-webkit-scrollbar {
+      display: none;
+    }
+    @media (min-width: 640px) { .services-track { --container: 640px; } }
+    @media (min-width: 768px) { .services-track { --container: 768px; } }
+    @media (min-width: 1024px) { .services-track { --container: 1024px; } }
+    @media (min-width: 1280px) { .services-track { --container: 1280px; } }
+    @media (min-width: 1536px) { .services-track { --container: 1536px; } }
 
-      .service-content {
-        transition: transform 0.7s ease-out;
+    @keyframes services-progress {
+      from { transform: scaleX(0.1); }
+      to { transform: scaleX(1); }
+    }
+    .services-progress {
+      animation: services-progress linear both;
+      animation-timeline: --services;
+    }
+    @supports not (animation-timeline: scroll()) {
+      .services-progress-wrap {
+        display: none;
       }
-
-      .service-description {
-        opacity: 0;
-        max-height: 0;
-        transition: opacity 0.6s ease-out, max-height 0.7s ease-out;
-      }
-
-      .service-link {
-        opacity: 0;
-        transform: translateY(10px);
-        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-        transition-delay: 0.1s; /* Slight delay for sequential animation effect */
-      }
-
-      /* Hover, or keyboard focus, reveals the details */
-      .service-card:is(:hover, :focus-visible) img {
-        transform: scale(1.05);
-      }
-
-      .service-card:is(:hover, :focus-visible) .service-content {
-        transform: translateY(-30px);
-      }
-
-      .service-card:is(:hover, :focus-visible) .service-description {
-        opacity: 1;
-        max-height: 100px;
-      }
-
-      .service-card:is(:hover, :focus-visible) .service-link {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Touch screens can't hover: always show the details */
-      @media (hover: none) {
-        .service-description {
-          opacity: 1;
-          max-height: none;
-        }
-
-        .service-link {
-          opacity: 1;
-          transform: none;
-        }
-      }
-    `,
-  ],
+    }
+  `,
 })
-export class ServiceSectionComponent implements OnInit {
+export class ServiceSectionComponent {
   @Input() content: { data: HomePageContent | null } = { data: null };
-  programs = signal<Program[]>([]);
 
-  ngOnInit() {
-    // Initialize data outside the constructor for better performance
-    this.programs.set([
-      {
-        id: 'study',
-        icon: 'service-study',
-        title: 'Study in Canada',
-        description:
-          'Explore options for international students to study at Canadian institutions with student permits and post-graduation work opportunities.',
-        overlayText: 'STUDY',
-        routePath: '/services/study/study-in-canada',
-        bgColor: 'bg-red-600',
-        bgImage: 'service-study.jpg',
-      },
-      {
-        id: 'work',
-        icon: 'service-work',
-        title: 'Work in Canada',
-        description:
-          'Discover pathways to obtain Canadian work permits, including LMIA-based work permits and employer-specific opportunities.',
-        overlayText: 'WORK',
-        routePath: '/services/work/open-pgwp-permits',
-        bgColor: 'bg-sea-900',
-        bgImage: 'service-work.jpg',
-      },
-      {
-        id: 'visitor',
-        icon: 'service-visa',
-        title: 'Visitor Visa',
-        description:
-          'Learn about visitor visas, super visas, and family reunification programs to bring your loved ones to Canada.',
-        overlayText: 'VISA',
-        routePath: '/services/visit/visitor-visas',
-        bgColor: 'bg-red-600',
-        bgImage: 'service-visitor.jpg',
-      },
-      {
-        id: 'express',
-        icon: 'service-express',
-        title: 'Express Entry',
-        description:
-          "Canada's primary immigration system for skilled workers looking for permanent residency through FSW, CEC, and FST programs.",
-        overlayText: 'EE',
-        routePath: '/services/immigrate/express-entry',
-        bgColor: 'bg-sea-900',
-        bgImage: 'service-express.jpg',
-      },
-      {
-        id: 'pnp',
-        icon: 'service-pnp',
-        title: 'Provincial Nominee Program',
-        description:
-          'Explore province-specific immigration pathways designed to address regional economic and demographic needs.',
-        overlayText: 'PNP',
-        routePath: '/services/immigrate/provincial-nominee',
-        bgColor: 'bg-sea-900',
-        bgImage: 'pnp-program.jpg',
-      },
-      {
-        id: 'lmia',
-        icon: 'service-more',
-        title: 'Labour Market Impact Assessment (LMIA)',
-        description:
-          'Hire foreign workers to meet labour shortages in Canada. LMIA is a key step for employers to demonstrate the need for a foreign worker when no Canadians or permanent residents are available.',
-        overlayText: 'LMIA',
-        routePath: '/services/work/lmia-employer-permits',
-        bgColor: 'bg-red-600',
-        bgImage: 'skilled-worker.jpg',
-      },
-      {
-        id: 'business',
-        icon: 'service-business',
-        title: 'Business Immigration',
-        description:
-          'Immigration options for entrepreneurs, investors, and self-employed individuals looking to establish businesses in Canada.',
-        overlayText: 'BIZ',
-        routePath: '/services/immigrate/business-immigration',
-        bgColor: 'bg-sea-900',
-        bgImage: 'service-business.jpg',
-      },
-      {
-        id: 'pr-citizenship',
-        icon: 'service-citizen',
-        title: 'PR Card & Citizenship',
-        description:
-          'Services for permanent resident card renewal and applications for Canadian citizenship.',
-        overlayText: 'PR&C',
-        routePath: '/services/other/pr-citizenship',
-        bgColor: 'bg-red-600',
-        bgImage: 'service-passport.jpg',
-      },
-    ]);
+  /** Index of the card showing its details; one at a time. */
+  open = signal<number | null>(null);
+  private track = viewChild.required<ElementRef<HTMLElement>>('track');
+
+  toggle(i: number) {
+    this.open.update((current) => (current === i ? null : i));
+  }
+
+  scrollBy(direction: 1 | -1) {
+    const track = this.track().nativeElement;
+    track.scrollBy({ left: direction * track.clientWidth * 0.8 });
   }
 }

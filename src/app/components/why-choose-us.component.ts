@@ -8,7 +8,7 @@ import { HomePageContent } from '../utils/types/directus';
   standalone: true,
   imports: [CommonModule, RouterModule],
   template: `
-    <section class="bg-gray-50 py-20">
+    <section class="bg-white py-20">
       <div class="container mx-auto px-4">
         <div class="text-center mb-12">
           <div class="flex items-center justify-center gap-2 mb-4">
