@@ -10,8 +10,11 @@ import {
   signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
+import { filter } from 'rxjs';
 import { DirectusService } from '../services/directus.service';
+import { HeroCtaService } from '../services/hero-cta.service';
 
 export interface MenuItem {
   label: string;
@@ -156,11 +159,15 @@ export interface MenuResponse {
           </div>
           } }
 
-          <!-- Desktop CTA -->
+          <!-- Desktop CTA; faded out while the page's own hero CTA (data-hero-cta) is on screen -->
           <button
             *ngIf="ctaButton()"
             [routerLink]="ctaButton()?.url"
-            class="hidden lg:block bg-fire-600 text-white text-sm font-medium px-6 py-3 ml-2 rounded-lg transition-colors hover:bg-fire-700"
+            class="hidden lg:block bg-fire-600 text-white text-sm font-medium px-6 py-3 ml-2 rounded-lg transition-opacity duration-300 hover:bg-fire-700"
+            [class.opacity-0]="heroCtaVisible()"
+            [class.pointer-events-none]="heroCtaVisible()"
+            [attr.aria-hidden]="heroCtaVisible() ? true : null"
+            [tabIndex]="heroCtaVisible() ? -1 : 0"
           >
             {{ ctaButton()?.label }}
           </button>
@@ -373,6 +380,16 @@ export class HeaderComponent implements OnInit {
   solid = computed(
     () => !this.overlay() || this.pastHero() || this.isMenuOpen()
   );
+  /**
+   * True while the page's own hero CTA is effectively on screen: the current
+   * page declares one (HeroCtaService, known at render time on server and
+   * client alike) and the user hasn't scrolled it past the header yet.
+   */
+  private heroCtaPresent = inject(HeroCtaService).present;
+  private scrolledPastHeroCta = signal(false);
+  heroCtaVisible = computed(
+    () => this.heroCtaPresent() && !this.scrolledPastHeroCta()
+  );
   isMenuOpen = signal(false);
   menuData = signal<MenuData | null>(null);
   menuItems = signal<MenuItem[]>([]);
@@ -383,6 +400,7 @@ export class HeaderComponent implements OnInit {
   constructor() {
     const zone = inject(NgZone);
     const destroyRef = inject(DestroyRef);
+    const router = inject(Router);
     afterNextRender(() => {
       // Listen outside the zone; only re-enter when the state actually flips.
       const onScroll = () => {
@@ -396,6 +414,41 @@ export class HeaderComponent implements OnInit {
       destroyRef.onDestroy(() =>
         window.removeEventListener('scroll', onScroll)
       );
+
+      // Tracks whether the current page's hero CTA (marked [data-hero-cta])
+      // has scrolled past the header. Only refines heroCtaVisible; whether a
+      // hero CTA exists at all comes from HeroCtaService, so the very first
+      // render (server and client) is already correct.
+      let observer: IntersectionObserver | undefined;
+      const watchHeroCta = () => {
+        observer?.disconnect();
+        const el = document.querySelector('[data-hero-cta]');
+        if (!el) return;
+        observer = new IntersectionObserver(
+          ([entry]) =>
+            zone.run(() => this.scrolledPastHeroCta.set(!entry.isIntersecting)),
+          // Shrink the viewport by the header's own height, so a hero CTA
+          // scrolled up behind the fixed header no longer counts as visible.
+          { rootMargin: '-72px 0px 0px 0px' }
+        );
+        observer.observe(el);
+      };
+
+      watchHeroCta();
+      zone.runOutsideAngular(() =>
+        router.events
+          .pipe(
+            filter((e) => e instanceof NavigationEnd),
+            takeUntilDestroyed(destroyRef)
+          )
+          .subscribe(() => {
+            // Reset immediately (navigation also resets scroll position);
+            // re-target the observer once the new route's view has rendered.
+            zone.run(() => this.scrolledPastHeroCta.set(false));
+            setTimeout(watchHeroCta);
+          })
+      );
+      destroyRef.onDestroy(() => observer?.disconnect());
     });
   }
 
