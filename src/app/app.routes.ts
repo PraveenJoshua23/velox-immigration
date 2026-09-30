@@ -4,6 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutPageComponent } from './pages/about-us/about-us.component';
 import { ServicesLayoutComponent } from './layout/service-layout.component';
 import { ServicePageComponent } from './pages/services/service-page.component';
+import { ServiceCategoryComponent } from './pages/services/service-category.component';
 import { PostPageComponent } from './pages/post/post-page.component';
 import { ContactFormComponent } from './pages/contact/contact.component';
 import { BookYourAppointmentComponent } from './pages/book-your-appointment/book-your-appointment.component';
@@ -58,9 +59,14 @@ export const routes: Routes = [
     path: 'services',
     component: ServicesLayoutComponent,
     children: [
+      { path: '', pathMatch: 'full', component: ServiceCategoryComponent },
       {
         path: 'study',
-        children: [{ path: 'study-in-canada', component: ServicePageComponent }],
+        children: [
+          // One service in this category: go straight to it
+          { path: '', pathMatch: 'full', redirectTo: 'study-in-canada' },
+          { path: 'study-in-canada', component: ServicePageComponent },
+        ],
         resolve: {
           data: DynamicResolverService,
         },
@@ -71,6 +77,7 @@ export const routes: Routes = [
       {
         path: 'work',
         children: [
+        { path: '', pathMatch: 'full', component: ServiceCategoryComponent },
           {
             path: 'open-pgwp-permits',
             component: ServicePageComponent,
@@ -106,6 +113,7 @@ export const routes: Routes = [
       {
         path: 'visit',
         children: [
+          { path: '', pathMatch: 'full', redirectTo: 'visitor-visas' },
           {
             path: 'visitor-visas',
             component: ServicePageComponent,
@@ -121,6 +129,7 @@ export const routes: Routes = [
       {
         path: 'immigrate',
         children: [
+        { path: '', pathMatch: 'full', component: ServiceCategoryComponent },
           {
             path: 'express-entry',
             component: ServicePageComponent,
@@ -176,6 +185,7 @@ export const routes: Routes = [
       {
         path: 'other',
         children: [
+        { path: '', pathMatch: 'full', component: ServiceCategoryComponent },
           {
             path: 'pr-citizenship',
             component: ServicePageComponent,
