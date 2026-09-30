@@ -62,7 +62,7 @@ import { HomePageContent } from '../../utils/types/directus';
         ></div>
 
         <div
-          class="relative z-10 container mx-auto h-full px-6 md:px-10 pt-24 pb-8 md:pb-12 flex flex-col justify-end lg:justify-center"
+          class="relative z-10 container mx-auto h-full px-4 pt-24 pb-8 md:pb-12 flex flex-col justify-end lg:justify-center"
         >
           <div class="hero-content max-w-xl text-white">
             <p

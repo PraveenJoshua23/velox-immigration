@@ -165,7 +165,6 @@ import { HomePageContent } from '../utils/types/directus';
     @media (min-width: 768px) { .services-track { --container: 768px; } }
     @media (min-width: 1024px) { .services-track { --container: 1024px; } }
     @media (min-width: 1280px) { .services-track { --container: 1280px; } }
-    @media (min-width: 1536px) { .services-track { --container: 1536px; } }
 
     @keyframes services-progress {
       from { transform: scaleX(0.1); }

@@ -8,31 +8,44 @@ import { HomePageContent } from '../utils/types/directus';
   standalone: true,
   imports: [CommonModule, RouterModule],
   template: `
-    <section class="bg-white py-20">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <div class="flex items-center justify-center gap-2 mb-4">
-            <img src="assets/images/plane.svg" class="pb-1 hidden md:block" alt="" />
-            <h2 class="text-3xl md:text-4xl font-medium text-sea-900">
+    <section class="bg-white py-20 md:py-28">
+      <div
+        class="container mx-auto px-4 grid lg:grid-cols-12 gap-12 lg:gap-16"
+      >
+        <!-- Heading column -->
+        <div class="lg:col-span-5 self-center">
+          <div class="flex items-center gap-2 mb-4">
+            <img src="assets/images/plane.svg" class="w-6 h-6" alt="" />
+            <p class="text-xl md:text-2xl font-medium font-spartan">
               {{ content.data?.why_choose_subtitle }}
-            </h2>
+            </p>
           </div>
-          <p class="text-gray-700 mt-2">
+          <h2 class="text-4xl md:text-5xl text-sea-900 leading-tight mb-6">
             {{ content.data?.why_choose_title }}
+          </h2>
+          @if (content.data?.why_choose_description) {
+          <p class="text-lg text-gray-700 leading-relaxed mb-8">
+            {{ content.data?.why_choose_description }}
           </p>
+          }
+          <a
+            [routerLink]="content.data?.why_choose_cta_link || '/book-your-appointment'"
+            class="hidden lg:inline-flex bg-fire-600 text-white font-medium px-8 py-3.5 rounded-lg hover:bg-fire-700 transition-colors"
+          >
+            {{ content.data?.why_choose_cta_text || 'Book a Consultation' }}
+          </a>
         </div>
 
-        <!-- Grid Layout -->
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-12"
-        >
+        <!-- Cards -->
+        <div class="lg:col-span-7">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
           @for(reason of content.data?.why_choose_features || []; track
           reason.title){
           <div
-            class="reveal group bg-white rounded-2xl p-7 border border-gray-200 transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-sea-200"
+            class="reveal group bg-white rounded-2xl p-6 md:p-7 border border-gray-200 transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-sea-200"
           >
             <div
-              class="size-12 rounded-xl bg-sea-50 text-sea-700 flex items-center justify-center mb-6 transition-colors group-hover:bg-fire-600 group-hover:text-white"
+              class="size-12 rounded-xl bg-sea-50 text-sea-700 flex items-center justify-center mb-4 md:mb-6 transition-colors group-hover:bg-fire-600 group-hover:text-white"
             >
               <!-- One icon per reason, in content order (Lucide, stroke 1.75) -->
               <svg
@@ -79,11 +92,10 @@ import { HomePageContent } from '../utils/types/directus';
           }
         </div>
 
-        <!-- CTA Button -->
-        <div class="text-center">
+          <!-- On mobile the CTA comes after the cards -->
           <a
             [routerLink]="content.data?.why_choose_cta_link || '/book-your-appointment'"
-            class="bg-fire-600 text-white font-medium px-8 py-3.5 rounded-lg hover:bg-fire-700 transition-colors inline-flex items-center gap-2"
+            class="lg:hidden mt-10 flex justify-center bg-fire-600 text-white font-medium px-8 py-3.5 rounded-lg hover:bg-fire-700 transition-colors"
           >
             {{ content.data?.why_choose_cta_text || 'Book a Consultation' }}
           </a>

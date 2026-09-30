@@ -8,7 +8,7 @@ import { HomePageContent } from '../utils/types/directus';
   imports: [RouterModule],
   template: `
     <section class="bg-gray-100 py-20 md:py-24">
-      <div class="container max-w-6xl mx-auto px-4">
+      <div class="container mx-auto px-4">
         <div
           class="grid md:grid-cols-2 items-center gap-12 lg:gap-20"
         >
@@ -29,13 +29,12 @@ import { HomePageContent } from '../utils/types/directus';
               <img
                 src="/assets/images/rcic-logo.webp"
                 alt=""
-                class="h-10 w-auto shrink-0"
+                class="h-8 md:h-10 w-auto shrink-0"
               />
               <div>
                 <p class="font-medium text-sea-900">Anitha Gabriel</p>
-                <p class="text-sm text-gray-600">
-                  Licensed RCIC-IRB · R1034239
-                </p>
+                <p class="text-sm text-gray-600">Licensed RCIC-IRB</p>
+                <p class="text-sm text-gray-600">Membership ID R1034239</p>
               </div>
             </div>
           </div>

@@ -8,7 +8,7 @@ import { HomePageContent } from '../utils/types/directus';
   imports: [RouterModule],
   template: `
     <section class="py-20 md:py-28 bg-sea-950 text-white">
-      <div class="container mx-auto px-4 max-w-6xl">
+      <div class="container mx-auto px-4">
         <!-- Section Title -->
         <div class="flex items-center gap-2 mb-14 md:mb-20">
           <img src="assets/images/plane.svg" class="w-6 h-6" alt="" />

@@ -5,6 +5,10 @@ module.exports = {
     "./public/index.html", // If you have an index.html
   ],
   theme: {
+    // One content width for every section; stops growing at 1280px
+    container: {
+      screens: { sm: "640px", md: "768px", lg: "1024px", xl: "1280px" },
+    },
     extend: {
       colors: {
         sea: {

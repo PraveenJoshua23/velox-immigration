@@ -38,11 +38,14 @@ export interface MenuResponse {
   imports: [CommonModule, RouterModule],
   providers: [DirectusService],
   template: `
-    <!-- data-transparent drives the white-on-image styles via group-data-[transparent]: -->
+    <!-- data-transparent drives the white-on-image styles via group-data-[transparent]:.
+         No backdrop-blur while the menu is open: it would trap the fixed menu panel inside the header. -->
     <header
       class="group fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow] duration-300"
       [class]="
-        solid()
+        isMenuOpen()
+          ? 'bg-white'
+          : solid()
           ? 'bg-white/95 backdrop-blur shadow-sm'
           : 'bg-gradient-to-b from-black/60 to-transparent'
       "
