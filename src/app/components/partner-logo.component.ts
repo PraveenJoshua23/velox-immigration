@@ -37,12 +37,12 @@ export class PartnerLogosComponent {
   logos = signal([
     {
       id: 1,
-      src: '/assets/images/CICC-logo.png',
+      src: '/assets/images/cicc-logo.webp',
       alt: 'CICC Logo',
     },
     {
       id: 2,
-      src: '/assets/images/RCIC-logo.png',
+      src: '/assets/images/rcic-logo.webp',
       alt: 'RCIC Logo',
     },
     // {

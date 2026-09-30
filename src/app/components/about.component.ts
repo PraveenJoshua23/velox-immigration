@@ -1,55 +1,74 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input, signal } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HomePageContent } from '../utils/types/directus';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [RouterModule],
   template: `
-    <section class="bg-[#F5F5F6] py-16">
+    <section class="bg-gray-100 py-20 md:py-24">
       <div class="container max-w-6xl mx-auto px-4">
-        <div class="flex flex-col md:flex-row items-center gap-12">
-          <!-- Left Side Images -->
-          <div class="md:w-1/2 relative">
+        <div
+          class="grid md:grid-cols-2 items-center gap-12 lg:gap-20"
+        >
+          <!-- Founder portrait with credential card -->
+          <div class="relative max-w-sm md:max-w-none mx-auto w-full">
             <img
-              src="assets/images/about-us.svg"
-              class="w-3/4 md:w-full mx-auto"
+              src="/assets/images/founder.webp"
+              alt="Anitha Gabriel, licensed RCIC and founder of Velox Immigration"
+              width="900"
+              height="1273"
+              loading="lazy"
+              decoding="async"
+              class="w-full aspect-[4/5] object-cover object-top rounded-3xl bg-sea-100"
             />
+            <div
+              class="absolute left-4 right-4 bottom-4 md:left-6 md:right-auto md:-bottom-6 bg-white rounded-2xl shadow-lg p-5 flex items-center gap-4"
+            >
+              <img
+                src="/assets/images/rcic-logo.webp"
+                alt=""
+                class="h-10 w-auto shrink-0"
+              />
+              <div>
+                <p class="font-medium text-sea-900">Anitha Gabriel</p>
+                <p class="text-sm text-gray-600">
+                  Licensed RCIC-IRB · R1034239
+                </p>
+              </div>
+            </div>
           </div>
 
-          <!-- Right Side Content -->
-          <div class="md:w-1/2">
+          <!-- Copy -->
+          <div>
             <div class="flex items-center gap-2 mb-4">
-              <img src="assets/images/plane.svg" class="pb-1" />
-              <h2 class="text-3xl font-medium">
+              <img src="assets/images/plane.svg" class="w-6 h-6" alt="" />
+              <p class="text-xl md:text-2xl font-medium font-spartan">
                 {{ content.data?.about_subtitle }}
-              </h2>
+              </p>
             </div>
 
-            <h2
-              class="text-4xl md:text-5xl pb-2 border-b border-fire-500 text-sea-900"
-            >
+            <h2 class="text-4xl md:text-5xl text-sea-900 leading-tight mb-6">
               {{ content.data?.about_title }}
             </h2>
 
-            <p class="text-gray-700 mb-6 py-5">
+            <p class="text-lg text-gray-700 leading-relaxed mb-8">
               {{ content.data?.about_description }}
             </p>
 
-            <button
+            <a
               [routerLink]="content.data?.about_ctaLink || '/about'"
-              class="px-6 py-2 border-2 border-red-500 text-red-500 rounded-lg hover:bg-red-500 hover:text-white transition-colors"
+              class="inline-flex items-center gap-2 font-medium text-sea-900 border-2 border-sea-900 px-7 py-3 rounded-lg hover:bg-sea-900 hover:text-white transition-colors"
             >
-              {{ content.data?.about_ctaTitle }}
-            </button>
+              {{ content.data?.about_ctaTitle || 'Learn More About Us' }}
+              <span aria-hidden="true">&rarr;</span>
+            </a>
           </div>
         </div>
       </div>
     </section>
   `,
-  styles: ``,
 })
 export class AboutComponent {
   @Input() content: { data: HomePageContent | null } = { data: null };
