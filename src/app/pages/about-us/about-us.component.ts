@@ -14,8 +14,21 @@ import { SeoService } from '../../services/seo.service';
 
     <main>
       <!-- Hero -->
-      <section class="bg-sea-950 text-white py-20 md:py-28">
-        <div class="container mx-auto px-4 grid lg:grid-cols-12 gap-12 items-center">
+      <section class="relative overflow-hidden bg-sea-950 text-white py-24 md:py-32">
+        <img
+          src="/assets/images/about-cover.webp"
+          alt=""
+          width="1536"
+          height="1024"
+          fetchpriority="high"
+          class="absolute inset-0 size-full object-cover"
+        />
+        <!-- Navy tint: darkest behind the title, lighter on the right -->
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-sea-950/95 via-sea-950/80 to-sea-950/55"
+        ></div>
+
+        <div class="relative container mx-auto px-4 grid lg:grid-cols-12 gap-12 items-center">
           <div class="lg:col-span-7">
             <h1 class="text-4xl md:text-6xl font-medium leading-[1.05] mb-6">
               {{ content.page_title }}
@@ -25,10 +38,16 @@ import { SeoService } from '../../services/seo.service';
             </p>
           </div>
 
-          <!-- Trust facts -->
-          <dl class="lg:col-span-5 grid grid-cols-2 gap-px bg-white/10 rounded-2xl overflow-hidden">
-            @for (fact of facts; track fact.label) {
-            <div class="bg-sea-950 p-6">
+          <!-- Trust facts on frosted glass so the city shows through -->
+          <dl
+            class="lg:col-span-5 grid grid-cols-2 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md overflow-hidden"
+          >
+            @for (fact of facts; track fact.label; let i = $index) {
+            <div
+              class="p-6 border-white/15"
+              [class.border-l]="i % 2 === 1"
+              [class.border-t]="i >= 2"
+            >
               <dt class="text-sm text-white/60 mb-1">{{ fact.label }}</dt>
               <dd class="text-lg font-medium">{{ fact.value }}</dd>
             </div>
