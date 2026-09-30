@@ -78,7 +78,7 @@ import { HomePageContent } from '../../utils/types/directus';
             >
               {{
                 homecontent().data?.hero_title ||
-                  'Canadian Immigration Consultant in Toronto & Chennai'
+                  'Licensed Canadian Immigration Consultant'
               }}
             </h1>
             <p class="text-base md:text-lg text-white/85 mb-6 md:mb-8 max-w-md">
