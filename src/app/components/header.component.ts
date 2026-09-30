@@ -102,7 +102,7 @@ export interface MenuResponse {
 
             <!-- First level dropdown - Service Categories -->
             <ul
-              class="primary-dropdown absolute left-1/2 -translate-x-1/2 bg-white border-t border-fire-500 shadow-lg rounded-lg mt-2 py-2 w-[250px] z-10"
+              class="primary-dropdown absolute left-1/2 -translate-x-1/2 bg-white border border-gray-200 shadow-xl rounded-xl mt-2 py-2 w-[250px] z-10"
             >
               @for(subItem of item.sub_menu; track $index) {
               <li class="dropdown-item relative">
@@ -129,7 +129,7 @@ export interface MenuResponse {
 
                 <!-- Second level dropdown - Services within Category -->
                 <ul
-                  class="secondary-dropdown absolute left-full top-0 bg-white shadow-lg rounded-lg py-2 w-[280px] z-20"
+                  class="secondary-dropdown absolute left-full top-0 bg-white border border-gray-200 shadow-xl rounded-xl py-2 w-[280px] z-20"
                 >
                   @for(subSubItem of subItem.sub_menu; track $index) {
                   <li>
