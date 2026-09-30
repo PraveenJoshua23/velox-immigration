@@ -1,76 +1,67 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input, signal } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HomePageContent } from '../utils/types/directus';
-
-interface ProcessStep {
-  icon: string;
-  title: string;
-  description: string;
-}
 
 @Component({
   selector: 'app-process-steps',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [RouterModule],
   template: `
-    <section class="py-20 bg-gray-50">
-      <div class="container mx-auto px-4">
+    <section class="py-20 md:py-28 bg-sea-950 text-white">
+      <div class="container mx-auto px-4 max-w-6xl">
         <!-- Section Title -->
-        <div class="text-center mb-16">
-          <div
-            class="text-black flex font-medium mb-3 items-center justify-center space-x-1.5"
-          >
-            <img src="assets/images/plane.svg" class="pb-1" />
-            <h2 class="text-3xl font-medium">
-              Our <span class="font-bold">Process</span> in 3 Simple Steps
-            </h2>
-          </div>
+        <div class="flex items-center gap-2 mb-14 md:mb-20">
+          <img src="assets/images/plane.svg" class="w-6 h-6" alt="" />
+          <h2 class="text-3xl md:text-5xl font-medium">
+            {{ content.data?.our_process_title || 'Our Process in 3 Simple Steps' }}
+          </h2>
         </div>
 
-        <!-- Timeline Process Steps -->
-        <div class="max-w-6xl mx-auto">
-          <div class="relative">
-            <!-- Horizontal Timeline Line -->
+        <!-- Timeline: vertical line on the left on mobile, horizontal across the top from md -->
+        <ol
+          class="relative ml-2 border-l border-white/15 space-y-12 md:ml-0 md:border-l-0 md:space-y-0 md:grid md:grid-cols-3 md:gap-10"
+        >
+          @for (step of content.data?.our_process_steps || []; track step.title;
+          let i = $index, last = $last) {
+          <li class="reveal relative pl-8 md:pl-0">
+            <!-- Dot; on md+ the line to the next step runs through the column gap -->
             <div
-              class="hidden md:block absolute top-[15rem] left-0 right-0 h-1 bg-gray-300 z-0"
-            ></div>
-
-            <!-- Process Steps -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-              @for (step of content.data?.our_process_steps || []; track
-              step.title) {
-              <div class="flex flex-col items-center">
-                <!-- Step Number Circle -->
-                <div
-                  class="w-[3.3rem] h-16 rounded-full bg-red-600 flex items-center justify-center text-white text-2xl font-bold mb-6"
-                >
-                  {{ content.data?.our_process_steps.indexOf(step) + 1 }}
-                </div>
-
-                <!-- Step Content Card -->
-                <div
-                  class="bg-white p-8 rounded-lg shadow-md text-center h-full w-full"
-                >
-                  <h3 class="text-xl font-semibold text-red-600 mb-4">
-                    {{ step.title }}
-                  </h3>
-                  <p class="text-gray-700">{{ step.description }}</p>
-                </div>
-              </div>
+              class="absolute -left-[9px] top-1 md:static md:flex md:items-center md:mb-10"
+              [class.md:-mr-10]="!last"
+            >
+              <span
+                class="block size-4 shrink-0 rounded-full bg-fire-500 ring-4 ring-fire-500/25"
+              ></span>
+              @if (!last) {
+              <span class="hidden md:block flex-1 h-px bg-white/20 ml-4"></span>
               }
             </div>
-          </div>
 
-          <!-- CTA Button -->
-          <!-- <div class="text-center mt-16">
-            <button
-              routerLink="/contact"
-              class="bg-red-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-red-700 transition-colors shadow-md"
+            <span
+              class="block font-spartan text-6xl md:text-7xl font-medium leading-none text-white/15 mb-4"
+              aria-hidden="true"
             >
-              Start Your Application Today
-            </button>
-          </div> -->
+              {{ (i + 1).toString().padStart(2, '0') }}
+            </span>
+            <h3 class="text-2xl font-medium mb-3">{{ step.title }}</h3>
+            <p class="text-white/75 leading-relaxed">{{ step.description }}</p>
+          </li>
+          }
+        </ol>
+
+        <!-- Closing CTA -->
+        <div
+          class="mt-16 md:mt-20 pt-10 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6"
+        >
+          <p class="text-xl md:text-2xl font-spartan">
+            Ready to take the first step?
+          </p>
+          <a
+            routerLink="/book-your-appointment"
+            class="bg-fire-600 text-white font-medium text-center px-8 py-3.5 rounded-lg hover:bg-fire-700 transition-colors"
+          >
+            Book a Consultation
+          </a>
         </div>
       </div>
     </section>
@@ -83,24 +74,4 @@ interface ProcessStep {
 })
 export class ProcessStepsComponent {
   @Input() content: { data: HomePageContent | null } = { data: null };
-  // processSteps = signal<ProcessStep[]>([
-  //   {
-  //     icon: 'assessment',
-  //     title: 'Initial Assessment',
-  //     description:
-  //       'The first step in your immigration journey is a preliminary assessment where we take the time to understand your goals and review your initial eligibility. This ensures that you are on the right path before proceeding further.',
-  //   },
-  //   {
-  //     icon: 'consultation',
-  //     title: 'Personalized Consultation',
-  //     description:
-  //       'A consultation meeting with our licensed RCIC expert provides you with in-depth insights and tailored recommendations. We discuss your immigration options, answer your questions, and develop a strategic plan to achieve your goals.',
-  //   },
-  //   {
-  //     icon: 'application',
-  //     title: 'Application Preparation & Submission',
-  //     description:
-  //       'Once your pathway is determined, we move forward with completing and submitting your application. Our team ensures that all documentation is accurate, complete, and aligned with immigration requirements for a seamless process.',
-  //   },
-  // ]);
 }
