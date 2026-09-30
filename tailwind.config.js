@@ -35,7 +35,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        lexend: ["Lexend", "sans-serif"],
+        body: ['"Source Sans 3"', "sans-serif"],
         spartan: ["League Spartan", "sans-serif"],
       },
     },

@@ -68,7 +68,7 @@ import { HomePageContent } from '../../utils/types/directus';
                 }}
               </h2>
               <p
-                class="text-sm md:text-base text-white mb-6 md:mb-8 font-spartan font-light"
+                class="text-sm md:text-base text-white mb-6 md:mb-8"
               >
                 {{
                   homecontent().data?.hero_description ||
@@ -76,7 +76,7 @@ import { HomePageContent } from '../../utils/types/directus';
                 }}
               </p>
               <p
-                class="text-sm md:text-base text-white italic mb-6 md:mb-8 font-spartan font-light"
+                class="text-sm md:text-base text-white italic mb-6 md:mb-8"
               >
                 {{
                   homecontent().data?.hero_caption ||
