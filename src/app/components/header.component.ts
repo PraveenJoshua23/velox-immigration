@@ -136,7 +136,7 @@ export interface MenuResponse {
           <button
             *ngIf="ctaButton()"
             [routerLink]="ctaButton()?.url"
-            class="hidden lg:block bg-fire-600 text-white text-sm px-6 py-3 ml-2 rounded-lg transition-colors hover:bg-fire-700"
+            class="hidden lg:block bg-fire-600 text-white text-sm font-medium px-6 py-3 ml-2 rounded-lg transition-colors hover:bg-fire-700"
           >
             {{ ctaButton()?.label }}
           </button>
@@ -268,7 +268,7 @@ export interface MenuResponse {
               *ngIf="ctaButton()"
               [routerLink]="ctaButton()?.url"
               (click)="closeMenu()"
-              class="mt-6 w-full bg-fire-600 text-white px-6 py-3 rounded-lg transition-colors hover:bg-fire-700 text-center"
+              class="mt-6 w-full bg-fire-600 text-white font-medium px-6 py-3 rounded-lg transition-colors hover:bg-fire-700 text-center"
             >
               {{ ctaButton()?.label }}
             </button>

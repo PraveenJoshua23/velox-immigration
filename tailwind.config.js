@@ -35,7 +35,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        body: ['"Source Sans 3"', "sans-serif"],
+        body: ["Roboto", "sans-serif"],
         spartan: ["League Spartan", "sans-serif"],
       },
     },

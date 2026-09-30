@@ -54,7 +54,7 @@ interface Reason {
         <div class="text-center">
           <button
             [routerLink]="content.data?.why_choose_cta_link || '/book-your-appointment'"
-            class="bg-fire-600 text-white px-8 py-3 rounded-lg hover:bg-fire-700 transition-colors inline-flex items-center gap-2"
+            class="bg-fire-600 text-white font-medium px-8 py-3 rounded-lg hover:bg-fire-700 transition-colors inline-flex items-center gap-2"
           >
             {{ content.data?.why_choose_cta_text || 'Book a Consultation' }}
           </button>
