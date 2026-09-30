@@ -265,19 +265,25 @@ import { HomePageContent } from '../../utils/types/directus';
             {{ scenarios.title }}
           </h2>
         </div>
-        <ul class="grid md:grid-cols-2 gap-5">
+        <!-- Editorial list: a rule above each item, no boxes -->
+        <ol class="grid md:grid-cols-2 gap-x-12">
           @for (item of scenarios.items; track $index) {
-          <li class="rounded-2xl bg-gray-50 border-l-4 border-fire-600 p-6 md:p-7">
-            @if (item.title) {
-            <h3 class="text-lg font-medium text-sea-900 mb-2">{{ item.title }}</h3>
-            } @if (item.html) {
-            <app-safe-html [htmlContent]="item.html" containerClass="text-gray-700 leading-relaxed" />
-            } @else {
-            <p class="text-gray-700 leading-relaxed">{{ item.text }}</p>
-            }
+          <li class="flex gap-5 border-t border-gray-200 py-6">
+            <span class="w-7 shrink-0 font-spartan text-lg font-medium text-fire-600 leading-7">
+              {{ pad($index + 1) }}
+            </span>
+            <div>
+              @if (item.title) {
+              <h3 class="text-lg font-medium text-sea-900 mb-1">{{ item.title }}</h3>
+              } @if (item.html) {
+              <app-safe-html [htmlContent]="item.html" containerClass="text-gray-700 leading-7" />
+              } @else {
+              <p class="text-gray-700 leading-7" [class.text-lg]="!item.title">{{ item.text }}</p>
+              }
+            </div>
           </li>
           }
-        </ul>
+        </ol>
         } @else {
         <div class="max-w-3xl">
           <ng-container
