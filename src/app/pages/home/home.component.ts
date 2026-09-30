@@ -43,12 +43,12 @@ import { HomePageContent } from '../../utils/types/directus';
     NgOptimizedImage,
   ],
   template: `
-    <app-header />
+    <app-header [overlay]="true" />
 
     <main>
       <!-- Hero Section -->
-      <!-- Fills the screen below the header (its spacer is h-16) -->
-      <section class="relative h-[calc(100svh-4rem)] min-h-[600px] bg-black overflow-hidden">
+      <!-- Full screen; the header floats over it (overlay) -->
+      <section class="relative h-svh min-h-[640px] bg-black overflow-hidden">
         <img
           ngSrc="/assets/images/new-hero.webp"
           alt="Couple with a suitcase walking along the Toronto waterfront at sunset"
@@ -62,7 +62,7 @@ import { HomePageContent } from '../../utils/types/directus';
         ></div>
 
         <div
-          class="relative z-10 container mx-auto h-full px-6 md:px-10 pt-12 pb-8 md:pb-12 flex flex-col justify-end lg:justify-center"
+          class="relative z-10 container mx-auto h-full px-6 md:px-10 pt-24 pb-8 md:pb-12 flex flex-col justify-end lg:justify-center"
         >
           <div class="hero-content max-w-xl text-white">
             <p

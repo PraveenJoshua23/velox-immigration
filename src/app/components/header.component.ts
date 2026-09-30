@@ -1,4 +1,14 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import {
+  afterNextRender,
+  Component,
+  computed,
+  DestroyRef,
+  inject,
+  input,
+  NgZone,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { DirectusService } from '../services/directus.service';
@@ -28,17 +38,28 @@ export interface MenuResponse {
   imports: [CommonModule, RouterModule],
   providers: [DirectusService],
   template: `
-    <header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+    <!-- data-transparent drives the white-on-image styles via group-data-[transparent]: -->
+    <header
+      class="group fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow] duration-300"
+      [class]="
+        solid()
+          ? 'bg-white/95 backdrop-blur shadow-sm'
+          : 'bg-gradient-to-b from-black/60 to-transparent'
+      "
+      [attr.data-transparent]="solid() ? null : ''"
+    >
       <nav
-        class="container mx-auto px-4 py-4 flex justify-between items-center"
+        class="container mx-auto px-4 py-3 flex justify-between items-center"
       >
         <!-- Logo -->
         <div class="flex items-center cursor-pointer">
           <img
             routerLink="/"
-            src="/assets/images/logo.svg"
+            [src]="
+              solid() ? '/assets/images/logo.svg' : '/assets/images/logo-white.svg'
+            "
             alt="Velox Immigration"
-            class="h-14"
+            class="h-12"
           />
         </div>
 
@@ -50,7 +71,7 @@ export interface MenuResponse {
             [routerLink]="item.url"
             routerLinkActive="text-fire-600"
             [routerLinkActiveOptions]="{ exact: item.url === '/' }"
-            class="text-gray-600 text-sm hover:text-fire-600 transition-colors"
+            class="text-gray-600 text-sm hover:text-fire-600 transition-colors group-data-[transparent]:text-white group-data-[transparent]:hover:text-fire-300"
           >
             {{ item.label }}
           </a>
@@ -58,7 +79,7 @@ export interface MenuResponse {
           <!-- Services Dropdown -->
           <div class="services-dropdown relative">
             <a
-              class="text-gray-600 text-sm hover:text-fire-600 transition-colors cursor-pointer flex items-center gap-1"
+              class="text-gray-600 text-sm hover:text-fire-600 transition-colors cursor-pointer flex items-center gap-1 group-data-[transparent]:text-white group-data-[transparent]:hover:text-fire-300"
             >
               {{ item.label }}
               <svg
@@ -146,7 +167,8 @@ export interface MenuResponse {
         <div class="lg:hidden">
           <button
             (click)="toggleMenu()"
-            class="text-gray-600 hover:text-fire-600 focus:outline-none p-2"
+            class="text-gray-600 hover:text-fire-600 focus:outline-none p-2 group-data-[transparent]:text-white group-data-[transparent]:hover:text-fire-300"
+            aria-label="Toggle menu"
           >
             <svg
               class="w-8 h-8"
@@ -177,7 +199,7 @@ export interface MenuResponse {
       <div
         *ngIf="isMenuOpen()"
         class="lg:hidden fixed inset-0 bg-white z-50 overflow-y-auto"
-        style="top: 65px;"
+        style="top: 72px;"
       >
         <div class="container mx-auto px-4 py-6">
           <!-- Main Navigation Links -->
@@ -276,7 +298,10 @@ export interface MenuResponse {
         </div>
       </div>
     </header>
-    <div class="h-16"></div>
+    <!-- Spacer for the fixed header; overlay pages let content run underneath -->
+    @if (!overlay()) {
+    <div class="h-[72px]"></div>
+    }
   `,
   styles: [
     `
@@ -339,12 +364,37 @@ export interface MenuResponse {
   ],
 })
 export class HeaderComponent implements OnInit {
+  /** Transparent over a full-screen hero until the user scrolls past it. */
+  overlay = input(false);
+  private pastHero = signal(false);
+  solid = computed(
+    () => !this.overlay() || this.pastHero() || this.isMenuOpen()
+  );
   isMenuOpen = signal(false);
   menuData = signal<MenuData | null>(null);
   menuItems = signal<MenuItem[]>([]);
   ctaButton = signal<MenuItem | null>(null);
   directusService = inject(DirectusService);
   expandedCategories: string[] = [];
+
+  constructor() {
+    const zone = inject(NgZone);
+    const destroyRef = inject(DestroyRef);
+    afterNextRender(() => {
+      // Listen outside the zone; only re-enter when the state actually flips.
+      const onScroll = () => {
+        const past = window.scrollY > window.innerHeight - 72;
+        if (past !== this.pastHero()) zone.run(() => this.pastHero.set(past));
+      };
+      onScroll();
+      zone.runOutsideAngular(() =>
+        window.addEventListener('scroll', onScroll, { passive: true })
+      );
+      destroyRef.onDestroy(() =>
+        window.removeEventListener('scroll', onScroll)
+      );
+    });
+  }
 
   ngOnInit() {
     this.getMenuFromBackend();
