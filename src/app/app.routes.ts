@@ -3,24 +3,12 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutPageComponent } from './pages/about-us/about-us.component';
 import { ServicesLayoutComponent } from './layout/service-layout.component';
+import { ServicePageComponent } from './pages/services/service-page.component';
+import { ServiceCategoryComponent } from './pages/services/service-category.component';
 import { PostPageComponent } from './pages/post/post-page.component';
-import { StudyComponent } from './pages/services/study.component';
-import { WorkComponent } from './pages/services/work.component';
-import { VisitorVisaComponent } from './pages/services/visitor-visa.component';
-import { LMIAComponent } from './pages/services/lmia.component';
-import { ProvincialNomineeComponent } from './pages/services/provincial-nominee.component';
-import { ExpressEntryComponent } from './pages/services/express-entry.component';
-import { AtlanticImmigrationComponent } from './pages/services/atlantic-immigration.component';
-import { BusinessImmigrationComponent } from './pages/services/business-immigration.component';
 import { ContactFormComponent } from './pages/contact/contact.component';
-import { FamilySponsorshipComponent } from './pages/services/family-sponsorship.component';
-import { AppealsRefugeeComponent } from './pages/services/appeals.component';
-import { BookYourAppointmentComponent } from './pages/book-your-appointment/book-your-appointment.component';
+import { ConsultationAgreementComponent } from './pages/consultation-agreement/consultation-agreement.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { OpenWorkPermitComponent } from './pages/services/open-work-permit.component';
-import { PRCitizenshipComponent } from './pages/services/pr-citizenship.component';
-import { ReviewServicesComponent } from './pages/services/review-services.component';
-import { SopDliOpinionComponent } from './pages/services/sop-dli-opinion.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { DynamicResolverService } from './resolvers/dynamic-resolver.service';
 import { postResolver } from './resolvers/post-resolver.service';
@@ -40,7 +28,6 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    title: 'Velox Immigration | Trusted RCIC-Led Canadian Immigration Services',
   },
   {
     path: 'about',
@@ -72,10 +59,14 @@ export const routes: Routes = [
     path: 'services',
     component: ServicesLayoutComponent,
     children: [
+      { path: '', pathMatch: 'full', component: ServiceCategoryComponent },
       {
         path: 'study',
-        children: [{ path: 'study-in-canada', component: StudyComponent }],
-        title: 'Study in Canada | Velox Immigration',
+        children: [
+          // One service in this category: go straight to it
+          { path: '', pathMatch: 'full', redirectTo: 'study-in-canada' },
+          { path: 'study-in-canada', component: ServicePageComponent },
+        ],
         resolve: {
           data: DynamicResolverService,
         },
@@ -86,10 +77,10 @@ export const routes: Routes = [
       {
         path: 'work',
         children: [
+        { path: '', pathMatch: 'full', component: ServiceCategoryComponent },
           {
             path: 'open-pgwp-permits',
-            component: OpenWorkPermitComponent,
-            title: 'Open Work Permit | Velox Immigration',
+            component: ServicePageComponent,
             resolve: {
               data: DynamicResolverService,
             },
@@ -99,8 +90,7 @@ export const routes: Routes = [
           },
           {
             path: 'lmia-employer-permits',
-            component: LMIAComponent,
-            title: 'LMIA Employer Permits | Velox Immigration',
+            component: ServicePageComponent,
             resolve: {
               data: DynamicResolverService,
             },
@@ -110,7 +100,7 @@ export const routes: Routes = [
           },
           {
             path: 'extensions-coop',
-            component: WorkComponent,
+            component: ServicePageComponent,
             resolve: {
               data: DynamicResolverService,
             },
@@ -123,107 +113,102 @@ export const routes: Routes = [
       {
         path: 'visit',
         children: [
+          { path: '', pathMatch: 'full', redirectTo: 'visitor-visas' },
           {
             path: 'visitor-visas',
-            component: VisitorVisaComponent,
+            component: ServicePageComponent,
             resolve: {
               data: DynamicResolverService,
             },
             data: {
               collection: 'visitor_visa',
             },
-            title: 'Visitor Visas to Canada | Velox Immigration',
           },
         ],
       },
       {
         path: 'immigrate',
         children: [
+        { path: '', pathMatch: 'full', component: ServiceCategoryComponent },
           {
             path: 'express-entry',
-            component: ExpressEntryComponent,
+            component: ServicePageComponent,
             resolve: {
               data: DynamicResolverService,
             },
             data: {
               collection: 'express_entry',
             },
-            title: 'Express Entry | Velox Immigration',
           },
           {
             path: 'provincial-nominee',
-            component: ProvincialNomineeComponent,
+            component: ServicePageComponent,
             resolve: {
               data: DynamicResolverService,
             },
             data: {
               collection: 'provincial_nominee_program',
             },
-            title: 'Provincial Nominee Program | Velox Immigration',
           },
           {
             path: 'atlantic-immigration',
-            component: AtlanticImmigrationComponent,
+            component: ServicePageComponent,
             resolve: {
               data: DynamicResolverService,
             },
             data: {
               collection: 'atlantic_immigration',
             },
-            title: 'Atlantic Immigration | Velox Immigration',
           },
           {
             path: 'family-sponsorship',
-            component: FamilySponsorshipComponent,
+            component: ServicePageComponent,
             resolve: {
               data: DynamicResolverService,
             },
             data: {
               collection: 'family_sponsorship',
             },
-            title: 'Family Sponsorship | Velox Immigration',
           },
           {
             path: 'business-immigration',
-            component: BusinessImmigrationComponent,
+            component: ServicePageComponent,
             resolve: {
               data: DynamicResolverService,
             },
             data: {
               collection: 'business_immigration',
             },
-            title: 'Business Immigration | Velox Immigration',
           },
         ],
       },
       {
         path: 'other',
         children: [
+        { path: '', pathMatch: 'full', component: ServiceCategoryComponent },
           {
             path: 'pr-citizenship',
-            component: PRCitizenshipComponent,
+            component: ServicePageComponent,
             resolve: {
               data: DynamicResolverService,
             },
             data: {
               collection: 'pr_card_citizenship',
             },
-            title: 'Permanent Residency & Citizenship | Velox Immigration',
           },
           {
             path: 'appeals-refugee',
-            component: AppealsRefugeeComponent,
+            component: ServicePageComponent,
             resolve: {
               data: DynamicResolverService,
             },
             data: {
               collection: 'appeals_refugees_hc_cases',
             },
-            title: 'Refugee Claims & Appeals | Velox Immigration',
           },
           {
             path: 'review-services',
-            component: ReviewServicesComponent,
+            component: ServicePageComponent,
             resolve: {
               data: DynamicResolverService,
             },
@@ -233,7 +218,7 @@ export const routes: Routes = [
           },
           {
             path: 'sop-dli-opinion',
-            component: SopDliOpinionComponent,
+            component: ServicePageComponent,
             resolve: {
               data: DynamicResolverService,
             },
@@ -246,9 +231,9 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'book-your-appointment',
-    component: BookYourAppointmentComponent,
-    title: 'Book a Consultation | Velox Immigration',
+    path: 'consultation-agreement',
+    component: ConsultationAgreementComponent,
+    title: 'Consultation Agreement | Velox Immigration',
     resolve: {
       data: DynamicResolverService,
     },
@@ -256,6 +241,8 @@ export const routes: Routes = [
       collection: 'book_consultation',
     },
   },
+  // Old URL, kept for bookmarks and search results
+  { path: 'book-your-appointment', redirectTo: 'consultation-agreement' },
   {
     path: 'blog',
     children: [

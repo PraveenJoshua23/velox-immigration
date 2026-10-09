@@ -3,12 +3,13 @@
     "id": 1,
     "status": "published",
     "date_updated": "2025-05-01T19:01:05.865Z",
+    "header_image": "/assets/images/services/family-hero.webp",
     "title": "Family Sponsorship",
     "subtitle": "Reunite with your loved ones in Canada through the family sponsorship program—with expert support every step of the way.",
     "intro_title": "Bring Your Family Home to Canada",
     "intro_description": "Canada's immigration system prioritizes family reunification—and the family sponsorship program allows Canadian citizens and permanent residents to sponsor their spouse, partner, children, parents, or grandparents for permanent residence. At Velox Immigration, we support you through every step of the sponsorship process, making sure it's complete, compliant, and compassionate.",
     "intro_cta_text": "Book a Sponsorship Consultation ",
-    "intro_cta_link": "/book-your-appointment",
+    "intro_cta_link": "/consultation-agreement",
     "who_we_help_title": "Who This Is For",
     "who_we_help_intro": "You may be eligible for family sponsorship if you are:",
     "who_we_help_items": [
@@ -108,6 +109,6 @@
     "banner_title": "Reunite with Your Family—Start Today",
     "banner_description": "Whether you're sponsoring your spouse, child, or parent, we'll guide you with compassion, clarity, and legal precision.",
     "banner_cta_text": "Schedule Your Family Sponsorship Consultation ",
-    "banner_cta_link": "/book-your-appointment"
+    "banner_cta_link": "/consultation-agreement"
   }
 }

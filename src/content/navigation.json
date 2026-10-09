@@ -125,8 +125,8 @@
           "visible": true
         },
         {
-          "label": "Book Consultation",
-          "url": "/book-your-appointment",
+          "label": "Book a Consultation",
+          "url": "/consultation-agreement",
           "visible": true,
           "isCta": true
         }

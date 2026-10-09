@@ -3,12 +3,13 @@
     "id": 1,
     "status": "published",
     "date_updated": null,
+    "header_image": "/assets/images/services/business-immigration-hero.webp",
     "title": "Business Immigration",
     "subtitle": "Turn your business experience into permanent residency in Canada with expert support every step of the way.",
     "intro_title": "Bring Your Ambition to Canada's Business Landscape",
     "intro_description": "Canada welcomes experienced entrepreneurs, investors, and self-employed individuals who can contribute to its economy and innovation. Velox Immigration helps you navigate federal and provincial business immigration pathways, with personalized support tailored to your business goals and immigration objectives.",
     "intro_cta_text": " Start Your Business Immigration Assessment ",
-    "intro_cta_link": "/book-your-appointment",
+    "intro_cta_link": "/consultation-agreement",
     "who_we_help_title": "Who We Help",
     "who_we_help_intro": "Our business immigration services are designed for:",
     "who_we_help_items": [
@@ -112,6 +113,6 @@
     "banner_title": "Build Your Future in Canada—Through Business",
     "banner_description": "Your business experience can be your bridge to permanent residency in Canada. Let Velox Immigration guide you through every step—strategically and professionally.",
     "banner_cta_text": "Book your consultation today ",
-    "banner_cta_link": "/book-your-appointment"
+    "banner_cta_link": "/consultation-agreement"
   }
 }

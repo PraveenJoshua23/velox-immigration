@@ -3,10 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Lexend:wght@100..900&display=swap");
 
 body {
-  @apply font-lexend;
+  @apply font-body font-light bg-white;
 }
 
 h1,
@@ -18,8 +17,7 @@ h6 {
   @apply font-spartan;
 }
 
-/* Motion utilities. CSS-only so server-rendered content is never hidden
-   before hydration; skipped entirely for reduced-motion users. */
+/* Motion utilities. Skipped entirely for reduced-motion users. */
 @keyframes fade-up {
   from {
     opacity: 0;
@@ -28,17 +26,22 @@ h6 {
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  /* In-page jumps glide; AppComponent switches this off for page-to-page navigation */
+  html {
+    scroll-behavior: smooth;
+  }
+
   /* Plays once on first paint */
   .fade-up {
     animation: fade-up 0.8s ease-out both;
   }
+}
 
-  /* Tied to scrolling into view; browsers without scroll-driven animations just show the content */
-  @supports (animation-timeline: view()) {
-    .reveal {
-      animation: fade-up linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 60%;
-    }
-  }
+/* Scroll reveal, driven by utils/reveal.ts. `backwards` fill so hover transforms still work afterwards. */
+.reveal-hidden {
+  opacity: 0;
+}
+
+.reveal-in {
+  animation: fade-up 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms) backwards;
 }

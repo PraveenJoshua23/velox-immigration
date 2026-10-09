@@ -1,269 +1,192 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit, signal } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { Component, ElementRef, inject, signal } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgTemplateOutlet } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 import { HeaderComponent } from '../../components/header.component';
 import { FooterComponent } from '../../components/footer.component';
 import { SheetsService } from '../../services/sheets.service';
-import { localServices } from '../../utils/constants/navigation';
-import { Router, ActivatedRoute } from '@angular/router';
-
-interface ServiceItem {
-  id: string;
-  label: string;
-  path: string;
-}
-
-interface ServiceCategory {
-  id: string;
-  title: string;
-  items: ServiceItem[];
-}
+import { DirectusService } from '../../services/directus.service';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-contact-form',
   standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    HeaderComponent,
-    FooterComponent,
-  ],
+  imports: [NgTemplateOutlet, ReactiveFormsModule, HeaderComponent, FooterComponent],
   template: `
     <app-header />
-    <section class="min-h-screen bg-gray-50 pb-12">
-      <!-- Hero Section -->
-      <div class="bg-sea-950 text-white py-16">
-        <div class="container mx-auto px-4 max-w-5xl">
-          <h1 class="text-4xl md:text-5xl mb-4">Contact Us</h1>
-          <p class="text-xl opacity-90 max-w-3xl">
+
+    <main>
+      <!-- Hero -->
+      <section class="relative overflow-hidden bg-sea-950 text-white pt-20 pb-36 md:pt-28 md:pb-44">
+        <img
+          src="/assets/images/about-cover.webp"
+          alt=""
+          fetchpriority="high"
+          class="absolute inset-0 size-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-sea-950/95 via-sea-950/85 to-sea-950/60"></div>
+        <div class="relative container mx-auto px-4">
+          <h1 class="text-4xl md:text-6xl font-medium leading-[1.05] mb-6">Contact us</h1>
+          <p class="text-lg md:text-xl text-white/80 max-w-2xl">
             {{ content?.page_subtitle }}
           </p>
         </div>
-      </div>
+      </section>
 
-      <!-- Main Content -->
-      <div class="container mx-auto px-4 max-w-5xl -mt-8">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="grid grid-cols-1 md:grid-cols-12">
-            <!-- Left Column - Info -->
-            <div class="md:col-span-4 bg-sea-800 text-white p-8">
-              <h3 class="text-2xl font-medium mb-6">How We Can Help</h3>
+      <!-- Details + form; the form card overlaps the hero -->
+      <section class="bg-gray-100 pb-20 md:pb-28">
+        <div class="container mx-auto px-4 grid lg:grid-cols-12 gap-8 lg:gap-12 -mt-24 md:-mt-32 relative">
+          <!-- Form -->
+          <div class="lg:col-span-7 lg:order-2 bg-white rounded-3xl shadow-xl p-6 sm:p-8 md:p-10">
+            <h2 class="text-2xl md:text-3xl text-sea-900 mb-2">Send us a message</h2>
+            <p class="text-gray-700 mb-8">
+              Tell us a little about your situation and we'll get back to you.
+            </p>
 
-              <div class="space-y-6">
-                <div>
-                  <h4 class="text-lg font-medium mb-2">Our Services</h4>
-                  <p class="text-sea-100">
-                    {{ content?.service_description }}
-                  </p>
-                </div>
-
-                <div>
-                  <h4 class="text-lg font-medium mb-2">Contact Information</h4>
-                  <div class="space-y-3 mt-4">
-                    <a
-                      [href]="'tel:' + content?.contact_no"
-                      class="flex items-center text-sea-100 hover:text-white"
-                    >
-                      <svg
-                        class="w-5 h-5 mr-3"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                        ></path>
-                      </svg>
-                      {{ content?.contact_no }}
-                    </a>
-                    <a
-                      [href]="'mailto:' + content?.contact_email"
-                      class="flex items-center text-sea-100 hover:text-white"
-                    >
-                      <svg
-                        class="w-5 h-5 mr-3"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                        ></path>
-                      </svg>
-                      {{ content?.contact_email }}
-                    </a>
-                  </div>
-                </div>
-
-                <div>
-                  <h4 class="text-lg font-medium mb-2">Why Choose Us?</h4>
-                  <ul class="space-y-2">
-                    @for (item of content?.why_choose_use_items; track $index) {
-                    <li class="flex items-start space-x-2">
-                      <svg
-                        class="w-5 h-5 text-fire-400 mr-2 mt-0.5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M5 13l4 4L19 7"
-                        ></path>
-                      </svg>
-                      <span>{{ item.description }}</span>
-                    </li>
-                    }
-                  </ul>
-                </div>
-              </div>
+            @if (submitSuccess()) {
+            <div role="status" class="rounded-2xl bg-green-50 border border-green-200 p-6 text-green-800">
+              <p class="font-medium mb-1">Thank you, your message is on its way.</p>
+              <p>We'll get back to you shortly.</p>
+              <button
+                type="button"
+                (click)="submitSuccess.set(false)"
+                class="mt-4 font-medium underline underline-offset-4"
+              >
+                Send another message
+              </button>
             </div>
+            } @else {
+            @if (submitError()) {
+            <div role="alert" class="rounded-xl bg-red-50 border border-red-200 text-red-700 px-4 py-3 mb-6">
+              {{ submitError() }}
+            </div>
+            }
 
-            <!-- Right Column - Form -->
-            <div class="md:col-span-8 p-8">
-              <h3 class="text-2xl font-medium text-sea-900 mb-6">
-                Get in Touch
-              </h3>
-
-              @if(submitSuccess()) {
-              <div
-                class="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded mb-6"
-              >
-                Thank you for contacting us! We'll get back to you shortly.
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate class="space-y-5">
+              <div class="grid sm:grid-cols-2 gap-5">
+                <ng-container *ngTemplateOutlet="field; context: { id: 'firstName', label: 'First name', type: 'text', auto: 'given-name' }" />
+                <ng-container *ngTemplateOutlet="field; context: { id: 'lastName', label: 'Last name', type: 'text', auto: 'family-name' }" />
+                <ng-container *ngTemplateOutlet="field; context: { id: 'email', label: 'Email', type: 'email', auto: 'email' }" />
+                <ng-container *ngTemplateOutlet="field; context: { id: 'phone', label: 'Phone', type: 'tel', auto: 'tel' }" />
               </div>
-              } @if(submitError()) {
-              <div
-                class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-6"
-              >
-                {{ submitError() }}
-              </div>
-              }
 
-              <form
-                [formGroup]="contactForm"
-                (ngSubmit)="onSubmit()"
-                class="space-y-5"
-              >
-                <!-- Personal Information -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1"
-                      >First Name</label
-                    >
-                    <input
-                      type="text"
-                      formControlName="firstName"
-                      class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-fire-600 focus:border-transparent"
-                    />
-                  </div>
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1"
-                      >Last Name</label
-                    >
-                    <input
-                      type="text"
-                      formControlName="lastName"
-                      class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-fire-600 focus:border-transparent"
-                    />
-                  </div>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1"
-                      >Email</label
-                    >
-                    <input
-                      type="email"
-                      formControlName="email"
-                      class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-fire-600 focus:border-transparent"
-                    />
-                  </div>
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1"
-                      >Phone</label
-                    >
-                    <input
-                      type="tel"
-                      formControlName="phone"
-                      class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-fire-600 focus:border-transparent"
-                    />
-                  </div>
-                </div>
-
-                <!-- Service Selection -->
+              <div class="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1"
-                    >Service Category</label
-                  >
+                  <label for="serviceCategory" class="block text-sm font-medium text-sea-900 mb-1.5">Service category</label>
                   <select
+                    id="serviceCategory"
                     formControlName="serviceCategory"
-                    (change)="updateServices()"
-                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-fire-600 focus:border-transparent"
+                    (change)="form.controls.specificService.setValue('')"
+                    [class]="inputClass('serviceCategory')"
+                    [attr.aria-invalid]="showError('serviceCategory')"
+                    aria-describedby="serviceCategory-error"
                   >
                     <option value="">Select a category</option>
-                    @for(category of serviceCategories(); track category.id) {
-                    <option [value]="category.title">
-                      {{ category.title }}
-                    </option>
+                    @for (group of servicesMenu; track group.label) {
+                    <option [value]="group.label">{{ group.label }}</option>
                     }
                   </select>
+                  @if (showError('serviceCategory')) {
+                  <p id="serviceCategory-error" class="mt-1.5 text-sm text-fire-700">Choose a category.</p>
+                  }
                 </div>
-
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1"
-                    >Specific Service</label
-                  >
+                  <label for="specificService" class="block text-sm font-medium text-sea-900 mb-1.5">Service</label>
                   <select
+                    id="specificService"
                     formControlName="specificService"
-                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-fire-600 focus:border-transparent"
+                    [class]="inputClass('specificService')"
+                    [attr.aria-invalid]="showError('specificService')"
+                    aria-describedby="specificService-error"
                   >
-                    <option value="">Select a service</option>
-                    @for(service of availableServices(); track service.id) {
-                    <option [value]="service.label">{{ service.label }}</option>
+                    <option value="">{{ form.value.serviceCategory ? 'Select a service' : 'Choose a category first' }}</option>
+                    @for (service of servicesIn(form.value.serviceCategory); track service) {
+                    <option [value]="service">{{ service }}</option>
                     }
                   </select>
+                  @if (showError('specificService')) {
+                  <p id="specificService-error" class="mt-1.5 text-sm text-fire-700">Choose a service.</p>
+                  }
                 </div>
+              </div>
 
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1"
-                    >Message</label
-                  >
-                  <textarea
-                    formControlName="message"
-                    rows="4"
-                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-fire-600 focus:border-transparent"
-                  ></textarea>
-                </div>
+              <div>
+                <label for="message" class="block text-sm font-medium text-sea-900 mb-1.5">
+                  Message <span class="font-normal text-gray-500">(optional)</span>
+                </label>
+                <textarea id="message" formControlName="message" rows="5" [class]="inputClass('message')"></textarea>
+              </div>
 
-                <button
-                  type="submit"
-                  [disabled]="!contactForm.valid || isSubmitting()"
-                  class="w-full bg-fire-600 text-white py-3 px-6 rounded-lg hover:bg-fire-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  <span *ngIf="!isSubmitting()">Submit</span>
-                  <span *ngIf="isSubmitting()">Submitting...</span>
-                </button>
-              </form>
-            </div>
+              <button
+                type="submit"
+                [disabled]="isSubmitting()"
+                class="w-full sm:w-auto bg-fire-600 text-white font-medium py-3.5 px-10 rounded-lg hover:bg-fire-700 transition-colors disabled:opacity-60 disabled:cursor-wait"
+              >
+                {{ isSubmitting() ? 'Sending…' : 'Send message' }}
+              </button>
+            </form>
+            }
           </div>
+
+          <!-- Contact details -->
+          <aside class="lg:col-span-5 lg:order-1 space-y-6 lg:pt-40">
+            <div class="bg-white rounded-3xl border border-gray-200 p-6 sm:p-8">
+              <h2 class="text-2xl text-sea-900 mb-6">Talk to us directly</h2>
+              <ul class="divide-y divide-gray-100">
+                @for (office of offices; track office.tel) {
+                <li class="flex items-center justify-between gap-4 py-4">
+                  <span class="text-gray-700">{{ office.city }}</span>
+                  <a [href]="'tel:' + office.tel" class="py-1 font-medium text-sea-900 hover:text-fire-600">{{ office.phone }}</a>
+                </li>
+                } @if (content?.contact_email) {
+                <li class="flex items-center justify-between gap-4 py-4">
+                  <span class="text-gray-700">Email</span>
+                  <a [href]="'mailto:' + content.contact_email" class="py-1 font-medium text-sea-900 hover:text-fire-600 break-all">{{ content.contact_email }}</a>
+                </li>
+                }
+              </ul>
+            </div>
+
+            <div class="bg-sea-950 text-white rounded-3xl p-6 sm:p-8">
+              <h2 class="text-2xl mb-5">Why clients choose us</h2>
+              <ul class="space-y-3">
+                @for (item of content?.why_choose_use_items; track $index) {
+                <li class="flex gap-3">
+                  <svg class="size-6 shrink-0 text-fire-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" />
+                  </svg>
+                  {{ item.description }}
+                </li>
+                }
+              </ul>
+              <p class="mt-6 pt-6 border-t border-white/10 text-sm text-white/70">
+                Licensed RCIC: Anitha Gabriel · Membership ID R1034239
+              </p>
+            </div>
+          </aside>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
+
     <app-footer [hideContactBanner]="true" />
+
+    <ng-template #field let-id="id" let-label="label" let-type="type" let-auto="auto">
+      <div [formGroup]="form">
+        <label [for]="id" class="block text-sm font-medium text-sea-900 mb-1.5">{{ label }}</label>
+        <input
+          [id]="id"
+          [type]="type"
+          [formControlName]="id"
+          [attr.autocomplete]="auto"
+          [class]="inputClass(id)"
+          [attr.aria-invalid]="showError(id)"
+          [attr.aria-describedby]="id + '-error'"
+        />
+        @if (showError(id)) {
+        <p [id]="id + '-error'" class="mt-1.5 text-sm text-fire-700">{{ errorFor(id, label) }}</p>
+        }
+      </div>
+    </ng-template>
   `,
   styles: [
     `
@@ -273,78 +196,97 @@ interface ServiceCategory {
     `,
   ],
 })
-export class ContactFormComponent implements OnInit {
-  contactForm: FormGroup;
-  content: any;
+export class ContactFormComponent {
+  private sheetsService = inject(SheetsService);
+  private host: ElementRef<HTMLElement> = inject(ElementRef);
 
-  // Using the new services structure
-  serviceCategories = signal<ServiceCategory[]>([]);
-  availableServices = signal<ServiceItem[]>([]);
+  content: any;
+  servicesMenu = inject(DirectusService).getServicesMenu();
+  offices = [
+    { city: 'Toronto, Canada', phone: '+1 416-662-0652', tel: '+14166620652' },
+    { city: 'Chennai, India', phone: '+91 77088 53882', tel: '+917708853882' },
+  ];
+
+  form = inject(FormBuilder).nonNullable.group({
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    phone: ['', Validators.required],
+    serviceCategory: ['', Validators.required],
+    specificService: ['', Validators.required],
+    message: [''],
+  });
+
   isSubmitting = signal(false);
   submitError = signal<string | null>(null);
   submitSuccess = signal(false);
-  localServices = signal([...localServices]);
+  private submitted = signal(false);
 
-  constructor(
-    private fb: FormBuilder,
-    private sheetsService: SheetsService,
-    private activatedRoute: ActivatedRoute,
-    private route: Router
-  ) {
-    this.activatedRoute.data.subscribe((response: any) => {
-      this.content = response.data.data[0];
+  constructor() {
+    inject(ActivatedRoute).data.subscribe((response: any) => {
+      const data = response.data.data;
+      this.content = Array.isArray(data) ? data[0] : data;
     });
-    this.contactForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required],
-      serviceCategory: ['', Validators.required],
-      specificService: ['', Validators.required],
-      message: [''],
+    inject(SeoService).setAllSeoData({
+      title: 'Contact Us | Velox Immigration',
+      description:
+        'Contact Velox Immigration in Toronto (+1 416-662-0652) or Chennai (+91 77088 53882). Send us a message and a licensed RCIC will get back to you.',
     });
   }
 
-  ngOnInit() {
-    // Initialize with the new structure
-    this.serviceCategories.set(localServices);
+  /** Service names under a menu category (the category itself if it has no sub-menu). */
+  servicesIn(category = ''): string[] {
+    const group = this.servicesMenu.find((g) => g.label === category);
+    if (!group) return [];
+    const subs = (group.sub_menu ?? []).filter((s: any) => s.visible);
+    return subs.length ? subs.map((s: any) => s.label) : [group.label];
   }
 
-  updateServices() {
-    const selectedCategory = this.contactForm.get('serviceCategory')?.value;
-    const category = this.serviceCategories().find(
-      (cat) => cat.title === selectedCategory
+  showError(id: string): boolean {
+    const c = this.form.get(id)!;
+    return c.invalid && (c.touched || this.submitted());
+  }
+
+  errorFor(id: string, label: string): string {
+    if (this.form.get(id)!.hasError('email')) return 'Enter a valid email address.';
+    const noun = { email: 'email address', phone: 'phone number' }[id] ?? label.toLowerCase();
+    return `Enter your ${noun}.`;
+  }
+
+  inputClass(id: string): string {
+    return (
+      'w-full rounded-lg border px-4 py-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-fire-600 focus:border-transparent ' +
+      (this.showError(id) ? 'border-fire-600' : 'border-gray-300')
     );
-    this.availableServices.set(category?.items || []);
-    this.contactForm.patchValue({ specificService: '' });
   }
 
   onSubmit() {
-    if (this.contactForm.valid) {
-      this.isSubmitting.set(true);
-      this.submitError.set(null);
-      this.submitSuccess.set(false);
+    this.submitted.set(true);
+    if (this.form.invalid) {
+      // After the error states render, send the user to the first field that needs fixing
+      setTimeout(() =>
+        this.host.nativeElement.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus()
+      );
+      return;
+    }
 
-      // Add timestamp to the form data for the sheet
-      const formData = {
-        ...this.contactForm.value,
-        submissionDate: new Date().toISOString(),
-      };
-
-      this.sheetsService.submitFormData(formData).subscribe({
+    this.isSubmitting.set(true);
+    this.submitError.set(null);
+    this.sheetsService
+      .submitFormData({ ...this.form.getRawValue(), submissionDate: new Date().toISOString() })
+      .subscribe({
         next: () => {
           this.submitSuccess.set(true);
-          this.contactForm.reset();
+          this.submitted.set(false);
+          this.form.reset();
           this.isSubmitting.set(false);
         },
-        error: (error: any) => {
-          console.error('Submission error:', error);
+        error: () => {
           this.submitError.set(
-            'There was an error submitting your form. Please try again.'
+            'Something went wrong sending your message. Please try again, or call us directly.'
           );
           this.isSubmitting.set(false);
         },
       });
-    }
   }
 }

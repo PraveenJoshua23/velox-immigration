@@ -1,111 +1,93 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, DestroyRef, inject } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../../components/header.component';
 import { FooterComponent } from '../../components/footer.component';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-not-found',
   standalone: true,
-  imports: [CommonModule, RouterModule, HeaderComponent, FooterComponent],
+  imports: [RouterModule, HeaderComponent, FooterComponent],
   template: `
-    <!-- Header -->
     <app-header />
 
-    <main
-      class="min-h-screen bg-gray-50 flex items-center justify-center py-20"
-    >
-      <div class="container mx-auto px-4">
-        <div class="max-w-3xl mx-auto text-center">
-          <!-- 404 Icon/Image -->
-          <div class="mb-8">
-            <div class="text-fire-600 text-9xl font-bold">404</div>
-          </div>
-
-          <!-- Error Message -->
-          <h1 class="text-4xl font-bold text-sea-900 mb-4">Page Not Found</h1>
-          <p class="text-lg text-gray-600 mb-10">
-            The page you are looking for doesn't exist or has been moved.
+    <main class="bg-gray-100">
+      <section class="container mx-auto px-4 py-24 md:py-32 grid lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7">
+          <p class="font-spartan text-8xl md:text-9xl font-medium leading-none text-sea-900/15 mb-6" aria-hidden="true">
+            404
           </p>
-
-          <!-- CTA Buttons -->
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
+          <h1 class="text-4xl md:text-5xl font-medium text-sea-900 leading-tight mb-5">
+            We couldn't find that page
+          </h1>
+          <p class="text-lg text-gray-700 leading-relaxed max-w-xl mb-10">
+            The link may be old or the page may have moved. Try one of these pages,
+            or head back home.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
               routerLink="/"
-              class="px-8 py-3 bg-fire-600 text-white font-medium rounded-lg hover:bg-fire-700 transition-colors"
+              class="text-center bg-fire-600 text-white font-medium px-8 py-3.5 rounded-lg hover:bg-fire-700 transition-colors"
             >
-              Return Home
-            </button>
-            <button
-              routerLink="/contact"
-              class="px-8 py-3 bg-white border border-fire-600 text-fire-600 font-medium rounded-lg hover:bg-fire-50 transition-colors"
+              Go to home page
+            </a>
+            <a
+              routerLink="/services"
+              class="text-center border-2 border-sea-900 text-sea-900 font-medium px-8 py-3 rounded-lg hover:bg-sea-900 hover:text-white transition-colors"
             >
-              Contact Us
-            </button>
-          </div>
-
-          <!-- Quick Links Section -->
-          <div class="mt-16">
-            <h2 class="text-xl font-semibold mb-6 text-sea-900">
-              Popular Pages
-            </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              <a
-                routerLink="/services/permanent-residency/express-entry"
-                class="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                Express Entry
-              </a>
-              <a
-                routerLink="/services/temporary-services/study"
-                class="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                Study Permits
-              </a>
-              <a
-                routerLink="/services/temporary-services/work"
-                class="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                Work Permits
-              </a>
-              <a
-                routerLink="/about"
-                class="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                About Us
-              </a>
-              <a
-                routerLink="/services/permanent-residency/provincial-nominee"
-                class="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                Provincial Nominee
-              </a>
-              <a
-                routerLink="/contact"
-                class="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                Contact Us
-              </a>
-            </div>
+              Browse services
+            </a>
           </div>
         </div>
-      </div>
+
+        <nav aria-label="Popular pages" class="lg:col-span-5 bg-white rounded-3xl border border-gray-200 p-6 sm:p-8">
+          <h2 class="text-xl font-medium text-sea-900 mb-4">Popular pages</h2>
+          <ul class="divide-y divide-gray-100">
+            @for (link of links; track link.url) {
+            <li>
+              <a
+                [routerLink]="link.url"
+                class="flex items-center justify-between py-3.5 text-gray-800 hover:text-fire-600"
+              >
+                {{ link.label }}
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </li>
+            }
+          </ul>
+        </nav>
+      </section>
     </main>
 
-    <!-- Footer -->
-    <app-footer [hideContactBanner]="true" />
+    <app-footer />
   `,
   styles: [
     `
       :host {
         display: block;
       }
-
-      .text-9xl {
-        font-size: 9rem;
-        line-height: 1;
-      }
     `,
   ],
 })
-export class NotFoundComponent {}
+export class NotFoundComponent {
+  links = [
+    { label: 'Express Entry', url: '/services/immigrate/express-entry' },
+    { label: 'Study in Canada', url: '/services/study/study-in-canada' },
+    { label: 'Work in Canada', url: '/services/work' },
+    { label: 'Family Sponsorship', url: '/services/immigrate/family-sponsorship' },
+    { label: 'About us', url: '/about' },
+    { label: 'Contact us', url: '/contact' },
+  ];
+
+  constructor() {
+    inject(SeoService).setAllSeoData({
+      title: 'Page not found | Velox Immigration',
+      description: 'The page you were looking for could not be found.',
+    });
+    // Keep the 404 out of search results; remove the tag again when leaving the page
+    const meta = inject(Meta);
+    meta.updateTag({ name: 'robots', content: 'noindex' });
+    inject(DestroyRef).onDestroy(() => meta.removeTag('name="robots"'));
+  }
+}

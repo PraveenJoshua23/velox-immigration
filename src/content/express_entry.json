@@ -3,12 +3,13 @@
     "id": 1,
     "status": "published",
     "date_updated": "2025-05-01T17:29:11.128Z",
+    "header_image": "/assets/images/services/express-entry-hero.webp",
     "title": "Express Entry Programs",
     "subtitle": "Your fast-track pathway to permanent residency in Canada—built for skilled professionals like you.",
     "intro_title": "Move to Canada as a Skilled Worker",
     "intro_description": "Canada's Express Entry system is one of the fastest and most competitive immigration pathways for skilled workers. Whether you're applying under the Canadian Experience Class (CEC), Federal Skilled Worker Program (FSW), or Federal Skilled Trades Program (FST), Velox Immigration helps you navigate every stage—from profile creation to receiving your permanent resident visa.",
     "intro_cta_text": "Book Consultation to Check Your Eligibility ",
-    "intro_cta_link": "/book-your-appointment",
+    "intro_cta_link": "/consultation-agreement",
     "who_we_help_title": "Who This Is For",
     "who_we_help_intro": "You may qualify under Express Entry if you are:",
     "who_we_help_items": [
@@ -178,7 +179,7 @@
     "banner_title": "Your Path to Canadian Permanent Residency Starts Now",
     "banner_subtitle": "Express Entry is competitive—but with our expertise and personalized strategies, we can help make your Canadian dream a reality. Take the first step today.",
     "banner_cta_text": "Schedule Your Consultation ",
-    "banner_cta_link": "/book-your-appointment",
+    "banner_cta_link": "/consultation-agreement",
     "what_you_need_footnote": "We will create a complete and personalized checklist for your profile."
   }
 }

@@ -61,6 +61,7 @@ export interface HomePageContent {
   hero_caption: string;
   why_choose_title: string;
   why_choose_subtitle: string;
+  why_choose_description?: string;
   why_choose_features: any;
   why_choose_cta_text: string;
   why_choose_cta_link: string;

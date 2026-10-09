@@ -5,6 +5,7 @@ import {
 } from '@angular/common';
 import {
   Component,
+  DestroyRef,
   inject,
   Inject,
   OnInit,
@@ -24,6 +25,7 @@ import { ProcessStepsComponent } from '../../components/process-steps.component'
 import { ContactFormData } from '../../services/sheets.service';
 import { SeoService } from '../../services/seo.service';
 import { DirectusService } from '../../services/directus.service';
+import { HeroCtaService } from '../../services/hero-cta.service';
 import { HomePageContent } from '../../utils/types/directus';
 
 @Component({
@@ -43,73 +45,77 @@ import { HomePageContent } from '../../utils/types/directus';
     NgOptimizedImage,
   ],
   template: `
-    <app-header />
+    <app-header [overlay]="true" />
 
     <main>
       <!-- Hero Section -->
-      <section class="h-[80vh] bg-black relative overflow-hidden">
-        <div class=" h-full relative z-10">
-          <div class="flex flex-col md:flex-row items-center h-full">
-            <div
-              class="w-full md:w-5/12 lg:w-4/12 px-10 md:pl-[90px] pt-[100px] md:pt-0 hero-content z-20"
+      <!-- Full screen; the header floats over it (overlay) -->
+      <section class="relative h-svh min-h-[640px] bg-black overflow-hidden">
+        <img
+          ngSrc="/assets/images/new-hero.webp"
+          alt="Couple with a suitcase walking along the Toronto waterfront at sunset"
+          class="object-cover object-[80%_center] lg:object-[70%_center]"
+          priority
+          fill
+        />
+        <!-- Darkens the left for text; below lg the text sits at the bottom, so darken from below -->
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/10 lg:bg-gradient-to-r lg:from-black/80 lg:via-black/40 lg:to-transparent"
+        ></div>
+
+        <div
+          class="relative z-10 container mx-auto h-full px-4 pt-24 pb-8 md:pb-12 flex flex-col justify-end lg:justify-center"
+        >
+          <div class="hero-content max-w-xl text-white">
+            <p
+              class="text-sm md:text-base font-medium uppercase tracking-widest text-fire-300 mb-4"
             >
-              <p class="text-lg md:text-xl text-white mb-4 md:mb-8 font-light">
-                {{
-                  homecontent().data?.hero_subtitle ||
-                    'Your Canadian journey starts here!'
-                }}
-              </p>
-              <h2
-                class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-medium text-white mb-4 md:mb-6"
+              {{
+                homecontent().data?.hero_subtitle ||
+                  'Your Canadian journey starts here!'
+              }}
+            </p>
+            <h1
+              class="text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.05] mb-4 md:mb-6"
+            >
+              {{
+                homecontent().data?.hero_title ||
+                  'Licensed Canadian Immigration Consultant'
+              }}
+            </h1>
+            <p class="text-base md:text-lg text-white/85 mb-6 md:mb-8 max-w-md">
+              {{
+                homecontent().data?.hero_description ||
+                  'Trusted guidance for your Canadian dreams with expert advice, seamless processing, and personalized solutions.'
+              }}
+            </p>
+
+            <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-6 md:mb-10">
+              <a
+                data-hero-cta
+                [routerLink]="
+                  homecontent().data?.hero_cta_link || '/consultation-agreement'
+                "
+                class="bg-fire-600 text-white font-medium text-center px-8 py-3.5 rounded-lg transition-colors hover:bg-fire-700"
               >
-                {{
-                  homecontent().data?.hero_title ||
-                    'Professional Immigration Services'
-                }}
-              </h2>
-              <p
-                class="text-sm md:text-base text-white mb-6 md:mb-8 font-spartan font-light"
+                {{ homecontent().data?.hero_cta_title || 'Book a Consultation' }}
+              </a>
+              <button
+                type="button"
+                (click)="scrollToServices()"
+                class="text-white font-medium px-2 py-3 underline-offset-4 hover:underline"
               >
-                {{
-                  homecontent().data?.hero_description ||
-                    'Trusted guidance for your Canadian dreams with expert advice, seamless processing, and personalized solutions.'
-                }}
-              </p>
-              <p
-                class="text-sm md:text-base text-white italic mb-6 md:mb-8 font-spartan font-light"
-              >
-                {{
-                  homecontent().data?.hero_caption ||
-                    'Move to Canada with Confidence!'
-                }}
-              </p>
-              <div class="flex">
-                <button
-                  [routerLink]="homecontent().data?.hero_cta_link || '/contact'"
-                  class="bg-fire-600 text-white px-6 md:px-8 py-2 md:py-3 rounded-lg transition-colors hover:bg-fire-700 w-full sm:w-auto"
-                >
-                  {{
-                    homecontent().data?.hero_cta_title || 'Request a Callback'
-                  }}
-                </button>
-              </div>
+                Explore services &darr;
+              </button>
             </div>
 
-            <div
-              class="w-full md:w-7/12 lg:w-8/12 h-full absolute md:relative right-0 top-0"
+            <ul
+              class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/80 border-t border-white/20 pt-4 md:pt-6"
             >
-              <div
-                class="absolute inset-0 bg-gradient-to-r from-black via-black md:via-transparent to-transparent z-10 md:block hidden"
-              ></div>
-              <img
-                id="hero-image"
-                ngSrc="/assets/images/immigration-hero.png"
-                alt="Immigration Services"
-                class="w-full h-full object-cover"
-                priority
-                fill
-              />
-            </div>
+              <li>Licensed RCIC · CICC regulated</li>
+              <li>English &amp; Tamil support</li>
+              <li>Toronto &amp; Chennai offices</li>
+            </ul>
           </div>
         </div>
       </section>
@@ -121,7 +127,7 @@ import { HomePageContent } from '../../utils/types/directus';
       <app-why-choose-us [content]="homecontent()" />
 
       <!-- Express Entry -->
-      <app-service-section [content]="homecontent()" />
+      <app-service-section id="services" class="block scroll-mt-24" [content]="homecontent()" />
 
       <!-- Process Section -->
       <app-process-steps [content]="homecontent()" />
@@ -174,24 +180,23 @@ export class HomeComponent implements OnInit {
   directusService = inject(DirectusService);
   homecontent = signal<{ data: HomePageContent | null }>({ data: null });
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    // The hero has its own "Book a Consultation" button; hide the header's copy of it.
+    const heroCta = inject(HeroCtaService);
+    heroCta.present.set(true);
+    inject(DestroyRef).onDestroy(() => heroCta.present.set(false));
+  }
 
   ngOnInit(): void {
     this.directusService.getHomePageContent('home_page').subscribe((data) => {
       // console.log(data);
       this.homecontent.set(data);
     });
+    // Canonical/og:url are set per route in AppComponent
     this.seoService.setAllSeoData({
-      title:
-        'Velox Immigration | Trusted RCIC-Led Canadian Immigration Services',
+      title: 'RCIC Immigration Consultant Toronto | Velox Immigration',
       description:
-        'Navigate your Canadian immigration journey with confidence. Velox Immigration offers expert, ethical, and client-focused solutions for study, work, PR, and family sponsorship. Results that move you forward.',
-      keywords:
-        'Canadian immigration, RCIC, study permit, work permit, permanent residency, express entry, family sponsorship, immigration consultant, Canada visa, Toronto immigration, Indian students Canada',
-      ogTitle: 'Velox Immigration | Professional Canadian Immigration Services',
-      ogDescription:
-        'Navigate your Canadian immigration journey with confidence. Expert guidance for study, work, PR, and family sponsorship.',
-      canonicalUrl: 'https://veloximmigration.com/',
+        'Licensed RCIC for Express Entry, study and work permits, PR and family sponsorship. Offices in Toronto and Chennai, with support in English and Tamil.',
     });
   }
 

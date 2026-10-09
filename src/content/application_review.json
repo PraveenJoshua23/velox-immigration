@@ -3,12 +3,13 @@
     "id": 1,
     "status": "published",
     "date_updated": "2025-05-08T18:54:50.796Z",
+    "header_image": "/assets/images/services/review-hero.webp",
     "title": "Application & Document Reviews",
     "subtitle": "Understand what went wrong. Fix what comes next. Get clarity, answers, and a path forward for your immigration file.",
     "intro_title": "Expert File Review Services",
     "intro_description": "Immigration refusals, unclear eligibility, or complex IRCC requests can be overwhelming. Our review services help you understand the reason behind a decision, analyze what needs to change, and guide your next steps. Whether it's a GCMS notes review, NOC code verification, a procedural fairness letter (PFL), or past refusal, Velox Immigration gives your case the attention it deserves.",
     "intro_cta_text": "Book a File Review Consultation ",
-    "intro_cta_link": "/book-your-appointment",
+    "intro_cta_link": "/consultation-agreement",
     "who_we_help_title": "Who We Help",
     "who_we_help_intro": "This service is ideal for:",
     "what_we_offer_intro": "We help you make sense of complex files and build a stronger case:",
@@ -97,7 +98,7 @@
     "banner_title": "Need a Second Opinion or Full Case Review?",
     "banner_description": "Don't guess what went wrong—get answers. Velox Immigration will help you decode your file, fix what's broken, and move forward with confidence.",
     "banner_cta_text": "Book a Review Consultation Now ",
-    "banner_cta_link": "/book-your-appointment",
+    "banner_cta_link": "/consultation-agreement",
     "who_we_help_items": [
       {
         "description": "Applicants with a refused visa, work permit, or PR application"
