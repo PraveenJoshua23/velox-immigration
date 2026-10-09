@@ -88,7 +88,7 @@ interface ServiceCard {
           Not sure which service fits your situation?
         </h2>
         <a
-          routerLink="/book-your-appointment"
+          routerLink="/consultation-agreement"
           class="shrink-0 bg-white text-fire-700 font-medium text-center px-8 py-3.5 rounded-lg hover:bg-gray-100 transition-colors"
         >
           Book a Consultation

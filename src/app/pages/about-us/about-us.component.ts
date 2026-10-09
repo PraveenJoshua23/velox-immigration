@@ -110,7 +110,7 @@ import { SeoService } from '../../services/seo.service';
               containerClass="prose prose-lg max-w-none text-gray-700 prose-strong:text-sea-900 prose-strong:font-medium"
             />
             <a
-              [routerLink]="content.founder_ctaLink || '/book-your-appointment'"
+              [routerLink]="content.founder_ctaLink || '/consultation-agreement'"
               class="inline-flex mt-8 bg-fire-600 text-white font-medium px-8 py-3.5 rounded-lg hover:bg-fire-700 transition-colors"
             >
               {{ content.founder_ctaText || 'Book a Consultation' }}

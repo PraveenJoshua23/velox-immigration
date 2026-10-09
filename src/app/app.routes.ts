@@ -7,7 +7,7 @@ import { ServicePageComponent } from './pages/services/service-page.component';
 import { ServiceCategoryComponent } from './pages/services/service-category.component';
 import { PostPageComponent } from './pages/post/post-page.component';
 import { ContactFormComponent } from './pages/contact/contact.component';
-import { BookYourAppointmentComponent } from './pages/book-your-appointment/book-your-appointment.component';
+import { ConsultationAgreementComponent } from './pages/consultation-agreement/consultation-agreement.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { DynamicResolverService } from './resolvers/dynamic-resolver.service';
@@ -231,9 +231,9 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'book-your-appointment',
-    component: BookYourAppointmentComponent,
-    title: 'Book a Consultation | Velox Immigration',
+    path: 'consultation-agreement',
+    component: ConsultationAgreementComponent,
+    title: 'Consultation Agreement | Velox Immigration',
     resolve: {
       data: DynamicResolverService,
     },
@@ -241,6 +241,8 @@ export const routes: Routes = [
       collection: 'book_consultation',
     },
   },
+  // Old URL, kept for bookmarks and search results
+  { path: 'book-your-appointment', redirectTo: 'consultation-agreement' },
   {
     path: 'blog',
     children: [

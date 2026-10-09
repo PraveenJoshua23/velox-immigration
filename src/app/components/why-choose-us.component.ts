@@ -29,7 +29,7 @@ import { HomePageContent } from '../utils/types/directus';
           </p>
           }
           <a
-            [routerLink]="content.data?.why_choose_cta_link || '/book-your-appointment'"
+            [routerLink]="content.data?.why_choose_cta_link || '/consultation-agreement'"
             class="hidden lg:inline-flex bg-fire-600 text-white font-medium px-8 py-3.5 rounded-lg hover:bg-fire-700 transition-colors"
           >
             {{ content.data?.why_choose_cta_text || 'Book a Consultation' }}
@@ -94,7 +94,7 @@ import { HomePageContent } from '../utils/types/directus';
 
           <!-- On mobile the CTA comes after the cards -->
           <a
-            [routerLink]="content.data?.why_choose_cta_link || '/book-your-appointment'"
+            [routerLink]="content.data?.why_choose_cta_link || '/consultation-agreement'"
             class="lg:hidden mt-10 flex justify-center bg-fire-600 text-white font-medium px-8 py-3.5 rounded-lg hover:bg-fire-700 transition-colors"
           >
             {{ content.data?.why_choose_cta_text || 'Book a Consultation' }}

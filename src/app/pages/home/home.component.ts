@@ -94,7 +94,7 @@ import { HomePageContent } from '../../utils/types/directus';
               <a
                 data-hero-cta
                 [routerLink]="
-                  homecontent().data?.hero_cta_link || '/book-your-appointment'
+                  homecontent().data?.hero_cta_link || '/consultation-agreement'
                 "
                 class="bg-fire-600 text-white font-medium text-center px-8 py-3.5 rounded-lg transition-colors hover:bg-fire-700"
               >

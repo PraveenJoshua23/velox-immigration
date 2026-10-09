@@ -57,7 +57,7 @@ import { HomePageContent } from '../utils/types/directus';
             Ready to take the first step?
           </p>
           <a
-            routerLink="/book-your-appointment"
+            routerLink="/consultation-agreement"
             class="bg-fire-600 text-white font-medium text-center px-8 py-3.5 rounded-lg hover:bg-fire-700 transition-colors"
           >
             Book a Consultation
