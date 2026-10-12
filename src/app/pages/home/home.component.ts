@@ -60,7 +60,7 @@ import { HomePageContent } from '../../utils/types/directus';
         />
         <!-- Darkens the left for text; below lg the text sits at the bottom, so darken from below -->
         <div
-          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/10 lg:bg-gradient-to-r lg:from-black/80 lg:via-black/40 lg:to-transparent"
+          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/10 lg:bg-gradient-to-r lg:from-black/90 lg:via-black/55 lg:to-transparent"
         ></div>
 
         <div
@@ -68,7 +68,7 @@ import { HomePageContent } from '../../utils/types/directus';
         >
           <div class="hero-content max-w-xl text-white">
             <p
-              class="text-sm md:text-base font-medium uppercase tracking-widest text-fire-300 mb-4"
+              class="text-base md:text-lg font-bold uppercase tracking-widest text-fire-500 mb-4 [text-shadow:0_1px_12px_rgb(0_0_0/0.8)]"
             >
               {{
                 homecontent().data?.hero_subtitle ||
@@ -83,7 +83,7 @@ import { HomePageContent } from '../../utils/types/directus';
                   'Licensed Canadian Immigration Consultant'
               }}
             </h1>
-            <p class="text-base md:text-lg text-white/85 mb-6 md:mb-8 max-w-md">
+            <p class="text-base md:text-lg text-white mb-6 [text-shadow:0_1px_10px_rgb(0_0_0/0.7)] md:mb-8 max-w-md">
               {{
                 homecontent().data?.hero_description ||
                   'Trusted guidance for your Canadian dreams with expert advice, seamless processing, and personalized solutions.'

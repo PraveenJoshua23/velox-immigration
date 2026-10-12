@@ -77,7 +77,7 @@ export interface MenuResponse {
             [routerLink]="item.url"
             routerLinkActive="text-fire-600"
             [routerLinkActiveOptions]="{ exact: item.url === '/' }"
-            class="text-gray-600 text-sm hover:text-fire-600 transition-colors group-data-[transparent]:text-white group-data-[transparent]:hover:text-fire-300"
+            class="text-gray-600 text-sm hover:text-fire-600 transition-colors group-data-[transparent]:text-white group-data-[transparent]:hover:text-fire-500"
           >
             {{ item.label }}
           </a>
@@ -85,7 +85,7 @@ export interface MenuResponse {
           <!-- Services Dropdown -->
           <div class="services-dropdown relative">
             <a
-              class="text-gray-600 text-sm hover:text-fire-600 transition-colors cursor-pointer flex items-center gap-1 group-data-[transparent]:text-white group-data-[transparent]:hover:text-fire-300"
+              class="text-gray-600 text-sm hover:text-fire-600 transition-colors cursor-pointer flex items-center gap-1 group-data-[transparent]:text-white group-data-[transparent]:hover:text-fire-500"
             >
               {{ item.label }}
               <svg
@@ -177,7 +177,7 @@ export interface MenuResponse {
         <div class="lg:hidden">
           <button
             (click)="toggleMenu()"
-            class="text-gray-600 hover:text-fire-600 focus:outline-none p-2 group-data-[transparent]:text-white group-data-[transparent]:hover:text-fire-300"
+            class="text-gray-600 hover:text-fire-600 focus:outline-none p-2 group-data-[transparent]:text-white group-data-[transparent]:hover:text-fire-500"
             aria-label="Toggle menu"
           >
             <svg
