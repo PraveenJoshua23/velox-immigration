@@ -71,11 +71,12 @@ import { HomePageContent } from '../utils/types/directus';
             <img
               [src]="'/assets/images/' + item.bgImage"
               alt=""
+              (click)="toggle(i)"
               width="800"
               height="800"
               loading="lazy"
               decoding="async"
-              class="absolute inset-0 size-full object-cover transition-opacity duration-300"
+              class="absolute inset-0 size-full object-cover cursor-pointer transition-opacity duration-300"
               [class.opacity-0]="open() === i"
             />
             <!-- Details panel; invisible (not just transparent) when closed so its link can't be tabbed to -->
