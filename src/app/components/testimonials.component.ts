@@ -31,12 +31,13 @@ import { HomePageContent } from '../utils/types/directus';
             height="875"
             alt="A family sitting together on the grass, smiling"
             loading="lazy"
-            class="w-full h-64 md:h-full min-h-64 object-cover rounded-2xl md:col-span-2 lg:col-span-1"
+            class="w-full h-64 md:h-full min-h-64 object-cover rounded-2xl md:col-span-2 lg:col-span-1 lg:row-span-2"
           />
 
           @for (testimonial of testimonials; track testimonial.name_designation) {
           <figure
             class="reveal bg-white rounded-2xl border border-gray-200 p-8 flex flex-col"
+            [class.lg:col-span-2]="$last && testimonials.length % 2 === 1"
           >
             <svg
               class="w-10 h-10 text-fire-600 mb-6"
