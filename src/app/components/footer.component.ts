@@ -29,7 +29,7 @@ import { DirectusService } from '../services/directus.service';
               @for (office of offices; track office.tel) {
               <a
                 [href]="'tel:' + office.tel"
-                class="block py-1.5 font-medium text-white hover:text-fire-300"
+                class="block py-1.5 font-medium text-white hover:text-fire-500"
                 >{{ office.phone }}</a
               >
               }
@@ -63,7 +63,7 @@ import { DirectusService } from '../services/directus.service';
                 <span>{{ office.city }}</span>
                 <a
                   [href]="'tel:' + office.tel"
-                  class="py-1.5 text-white hover:text-fire-300"
+                  class="py-1.5 text-white hover:text-fire-500"
                   >{{ office.phone }}</a
                 >
               </li>
