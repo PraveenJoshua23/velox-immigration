@@ -105,7 +105,7 @@ export class BookingConfirmedComponent {
 
   offices = [
     { city: 'Toronto, Canada', phone: '+1 416-662-0652', tel: '+14166620652' },
-    { city: 'Chennai, India', phone: '+91 77088 53882', tel: '+917708853882' },
+    { city: 'Chennai, India', phone: '+91 77088 52882', tel: '+917708852882' },
   ];
 
   constructor() {
