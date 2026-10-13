@@ -52,9 +52,9 @@ import { BOOKING_URL } from '../utils/booking';
 
         <!-- Closing CTA -->
         <div
-          class="mt-16 md:mt-20 pt-10 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6"
+          class="mt-16 md:mt-20 pt-10 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-end gap-4 sm:gap-8"
         >
-          <p class="text-xl md:text-2xl font-semibold">
+          <p class="font-heading text-xl md:text-2xl font-semibold">
             Ready to take the first step?
           </p>
           <a

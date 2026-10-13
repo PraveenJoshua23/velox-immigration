@@ -9,12 +9,6 @@ import { HomePageContent } from '../utils/types/directus';
       <div class="container mx-auto px-4">
         <!-- Title -->
         <div class="mb-10 md:mb-12">
-          <div class="flex items-center gap-2">
-            <img src="assets/images/plane.svg" class="w-6 h-6" alt="" />
-            <p class="text-xl md:text-2xl font-semibold">
-              {{ content.data?.testimonial_subtitle || 'What our Clients say' }}
-            </p>
-          </div>
           <h2 class="text-4xl md:text-5xl text-sea-900 mt-4 max-w-2xl">
             {{
               content.data?.testimonial_title ||
@@ -49,7 +43,7 @@ import { HomePageContent } from '../utils/types/directus';
                 d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
               />
             </svg>
-            <blockquote class="text-lg md:text-xl text-gray-800 leading-relaxed mb-8">
+            <blockquote class="font-heading text-lg md:text-xl text-gray-800 leading-relaxed mb-8">
               {{ testimonial.testimony }}
             </blockquote>
             <figcaption

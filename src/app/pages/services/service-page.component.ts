@@ -5,7 +5,6 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { SafeHtmlComponent } from '../../components/safe-html.component';
 import { FaqListComponent } from '../../components/faq-list.component';
 import { ServiceSectionComponent } from '../../components/service-section.component';
-import { HeroCtaService } from '../../services/hero-cta.service';
 import { DirectusService } from '../../services/directus.service';
 import { SeoService } from '../../services/seo.service';
 import { ServicePage, toServicePage } from '../../utils/types/service-page';
@@ -56,7 +55,6 @@ import { HomePageContent } from '../../utils/types/directus';
           {{ page.subtitle }}
         </p>
         <a
-          data-hero-cta
           [href]="(page.intro.cta ?? page.cta.link).url"
           class="inline-flex bg-fire-600 text-white font-medium px-8 py-3.5 rounded-lg hover:bg-fire-700 transition-colors"
         >
@@ -376,9 +374,6 @@ export class ServicePageComponent {
 
   constructor() {
     // The hero always has its own primary CTA; hide the header's copy of it.
-    const heroCta = inject(HeroCtaService);
-    heroCta.present.set(true);
-    inject(DestroyRef).onDestroy(() => heroCta.present.set(false));
 
     const seo = inject(SeoService);
     this.directus

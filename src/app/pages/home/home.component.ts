@@ -5,7 +5,6 @@ import {
 } from '@angular/common';
 import {
   Component,
-  DestroyRef,
   inject,
   Inject,
   OnInit,
@@ -25,7 +24,6 @@ import { ProcessStepsComponent } from '../../components/process-steps.component'
 import { ContactFormData } from '../../services/sheets.service';
 import { SeoService } from '../../services/seo.service';
 import { DirectusService } from '../../services/directus.service';
-import { HeroCtaService } from '../../services/hero-cta.service';
 import { HomePageContent } from '../../utils/types/directus';
 import { BOOKING_URL } from '../../utils/booking';
 
@@ -93,7 +91,6 @@ import { BOOKING_URL } from '../../utils/booking';
 
             <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-6 md:mb-10">
               <a
-                data-hero-cta
                 [href]="homecontent().data?.hero_cta_link || bookingUrl"
                 class="bg-fire-600 text-white font-medium text-center px-8 py-3.5 rounded-lg transition-colors hover:bg-fire-700"
               >
@@ -182,9 +179,6 @@ export class HomeComponent implements OnInit {
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     // The hero has its own "Book a Consultation" button; hide the header's copy of it.
-    const heroCta = inject(HeroCtaService);
-    heroCta.present.set(true);
-    inject(DestroyRef).onDestroy(() => heroCta.present.set(false));
   }
 
   ngOnInit(): void {
