@@ -3,13 +3,14 @@ import { DOCUMENT, ViewportScroller, isPlatformBrowser } from '@angular/common';
 import { NavigationEnd, NavigationStart, Router, RouterOutlet, Scroll } from '@angular/router';
 import { filter } from 'rxjs';
 import { SeoService } from './services/seo.service';
+import { CookieBannerComponent } from './components/cookie-banner.component';
 import { revealOnScroll } from './utils/reveal';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
-  template: `<router-outlet></router-outlet>`,
+  imports: [RouterOutlet, CookieBannerComponent],
+  template: `<router-outlet></router-outlet><app-cookie-banner />`,
   styles: [``],
 })
 export class AppComponent {
