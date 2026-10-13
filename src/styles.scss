@@ -5,7 +5,7 @@
 
 
 body {
-  @apply font-body font-light bg-white;
+  @apply font-body bg-white;
 }
 
 h1,
@@ -14,7 +14,7 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-spartan;
+  @apply font-heading font-medium;
 }
 
 /* Motion utilities. Skipped entirely for reduced-motion users. */

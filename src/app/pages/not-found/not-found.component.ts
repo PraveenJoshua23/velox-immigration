@@ -15,7 +15,7 @@ import { SeoService } from '../../services/seo.service';
     <main class="bg-gray-100">
       <section class="container mx-auto px-4 py-24 md:py-32 grid lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-7">
-          <p class="font-spartan text-8xl md:text-9xl font-medium leading-none text-sea-900/15 mb-6" aria-hidden="true">
+          <p class="font-heading text-8xl md:text-9xl font-medium leading-none text-sea-900/15 mb-6" aria-hidden="true">
             404
           </p>
           <h1 class="text-4xl md:text-5xl font-medium text-sea-900 leading-tight mb-5">

@@ -39,8 +39,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        body: ["Roboto", "sans-serif"],
-        spartan: ["League Spartan", "sans-serif"],
+        body: ["Open Sans", "sans-serif"],
+        heading: ["Lora", "serif"],
       },
     },
   },
