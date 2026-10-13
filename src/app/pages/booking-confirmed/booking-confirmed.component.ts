@@ -92,7 +92,6 @@ import { SeoService } from '../../services/seo.service';
 export class BookingConfirmedComponent {
   steps = [
     'Look out for your Setmore confirmation email. Check your spam folder if it hasn’t arrived within a few minutes.',
-    'Pay the consultation fee to confirm your booking.',
     'Meet Anitha online at your booked time and get advice on your options.',
   ];
 
