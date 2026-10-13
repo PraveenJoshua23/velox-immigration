@@ -63,7 +63,7 @@ import { SeoService } from '../../services/seo.service';
           <div class="lg:col-span-4">
             <div class="flex items-center gap-2 mb-4">
               <img src="assets/images/plane.svg" class="w-6 h-6" alt="" />
-              <p class="text-xl md:text-2xl font-medium font-spartan">Our story</p>
+              <p class="text-xl md:text-2xl font-semibold">Our story</p>
             </div>
             <h2 class="text-4xl md:text-5xl text-sea-900 leading-tight">
               {{ content.story_header }}
@@ -124,7 +124,7 @@ import { SeoService } from '../../services/seo.service';
         <div class="container mx-auto px-4">
           <div class="flex items-center gap-2 mb-4">
             <img src="assets/images/plane.svg" class="w-6 h-6" alt="" />
-            <p class="text-xl md:text-2xl font-medium font-spartan">What we stand for</p>
+            <p class="text-xl md:text-2xl font-semibold">What we stand for</p>
           </div>
           <h2 class="text-4xl md:text-5xl text-sea-900 leading-tight mb-14">
             {{ content.corevalues_title }}
@@ -134,7 +134,7 @@ import { SeoService } from '../../services/seo.service';
             @for (value of content.corevalue_content; track value.title; let i = $index) {
             <li class="reveal xl:border-l xl:border-gray-200 xl:pl-6">
               <span
-                class="block font-spartan text-7xl font-medium leading-none text-fire-600 mb-5"
+                class="block font-heading text-7xl font-medium leading-none text-fire-600 mb-5"
                 aria-hidden="true"
                 >{{ 'VELOX'[i] }}</span
               >

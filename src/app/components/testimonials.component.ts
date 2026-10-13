@@ -11,7 +11,7 @@ import { HomePageContent } from '../utils/types/directus';
         <div class="mb-10 md:mb-12">
           <div class="flex items-center gap-2">
             <img src="assets/images/plane.svg" class="w-6 h-6" alt="" />
-            <p class="text-xl md:text-2xl font-medium font-spartan">
+            <p class="text-xl md:text-2xl font-semibold">
               {{ content.data?.testimonial_subtitle || 'What our Clients say' }}
             </p>
           </div>

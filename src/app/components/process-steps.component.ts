@@ -38,7 +38,7 @@ import { HomePageContent } from '../utils/types/directus';
             </div>
 
             <span
-              class="block font-spartan text-6xl md:text-7xl font-medium leading-none text-white/15 mb-4"
+              class="block font-heading text-6xl md:text-7xl font-medium leading-none text-white/15 mb-4"
               aria-hidden="true"
             >
               {{ (i + 1).toString().padStart(2, '0') }}
@@ -53,7 +53,7 @@ import { HomePageContent } from '../utils/types/directus';
         <div
           class="mt-16 md:mt-20 pt-10 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6"
         >
-          <p class="text-xl md:text-2xl font-spartan">
+          <p class="text-xl md:text-2xl font-semibold">
             Ready to take the first step?
           </p>
           <a

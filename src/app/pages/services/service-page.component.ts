@@ -153,7 +153,7 @@ import { HomePageContent } from '../../utils/types/directus';
         <div class="grid md:grid-cols-2 gap-5">
           @for (item of offerings.items; track $index) {
           <article class="rounded-2xl border border-gray-200 p-7 md:p-8">
-            <span class="block font-spartan text-4xl font-medium text-fire-600/80 mb-4">
+            <span class="block font-heading text-4xl font-medium text-fire-600/80 mb-4">
               {{ pad($index + 1) }}
             </span>
             <h3 class="text-xl md:text-2xl font-medium text-sea-900 mb-3">
@@ -241,7 +241,7 @@ import { HomePageContent } from '../../utils/types/directus';
           @for (step of process.steps; track $index) {
           <li class="border-t border-white/15 pt-6">
             <span
-              class="block font-spartan text-5xl font-medium leading-none text-white/20 mb-4"
+              class="block font-heading text-5xl font-medium leading-none text-white/20 mb-4"
               aria-hidden="true"
               >{{ pad($index + 1) }}</span
             >
@@ -271,7 +271,7 @@ import { HomePageContent } from '../../utils/types/directus';
         <ol class="grid md:grid-cols-2 gap-x-12">
           @for (item of scenarios.items; track $index) {
           <li class="flex gap-5 border-t border-gray-200 py-6">
-            <span class="w-7 shrink-0 font-spartan text-lg font-medium text-fire-600 leading-7">
+            <span class="w-7 shrink-0 font-heading text-lg font-medium text-fire-600 leading-7">
               {{ pad($index + 1) }}
             </span>
             <div>
@@ -341,7 +341,7 @@ import { HomePageContent } from '../../utils/types/directus';
     <ng-template #eyebrow let-label let-dark="$dark">
       <div class="flex items-center gap-2 mb-4">
         <img src="assets/images/plane.svg" class="w-6 h-6" alt="" />
-        <p class="text-lg md:text-xl font-medium font-spartan" [class.text-white]="dark">
+        <p class="text-lg md:text-xl font-semibold" [class.text-white]="dark">
           {{ label }}
         </p>
       </div>

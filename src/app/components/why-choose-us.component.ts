@@ -16,7 +16,7 @@ import { HomePageContent } from '../utils/types/directus';
         <div class="lg:col-span-5 self-center">
           <div class="flex items-center gap-2 mb-4">
             <img src="assets/images/plane.svg" class="w-6 h-6" alt="" />
-            <p class="text-xl md:text-2xl font-medium font-spartan">
+            <p class="text-xl md:text-2xl font-semibold">
               {{ content.data?.why_choose_subtitle }}
             </p>
           </div>

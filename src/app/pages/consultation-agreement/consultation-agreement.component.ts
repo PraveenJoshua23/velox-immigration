@@ -101,7 +101,7 @@ import { SeoService } from '../../services/seo.service';
               <ol class="space-y-5">
                 @for (step of steps; track step; let i = $index) {
                 <li class="flex gap-4">
-                  <span class="font-spartan text-lg font-medium text-fire-500 w-6 shrink-0">{{ i + 1 }}</span>
+                  <span class="font-heading text-lg font-medium text-fire-500 w-6 shrink-0">{{ i + 1 }}</span>
                   <span class="text-white/85">{{ step }}</span>
                 </li>
                 }
