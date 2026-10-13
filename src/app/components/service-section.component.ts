@@ -21,12 +21,6 @@ import { HomePageContent } from '../utils/types/directus';
         class="container mx-auto px-4 mb-10 md:mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6"
       >
         <div>
-          <div class="flex items-center gap-2 mb-3">
-            <img src="assets/images/plane.svg" class="w-6 h-6" alt="" />
-            <p class="text-xl md:text-2xl font-semibold">
-              {{ content.data?.services_subtitle }}
-            </p>
-          </div>
           <h2 class="text-4xl md:text-5xl text-sea-900">
             {{ content.data?.services_title }}
           </h2>

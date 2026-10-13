@@ -41,12 +41,6 @@ import { HomePageContent } from '../utils/types/directus';
 
           <!-- Copy -->
           <div>
-            <div class="flex items-center gap-2 mb-4">
-              <img src="assets/images/plane.svg" class="w-6 h-6" alt="" />
-              <p class="text-xl md:text-2xl font-semibold">
-                {{ content.data?.about_subtitle }}
-              </p>
-            </div>
 
             <h2 class="text-4xl md:text-5xl text-sea-900 leading-tight mb-6">
               {{ content.data?.about_title }}

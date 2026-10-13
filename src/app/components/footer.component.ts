@@ -58,22 +58,20 @@ import { BOOKING_URL } from '../utils/booking';
               Authorized by the College of Immigration and Citizenship
               Consultants (CICC)
             </p>
-            <ul class="space-y-2">
+            <ul class="space-y-4 max-w-sm">
               @for (office of offices; track office.tel) {
-              <li class="flex justify-between gap-4 max-w-xs">
-                <div>
-                  <span>{{ office.city }}</span>
-                  @if (office.address) {
-                  <address class="mt-1 not-italic text-xs text-gray-400">
-                    @for (line of office.address; track line) {<span class="block">{{ line }}</span>}
-                  </address>
-                  }
-                </div>
+              <li class="grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1">
+                <span>{{ office.city }}</span>
                 <a
                   [href]="'tel:' + office.tel"
-                  class="py-1.5 text-white hover:text-fire-500"
+                  class="whitespace-nowrap text-white hover:text-fire-500"
                   >{{ office.phone }}</a
                 >
+                @if (office.address) {
+                <address class="col-span-2 not-italic text-xs text-gray-400">
+                  @for (line of office.address; track line) {<span class="block">{{ line }}</span>}
+                </address>
+                }
               </li>
               }
             </ul>
@@ -82,12 +80,12 @@ import { BOOKING_URL } from '../utils/booking';
           <!-- Service links -->
           <nav
             aria-label="Services"
-            class="lg:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-10 text-sm"
+            class="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-4 md:gap-y-10 text-sm content-start"
           >
             @for (item of servicesMenu; track item.label) {
             <div>
-              <h3 class="text-white font-medium mb-4">{{ item.label }}</h3>
-              <ul class="space-y-2.5">
+              <h3 class="text-white font-medium md:mb-4">{{ item.label }}</h3>
+              <ul class="hidden md:block space-y-2.5">
                 @if (item.sub_menu) { @for (sub of item.sub_menu; track sub.label)
                 { @if (sub.visible) {
                 <li>
@@ -155,7 +153,9 @@ import { BOOKING_URL } from '../utils/booking';
 export class FooterComponent {
   bookingUrl = BOOKING_URL;
   @Input() hideContactBanner = false;
-  servicesMenu = inject(DirectusService).getServicesMenu();
+  servicesMenu = inject(DirectusService)
+    .getServicesMenu()
+    .filter((item) => item.label !== 'Other Services');
   year = new Date().getFullYear();
 
   offices = [
