@@ -7,9 +7,10 @@ import { ServicePageComponent } from './pages/services/service-page.component';
 import { ServiceCategoryComponent } from './pages/services/service-category.component';
 import { PostPageComponent } from './pages/post/post-page.component';
 import { ContactFormComponent } from './pages/contact/contact.component';
-import { ConsultationAgreementComponent } from './pages/consultation-agreement/consultation-agreement.component';
+import { BookingRedirectComponent } from './pages/booking-redirect.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
+import { BookingConfirmedComponent } from './pages/booking-confirmed/booking-confirmed.component';
 import { DynamicResolverService } from './resolvers/dynamic-resolver.service';
 import { postResolver } from './resolvers/post-resolver.service';
 import { postsResolver } from './resolvers/posts-resolver.service';
@@ -230,19 +231,11 @@ export const routes: Routes = [
       },
     ],
   },
-  {
-    path: 'consultation-agreement',
-    component: ConsultationAgreementComponent,
-    title: 'Consultation Agreement | Velox Immigration',
-    resolve: {
-      data: DynamicResolverService,
-    },
-    data: {
-      collection: 'book_consultation',
-    },
-  },
-  // Old URL, kept for bookmarks and search results
-  { path: 'book-your-appointment', redirectTo: 'consultation-agreement' },
+  // Setmore redirects here after a booking
+  { path: 'booking-confirmed', component: BookingConfirmedComponent },
+  // Old booking URLs, kept for bookmarks and search results
+  { path: 'consultation-agreement', component: BookingRedirectComponent },
+  { path: 'book-your-appointment', component: BookingRedirectComponent },
   {
     path: 'blog',
     children: [

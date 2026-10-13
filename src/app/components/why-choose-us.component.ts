@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HomePageContent } from '../utils/types/directus';
+import { BOOKING_URL } from '../utils/booking';
 
 @Component({
   selector: 'app-why-choose-us',
@@ -29,7 +30,7 @@ import { HomePageContent } from '../utils/types/directus';
           </p>
           }
           <a
-            [routerLink]="content.data?.why_choose_cta_link || '/consultation-agreement'"
+            [href]="content.data?.why_choose_cta_link || bookingUrl"
             class="hidden lg:inline-flex bg-fire-600 text-white font-medium px-8 py-3.5 rounded-lg hover:bg-fire-700 transition-colors"
           >
             {{ content.data?.why_choose_cta_text || 'Book a Consultation' }}
@@ -94,7 +95,7 @@ import { HomePageContent } from '../utils/types/directus';
 
           <!-- On mobile the CTA comes after the cards -->
           <a
-            [routerLink]="content.data?.why_choose_cta_link || '/consultation-agreement'"
+            [href]="content.data?.why_choose_cta_link || bookingUrl"
             class="lg:hidden mt-10 flex justify-center bg-fire-600 text-white font-medium px-8 py-3.5 rounded-lg hover:bg-fire-700 transition-colors"
           >
             {{ content.data?.why_choose_cta_text || 'Book a Consultation' }}
@@ -110,5 +111,6 @@ import { HomePageContent } from '../utils/types/directus';
   `,
 })
 export class WhyChooseUsComponent {
+  bookingUrl = BOOKING_URL;
   @Input() content: { data: HomePageContent | null } = { data: null };
 }

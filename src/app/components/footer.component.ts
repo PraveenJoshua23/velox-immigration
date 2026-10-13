@@ -1,6 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { DirectusService } from '../services/directus.service';
+import { BOOKING_URL } from '../utils/booking';
 
 @Component({
   selector: 'app-footer',
@@ -19,7 +20,7 @@ import { DirectusService } from '../services/directus.service';
           </h2>
           <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
             <a
-              routerLink="/consultation-agreement"
+              [href]="bookingUrl"
               class="bg-fire-600 text-white font-medium text-center px-8 py-3.5 rounded-lg hover:bg-fire-700 transition-colors"
             >
               Book a Consultation
@@ -60,7 +61,14 @@ import { DirectusService } from '../services/directus.service';
             <ul class="space-y-2">
               @for (office of offices; track office.tel) {
               <li class="flex justify-between gap-4 max-w-xs">
-                <span>{{ office.city }}</span>
+                <div>
+                  <span>{{ office.city }}</span>
+                  @if (office.address) {
+                  <address class="mt-1 not-italic text-xs text-gray-400">
+                    @for (line of office.address; track line) {<span class="block">{{ line }}</span>}
+                  </address>
+                  }
+                </div>
                 <a
                   [href]="'tel:' + office.tel"
                   class="py-1.5 text-white hover:text-fire-500"
@@ -145,13 +153,23 @@ import { DirectusService } from '../services/directus.service';
   ],
 })
 export class FooterComponent {
+  bookingUrl = BOOKING_URL;
   @Input() hideContactBanner = false;
   servicesMenu = inject(DirectusService).getServicesMenu();
   year = new Date().getFullYear();
 
   offices = [
     { city: 'Toronto, Canada', phone: '+1 416-662-0652', tel: '+14166620652' },
-    { city: 'Chennai, India', phone: '+91 77088 53882', tel: '+917708853882' },
+    {
+      city: 'Chennai, India',
+      phone: '+91 77088 53882',
+      tel: '+917708853882',
+      address: [
+        'VELOX IMMIGRATION SERVICES PRIVATE LIMITED',
+        '2nd Floor, W-32/117, Plot No. C-10, 3rd Avenue',
+        'Anna Nagar, Chennai, Tamil Nadu 600040',
+      ],
+    },
   ];
 
   socials = [

@@ -57,7 +57,7 @@ import { HomePageContent } from '../../utils/types/directus';
         </p>
         <a
           data-hero-cta
-          [routerLink]="(page.intro.cta ?? page.cta.link).url"
+          [href]="(page.intro.cta ?? page.cta.link).url"
           class="inline-flex bg-fire-600 text-white font-medium px-8 py-3.5 rounded-lg hover:bg-fire-700 transition-colors"
         >
           {{ (page.intro.cta ?? page.cta.link).text }}
@@ -327,7 +327,7 @@ import { HomePageContent } from '../../utils/types/directus';
           }
         </div>
         <a
-          [routerLink]="page.cta.link.url"
+          [href]="page.cta.link.url"
           class="shrink-0 bg-white text-fire-700 font-medium text-center px-8 py-3.5 rounded-lg hover:bg-gray-100 transition-colors"
         >
           {{ page.cta.link.text }}

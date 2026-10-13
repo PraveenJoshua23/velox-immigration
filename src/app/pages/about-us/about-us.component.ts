@@ -5,6 +5,7 @@ import { HeaderComponent } from '../../components/header.component';
 import { SafeHtmlComponent } from '../../components/safe-html.component';
 import { FaqListComponent } from '../../components/faq-list.component';
 import { SeoService } from '../../services/seo.service';
+import { BOOKING_URL } from '../../utils/booking';
 
 @Component({
   selector: 'app-about-page',
@@ -110,7 +111,7 @@ import { SeoService } from '../../services/seo.service';
               containerClass="prose prose-lg max-w-none text-gray-700 prose-strong:text-sea-900 prose-strong:font-medium"
             />
             <a
-              [routerLink]="content.founder_ctaLink || '/consultation-agreement'"
+              [href]="content.founder_ctaLink || bookingUrl"
               class="inline-flex mt-8 bg-fire-600 text-white font-medium px-8 py-3.5 rounded-lg hover:bg-fire-700 transition-colors"
             >
               {{ content.founder_ctaText || 'Book a Consultation' }}
@@ -174,6 +175,7 @@ import { SeoService } from '../../services/seo.service';
   ],
 })
 export class AboutPageComponent {
+  bookingUrl = BOOKING_URL;
   content: any;
 
   facts = [

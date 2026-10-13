@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HomePageContent } from '../utils/types/directus';
+import { BOOKING_URL } from '../utils/booking';
 
 @Component({
   selector: 'app-process-steps',
@@ -57,7 +58,7 @@ import { HomePageContent } from '../utils/types/directus';
             Ready to take the first step?
           </p>
           <a
-            routerLink="/consultation-agreement"
+            [href]="bookingUrl"
             class="bg-fire-600 text-white font-medium text-center px-8 py-3.5 rounded-lg hover:bg-fire-700 transition-colors"
           >
             Book a Consultation
@@ -73,5 +74,6 @@ import { HomePageContent } from '../utils/types/directus';
   `,
 })
 export class ProcessStepsComponent {
+  bookingUrl = BOOKING_URL;
   @Input() content: { data: HomePageContent | null } = { data: null };
 }

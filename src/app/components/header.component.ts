@@ -160,9 +160,9 @@ export interface MenuResponse {
           } }
 
           <!-- Desktop CTA; faded out while the page's own hero CTA (data-hero-cta) is on screen -->
-          <button
+          <a
             *ngIf="ctaButton()"
-            [routerLink]="ctaButton()?.url"
+            [href]="ctaButton()?.url"
             class="hidden lg:block bg-fire-600 text-white text-sm font-medium px-6 py-3 ml-2 rounded-lg transition-opacity duration-300 hover:bg-fire-700"
             [class.opacity-0]="heroCtaVisible()"
             [class.pointer-events-none]="heroCtaVisible()"
@@ -170,7 +170,7 @@ export interface MenuResponse {
             [tabIndex]="heroCtaVisible() ? -1 : 0"
           >
             {{ ctaButton()?.label }}
-          </button>
+          </a>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -296,14 +296,14 @@ export interface MenuResponse {
             } }
 
             <!-- Mobile CTA -->
-            <button
+            <a
               *ngIf="ctaButton()"
-              [routerLink]="ctaButton()?.url"
+              [href]="ctaButton()?.url"
               (click)="closeMenu()"
-              class="mt-6 w-full bg-fire-600 text-white font-medium px-6 py-3 rounded-lg transition-colors hover:bg-fire-700 text-center"
+              class="mt-6 block w-full bg-fire-600 text-white font-medium px-6 py-3 rounded-lg transition-colors hover:bg-fire-700 text-center"
             >
               {{ ctaButton()?.label }}
-            </button>
+            </a>
           </div>
         </div>
       </div>
