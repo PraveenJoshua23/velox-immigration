@@ -213,8 +213,8 @@ export class ContactFormComponent {
     { city: 'Toronto, Canada', phone: '+1 416-662-0652', tel: '+14166620652' },
     {
       city: 'Chennai, India',
-      phone: '+91 77088 53882',
-      tel: '+917708853882',
+      phone: '+91 77088 52882',
+      tel: '+917708852882',
       address: [
         'VELOX IMMIGRATION SERVICES PRIVATE LIMITED',
         '2nd Floor, W-32/117, Plot No. C-10, 3rd Avenue',
@@ -246,7 +246,7 @@ export class ContactFormComponent {
     inject(SeoService).setAllSeoData({
       title: 'Contact Us | Velox Immigration',
       description:
-        'Contact Velox Immigration in Toronto (+1 416-662-0652) or Chennai (+91 77088 53882). Send us a message and a licensed RCIC will get back to you.',
+        'Contact Velox Immigration in Toronto (+1 416-662-0652) or Chennai (+91 77088 52882). Send us a message and a licensed RCIC will get back to you.',
     });
   }
 
