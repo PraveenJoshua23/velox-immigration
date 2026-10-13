@@ -27,6 +27,7 @@ import { SeoService } from '../../services/seo.service';
 import { DirectusService } from '../../services/directus.service';
 import { HeroCtaService } from '../../services/hero-cta.service';
 import { HomePageContent } from '../../utils/types/directus';
+import { BOOKING_URL } from '../../utils/booking';
 
 @Component({
   selector: 'app-home',
@@ -93,9 +94,7 @@ import { HomePageContent } from '../../utils/types/directus';
             <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-6 md:mb-10">
               <a
                 data-hero-cta
-                [routerLink]="
-                  homecontent().data?.hero_cta_link || '/consultation-agreement'
-                "
+                [href]="homecontent().data?.hero_cta_link || bookingUrl"
                 class="bg-fire-600 text-white font-medium text-center px-8 py-3.5 rounded-lg transition-colors hover:bg-fire-700"
               >
                 {{ homecontent().data?.hero_cta_title || 'Book a Consultation' }}
@@ -176,6 +175,7 @@ import { HomePageContent } from '../../utils/types/directus';
   `,
 })
 export class HomeComponent implements OnInit {
+  bookingUrl = BOOKING_URL;
   seoService = inject(SeoService);
   directusService = inject(DirectusService);
   homecontent = signal<{ data: HomePageContent | null }>({ data: null });

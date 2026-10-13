@@ -1,3 +1,4 @@
+import { BOOKING_URL } from '../booking';
 /**
  * The shape every service page renders from. It is deliberately CMS-agnostic:
  * a headless CMS "services" collection should map 1:1 onto it. Today's JSON files
@@ -155,7 +156,7 @@ export function toServicePage(raw: any): ServicePage {
       body: text(raw.banner_description) ?? text(raw.banner_subtitle),
       link: link(raw.banner_cta_text, raw.banner_cta_link) ?? {
         text: 'Book a Consultation',
-        url: '/consultation-agreement',
+        url: BOOKING_URL,
       },
     },
   };

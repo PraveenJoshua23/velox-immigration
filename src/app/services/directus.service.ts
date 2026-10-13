@@ -6,7 +6,6 @@ import about_page from '../../content/about_page.json';
 import appeals_refugees_hc_cases from '../../content/appeals_refugees_hc_cases.json';
 import application_review from '../../content/application_review.json';
 import atlantic_immigration from '../../content/atlantic_immigration.json';
-import book_consultation from '../../content/book_consultation.json';
 import business_immigration from '../../content/business_immigration.json';
 import contact_page from '../../content/contact_page.json';
 import express_entry from '../../content/express_entry.json';
@@ -28,7 +27,6 @@ const content: Record<string, { data: any }> = {
   appeals_refugees_hc_cases,
   application_review,
   atlantic_immigration,
-  book_consultation,
   business_immigration,
   contact_page,
   express_entry,

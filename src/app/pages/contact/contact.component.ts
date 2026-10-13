@@ -134,8 +134,15 @@ import { SeoService } from '../../services/seo.service';
               <h2 class="text-2xl text-sea-900 mb-6">Talk to us directly</h2>
               <ul class="divide-y divide-gray-100">
                 @for (office of offices; track office.tel) {
-                <li class="flex items-center justify-between gap-4 py-4">
-                  <span class="text-gray-700">{{ office.city }}</span>
+                <li class="flex items-start justify-between gap-4 py-4">
+                  <div>
+                    <span class="text-gray-700">{{ office.city }}</span>
+                    @if (office.address) {
+                    <address class="mt-1 not-italic text-sm text-gray-500">
+                      @for (line of office.address; track line) {<span class="block">{{ line }}</span>}
+                    </address>
+                    }
+                  </div>
                   <a [href]="'tel:' + office.tel" class="py-1 font-medium text-sea-900 hover:text-fire-600">{{ office.phone }}</a>
                 </li>
                 } @if (content?.contact_email) {
@@ -204,7 +211,16 @@ export class ContactFormComponent {
   servicesMenu = inject(DirectusService).getServicesMenu();
   offices = [
     { city: 'Toronto, Canada', phone: '+1 416-662-0652', tel: '+14166620652' },
-    { city: 'Chennai, India', phone: '+91 77088 53882', tel: '+917708853882' },
+    {
+      city: 'Chennai, India',
+      phone: '+91 77088 53882',
+      tel: '+917708853882',
+      address: [
+        'VELOX IMMIGRATION SERVICES PRIVATE LIMITED',
+        '2nd Floor, W-32/117, Plot No. C-10, 3rd Avenue',
+        'Anna Nagar, Chennai, Tamil Nadu 600040',
+      ],
+    },
   ];
 
   form = inject(FormBuilder).nonNullable.group({

@@ -5,6 +5,7 @@ import { forkJoin, map } from 'rxjs';
 import { DirectusService } from '../../services/directus.service';
 import { SeoService } from '../../services/seo.service';
 import { toServicePage } from '../../utils/types/service-page';
+import { BOOKING_URL } from '../../utils/booking';
 
 interface ServiceCard {
   url: string;
@@ -88,7 +89,7 @@ interface ServiceCard {
           Not sure which service fits your situation?
         </h2>
         <a
-          routerLink="/consultation-agreement"
+          [href]="bookingUrl"
           class="shrink-0 bg-white text-fire-700 font-medium text-center px-8 py-3.5 rounded-lg hover:bg-gray-100 transition-colors"
         >
           Book a Consultation
@@ -98,6 +99,7 @@ interface ServiceCard {
   `,
 })
 export class ServiceCategoryComponent {
+  bookingUrl = BOOKING_URL;
   private route = inject(ActivatedRoute);
   private directus = inject(DirectusService);
 
