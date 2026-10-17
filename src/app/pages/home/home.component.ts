@@ -18,6 +18,7 @@ import { AboutComponent } from '../../components/about.component';
 import { ServiceSectionComponent } from '../../components/service-section.component';
 import { PartnerLogosComponent } from '../../components/partner-logo.component';
 import { FooterComponent } from '../../components/footer.component';
+import { ContactCtaComponent } from '../../components/contact-cta.component';
 import { HeaderComponent } from '../../components/header.component';
 import { WhyChooseUsComponent } from '../../components/why-choose-us.component';
 import { ProcessStepsComponent } from '../../components/process-steps.component';
@@ -30,7 +31,7 @@ import { BOOKING_URL } from '../../utils/booking';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [
+  imports: [ContactCtaComponent, 
     CommonModule,
     RouterModule,
     TestimonialsComponent,
@@ -149,6 +150,7 @@ import { BOOKING_URL } from '../../utils/booking';
     </main>
 
     <!-- Footer -->
+    <app-contact-cta />
     <app-footer />
   `,
   styles: `

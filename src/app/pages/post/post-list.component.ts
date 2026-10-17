@@ -12,6 +12,7 @@ import { Post } from '../../utils/types/directus';
 import { DirectusService } from '../../services/directus.service';
 import { HeaderComponent } from '../../components/header.component';
 import { FooterComponent } from '../../components/footer.component';
+import { ContactCtaComponent } from '../../components/contact-cta.component';
 import { CtaBannerComponent } from '../../components/cta-banner.component';
 import { Title, Meta, DomSanitizer } from '@angular/platform-browser';
 import { RecentPostsSidebarComponent } from '../../components/recent-posts-sidebar.component';
@@ -20,7 +21,7 @@ import { AssetUrlPipe } from '../../pipes/asset-url.pipe';
 @Component({
   selector: 'app-post-list',
   standalone: true,
-  imports: [
+  imports: [ContactCtaComponent, 
     CommonModule,
     RouterModule,
     HeaderComponent,
@@ -165,6 +166,7 @@ import { AssetUrlPipe } from '../../pipes/asset-url.pipe';
         </div>
       </div>
     </div>
+    <app-contact-cta />
     <app-footer />
   `,
 })

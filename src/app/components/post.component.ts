@@ -12,6 +12,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Post } from '../utils/types/directus';
 import { HeaderComponent } from './header.component';
 import { FooterComponent } from './footer.component';
+import { ContactCtaComponent } from './contact-cta.component';
 import { Title, Meta, DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { RecentPostsSidebarComponent } from './recent-posts-sidebar.component';
 import { ShareDialogComponent } from './share-dialog.component';
@@ -21,7 +22,7 @@ import { AssetUrlPipe } from '../pipes/asset-url.pipe';
 @Component({
   selector: 'app-post',
   standalone: true,
-  imports: [
+  imports: [ContactCtaComponent, 
     CommonModule,
     RouterModule,
     HeaderComponent,
@@ -144,6 +145,7 @@ import { AssetUrlPipe } from '../pipes/asset-url.pipe';
       </div>
       }
     </div>
+    <app-contact-cta />
     <app-footer />
 
     <!-- Share Dialog -->

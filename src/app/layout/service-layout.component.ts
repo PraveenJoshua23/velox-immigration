@@ -13,7 +13,7 @@ import { FooterComponent } from '../components/footer.component';
       <router-outlet />
     </main>
     <!-- Each service page ends with its own CTA -->
-    <app-footer [hideContactBanner]="true" />
+    <app-footer />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

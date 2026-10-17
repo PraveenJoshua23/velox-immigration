@@ -569,7 +569,7 @@ import { SeoService } from '../../services/seo.service';
       </section>
     </main>
 
-    <app-footer [hideContactBanner]="true" />
+    <app-footer />
   `,
 })
 export class PrivacyPolicyComponent {
