@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { FooterComponent } from '../../components/footer.component';
+import { ContactCtaComponent } from '../../components/contact-cta.component';
 import { HeaderComponent } from '../../components/header.component';
 import { SafeHtmlComponent } from '../../components/safe-html.component';
 import { FaqListComponent } from '../../components/faq-list.component';
@@ -10,7 +11,7 @@ import { BOOKING_URL } from '../../utils/booking';
 @Component({
   selector: 'app-about-page',
   standalone: true,
-  imports: [RouterModule, HeaderComponent, FooterComponent, SafeHtmlComponent, FaqListComponent],
+  imports: [ContactCtaComponent, RouterModule, HeaderComponent, FooterComponent, SafeHtmlComponent, FaqListComponent],
   template: `
     <app-header />
 
@@ -164,6 +165,7 @@ import { BOOKING_URL } from '../../utils/booking';
       </section>
     </main>
 
+    <app-contact-cta />
     <app-footer />
   `,
   styles: [

@@ -1,7 +1,5 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { DirectusService } from '../services/directus.service';
-import { BOOKING_URL } from '../utils/booking';
 
 @Component({
   selector: 'app-footer',
@@ -10,107 +8,53 @@ import { BOOKING_URL } from '../utils/booking';
   template: `
     <footer class="bg-sea-950 text-white/70">
       <div class="container mx-auto px-4">
-        <!-- Contact CTA -->
-        @if (!hideContactBanner) {
-        <div
-          class="py-14 md:py-16 border-b border-white/10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8"
-        >
-          <h2 class="text-3xl md:text-4xl text-white max-w-xl leading-tight">
-            Looking for a licensed Canadian immigration consultant?
-          </h2>
-          <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
-            <a
-              [href]="bookingUrl"
-              class="bg-fire-600 text-white font-medium text-center px-8 py-3.5 rounded-lg hover:bg-fire-700 transition-colors"
-            >
-              Book a Consultation
-            </a>
-            <div class="text-sm">
-              or call
-              @for (office of offices; track office.tel) {
-              <a
-                [href]="'tel:' + office.tel"
-                class="block py-1.5 font-medium text-white hover:text-fire-500"
-                >{{ office.phone }}</a
-              >
-              }
-            </div>
-          </div>
-        </div>
-        }
-
         <!-- Main -->
-        <div class="py-14 grid lg:grid-cols-12 gap-12">
+        <div class="py-14 grid md:grid-cols-3 gap-12 text-sm leading-relaxed">
           <!-- Company Info -->
-          <div class="lg:col-span-4 space-y-5 text-sm leading-relaxed">
-            <img
-              src="assets/images/logo-white.svg"
-              alt="Velox Immigration"
-              class="h-12"
-            />
-            <p>
-              Regulated Canadian Immigration Consulting Firm, serving clients
-              globally.
-            </p>
-            <p>
-              Licensed RCIC: Anitha Gabriel<br />
-              Membership ID: R1034239<br />
-              Authorized by the College of Immigration and Citizenship
-              Consultants (CICC)
-            </p>
-            <ul class="space-y-4 max-w-sm">
+          <div class="space-y-4">
+            <img src="assets/images/logo-white.svg" alt="Velox Immigration" class="h-12" />
+            <div>
+              <p class="text-white font-medium">Anitha Gabriel</p>
+              <p>Regulated Canadian Immigration Consultant<br />RCIC IRB • R1034239</p>
+            </div>
+            <a href="mailto:info@veloximmigration.com" class="flex items-center gap-3 hover:text-white">
+              <svg class="size-5 text-fire-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z" />
+              </svg>
+              info&#64;veloximmigration.com
+            </a>
+          </div>
+
+          <!-- Services -->
+          <nav aria-label="Services">
+            <h3 class="text-white font-medium mb-4">Our Services</h3>
+            <ul class="space-y-2.5">
+              @for (link of serviceLinks; track link.label) {
+              <li><a [routerLink]="link.url" class="hover:text-white">{{ link.label }}</a></li>
+              }
+            </ul>
+          </nav>
+
+          <!-- Locations -->
+          <div>
+            <h3 class="text-white font-medium mb-4">Our Locations</h3>
+            <ul class="space-y-5">
               @for (office of offices; track office.tel) {
-              <li class="grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1">
-                <span>{{ office.city }}</span>
-                <a
-                  [href]="'tel:' + office.tel"
-                  class="whitespace-nowrap text-white hover:text-fire-500"
-                  >{{ office.phone }}</a
-                >
-                @if (office.address) {
-                <address class="col-span-2 not-italic text-xs text-gray-400">
+              <li class="[&:not(:first-child)]:border-t border-white/10 [&:not(:first-child)]:pt-5">
+                <p class="text-white font-medium">{{ office.name }}</p>
+                <address class="not-italic">
                   @for (line of office.address; track line) {<span class="block">{{ line }}</span>}
                 </address>
-                }
+                <a [href]="'tel:' + office.tel" class="mt-2 inline-flex items-center gap-3 text-white hover:text-fire-500">
+                  <svg class="size-4 text-fire-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" />
+                  </svg>
+                  {{ office.phone }}
+                </a>
               </li>
               }
             </ul>
           </div>
-
-          <!-- Service links -->
-          <nav
-            aria-label="Services"
-            class="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-4 md:gap-y-10 text-sm content-start"
-          >
-            @for (item of servicesMenu; track item.label) {
-            <div>
-              <h3 class="text-white font-medium md:mb-4">{{ item.label }}</h3>
-              <ul class="hidden md:block space-y-2.5">
-                @if (item.sub_menu) { @for (sub of item.sub_menu; track sub.label)
-                { @if (sub.visible) {
-                <li>
-                  <a [routerLink]="sub.url" class="hover:text-white">{{
-                    sub.label
-                  }}</a>
-                </li>
-                } @for (subsub of sub.sub_menu || []; track subsub.label) { @if
-                (subsub.visible) {
-                <li>
-                  <a [routerLink]="subsub.url" class="hover:text-white">{{
-                    subsub.label
-                  }}</a>
-                </li>
-                } } } } @else if (item.visible) {
-                <li>
-                  <a [routerLink]="item.url" class="hover:text-white">{{
-                    item.label
-                  }}</a>
-                </li>
-                }
-              </ul>
-            </div>
-            }
-          </nav>
         </div>
 
         <!-- Bottom bar -->
@@ -118,7 +62,7 @@ import { BOOKING_URL } from '../utils/booking';
           class="border-t border-white/10 py-8 flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-6 text-xs"
         >
           <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <p>© {{ year }} Velox Immigration Services Inc. All rights reserved.</p>
+            <p>© {{ year }} Velox Immigration. All rights reserved.</p>
             <a routerLink="/privacy-policy" class="hover:text-white"
               >Privacy Policy</a
             >
@@ -151,24 +95,32 @@ import { BOOKING_URL } from '../utils/booking';
   ],
 })
 export class FooterComponent {
-  bookingUrl = BOOKING_URL;
-  @Input() hideContactBanner = false;
-  servicesMenu = inject(DirectusService)
-    .getServicesMenu()
-    .filter((item) => item.label !== 'Other Services');
+  serviceLinks = [
+    { label: 'Study permits', url: '/services/study' },
+    { label: 'Work permits', url: '/services/work' },
+    { label: 'Visitor visas and super visas', url: '/services/visit' },
+    { label: 'Express Entry and PNP', url: '/services/immigrate' },
+    { label: 'Family sponsorship', url: '/services/immigrate/family-sponsorship' },
+    { label: 'Citizenship', url: '/services/other/pr-citizenship' },
+  ];
   year = new Date().getFullYear();
 
   offices = [
-    { city: 'Toronto, Canada', phone: '+1 416-662-0652', tel: '+14166620652' },
     {
-      city: 'Chennai, India',
+      name: 'Velox Immigration Services Inc.',
+      address: ['Oshawa, Ontario, Canada', 'Online appointments only'],
+      phone: '+1 416-662-0652',
+      tel: '+14166620652',
+    },
+    {
+      name: 'Velox Immigration Services Private Limited',
+      address: [
+        'W-32/117, Plot No. C-10, 2nd Floor',
+        '3rd Avenue, Anna Nagar',
+        'Chennai 600040, Tamil Nadu, India',
+      ],
       phone: '+91 77088 52882',
       tel: '+917708852882',
-      address: [
-        'VELOX IMMIGRATION SERVICES PRIVATE LIMITED',
-        '2nd Floor, W-32/117, Plot No. C-10, 3rd Avenue',
-        'Anna Nagar, Chennai, Tamil Nadu 600040',
-      ],
     },
   ];
 

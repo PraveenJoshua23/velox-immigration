@@ -175,7 +175,7 @@ import { SeoService } from '../../services/seo.service';
       </section>
     </main>
 
-    <app-footer [hideContactBanner]="true" />
+    <app-footer />
 
     <ng-template #field let-id="id" let-label="label" let-type="type" let-auto="auto">
       <div [formGroup]="form">
@@ -216,9 +216,10 @@ export class ContactFormComponent {
       phone: '+91 77088 52882',
       tel: '+917708852882',
       address: [
-        'VELOX IMMIGRATION SERVICES PRIVATE LIMITED',
-        '2nd Floor, W-32/117, Plot No. C-10, 3rd Avenue',
-        'Anna Nagar, Chennai, Tamil Nadu 600040',
+        'Velox Immigration Services Private Limited',
+        'W-32/117, Plot No. C-10, 2nd Floor',
+        '3rd Avenue, Anna Nagar',
+        'Chennai 600040, Tamil Nadu, India',
       ],
     },
   ];

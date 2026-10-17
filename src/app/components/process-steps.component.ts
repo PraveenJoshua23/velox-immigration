@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { afterNextRender, Component, DestroyRef, ElementRef, inject, Input, viewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HomePageContent } from '../utils/types/directus';
 import { BOOKING_URL } from '../utils/booking';
@@ -8,7 +8,16 @@ import { BOOKING_URL } from '../utils/booking';
   standalone: true,
   imports: [RouterModule],
   template: `
-    <section class="py-20 md:py-28 bg-sea-950 text-white">
+    <section class="relative isolate overflow-hidden py-20 md:py-28 bg-sea-950 text-white">
+      <!-- Parallax background: taller than the section, shifted on scroll -->
+      <img
+        #bg
+        src="assets/images/process-bg.webp"
+        alt=""
+        loading="lazy"
+        class="absolute inset-x-0 -top-[15%] -z-20 h-[130%] w-full object-cover will-change-transform"
+      />
+      <div class="absolute inset-0 -z-10 bg-sea-950/80"></div>
       <div class="container mx-auto px-4">
         <!-- Section Title -->
         <div class="flex items-center gap-2 mb-14 md:mb-20">
@@ -76,4 +85,33 @@ import { BOOKING_URL } from '../utils/booking';
 export class ProcessStepsComponent {
   bookingUrl = BOOKING_URL;
   @Input() content: { data: HomePageContent | null } = { data: null };
+
+  private bg = viewChild.required<ElementRef<HTMLImageElement>>('bg');
+
+  constructor() {
+    const destroyRef = inject(DestroyRef);
+    afterNextRender(() => {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const img = this.bg().nativeElement;
+      const section = img.parentElement!;
+      let frame = 0;
+      const update = () => {
+        frame = 0;
+        const rect = section.getBoundingClientRect();
+        if (rect.bottom < 0 || rect.top > innerHeight) return;
+        // -1 when the section enters at the bottom, 1 when it leaves at the top
+        const progress = (innerHeight / 2 - (rect.top + rect.height / 2)) / ((innerHeight + rect.height) / 2);
+        img.style.transform = `translate3d(0, ${progress * rect.height * 0.12}px, 0)`;
+      };
+      const onScroll = () => (frame ||= requestAnimationFrame(update));
+      addEventListener('scroll', onScroll, { passive: true });
+      addEventListener('resize', onScroll);
+      update();
+      destroyRef.onDestroy(() => {
+        removeEventListener('scroll', onScroll);
+        removeEventListener('resize', onScroll);
+        cancelAnimationFrame(frame);
+      });
+    });
+  }
 }

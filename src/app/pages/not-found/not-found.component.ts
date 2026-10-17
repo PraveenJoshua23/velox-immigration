@@ -3,12 +3,13 @@ import { Meta } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../../components/header.component';
 import { FooterComponent } from '../../components/footer.component';
+import { ContactCtaComponent } from '../../components/contact-cta.component';
 import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-not-found',
   standalone: true,
-  imports: [RouterModule, HeaderComponent, FooterComponent],
+  imports: [ContactCtaComponent, RouterModule, HeaderComponent, FooterComponent],
   template: `
     <app-header />
 
@@ -60,6 +61,7 @@ import { SeoService } from '../../services/seo.service';
       </section>
     </main>
 
+    <app-contact-cta />
     <app-footer />
   `,
   styles: [
