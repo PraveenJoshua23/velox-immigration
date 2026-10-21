@@ -42,9 +42,23 @@ import { RouterModule } from '@angular/router';
               @for (office of offices; track office.tel) {
               <li class="[&:not(:first-child)]:border-t border-white/10 [&:not(:first-child)]:pt-5">
                 <p class="text-white font-medium">{{ office.name }}</p>
-                <address class="not-italic">
-                  @for (line of office.address; track line) {<span class="block">{{ line }}</span>}
-                </address>
+                <div class="flex items-start gap-3">
+                  @if (office.country === 'CA') {
+                  <svg class="size-4 mt-0.5 shrink-0 text-fire-600" fill="currentColor" viewBox="-2015 -2000 4030 4030" aria-hidden="true">
+                    <path d="m-90 2030 45-863a95 95 0 0 0-111-98l-859 151 116-320a65 65 0 0 0-20-73l-941-762 212-99a65 65 0 0 0 34-79l-186-572 542 115a65 65 0 0 0 73-38l105-247 423 454a65 65 0 0 0 111-57l-204-1052 327 189a65 65 0 0 0 91-27l332-652 332 652a65 65 0 0 0 91 27l327-189-204 1052a65 65 0 0 0 111 57l423-454 105 247a65 65 0 0 0 73 38l542-115-186 572a65 65 0 0 0 34 79l212 99-941 762a65 65 0 0 0-20 73l116 320-859-151a95 95 0 0 0-111 98l45 863z" />
+                  </svg>
+                  } @else {
+                  <svg class="w-4 h-[11px] mt-1 shrink-0 rounded-[1px]" viewBox="0 0 9 6" aria-hidden="true">
+                    <path fill="#FF9933" d="M0 0h9v2H0z" />
+                    <path fill="#fff" d="M0 2h9v2H0z" />
+                    <path fill="#138808" d="M0 4h9v2H0z" />
+                    <circle cx="4.5" cy="3" r=".8" fill="none" stroke="#000080" stroke-width=".2" />
+                  </svg>
+                  }
+                  <address class="not-italic">
+                    @for (line of office.address; track line) {<span class="block">{{ line }}</span>}
+                  </address>
+                </div>
                 <a [href]="'tel:' + office.tel" class="mt-2 inline-flex items-center gap-3 text-white hover:text-fire-500">
                   <svg class="size-4 text-fire-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" />
@@ -108,12 +122,14 @@ export class FooterComponent {
   offices = [
     {
       name: 'Velox Immigration Services Inc.',
+      country: 'CA',
       address: ['Oshawa, Ontario, Canada', 'Online appointments only'],
       phone: '+1 416-662-0652',
       tel: '+14166620652',
     },
     {
       name: 'Velox Immigration Services Private Limited',
+      country: 'IN',
       address: [
         'W-32/117, Plot No. C-10, 2nd Floor',
         '3rd Avenue, Anna Nagar',
