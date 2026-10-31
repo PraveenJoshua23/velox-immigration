@@ -23,17 +23,18 @@ import { HomePageContent } from '../../utils/types/directus';
   ],
   template: `
     <!-- Hero -->
-    <section class="relative overflow-hidden bg-sea-950 text-white py-20 md:py-28">
+    <section class="relative overflow-hidden bg-sea-950 text-white py-16 md:py-24">
+      <!-- Photo sits on the right and fades into the navy behind the copy -->
       @if (page.heroImage) {
       <img
         [src]="page.heroImage"
         alt=""
         fetchpriority="high"
-        class="absolute inset-0 size-full object-cover"
+        class="absolute inset-y-0 right-0 h-full w-full md:w-2/3 object-cover"
       />
       }
       <div
-        class="absolute inset-0 bg-gradient-to-r from-sea-950/95 via-sea-950/85 to-sea-950/60"
+        class="absolute inset-0 bg-gradient-to-r from-sea-950 from-10% via-sea-950/85 md:via-sea-950/70 via-45% to-sea-950/10"
       ></div>
 
       <div class="relative container mx-auto px-4">
@@ -48,10 +49,10 @@ import { HomePageContent } from '../../utils/types/directus';
             <li class="text-white" aria-current="page">{{ page.title }}</li>
           </ol>
         </nav>
-        <h1 class="text-4xl md:text-6xl font-medium leading-[1.05] max-w-3xl mb-6">
+        <h1 class="text-4xl md:text-6xl font-medium leading-[1.05] max-w-xl mb-5">
           {{ page.title }}
         </h1>
-        <p class="text-lg md:text-xl text-white/80 max-w-2xl mb-10">
+        <p class="text-lg md:text-2xl text-white/85 max-w-md mb-8">
           {{ page.subtitle }}
         </p>
         <a
@@ -64,15 +65,13 @@ import { HomePageContent } from '../../utils/types/directus';
     </section>
 
     <!-- Overview -->
-    <section class="py-20 md:py-28 bg-white">
-      <div class="container mx-auto px-4 grid lg:grid-cols-12 gap-8 lg:gap-16">
+    <section class="py-16 md:py-20 bg-white">
+      <div class="container mx-auto px-4 grid lg:grid-cols-12 gap-8 lg:gap-16 lg:items-center">
         <div class="lg:col-span-5">
-          <ng-container
-            *ngTemplateOutlet="eyebrow; context: { $implicit: 'Overview' }"
-          />
           <h2 class="text-3xl md:text-5xl text-sea-900 leading-tight">
             {{ page.intro.title }}
           </h2>
+          <ng-container *ngTemplateOutlet="rule" />
         </div>
         <div class="lg:col-span-7 space-y-5 text-lg text-gray-700 leading-relaxed">
           @if (page.intro.body) {
@@ -299,6 +298,71 @@ import { HomePageContent } from '../../utils/types/directus';
     </section>
     }
 
+    <!-- How we can help -->
+    @if (page.help; as help) {
+    <section class="py-16 md:py-20 bg-gray-100">
+      <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        @if (help.image) {
+        <img
+          [src]="help.image"
+          alt=""
+          loading="lazy"
+          class="w-full aspect-[11/10] object-cover rounded-2xl"
+        />
+        }
+        <div>
+          <h2 class="text-3xl md:text-5xl text-sea-900 leading-tight">How we can help</h2>
+          <ng-container *ngTemplateOutlet="rule" />
+          <ul class="mt-8 divide-y divide-gray-300">
+            @for (item of help.items; track $index) {
+            <li class="flex gap-5 py-6 first:pt-0 last:pb-0">
+              <svg
+                class="size-6 shrink-0 mt-1 text-fire-600"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+              <div>
+                <h3 class="font-heading text-xl md:text-2xl font-medium text-sea-900 mb-1">
+                  {{ item.title }}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">{{ item.description }}</p>
+              </div>
+            </li>
+            }
+          </ul>
+        </div>
+      </div>
+    </section>
+    }
+
+    <!-- Start with a conversation -->
+    @if (page.conversation) {
+    <section class="py-16 md:py-20 bg-white">
+      <div class="container mx-auto px-4 grid lg:grid-cols-12 gap-8 lg:gap-16 lg:items-center">
+        <div class="lg:col-span-5">
+          <h2 class="text-3xl md:text-5xl text-sea-900 leading-tight">
+            Start with<br />a conversation.
+          </h2>
+          <ng-container *ngTemplateOutlet="rule" />
+        </div>
+        <div class="lg:col-span-7">
+          <p class="text-lg text-gray-700 leading-relaxed">{{ page.conversation }}</p>
+          <p class="mt-4 text-sm text-gray-500">
+            Application preparation and representation are provided under a separate
+            service agreement.
+          </p>
+        </div>
+      </div>
+    </section>
+    }
+
     <!-- FAQs -->
     @if (page.faqs.length) {
     <section class="py-20 md:py-28 bg-gray-100">
@@ -314,9 +378,13 @@ import { HomePageContent } from '../../utils/types/directus';
     }
 
     <!-- CTA -->
-    <section class="bg-fire-600 text-white py-16 md:py-20">
+    <section
+      class="relative isolate overflow-hidden bg-sea-950 bg-cover bg-center text-white"
+      style="background-image: url('assets/images/cta-bg.webp')"
+    >
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-sea-950/95 via-sea-950/75 to-sea-950/40"></div>
       <div
-        class="container mx-auto px-4 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8"
+        class="container mx-auto px-4 py-14 md:py-16 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8"
       >
         <div class="max-w-2xl">
           <h2 class="text-3xl md:text-4xl leading-tight mb-3">{{ page.cta.title }}</h2>
@@ -326,15 +394,21 @@ import { HomePageContent } from '../../utils/types/directus';
         </div>
         <a
           [href]="page.cta.link.url"
-          class="shrink-0 bg-white text-fire-700 font-medium text-center px-8 py-3.5 rounded-lg hover:bg-gray-100 transition-colors"
+          class="shrink-0 bg-fire-600 text-white font-medium text-center px-8 py-3.5 rounded-lg hover:bg-fire-700 transition-colors"
         >
           {{ page.cta.link.text }}
         </a>
       </div>
     </section>
 
-    <!-- Other services -->
+    <!-- Other services; pages on the new layout (with "How we can help") end at the CTA -->
+    @if (!page.help) {
     <app-service-section [content]="home()" />
+    }
+
+    <ng-template #rule>
+      <span class="block w-10 h-0.5 bg-fire-600 mt-5" aria-hidden="true"></span>
+    </ng-template>
 
     <ng-template #eyebrow let-label let-dark="$dark">
       <div class="flex items-center gap-2 mb-4">
