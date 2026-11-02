@@ -3,7 +3,22 @@
     "id": 1,
     "status": "published",
     "date_updated": "2025-05-03T19:17:13.692Z",
-    "header_image": "/assets/images/services/refugee-hero.webp",
+    "header_image": "/assets/images/services/refugee-cover.webp",
+    "help_image": "/assets/images/services/refugee-help.webp",
+    "help_items": [
+      {
+        "title": "Case Review & Strategy",
+        "description": "We review your refusal, removal order or circumstances and identify the most suitable remedy."
+      },
+      {
+        "title": "Evidence & Submissions",
+        "description": "Support gathering evidence, witness statements and documents, and preparing your written submissions."
+      },
+      {
+        "title": "Hearing Preparation & Support",
+        "description": "Guidance and preparation for IAD and IRB hearings, coordinated with counsel where required."
+      }
+    ],
     "title": "Refugee Claims & Appeals",
     "subtitle": "When your case needs compassion, legal strategy, and strong representation—Velox Immigration is here.",
     "intro_title": "Denied? At Risk? Seeking Protection? We Can Help.",
