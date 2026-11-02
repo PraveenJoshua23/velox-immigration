@@ -37,7 +37,9 @@ export interface ServicePage {
   process?: { intro?: string; steps: { title: string; description: string }[] };
   scenarios?: { title: string; items: ListItem[] };
   whyUs?: string;
-  faqs: { question: string; answer: string }[];
+  help?: { image?: string; items: { title: string; description: string }[] };
+  conversation?: string;
+  faqs:{ question: string; answer: string }[];
   cta: { title: string; body?: string; link: Link };
 }
 
@@ -110,6 +112,10 @@ export function toServicePage(raw: any): ServicePage {
     description: text(s.description) ?? '',
   }));
   const scenarios = items(raw.common_scenarios_items);
+  const helpItems = (raw.help_items ?? []).map((h: any) => ({
+    title: text(h.title) ?? '',
+    description: text(h.description) ?? '',
+  }));
   const faqs = (raw.faq_items ?? [])
     .map((f: any) => ({ question: text(f.question) ?? '', answer: text(f.answer ?? f.answers) ?? '' }))
     .filter((f: { question: string; answer: string }) => f.question && f.answer);
@@ -150,6 +156,8 @@ export function toServicePage(raw: any): ServicePage {
       ? { title: text(raw.common_scenarios_title) ?? 'Common scenarios we handle', items: scenarios }
       : undefined,
     whyUs: text(raw.why_choose_velox),
+    help: helpItems.length ? { image: text(raw.help_image), items: helpItems } : undefined,
+    conversation: text(raw.conversation_description),
     faqs,
     cta: {
       title: text(raw.banner_title) ?? 'Ready to get started?',
