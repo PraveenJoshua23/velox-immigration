@@ -12,7 +12,7 @@ import { HomePageContent } from '../utils/types/directus';
           <h2 class="text-4xl md:text-5xl text-sea-900 mt-4 max-w-2xl">
             {{
               content.data?.testimonial_title ||
-                'Testimonial of our Immigration Guidance & Support'
+                'What Our Clients Say'
             }}
           </h2>
         </div>

@@ -198,16 +198,6 @@ export const routes: Routes = [
             },
           },
           {
-            path: 'appeals-refugee',
-            component: ServicePageComponent,
-            resolve: {
-              data: DynamicResolverService,
-            },
-            data: {
-              collection: 'appeals_refugees_hc_cases',
-            },
-          },
-          {
             path: 'review-services',
             component: ServicePageComponent,
             resolve: {

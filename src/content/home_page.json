@@ -1,7 +1,7 @@
 {
   "data": {
     "id": 1,
-    "hero_title": "Licensed Canadian Immigration Consultant",
+    "hero_title": "Canadian Immigration Advice for Your Next Step",
     "hero_description": "Trusted guidance for your Canadian dreams with expert advice, seamless processing, and personalized solutions.",
     "hero_background": null,
     "hero_cta_title": "Book a Consultation",
@@ -31,7 +31,7 @@
     ],
     "why_choose_cta_text": "Book a Consultation",
     "why_choose_cta_link": "https://veloximmigrationservicesinc.setmore.com/book?step=time-slot&products=4a3ce095-ccf7-4d97-b212-09d405053fb0&type=service&staff=d4c9c67e-00f6-4f10-ad36-b4d2ee61e875&staffSelected=true",
-    "services_title": "Outstanding Immigration Services",
+    "services_title": "How We Can Help",
     "services_subtitle": "Our Immigration Services",
     "services_features": [
       {
@@ -114,7 +114,7 @@
         "description": "We prepare and submit your application, making sure every document is accurate, complete, and meets immigration requirements."
       }
     ],
-    "testimonial_title": "Testimonial of our Immigration Guidance & Support",
+    "testimonial_title": "What Our Clients Say",
     "testimonial_subtitle": "What our Clients say",
     "testimonials": [
       {
@@ -130,7 +130,7 @@
         "name_designation": "Anthony Decruz, Google Review"
       }
     ],
-    "about_title": "Simplifying Immigration, One Step at a Time.",
+    "about_title": "Meet Anitha Gabriel",
     "about_subtitle": "About VELOX Immigration",
     "about_ctaLink": "/about",
     "about_ctaTitle": "Learn More About Us",
