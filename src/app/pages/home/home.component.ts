@@ -80,7 +80,7 @@ import { BOOKING_URL } from '../../utils/booking';
             >
               {{
                 homecontent().data?.hero_title ||
-                  'Licensed Canadian Immigration Consultant'
+                  'Canadian Immigration Advice for Your Next Step'
               }}
             </h1>
             <p class="text-base md:text-lg text-white mb-6 [text-shadow:0_1px_10px_rgb(0_0_0/0.7)] md:mb-8 max-w-md">

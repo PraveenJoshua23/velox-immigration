@@ -101,11 +101,6 @@
                   "visible": true
                 },
                 {
-                  "label": "Refugee Claims & Appeals",
-                  "url": "/services/other/appeals-refugee",
-                  "visible": true
-                },
-                {
                   "label": "Application & Document Reviews",
                   "url": "/services/other/review-services",
                   "visible": true

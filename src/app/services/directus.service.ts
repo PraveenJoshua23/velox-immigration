@@ -3,7 +3,6 @@ import { Observable, of, throwError } from 'rxjs';
 import { HomePageContent, MenuContent } from '../utils/types/directus';
 // Static content exported from the old Directus CMS (scripts/scrape-cms.mjs).
 import about_page from '../../content/about_page.json';
-import appeals_refugees_hc_cases from '../../content/appeals_refugees_hc_cases.json';
 import application_review from '../../content/application_review.json';
 import atlantic_immigration from '../../content/atlantic_immigration.json';
 import business_immigration from '../../content/business_immigration.json';
@@ -24,7 +23,6 @@ import visitor_visa from '../../content/visitor_visa.json';
 
 const content: Record<string, { data: any }> = {
   about_page,
-  appeals_refugees_hc_cases,
   application_review,
   atlantic_immigration,
   business_immigration,
