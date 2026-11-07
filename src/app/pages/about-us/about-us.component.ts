@@ -98,7 +98,7 @@ import { BOOKING_URL } from '../../utils/booking';
               <div>
                 <p class="font-medium text-sea-900">Anitha Gabriel</p>
                 <p class="text-sm text-gray-600">Licensed RCIC-IRB</p>
-                <p class="text-sm text-gray-600">Membership ID R1034239</p>
+                <p class="text-sm text-gray-600">Registration R1034239</p>
               </div>
             </div>
           </div>
@@ -153,7 +153,7 @@ import { BOOKING_URL } from '../../utils/booking';
         <div class="container mx-auto px-4 grid lg:grid-cols-12 gap-10 lg:gap-16">
           <div class="lg:col-span-4">
             <h2 class="text-4xl md:text-5xl text-sea-900 leading-tight mb-4">
-              Frequently asked questions
+              Frequently Asked Questions
             </h2>
             <p class="text-lg text-gray-700">
               Have questions? Find answers to common immigration concerns.
@@ -165,7 +165,10 @@ import { BOOKING_URL } from '../../utils/booking';
       </section>
     </main>
 
-    <app-contact-cta />
+    <app-contact-cta
+      title="Discuss Your Next Steps"
+      subtitle="Get clear advice and support for your Canadian immigration journey."
+    />
     <app-footer />
   `,
   styles: [
@@ -182,8 +185,8 @@ export class AboutPageComponent {
 
   facts = [
     { label: 'Licence', value: 'RCIC-IRB' },
-    { label: 'Regulated by', value: 'CICC' },
-    { label: 'Offices', value: 'Toronto & Chennai' },
+    { label: 'Registration', value: 'R1034239' },
+    { label: 'Locations', value: 'Oshawa & Chennai' },
     { label: 'Languages', value: 'English & Tamil' },
   ];
 
@@ -194,7 +197,7 @@ export class AboutPageComponent {
     inject(SeoService).setAllSeoData({
       title: 'About Us | Velox Immigration',
       description:
-        'Meet Anitha Gabriel, the licensed RCIC behind Velox Immigration. Learn our story, our V.E.L.O.X values, and how we guide clients from Toronto and Chennai.',
+        'Meet Anitha Gabriel, the licensed RCIC behind Velox Immigration. Learn our story, our V.E.L.O.X values, and how we guide clients from Oshawa and Chennai.',
     });
   }
 }

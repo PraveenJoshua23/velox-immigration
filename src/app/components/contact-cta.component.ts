@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BOOKING_URL } from '../utils/booking';
 
 @Component({
@@ -13,9 +13,12 @@ import { BOOKING_URL } from '../utils/booking';
       <div
         class="container mx-auto px-4 py-16 md:py-24 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8"
       >
-        <h2 class="text-3xl md:text-4xl text-white max-w-xl leading-tight">
-          Looking for a licensed Canadian immigration consultant?
-        </h2>
+        <div class="max-w-xl">
+          <h2 class="text-3xl md:text-4xl text-white leading-tight">{{ title }}</h2>
+          @if (subtitle) {
+          <p class="mt-3 text-lg text-white/80">{{ subtitle }}</p>
+          }
+        </div>
         <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
           <a
             [href]="bookingUrl"
@@ -40,6 +43,8 @@ import { BOOKING_URL } from '../utils/booking';
   styles: [':host { display: block; }'],
 })
 export class ContactCtaComponent {
+  @Input() title = 'Looking for a licensed Canadian immigration consultant?';
+  @Input() subtitle = '';
   bookingUrl = BOOKING_URL;
   offices = [
     { phone: '+1 416-662-0652', tel: '+14166620652' },

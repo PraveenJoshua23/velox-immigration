@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
             <img src="assets/images/logo-white.svg" alt="Velox Immigration" class="h-12" />
             <div>
               <p class="text-white font-medium">Anitha Gabriel</p>
-              <p>Regulated Canadian Immigration Consultant<br />RCIC IRB • R1034239</p>
+              <p>Regulated Canadian Immigration Consultant<br />RCIC-IRB • R1034239</p>
             </div>
             <a href="mailto:info@veloximmigration.com" class="flex items-center gap-3 hover:text-white">
               <svg class="size-5 text-fire-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

@@ -43,6 +43,16 @@ import { HomePageContent } from '../utils/types/directus';
                 d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
               />
             </svg>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="flex gap-0.5 text-amber-400" role="img" aria-label="5 out of 5 stars">
+                @for (star of stars; track star) {
+                <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2.5l2.94 5.96 6.56.95-4.75 4.63 1.12 6.54L12 17.5l-5.87 3.08 1.12-6.54L2.5 9.41l6.56-.95z" />
+                </svg>
+                }
+              </span>
+              <span class="text-sm text-gray-500">Client review</span>
+            </div>
             <blockquote class="font-heading text-base md:text-lg text-gray-800 leading-relaxed mb-8">
               {{ testimonial.testimony }}
             </blockquote>
@@ -78,6 +88,7 @@ import { HomePageContent } from '../utils/types/directus';
 })
 export class TestimonialsComponent {
   @Input() content: { data: HomePageContent | null } = { data: null };
+  stars = [1, 2, 3, 4, 5];
 
   get testimonials(): { testimony: string; name_designation: string }[] {
     return this.content.data?.testimonials ?? [];

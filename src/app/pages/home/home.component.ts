@@ -15,7 +15,6 @@ import { RouterModule } from '@angular/router';
 // import { ServicesComponent } from '../../components/services.component';
 import { TestimonialsComponent } from '../../components/testimonials.component';
 import { AboutComponent } from '../../components/about.component';
-import { ServiceSectionComponent } from '../../components/service-section.component';
 import { PartnerLogosComponent } from '../../components/partner-logo.component';
 import { FooterComponent } from '../../components/footer.component';
 import { ContactCtaComponent } from '../../components/contact-cta.component';
@@ -41,7 +40,6 @@ import { BOOKING_URL } from '../../utils/booking';
     HeaderComponent,
     WhyChooseUsComponent,
     ProcessStepsComponent,
-    ServiceSectionComponent,
     NgOptimizedImage,
   ],
   template: `
@@ -123,8 +121,51 @@ import { BOOKING_URL } from '../../utils/booking';
       <!-- Why choose us Section -->
       <app-why-choose-us [content]="homecontent()" />
 
-      <!-- Express Entry -->
-      <app-service-section id="services" class="block scroll-mt-24" [content]="homecontent()" />
+      <!-- Services -->
+      <section id="services" class="scroll-mt-24 bg-gray-50 py-20 md:py-24">
+        <div class="container mx-auto px-4 max-w-6xl">
+          <p class="text-center text-sm font-semibold uppercase tracking-widest text-fire-600 mb-3">
+            Our Services
+          </p>
+          <h2 class="text-center text-4xl md:text-5xl font-semibold text-sea-900 mb-12">
+            How We Can Help
+          </h2>
+
+          <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+            @for (service of services; track service.title) {
+            <li>
+              <a
+                [routerLink]="service.url"
+                class="group block h-full rounded-2xl bg-white overflow-hidden shadow-sm transition-shadow hover:shadow-lg"
+              >
+                <div class="aspect-[16/10] overflow-hidden">
+                  <img
+                    [src]="'/assets/images/services/' + service.image"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    class="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div class="flex items-center justify-between gap-4 px-5 py-4">
+                  <h3 class="font-heading text-lg md:text-xl font-semibold text-sea-900">
+                    {{ service.title }}
+                  </h3>
+                  <span
+                    class="size-9 shrink-0 rounded-full bg-fire-600 text-white flex items-center justify-center transition-colors group-hover:bg-fire-700"
+                    aria-hidden="true"
+                  >
+                    <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            </li>
+            }
+          </ul>
+        </div>
+      </section>
 
       <!-- Process Section -->
       <app-process-steps [content]="homecontent()" />
@@ -178,6 +219,15 @@ export class HomeComponent implements OnInit {
   seoService = inject(SeoService);
   directusService = inject(DirectusService);
   homecontent = signal<{ data: HomePageContent | null }>({ data: null });
+
+  services = [
+    { title: 'Study Permits', url: '/services/study/study-in-canada', image: 'service-study.webp' },
+    { title: 'Work Permits', url: '/services/work', image: 'service-work.webp' },
+    { title: 'Visitor Visas & Super Visas', url: '/services/visit/visitor-visas', image: 'service-visitor.webp' },
+    { title: 'Express Entry & PNP', url: '/services/immigrate/express-entry', image: 'express-entry-cover.webp' },
+    { title: 'Family Sponsorship', url: '/services/immigrate/family-sponsorship', image: 'family-cover.webp' },
+    { title: 'Canadian Citizenship', url: '/services/other/pr-citizenship', image: 'service-passport.webp' },
+  ];
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     // The hero has its own "Book a Consultation" button; hide the header's copy of it.
